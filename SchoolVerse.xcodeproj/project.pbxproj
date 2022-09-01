@@ -17,6 +17,7 @@
 		1637161328C0405C00DF15D4 /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161228C0405C00DF15D4 /* FirebaseFunctionsCombine-Community */; };
 		1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */; };
 		1637161C28C047C400DF15D4 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637161B28C047C400DF15D4 /* GoogleService-Info-Dev.plist */; };
+		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D128C00FC400D92969 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2D028C00FC400D92969 /* ContentView.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 			files = (
 				1637161328C0405C00DF15D4 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				1637160F28C0405C00DF15D4 /* FirebaseFirestoreSwift in Frameworks */,
+				1637161F28C0514B00DF15D4 /* Resolver in Frameworks */,
 				1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */,
 				1637160D28C0405C00DF15D4 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				1637161128C0405C00DF15D4 /* FirebaseFunctions in Frameworks */,
@@ -204,6 +206,7 @@
 				1637160E28C0405C00DF15D4 /* FirebaseFirestoreSwift */,
 				1637161028C0405C00DF15D4 /* FirebaseFunctions */,
 				1637161228C0405C00DF15D4 /* FirebaseFunctionsCombine-Community */,
+				1637161E28C0514B00DF15D4 /* Resolver */,
 			);
 			productName = SchoolVerse;
 			productReference = 1674C2CB28C00FC400D92969 /* SchoolVerse.app */;
@@ -279,6 +282,7 @@
 			mainGroup = 1674C2C228C00FC400D92969;
 			packageReferences = (
 				1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */,
 			);
 			productRefGroup = 1674C2CC28C00FC400D92969 /* Products */;
 			projectDirPath = "";
@@ -938,7 +942,15 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 9.5.0;
+			};
+		};
+		1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -978,6 +990,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFunctionsCombine-Community";
+		};
+		1637161E28C0514B00DF15D4 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

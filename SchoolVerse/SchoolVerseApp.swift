@@ -11,7 +11,6 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        print(CustomEnvironment.firebasePlist)
         // chooses firebase plist based on prod or dev
         let filePath = Bundle.main.path(forResource: CustomEnvironment.firebasePlist, ofType: "plist")
         guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
