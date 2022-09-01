@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-// MARK: - Nutrition model
+// MARK: Nutrition model
 
 struct Nutrition: Codable, Hashable {
     var calories: Double?
@@ -55,7 +55,7 @@ struct Nutrition: Codable, Hashable {
     }
 }
 
-// MARK: - Serving Size model
+// MARK: Serving Size model
 
 struct ServingSize: Codable, Hashable {
     var servingSizeAmount: String? // wtf?
@@ -67,7 +67,7 @@ struct ServingSize: Codable, Hashable {
     }
 }
 
-// MARK: - Individual Food item model
+// MARK: Individual Food item model
 
 struct Food: Codable, Hashable {
     var name: String
@@ -83,7 +83,7 @@ struct Food: Codable, Hashable {
     }
 }
 
-// MARK: - A menu for a complete day
+// MARK: A menu for a complete day
 
 struct Menu: Codable, Identifiable {
     @DocumentID var id: String?
