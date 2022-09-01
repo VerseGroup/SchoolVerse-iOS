@@ -125,6 +125,97 @@
 			path = Production;
 			sourceTree = "<group>";
 		};
+		1637162028C0546300DF15D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1637162128C0546B00DF15D4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1637162228C054AF00DF15D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1637162328C054B200DF15D4 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		1637162428C054C700DF15D4 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
+		1637162528C054D400DF15D4 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		1637162628C054E400DF15D4 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		1637162728C054E800DF15D4 /* Linking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Linking;
+			sourceTree = "<group>";
+		};
+		1637162828C054EB00DF15D4 /* Sports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sports;
+			sourceTree = "<group>";
+		};
+		1637162928C054F500DF15D4 /* More */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		1637162A28C0553500DF15D4 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		1637162B28C0558A00DF15D4 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		1637162C28C055A700DF15D4 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		1674C2C228C00FC400D92969 = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +239,23 @@
 		1674C2CD28C00FC400D92969 /* SchoolVerse */ = {
 			isa = PBXGroup;
 			children = (
-				163715F928C032D600DF15D4 /* Configs */,
+				1637162228C054AF00DF15D4 /* Models */,
+				1637162128C0546B00DF15D4 /* Services */,
+				1637162528C054D400DF15D4 /* Authentication */,
+				1637162028C0546300DF15D4 /* Extensions */,
 				1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */,
+				1637162628C054E400DF15D4 /* Dashboard */,
+				1637162328C054B200DF15D4 /* Tasks */,
+				1637162B28C0558A00DF15D4 /* Schedule */,
+				1637162428C054C700DF15D4 /* Menus */,
+				1637162928C054F500DF15D4 /* More */,
+				1637162828C054EB00DF15D4 /* Sports */,
+				1637162A28C0553500DF15D4 /* Events */,
+				1637162C28C055A700DF15D4 /* Account */,
+				1637162728C054E800DF15D4 /* Linking */,
 				1674C2D028C00FC400D92969 /* ContentView.swift */,
 				1674C2D228C00FC500D92969 /* Assets.xcassets */,
+				163715F928C032D600DF15D4 /* Configs */,
 				1674C2D428C00FC500D92969 /* Preview Content */,
 			);
 			path = SchoolVerse;
