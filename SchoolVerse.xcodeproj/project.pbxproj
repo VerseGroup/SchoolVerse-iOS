@@ -18,6 +18,7 @@
 		1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */; };
 		1637161C28C047C400DF15D4 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637161B28C047C400DF15D4 /* GoogleService-Info-Dev.plist */; };
 		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
+		1637164128C057B300DF15D4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637164028C057B300DF15D4 /* Menu.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D128C00FC400D92969 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2D028C00FC400D92969 /* ContentView.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironment.swift; sourceTree = "<group>"; };
 		1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		1637161B28C047C400DF15D4 /* GoogleService-Info-Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Dev.plist"; sourceTree = "<group>"; };
+		1637164028C057B300DF15D4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D028C00FC400D92969 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		1637162228C054AF00DF15D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1637164028C057B300DF15D4 /* Menu.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +152,8 @@
 		1637162328C054B200DF15D4 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				1637162F28C056CF00DF15D4 /* ViewModels */,
+				1637163028C056D400DF15D4 /* Views */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -156,6 +161,8 @@
 		1637162428C054C700DF15D4 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				1637163528C0570A00DF15D4 /* ViewModels */,
+				1637163428C0570800DF15D4 /* Views */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -177,6 +184,8 @@
 		1637162728C054E800DF15D4 /* Linking */ = {
 			isa = PBXGroup;
 			children = (
+				1637163E28C0577800DF15D4 /* ViewModels */,
+				1637163F28C0577C00DF15D4 /* Views */,
 			);
 			path = Linking;
 			sourceTree = "<group>";
@@ -184,6 +193,8 @@
 		1637162828C054EB00DF15D4 /* Sports */ = {
 			isa = PBXGroup;
 			children = (
+				1637163928C0571700DF15D4 /* ViewModels */,
+				1637163828C0571400DF15D4 /* Views */,
 			);
 			path = Sports;
 			sourceTree = "<group>";
@@ -191,6 +202,8 @@
 		1637162928C054F500DF15D4 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				1637163728C0571000DF15D4 /* ViewModels */,
+				1637163628C0570E00DF15D4 /* Views */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -198,6 +211,8 @@
 		1637162A28C0553500DF15D4 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				1637163B28C0571C00DF15D4 /* ViewModels */,
+				1637163A28C0571A00DF15D4 /* Views */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -205,6 +220,8 @@
 		1637162B28C0558A00DF15D4 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				1637163228C056F500DF15D4 /* ViewModels */,
+				1637163328C0570300DF15D4 /* Views */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -212,8 +229,122 @@
 		1637162C28C055A700DF15D4 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				1637163D28C0572200DF15D4 /* ViewModels */,
+				1637163C28C0571F00DF15D4 /* Views */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		1637162F28C056CF00DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163028C056D400DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163228C056F500DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163328C0570300DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163428C0570800DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163528C0570A00DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163628C0570E00DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163728C0571000DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163828C0571400DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163928C0571700DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163A28C0571A00DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163B28C0571C00DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163C28C0571F00DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1637163D28C0572200DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163E28C0577800DF15D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1637163F28C0577C00DF15D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1674C2C228C00FC400D92969 = {
@@ -244,6 +375,7 @@
 				1637162528C054D400DF15D4 /* Authentication */,
 				1637162028C0546300DF15D4 /* Extensions */,
 				1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */,
+				1674C2D028C00FC400D92969 /* ContentView.swift */,
 				1637162628C054E400DF15D4 /* Dashboard */,
 				1637162328C054B200DF15D4 /* Tasks */,
 				1637162B28C0558A00DF15D4 /* Schedule */,
@@ -253,7 +385,6 @@
 				1637162A28C0553500DF15D4 /* Events */,
 				1637162C28C055A700DF15D4 /* Account */,
 				1637162728C054E800DF15D4 /* Linking */,
-				1674C2D028C00FC400D92969 /* ContentView.swift */,
 				1674C2D228C00FC500D92969 /* Assets.xcassets */,
 				163715F928C032D600DF15D4 /* Configs */,
 				1674C2D428C00FC500D92969 /* Preview Content */,
@@ -435,6 +566,7 @@
 				1674C2D128C00FC400D92969 /* ContentView.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
+				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
