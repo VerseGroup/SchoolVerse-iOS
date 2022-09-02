@@ -26,6 +26,12 @@
 		1674C2E028C00FC500D92969 /* SchoolVerseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2DF28C00FC500D92969 /* SchoolVerseTests.swift */; };
 		1674C2EA28C00FC500D92969 /* SchoolVerseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */; };
 		1674C2EC28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */; };
+		1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */; };
+		1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95728C2A9140077B8F6 /* UserModel.swift */; };
+		1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95928C2AA1C0077B8F6 /* Schedule.swift */; };
+		1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95B28C2AAAE0077B8F6 /* Day.swift */; };
+		1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95D28C2AB2A0077B8F6 /* Credentials.swift */; };
+		1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95F28C2ACBB0077B8F6 /* Course.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,12 @@
 		1674C2E528C00FC500D92969 /* SchoolVerseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolVerseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITests.swift; sourceTree = "<group>"; };
 		1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		1688F95728C2A9140077B8F6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		1688F95928C2AA1C0077B8F6 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		1688F95B28C2AAAE0077B8F6 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		1688F95D28C2AB2A0077B8F6 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		1688F95F28C2ACBB0077B8F6 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				1637164028C057B300DF15D4 /* Menu.swift */,
+				1688F95728C2A9140077B8F6 /* UserModel.swift */,
+				1688F95928C2AA1C0077B8F6 /* Schedule.swift */,
+				1688F95B28C2AAAE0077B8F6 /* Day.swift */,
+				1688F95D28C2AB2A0077B8F6 /* Credentials.swift */,
+				1688F95F28C2ACBB0077B8F6 /* Course.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +187,7 @@
 		1637162528C054D400DF15D4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -347,6 +365,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1637164228C06AE200DF15D4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		1674C2C228C00FC400D92969 = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +410,7 @@
 				1637162A28C0553500DF15D4 /* Events */,
 				1637162C28C055A700DF15D4 /* Account */,
 				1637162728C054E800DF15D4 /* Linking */,
+				1637164228C06AE200DF15D4 /* Components */,
 				1674C2D228C00FC500D92969 /* Assets.xcassets */,
 				163715F928C032D600DF15D4 /* Configs */,
 				1674C2D428C00FC500D92969 /* Preview Content */,
@@ -564,8 +590,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1674C2D128C00FC400D92969 /* ContentView.swift in Sources */,
+				1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */,
+				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
+				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
+				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
+				1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */,
+				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
