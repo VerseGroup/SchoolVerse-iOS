@@ -64,12 +64,14 @@ struct PeriodInfo: Codable, Comparable {
     var period: Period
     var className: String
     var startTime: String
+    var endTime: String
     var information: String
     
     enum CodingKeys: String, CodingKey {
         case period
         case className = "class_name"
         case startTime = "start_time"
+        case endTime = "end_time"
         case information
     }
 }
@@ -87,14 +89,13 @@ extension PeriodInfo {
 
 enum Period: String, Codable, Comparable {
     case homeroom
-    case periodOne
-    case periodTwo
-    case periodThree
-    case periodFour
-    case periodFiveA // first lunch
-    case periodFiveB // second lunch
-    case periodSix
-    case periodSeven
+    case classPeriodOne
+    case specialPeriod
+    case classPeriodTwo
+    case classPeriodThree
+    case lunch
+    case classPeriodFour
+    case classPeriodFive
     
     case failed
 }
@@ -106,22 +107,20 @@ extension Period {
         switch self {
         case .homeroom:
             return 0
-        case .periodOne:
+        case .classPeriodOne:
             return 1
-        case .periodTwo:
+        case .specialPeriod:
             return 2
-        case .periodThree:
+        case .classPeriodTwo:
             return 3
-        case .periodFour:
+        case .classPeriodThree:
             return 4
-        case .periodFiveA:
+        case .lunch:
             return 5
-        case .periodFiveB:
+        case .classPeriodFour:
             return 6
-        case .periodSix:
+        case .classPeriodFive:
             return 7
-        case .periodSeven:
-            return 8
         case .failed:
             return -1
         }
@@ -145,22 +144,20 @@ extension Period {
             switch self {
             case .homeroom:
                 return "Homeroom"
-            case .periodOne:
-                return "Period 1"
-            case .periodTwo:
-                return "Period 2"
-            case .periodThree:
-                return "Period 3"
-            case .periodFour:
-                return "Period 4"
-            case .periodFiveA:
-                return "Period 5a"
-            case .periodFiveB:
-                return "Period 5b"
-            case .periodSix:
-                return "Period 6"
-            case .periodSeven:
-                return "Period 7"
+            case .classPeriodOne:
+                return "Class Period 1"
+            case .specialPeriod:
+                return "Special Period"
+            case .classPeriodTwo:
+                return "Class Period 2"
+            case .classPeriodThree:
+                return "Class Period 3"
+            case .lunch:
+                return "Lunch"
+            case .classPeriodFour:
+                return "Class Period 4"
+            case .classPeriodFive:
+                return "Class Period 5"
             case .failed:
                 return "Failed"
             }
@@ -171,22 +168,20 @@ extension Period {
         switch period {
         case "Homeroom":
             return .homeroom
-        case "Period 1":
-            return .periodOne
-        case "Period 2":
-            return .periodTwo
-        case "Period 3":
-            return .periodThree
-        case "Period 4":
-            return .periodFour
-        case "Period 5a":
-            return .periodFiveA
-        case "Period 5b":
-            return .periodFiveB
-        case "Period 6":
-            return .periodSix
-        case "Period 7":
-            return .periodSeven
+        case "Class Period 1":
+            return .classPeriodOne
+        case "Special Period": // refactor for later (accomodate all special periods)
+            return .specialPeriod
+        case "Class Period 2":
+            return .classPeriodTwo
+        case "Class Period 3":
+            return .classPeriodThree
+        case "Lunch":
+            return .lunch
+        case "Class Period 4":
+            return .classPeriodFour
+        case "Class Period 5":
+            return .classPeriodFive
         default:
             return .failed
         }
