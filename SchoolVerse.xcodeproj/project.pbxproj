@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1604B17828D7B3E500931C90 /* App+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B17728D7B3E500931C90 /* App+Injection.swift */; };
+		1604B17A28D80EE600931C90 /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B17928D80EE600931C90 /* RouterView.swift */; };
+		1604B18028D8120300931C90 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B17F28D8120300931C90 /* OnboardingView.swift */; };
+		1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18328D8E51B00931C90 /* AuthenticationView.swift */; };
+		1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18528D8E68C00931C90 /* SignUpView.swift */; };
+		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
+		1618018C28D90926006B5291 /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 1618018B28D90926006B5291 /* Popovers */; };
+		1618018E28D90ADF006B5291 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618018D28D90ADF006B5291 /* AppView.swift */; };
+		1618019428D90B55006B5291 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019028D90B55006B5291 /* TabBarItem.swift */; };
+		1618019528D90B55006B5291 /* TabBarItemViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019128D90B55006B5291 /* TabBarItemViewModifier.swift */; };
+		1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019228D90B55006B5291 /* TabBarViewBuilder.swift */; };
+		1618019728D90B55006B5291 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019328D90B55006B5291 /* TabBarView.swift */; };
+		1618019928D90CF4006B5291 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019828D90CF4006B5291 /* Color.swift */; };
 		163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */; };
 		1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160628C0405C00DF15D4 /* FirebaseAuth */; };
 		1637160928C0405C00DF15D4 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160828C0405C00DF15D4 /* FirebaseAuthCombine-Community */; };
@@ -20,7 +33,6 @@
 		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
 		1637164128C057B300DF15D4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637164028C057B300DF15D4 /* Menu.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
-		1674C2D128C00FC400D92969 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2D028C00FC400D92969 /* ContentView.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
 		1674C2E028C00FC500D92969 /* SchoolVerseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2DF28C00FC500D92969 /* SchoolVerseTests.swift */; };
@@ -52,6 +64,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1604B17728D7B3E500931C90 /* App+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Injection.swift"; sourceTree = "<group>"; };
+		1604B17928D80EE600931C90 /* RouterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
+		1604B17F28D8120300931C90 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1604B18328D8E51B00931C90 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		1604B18528D8E68C00931C90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		1618018D28D90ADF006B5291 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		1618019028D90B55006B5291 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		1618019128D90B55006B5291 /* TabBarItemViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemViewModifier.swift; sourceTree = "<group>"; };
+		1618019228D90B55006B5291 /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
+		1618019328D90B55006B5291 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		1618019828D90CF4006B5291 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		163715FA28C0330700DF15D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		163715FC28C0355300DF15D4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		163715FD28C0355D00DF15D4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -61,7 +85,6 @@
 		1637164028C057B300DF15D4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
-		1674C2D028C00FC400D92969 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1674C2D528C00FC500D92969 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1674C2DB28C00FC500D92969 /* SchoolVerseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolVerseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1618018C28D90926006B5291 /* Popovers in Frameworks */,
 				1637161328C0405C00DF15D4 /* FirebaseFunctionsCombine-Community in Frameworks */,
 				1637160F28C0405C00DF15D4 /* FirebaseFirestoreSwift in Frameworks */,
 				1637161F28C0514B00DF15D4 /* Resolver in Frameworks */,
@@ -110,6 +134,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1618018F28D90B55006B5291 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				1618019028D90B55006B5291 /* TabBarItem.swift */,
+				1618019128D90B55006B5291 /* TabBarItemViewModifier.swift */,
+				1618019228D90B55006B5291 /* TabBarViewBuilder.swift */,
+				1618019328D90B55006B5291 /* TabBarView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		163715F928C032D600DF15D4 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +177,8 @@
 		1637162028C0546300DF15D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1604B17728D7B3E500931C90 /* App+Injection.swift */,
+				1618019828D90CF4006B5291 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -149,6 +186,7 @@
 		1637162128C0546B00DF15D4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,7 +225,9 @@
 		1637162528C054D400DF15D4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */,
+				1604B18328D8E51B00931C90 /* AuthenticationView.swift */,
+				1604B18528D8E68C00931C90 /* SignUpView.swift */,
+				1604B18728D8E69700931C90 /* SignInView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -368,6 +408,7 @@
 		1637164228C06AE200DF15D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1618018F28D90B55006B5291 /* TabBar */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -400,7 +441,9 @@
 				1637162528C054D400DF15D4 /* Authentication */,
 				1637162028C0546300DF15D4 /* Extensions */,
 				1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */,
-				1674C2D028C00FC400D92969 /* ContentView.swift */,
+				1604B17928D80EE600931C90 /* RouterView.swift */,
+				1618018D28D90ADF006B5291 /* AppView.swift */,
+				1688F96128C301580077B8F6 /* Onboarding */,
 				1637162628C054E400DF15D4 /* Dashboard */,
 				1637162328C054B200DF15D4 /* Tasks */,
 				1637162B28C0558A00DF15D4 /* Schedule */,
@@ -443,6 +486,14 @@
 			path = SchoolVerseUITests;
 			sourceTree = "<group>";
 		};
+		1688F96128C301580077B8F6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1604B17F28D8120300931C90 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +519,7 @@
 				1637161028C0405C00DF15D4 /* FirebaseFunctions */,
 				1637161228C0405C00DF15D4 /* FirebaseFunctionsCombine-Community */,
 				1637161E28C0514B00DF15D4 /* Resolver */,
+				1618018B28D90926006B5291 /* Popovers */,
 			);
 			productName = SchoolVerse;
 			productReference = 1674C2CB28C00FC400D92969 /* SchoolVerse.app */;
@@ -544,6 +596,7 @@
 			packageReferences = (
 				1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */,
+				1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */,
 			);
 			productRefGroup = 1674C2CC28C00FC400D92969 /* Products */;
 			projectDirPath = "";
@@ -589,16 +642,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1674C2D128C00FC400D92969 /* ContentView.swift in Sources */,
 				1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
+				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
+				1618018E28D90ADF006B5291 /* AppView.swift in Sources */,
+				1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */,
+				1604B17A28D80EE600931C90 /* RouterView.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
+				1618019528D90B55006B5291 /* TabBarItemViewModifier.swift in Sources */,
+				1618019428D90B55006B5291 /* TabBarItem.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
 				1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */,
+				1604B18828D8E69700931C90 /* SignInView.swift in Sources */,
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
+				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
+				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
+				1604B17828D7B3E500931C90 /* App+Injection.swift in Sources */,
+				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
+				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,7 +750,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -714,7 +778,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -813,7 +877,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -841,7 +905,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -946,7 +1010,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1001,7 +1065,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1029,7 +1093,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1061,7 +1125,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1205,6 +1269,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/Popovers";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
 		1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1224,6 +1296,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1618018B28D90926006B5291 /* Popovers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */;
+			productName = Popovers;
+		};
 		1637160628C0405C00DF15D4 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
