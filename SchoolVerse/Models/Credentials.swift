@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct AppCredentialsDetails {
+    var email: String
+    var password: String
+}
+
 struct CredentialsDetails: Codable {
     var username: String
     var password: String

@@ -20,6 +20,7 @@
 		1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019228D90B55006B5291 /* TabBarViewBuilder.swift */; };
 		1618019728D90B55006B5291 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019328D90B55006B5291 /* TabBarView.swift */; };
 		1618019928D90CF4006B5291 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019828D90CF4006B5291 /* Color.swift */; };
+		1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019B28D9192A006B5291 /* AlertViewPopover.swift */; };
 		163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */; };
 		1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160628C0405C00DF15D4 /* FirebaseAuth */; };
 		1637160928C0405C00DF15D4 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160828C0405C00DF15D4 /* FirebaseAuthCombine-Community */; };
@@ -44,6 +45,7 @@
 		1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95B28C2AAAE0077B8F6 /* Day.swift */; };
 		1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95D28C2AB2A0077B8F6 /* Credentials.swift */; };
 		1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95F28C2ACBB0077B8F6 /* Course.swift */; };
+		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		1618019228D90B55006B5291 /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
 		1618019328D90B55006B5291 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		1618019828D90CF4006B5291 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1618019B28D9192A006B5291 /* AlertViewPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewPopover.swift; sourceTree = "<group>"; };
 		163715FA28C0330700DF15D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		163715FC28C0355300DF15D4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		163715FD28C0355D00DF15D4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		1688F95B28C2AAAE0077B8F6 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		1688F95D28C2AB2A0077B8F6 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		1688F95F28C2ACBB0077B8F6 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,15 @@
 				1618019328D90B55006B5291 /* TabBarView.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		1618019A28D9191A006B5291 /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				1618019B28D9192A006B5291 /* AlertViewPopover.swift */,
+				16FF894228D91BE70003B01E /* FormValidationPopover.swift */,
+			);
+			path = Popovers;
 			sourceTree = "<group>";
 		};
 		163715F928C032D600DF15D4 /* Configs */ = {
@@ -408,6 +421,7 @@
 		1637164228C06AE200DF15D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1618019A28D9191A006B5291 /* Popovers */,
 				1618018F28D90B55006B5291 /* TabBar */,
 			);
 			path = Components;
@@ -660,9 +674,11 @@
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
+				16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */,
 				1604B17828D7B3E500931C90 /* App+Injection.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
+				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

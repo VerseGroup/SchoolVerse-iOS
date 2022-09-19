@@ -13,15 +13,19 @@ struct UserModel: Codable, Identifiable {
     @DocumentID var id: String?
     var userId: String
     var displayName: String
+    var gradeLevel: Int
+    var email: String
     
-    var creds: CredentialsModel
-    var schedule: Schedule
-    var coursework: Coursework
+    var creds: CredentialsModel?
+    var schedule: Schedule?
+    var coursework: Coursework?
     
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
         case displayName = "display_name"
+        case gradeLevel = "grade_level"
+        case email
         
         case creds
         case schedule
