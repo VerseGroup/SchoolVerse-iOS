@@ -13,6 +13,15 @@
 		1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18328D8E51B00931C90 /* AuthenticationView.swift */; };
 		1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18528D8E68C00931C90 /* SignUpView.swift */; };
 		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
+		1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194828E14F4E0063BC3A /* TaskRepository.swift */; };
+		1612194B28E155020063BC3A /* SchoolTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194A28E155020063BC3A /* SchoolTask.swift */; };
+		1612194D28E157400063BC3A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194C28E157400063BC3A /* TasksView.swift */; };
+		1612195328E159760063BC3A /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612195228E159760063BC3A /* TaskListViewModel.swift */; };
+		1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612195428E159870063BC3A /* TaskCellViewModel.swift */; };
+		1612195728E15A7B0063BC3A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612195628E15A7B0063BC3A /* APIService.swift */; };
+		1612195A28E15B8F0063BC3A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1612195928E15B8F0063BC3A /* Alamofire */; };
+		1612195C28E15D0D0063BC3A /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612195B28E15D0D0063BC3A /* Debouncer.swift */; };
+		1612195E28E15D250063BC3A /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612195D28E15D250063BC3A /* Date+Format.swift */; };
 		1618018C28D90926006B5291 /* Popovers in Frameworks */ = {isa = PBXBuildFile; productRef = 1618018B28D90926006B5291 /* Popovers */; };
 		1618018E28D90ADF006B5291 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618018D28D90ADF006B5291 /* AppView.swift */; };
 		1618019428D90B55006B5291 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019028D90B55006B5291 /* TabBarItem.swift */; };
@@ -21,6 +30,8 @@
 		1618019728D90B55006B5291 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019328D90B55006B5291 /* TabBarView.swift */; };
 		1618019928D90CF4006B5291 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019828D90CF4006B5291 /* Color.swift */; };
 		1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618019B28D9192A006B5291 /* AlertViewPopover.swift */; };
+		1622390728E249A700AB404F /* SwiftRSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622390628E249A700AB404F /* SwiftRSA.swift */; };
+		1622390928E24F3300AB404F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1622390828E24F3300AB404F /* Response.swift */; };
 		163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */; };
 		1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160628C0405C00DF15D4 /* FirebaseAuth */; };
 		1637160928C0405C00DF15D4 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1637160828C0405C00DF15D4 /* FirebaseAuthCombine-Community */; };
@@ -39,12 +50,18 @@
 		1674C2E028C00FC500D92969 /* SchoolVerseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2DF28C00FC500D92969 /* SchoolVerseTests.swift */; };
 		1674C2EA28C00FC500D92969 /* SchoolVerseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */; };
 		1674C2EC28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */; };
+		16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16791C5228E2284A00FD03EF /* String+Base64.swift */; };
 		1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */; };
 		1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95728C2A9140077B8F6 /* UserModel.swift */; };
 		1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95928C2AA1C0077B8F6 /* Schedule.swift */; };
 		1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95B28C2AAAE0077B8F6 /* Day.swift */; };
 		1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95D28C2AB2A0077B8F6 /* Credentials.swift */; };
 		1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95F28C2ACBB0077B8F6 /* Course.swift */; };
+		16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */; };
+		16CE393328E283B200D1F5D4 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393228E283B200D1F5D4 /* SignInViewModel.swift */; };
+		16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393728E283DA00D1F5D4 /* LinkingViewModel.swift */; };
+		16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393928E283E300D1F5D4 /* LinkingView.swift */; };
+		16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */; };
 		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +89,14 @@
 		1604B18328D8E51B00931C90 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		1604B18528D8E68C00931C90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		1612194828E14F4E0063BC3A /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		1612194A28E155020063BC3A /* SchoolTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTask.swift; sourceTree = "<group>"; };
+		1612194C28E157400063BC3A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		1612195228E159760063BC3A /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		1612195428E159870063BC3A /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		1612195628E15A7B0063BC3A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		1612195B28E15D0D0063BC3A /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		1612195D28E15D250063BC3A /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		1618018D28D90ADF006B5291 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		1618019028D90B55006B5291 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1618019128D90B55006B5291 /* TabBarItemViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemViewModifier.swift; sourceTree = "<group>"; };
@@ -79,6 +104,8 @@
 		1618019328D90B55006B5291 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		1618019828D90CF4006B5291 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1618019B28D9192A006B5291 /* AlertViewPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewPopover.swift; sourceTree = "<group>"; };
+		1622390628E249A700AB404F /* SwiftRSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRSA.swift; sourceTree = "<group>"; };
+		1622390828E24F3300AB404F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		163715FA28C0330700DF15D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		163715FC28C0355300DF15D4 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		163715FD28C0355D00DF15D4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -95,12 +122,18 @@
 		1674C2E528C00FC500D92969 /* SchoolVerseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolVerseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITests.swift; sourceTree = "<group>"; };
 		1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		16791C5228E2284A00FD03EF /* String+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		1688F95728C2A9140077B8F6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1688F95928C2AA1C0077B8F6 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		1688F95B28C2AAAE0077B8F6 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		1688F95D28C2AB2A0077B8F6 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		1688F95F28C2ACBB0077B8F6 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		16CE393228E283B200D1F5D4 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		16CE393728E283DA00D1F5D4 /* LinkingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingViewModel.swift; sourceTree = "<group>"; };
+		16CE393928E283E300D1F5D4 /* LinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingView.swift; sourceTree = "<group>"; };
+		16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTileView.swift; sourceTree = "<group>"; };
 		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +147,7 @@
 				1637160F28C0405C00DF15D4 /* FirebaseFirestoreSwift in Frameworks */,
 				1637161F28C0514B00DF15D4 /* Resolver in Frameworks */,
 				1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */,
+				1612195A28E15B8F0063BC3A /* Alamofire in Frameworks */,
 				1637160D28C0405C00DF15D4 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				1637161128C0405C00DF15D4 /* FirebaseFunctions in Frameworks */,
 				1637160928C0405C00DF15D4 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -138,6 +172,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1612196128E21BC20063BC3A /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				1622390828E24F3300AB404F /* Response.swift */,
+			);
+			path = APIModels;
+			sourceTree = "<group>";
+		};
 		1618018F28D90B55006B5291 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +198,14 @@
 				16FF894228D91BE70003B01E /* FormValidationPopover.swift */,
 			);
 			path = Popovers;
+			sourceTree = "<group>";
+		};
+		1622390528E2499F00AB404F /* RSAEncryption */ = {
+			isa = PBXGroup;
+			children = (
+				1622390628E249A700AB404F /* SwiftRSA.swift */,
+			);
+			path = RSAEncryption;
 			sourceTree = "<group>";
 		};
 		163715F928C032D600DF15D4 /* Configs */ = {
@@ -190,8 +240,12 @@
 		1637162028C0546300DF15D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1622390528E2499F00AB404F /* RSAEncryption */,
 				1604B17728D7B3E500931C90 /* App+Injection.swift */,
 				1618019828D90CF4006B5291 /* Color.swift */,
+				1612195B28E15D0D0063BC3A /* Debouncer.swift */,
+				1612195D28E15D250063BC3A /* Date+Format.swift */,
+				16791C5228E2284A00FD03EF /* String+Base64.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -200,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */,
+				1612194828E14F4E0063BC3A /* TaskRepository.swift */,
+				1612195628E15A7B0063BC3A /* APIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,12 +263,14 @@
 		1637162228C054AF00DF15D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1612196128E21BC20063BC3A /* APIModels */,
 				1637164028C057B300DF15D4 /* Menu.swift */,
 				1688F95728C2A9140077B8F6 /* UserModel.swift */,
 				1688F95928C2AA1C0077B8F6 /* Schedule.swift */,
 				1688F95B28C2AAAE0077B8F6 /* Day.swift */,
 				1688F95D28C2AB2A0077B8F6 /* Credentials.swift */,
 				1688F95F28C2ACBB0077B8F6 /* Course.swift */,
+				1612194A28E155020063BC3A /* SchoolTask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,9 +296,8 @@
 		1637162528C054D400DF15D4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				1604B18328D8E51B00931C90 /* AuthenticationView.swift */,
-				1604B18528D8E68C00931C90 /* SignUpView.swift */,
-				1604B18728D8E69700931C90 /* SignInView.swift */,
+				16CE392E28E25F2700D1F5D4 /* ViewModels */,
+				16CE392F28E25F2A00D1F5D4 /* Views */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -250,15 +307,6 @@
 			children = (
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		1637162728C054E800DF15D4 /* Linking */ = {
-			isa = PBXGroup;
-			children = (
-				1637163E28C0577800DF15D4 /* ViewModels */,
-				1637163F28C0577C00DF15D4 /* Views */,
-			);
-			path = Linking;
 			sourceTree = "<group>";
 		};
 		1637162828C054EB00DF15D4 /* Sports */ = {
@@ -309,6 +357,8 @@
 		1637162F28C056CF00DF15D4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1612195228E159760063BC3A /* TaskListViewModel.swift */,
+				1612195428E159870063BC3A /* TaskCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,6 +366,8 @@
 		1637163028C056D400DF15D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1612194C28E157400063BC3A /* TasksView.swift */,
+				16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -404,20 +456,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		1637163E28C0577800DF15D4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		1637163F28C0577C00DF15D4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		1637164228C06AE200DF15D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +491,7 @@
 				1637162228C054AF00DF15D4 /* Models */,
 				1637162128C0546B00DF15D4 /* Services */,
 				1637162528C054D400DF15D4 /* Authentication */,
+				16CE393428E283C300D1F5D4 /* Linking */,
 				1637162028C0546300DF15D4 /* Extensions */,
 				1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */,
 				1604B17928D80EE600931C90 /* RouterView.swift */,
@@ -466,7 +505,6 @@
 				1637162828C054EB00DF15D4 /* Sports */,
 				1637162A28C0553500DF15D4 /* Events */,
 				1637162C28C055A700DF15D4 /* Account */,
-				1637162728C054E800DF15D4 /* Linking */,
 				1637164228C06AE200DF15D4 /* Components */,
 				1674C2D228C00FC500D92969 /* Assets.xcassets */,
 				163715F928C032D600DF15D4 /* Configs */,
@@ -508,6 +546,51 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		16CE392E28E25F2700D1F5D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */,
+				16CE393228E283B200D1F5D4 /* SignInViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		16CE392F28E25F2A00D1F5D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1604B18328D8E51B00931C90 /* AuthenticationView.swift */,
+				1604B18528D8E68C00931C90 /* SignUpView.swift */,
+				1604B18728D8E69700931C90 /* SignInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16CE393428E283C300D1F5D4 /* Linking */ = {
+			isa = PBXGroup;
+			children = (
+				16CE393628E283D000D1F5D4 /* ViewModels */,
+				16CE393528E283CC00D1F5D4 /* Views */,
+			);
+			name = Linking;
+			path = Extensions/Linking;
+			sourceTree = "<group>";
+		};
+		16CE393528E283CC00D1F5D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16CE393928E283E300D1F5D4 /* LinkingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16CE393628E283D000D1F5D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				16CE393728E283DA00D1F5D4 /* LinkingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -534,6 +617,7 @@
 				1637161228C0405C00DF15D4 /* FirebaseFunctionsCombine-Community */,
 				1637161E28C0514B00DF15D4 /* Resolver */,
 				1618018B28D90926006B5291 /* Popovers */,
+				1612195928E15B8F0063BC3A /* Alamofire */,
 			);
 			productName = SchoolVerse;
 			productReference = 1674C2CB28C00FC400D92969 /* SchoolVerse.app */;
@@ -611,6 +695,7 @@
 				1637160528C0405C00DF15D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */,
 				1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */,
+				1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 1674C2CC28C00FC400D92969 /* Products */;
 			projectDirPath = "";
@@ -657,25 +742,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */,
+				1612194D28E157400063BC3A /* TasksView.swift in Sources */,
+				1612195728E15A7B0063BC3A /* APIService.swift in Sources */,
+				16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */,
+				1622390928E24F3300AB404F /* Response.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
 				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
 				1618018E28D90ADF006B5291 /* AppView.swift in Sources */,
+				16CE393328E283B200D1F5D4 /* SignInViewModel.swift in Sources */,
 				1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */,
 				1604B17A28D80EE600931C90 /* RouterView.swift in Sources */,
+				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
+				1622390728E249A700AB404F /* SwiftRSA.swift in Sources */,
 				1618019528D90B55006B5291 /* TabBarItemViewModifier.swift in Sources */,
 				1618019428D90B55006B5291 /* TabBarItem.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
+				16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */,
 				1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */,
 				1604B18828D8E69700931C90 /* SignInView.swift in Sources */,
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
+				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
+				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
+				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
+				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
+				1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */,
+				1612195C28E15D0D0063BC3A /* Debouncer.swift in Sources */,
+				16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */,
 				16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */,
 				1604B17828D7B3E500931C90 /* App+Injection.swift in Sources */,
+				1612195328E159760063BC3A /* TaskListViewModel.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
@@ -1285,6 +1386,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 		1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aheze/Popovers";
@@ -1297,7 +1406,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 9.5.0;
 			};
 		};
@@ -1305,13 +1414,18 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 1.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1612195928E15B8F0063BC3A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		1618018B28D90926006B5291 /* Popovers */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */;

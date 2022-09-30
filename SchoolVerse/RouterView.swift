@@ -12,11 +12,16 @@ struct RouterView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
     @AppStorage("show_onboarding") var showOnboarding: Bool = true
+    @AppStorage("show_linking") var showLinking: Bool = false
     
     var body: some View {
         
         if authManager.isAuthenticated {
-            AppView()
+            if showLinking {
+                LinkingView()
+            } else {
+                AppView()
+            }
         } else {
             if showOnboarding {
                 OnboardingView(showOnboarding: $showOnboarding)

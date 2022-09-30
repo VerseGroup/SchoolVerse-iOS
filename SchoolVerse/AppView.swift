@@ -27,7 +27,7 @@ struct AppView: View {
             .tabBarItem(tab: TabBarItem.schedule, selection: selection)
             
             NavigationStack {
-                Text("Tasks")
+                TasksView()
             }
             .tabBarItem(tab: TabBarItem.tasks, selection: selection)
             

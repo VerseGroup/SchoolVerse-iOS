@@ -19,10 +19,16 @@ class TaskRepository: ObservableObject {
     private let userId: String
     private let db = Firestore.firestore()
     
+    private var listener: ListenerRegistration?
+    
     @Published var tasks: [SchoolTask] = []
     @Published var errorMessage: String?
     
+    @Published var counter: Int = 0
+    
     init() {
+        print("Init task repo")
+        
         let uid = Auth.auth().currentUser?.uid
         guard let uid else {
             fatalError("userId invalid")
@@ -31,11 +37,15 @@ class TaskRepository: ObservableObject {
         userId = uid
         collectionRef = db.collection("users").document(userId).collection(path)
         
-        loadTasks()
+        addListener()
     }
     
-    func loadTasks() {
-        collectionRef
+    deinit {
+        print("Deinit task repo")
+    }
+    
+    func addListener() {
+        listener = collectionRef
             .addSnapshotListener { [weak self] (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     self?.errorMessage = "No tasks yet"
@@ -46,7 +56,11 @@ class TaskRepository: ObservableObject {
                     
                     switch result {
                     case .success(let task):
-                        self?.errorMessage = nil
+                        print("Got task \(task.name)")
+                        var numVisited = UserDefaults.standard.integer(forKey: "\(task.name)")
+                        print("numVisited for \(task.name): \(numVisited)")
+                        numVisited+=1
+                        UserDefaults.standard.set(numVisited, forKey: "\(task.name)")
                         return task
                     case .failure(let error):
                         switch error {
@@ -67,11 +81,51 @@ class TaskRepository: ObservableObject {
             }
     }
     
+    func removeListener() {
+        listener?.remove()
+    }
+    
+    // possible solution: detach the snapshot listener when scraping and reattach after finishing listen
+//    func loadTasks() {
+//        let listener = collectionRef
+//            .addSnapshotListener { [weak self] (querySnapshot, error) in
+//                guard let documents = querySnapshot?.documents else {
+//                    self?.errorMessage = "No tasks yet"
+//                    return
+//                }
+//                self?.tasks = documents.compactMap({ queryDocumentSnapshot in
+//                    let result = Result { try queryDocumentSnapshot.data(as: SchoolTask.self) }
+//
+//                    switch result {
+//                    case .success(let task):
+//                        print("Got task \(task.name)")
+//                        var numVisited = UserDefaults.standard.integer(forKey: "\(task.name)")
+//                        print("numVisited for \(task.name): \(numVisited)")
+//                        numVisited+=1
+//                        UserDefaults.standard.set(numVisited, forKey: "\(task.name)")
+//                        return task
+//                    case .failure(let error):
+//                        switch error {
+//                        case DecodingError.typeMismatch(_, let context):
+//                            self?.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+//                        case DecodingError.valueNotFound(_, let context):
+//                            self?.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+//                        case DecodingError.keyNotFound(_, let context):
+//                            self?.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
+//                        case DecodingError.dataCorrupted(let key):
+//                            self?.errorMessage = "\(error.localizedDescription): \(key)"
+//                        default:
+//                            self?.errorMessage = "Error decoding document: \(error.localizedDescription)"
+//                        }
+//                        return nil
+//                    }
+//                })
+//            }
+//    }
+    
     func addTask(_ task: SchoolTask) {
         do {
-            var userTask = task
-            userTask.userId = userId
-            let newDocReference = try collectionRef.addDocument(from: userTask)
+            let newDocReference = try collectionRef.addDocument(from: task)
             print("Task stored with new document reference: \(newDocReference)")
         } catch {
             errorMessage = error.localizedDescription
@@ -84,6 +138,7 @@ class TaskRepository: ObservableObject {
             do {
                 try docRef.setData(from: task)
             } catch {
+                print("could not update: \(errorMessage ?? "")")
                 errorMessage = error.localizedDescription
             }
         }

@@ -77,7 +77,7 @@ protocol AuthenticationManagerProtocol: ObservableObject {
 
 class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
     @Published var userModel: UserModel?
-    @Published var isAuthenticated: Bool = false
+    @Published var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "authenticated")
     
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
@@ -128,13 +128,15 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
                             self.userModel = userModel
                             withAnimation(.easeInOut) {
                                 self.isAuthenticated = true
+                                UserDefaults.standard.set(true, forKey: "authenticated")
                             }
                         case .failure(let error):
                             self.userModel = nil
                             withAnimation(.easeInOut) {
                                 self.isAuthenticated = false
+                                UserDefaults.standard.set(false, forKey: "authenticated")
                             }
-                            self.errorMessage = error.localizedDescription
+                            self.errorMessage = "Couldn't get user document from Firestore: \(error.localizedDescription)"
                             self.hasError = true
                         }
                     }
@@ -142,6 +144,7 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
                 self.userModel = nil
                 withAnimation(.easeInOut) {
                     self.isAuthenticated = false
+                    UserDefaults.standard.set(false, forKey: "authenticated")
                 }
                 print("User N/A")
             }
@@ -152,6 +155,9 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
     func signIn(creds: AppCredentialsDetails) async {
         do {
             try await Auth.auth().signIn(withEmail: creds.email, password: creds.password)
+            
+            // show linking page every time a user signs in
+            UserDefaults.standard.set(true, forKey: "show_linking")
         }
         catch {
             print("There was an issue when trying to sign in: \(error)")
@@ -166,6 +172,14 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
     func signOut() async {
         do {
             try Auth.auth().signOut()
+            
+            // clear user defaults 
+            UserDefaults.standard.removeObject(forKey: "e_username")
+            UserDefaults.standard.removeObject(forKey: "e_password")
+            UserDefaults.standard.removeObject(forKey: "public_key")
+            UserDefaults.standard.removeObject(forKey: "show_linking")
+            UserDefaults.standard.removeObject(forKey: "authenticated")
+
         } catch {
             print("There was an issue when trying to sign out: \(error)")
             DispatchQueue.main.async {
@@ -185,6 +199,9 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
             finalUserDetails.userId = authDataResult.user.uid
             
             try db.collection(path).document(authDataResult.user.uid).setData(from: finalUserDetails)
+            
+            // show linking page every time a user signs up
+            UserDefaults.standard.set(true, forKey: "show_linking")
         } catch {
             print("There was an issue when trying to sign up: \(error)")
             DispatchQueue.main.async {
@@ -194,7 +211,7 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
         }
     }
 }
-//
+
 //class DummyAuthenticationManager: ObservableObject, AuthenticationManagerProtocol {
 //    var userModel: UserModel?
 //

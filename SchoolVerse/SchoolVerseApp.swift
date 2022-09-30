@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -28,6 +29,24 @@ struct SchoolVerseApp: App {
     var body: some Scene {
         WindowGroup {
             RouterView()
+                .onAppear {
+                    // fixes delete/reinstall app and still being signed into FB
+                    // source: https://stackoverflow.com/questions/40733262/log-user-out-after-app-has-been-uninstalled-firebase
+                    if (!UserDefaults.standard.bool(forKey: "hasRunBefore")) {
+                        print("The app is launching for the first time. Setting UserDefaults...")
+
+                        do {
+                            try Auth.auth().signOut()
+                        } catch {
+
+                        }
+
+                        // Update the flag indicator
+                        UserDefaults.standard.set(true, forKey: "hasRunBefore")
+                        UserDefaults.standard.synchronize() // This forces the app to update userDefaults
+                        
+                    }
+                }
         }
     }
 }
