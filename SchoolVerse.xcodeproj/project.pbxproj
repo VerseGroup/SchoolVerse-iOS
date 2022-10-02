@@ -61,6 +61,7 @@
 		166C1D0628E9288300F265FA /* SportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0528E9288300F265FA /* SportsView.swift */; };
 		166C1D0828E9289B00F265FA /* SportsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0728E9289B00F265FA /* SportsCellView.swift */; };
 		166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0928E928BA00F265FA /* SportsDetailView.swift */; };
+		166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0B28E94A5700F265FA /* Date+Distance.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -147,6 +148,7 @@
 		166C1D0528E9288300F265FA /* SportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsView.swift; sourceTree = "<group>"; };
 		166C1D0728E9289B00F265FA /* SportsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCellView.swift; sourceTree = "<group>"; };
 		166C1D0928E928BA00F265FA /* SportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsDetailView.swift; sourceTree = "<group>"; };
+		166C1D0B28E94A5700F265FA /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				1612195B28E15D0D0063BC3A /* Debouncer.swift */,
 				1612195D28E15D250063BC3A /* Date+Format.swift */,
 				16791C5228E2284A00FD03EF /* String+Base64.swift */,
+				166C1D0B28E94A5700F265FA /* Date+Distance.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */,
 				166C1CEA28E91F3000F265FA /* MenusRepository.swift in Sources */,
 				1604B17A28D80EE600931C90 /* RouterView.swift in Sources */,
+				166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */,
 				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
 				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,

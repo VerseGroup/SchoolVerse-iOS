@@ -78,6 +78,7 @@ class TaskRepository: ObservableObject {
                         return nil
                     }
                 })
+                self?.tasks.sort(by: {$0.dueDate < $1.dueDate})
             }
     }
     

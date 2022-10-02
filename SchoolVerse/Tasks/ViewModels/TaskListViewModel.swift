@@ -12,7 +12,16 @@ import SwiftUI
 
 class TaskListViewModel: ObservableObject {
     @ObservedObject private var repo: TaskRepository = Resolver.resolve()
-    @Published var taskCellViewModels = [TaskCellViewModel]()
+//    @Published var taskCellViewModels = [TaskCellViewModel]()
+    
+    @Published var previousTasks = [SchoolTask]()
+    @Published var currentTasks = [SchoolTask]()
+    @Published var futureTasks = [SchoolTask]()
+    
+    @Published var previousTaskCellViewModels = [TaskCellViewModel]()
+    @Published var currentTaskCellViewModels = [TaskCellViewModel]()
+    @Published var futureTaskCellViewModels = [TaskCellViewModel]()
+    
     @Published var errorMessage: String?
     
     @InjectedObject private var api: APIService
@@ -36,15 +45,102 @@ class TaskListViewModel: ObservableObject {
         // firebase vars
         
         // updates task cell view models
+//        repo.$tasks
+//            .map { tasks in
+//                tasks.map { task in
+//                    print("vm" + task.name)
+//                    return TaskCellViewModel(task: task)
+//                }
+//            }
+//            .sink { [weak self] (returnedTaskCellVMs) in
+//                self?.taskCellViewModels = returnedTaskCellVMs
+//            }
+//            .store(in: &cancellables)
+        
+        // creates previous tasks
         repo.$tasks
+            .map{ tasks in
+                tasks.filter { task in
+                    return Date.now.calendarDistance(from: task.dueDate, resultIn: .day) < 0
+                }
+            }
+            .sink { [weak self] (returnedTasks) in
+                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
+                self?.previousTasks = tasks
+//                print("previous tasks")
+//                for task in tasks {
+//                    print(task.name + task.dueDate.weekDateTimeString())
+//                }
+            }
+            .store(in: &cancellables)
+        
+        // creates previous tasks vm
+        $previousTasks
             .map { tasks in
                 tasks.map { task in
-                    print("vm" + task.name)
                     return TaskCellViewModel(task: task)
                 }
             }
             .sink { [weak self] (returnedTaskCellVMs) in
-                self?.taskCellViewModels = returnedTaskCellVMs
+                self?.previousTaskCellViewModels = returnedTaskCellVMs
+            }
+            .store(in: &cancellables)
+        
+        // creates current tasks
+        repo.$tasks
+            .map { tasks in
+                tasks.filter { task in
+                    return (Date.now.calendarDistance(from: task.dueDate, resultIn: .day) == 0 || Date.now.calendarDistance(from: task.dueDate, resultIn: .day) == 1)
+                }
+            }
+            .sink { [weak self] (returnedTasks) in
+                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
+                self?.currentTasks = tasks
+//                print("current tasks")
+//                for task in tasks {
+//                    print(task.name + task.dueDate.weekDateTimeString())
+//                }
+            }
+            .store(in: &cancellables)
+        
+        // creates current tasks vm
+        $currentTasks
+            .map { tasks in
+                tasks.map { task in
+                    return TaskCellViewModel(task: task)
+                }
+            }
+            .sink { [weak self] (returnedTaskCellVMs) in
+                self?.currentTaskCellViewModels = returnedTaskCellVMs
+            }
+            .store(in: &cancellables)
+        
+        // creates future tasks
+        repo.$tasks
+            .map{ tasks in
+                tasks.filter { task in
+                    return Date.now.calendarDistance(from: task.dueDate, resultIn: .day) > 1
+                }
+            }
+            .sink { [weak self] (returnedTasks) in
+                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
+                self?.futureTasks = tasks
+                print("future tasks")
+                for task in tasks {
+                    print(task.name + task.dueDate.weekDateTimeString())
+                }
+            }
+            .store(in: &cancellables)
+        
+        // creates future tasks vm
+        $futureTasks
+            .map { tasks in
+                tasks.map { task in
+                    return TaskCellViewModel(task: task)
+                }
+            }
+            .sink { [weak self] (returnedTaskCellVMs) in
+                self?.futureTaskCellViewModels = returnedTaskCellVMs
             }
             .store(in: &cancellables)
         

@@ -28,14 +28,9 @@ struct TaskTileView: View {
                     .font(.subheadline)
                     .lineLimit(2)
                 
-                // change to date
                 Text(vm.task.dueDate.weekDateTimeString())
             }
             .onTapGesture {
-//                print("HELLOO!!OO!O!O!O!O!")
-//                vm.task.name = "\(vm.task.name) edited!"
-//                vm.task.numAccessed += 1
-//                vm.updateTask()
                 showTaskDetailView.toggle()
             }
             

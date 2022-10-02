@@ -10,6 +10,8 @@ import SwiftUI
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
+//    @State var previousTasks: [Task]
+    
     var body: some View {
         ZStack {
             Color.app.screen
@@ -19,10 +21,31 @@ struct TasksView: View {
                 Button {
                     vm.scrape()
                 } label: {
-                    Text("Ssrape")
+                    Text("Scrape")
                 }
-                ForEach(vm.taskCellViewModels) { taskCellVM in
-                    TaskTileView(vm: taskCellVM)
+                
+                DisclosureGroup {
+                    ForEach(vm.previousTaskCellViewModels) { taskCellVM in
+                        TaskTileView(vm: taskCellVM)
+                    }
+                } label: {
+                    Text("Previous tasks")
+                }
+                
+                DisclosureGroup {
+                    ForEach(vm.currentTaskCellViewModels) { taskCellVM in
+                        TaskTileView(vm: taskCellVM)
+                    }
+                } label: {
+                    Text("Current tasks")
+                }
+                
+                DisclosureGroup {
+                    ForEach(vm.futureTaskCellViewModels) { taskCellVM in
+                        TaskTileView(vm: taskCellVM)
+                    }
+                } label: {
+                    Text("Future tasks")
                 }
                 
             }
