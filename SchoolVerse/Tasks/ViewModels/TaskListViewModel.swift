@@ -12,7 +12,7 @@ import SwiftUI
 
 class TaskListViewModel: ObservableObject {
     @ObservedObject private var repo: TaskRepository = Resolver.resolve()
-//    @Published var taskCellViewModels = [TaskCellViewModel]()
+    //    @Published var taskCellViewModels = [TaskCellViewModel]()
     
     @Published var previousTasks = [SchoolTask]()
     @Published var currentTasks = [SchoolTask]()
@@ -45,17 +45,17 @@ class TaskListViewModel: ObservableObject {
         // firebase vars
         
         // updates task cell view models
-//        repo.$tasks
-//            .map { tasks in
-//                tasks.map { task in
-//                    print("vm" + task.name)
-//                    return TaskCellViewModel(task: task)
-//                }
-//            }
-//            .sink { [weak self] (returnedTaskCellVMs) in
-//                self?.taskCellViewModels = returnedTaskCellVMs
-//            }
-//            .store(in: &cancellables)
+        //        repo.$tasks
+        //            .map { tasks in
+        //                tasks.map { task in
+        //                    print("vm" + task.name)
+        //                    return TaskCellViewModel(task: task)
+        //                }
+        //            }
+        //            .sink { [weak self] (returnedTaskCellVMs) in
+        //                self?.taskCellViewModels = returnedTaskCellVMs
+        //            }
+        //            .store(in: &cancellables)
         
         // creates previous tasks
         repo.$tasks
@@ -65,12 +65,20 @@ class TaskListViewModel: ObservableObject {
                 }
             }
             .sink { [weak self] (returnedTasks) in
-                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
-                self?.previousTasks = tasks
-//                print("previous tasks")
-//                for task in tasks {
-//                    print(task.name + task.dueDate.weekDateTimeString())
-//                }
+                let tasks = returnedTasks.sorted(by: {
+                    if $0.completed != $1.completed {
+                        return !$0.completed
+                    } else {
+                        return $0.dueDate < $1.dueDate
+                    }
+                })
+                withAnimation(.default) {
+                    self?.previousTasks = tasks
+                }
+                //                print("previous tasks")
+                //                for task in tasks {
+                //                    print(task.name + task.dueDate.weekDateTimeString())
+                //                }
             }
             .store(in: &cancellables)
         
@@ -94,12 +102,20 @@ class TaskListViewModel: ObservableObject {
                 }
             }
             .sink { [weak self] (returnedTasks) in
-                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
-                self?.currentTasks = tasks
-//                print("current tasks")
-//                for task in tasks {
-//                    print(task.name + task.dueDate.weekDateTimeString())
-//                }
+                let tasks = returnedTasks.sorted(by: {
+                    if $0.completed != $1.completed {
+                        return !$0.completed
+                    } else {
+                        return $0.dueDate < $1.dueDate
+                    }
+                })
+                withAnimation(.default) {
+                    self?.currentTasks = tasks
+                }
+                //                print("current tasks")
+                //                for task in tasks {
+                //                    print(task.name + task.dueDate.weekDateTimeString())
+                //                }
             }
             .store(in: &cancellables)
         
@@ -123,8 +139,16 @@ class TaskListViewModel: ObservableObject {
                 }
             }
             .sink { [weak self] (returnedTasks) in
-                let tasks = returnedTasks.sorted(by: {$0.dueDate < $1.dueDate})
-                self?.futureTasks = tasks
+                let tasks = returnedTasks.sorted(by: {
+                    if $0.completed != $1.completed {
+                        return !$0.completed
+                    } else {
+                        return $0.dueDate < $1.dueDate
+                    }
+                })
+                withAnimation(.default) {
+                    self?.futureTasks = tasks
+                }
                 print("future tasks")
                 for task in tasks {
                     print(task.name + task.dueDate.weekDateTimeString())
