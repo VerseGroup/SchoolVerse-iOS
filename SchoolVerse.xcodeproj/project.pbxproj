@@ -50,6 +50,17 @@
 		166C1CF028E921F400F265FA /* MenuCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CEF28E921F400F265FA /* MenuCellView.swift */; };
 		166C1CF228E9221100F265FA /* MenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CF128E9221100F265FA /* MenuDetailView.swift */; };
 		166C1CF428E9224200F265FA /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CF328E9224200F265FA /* FoodView.swift */; };
+		166C1CF628E923BA00F265FA /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CF528E923BA00F265FA /* EventsRepository.swift */; };
+		166C1CF828E924F800F265FA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CF728E924F800F265FA /* Event.swift */; };
+		166C1CFA28E925B100F265FA /* SportsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CF928E925B100F265FA /* SportsRepository.swift */; };
+		166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CFB28E9263700F265FA /* EventsListViewModel.swift */; };
+		166C1CFE28E926C700F265FA /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CFD28E926C700F265FA /* EventsView.swift */; };
+		166C1D0028E926DE00F265FA /* EventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CFF28E926DE00F265FA /* EventCellView.swift */; };
+		166C1D0228E926FA00F265FA /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0128E926FA00F265FA /* EventDetailView.swift */; };
+		166C1D0428E9286400F265FA /* SportsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0328E9286400F265FA /* SportsListViewModel.swift */; };
+		166C1D0628E9288300F265FA /* SportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0528E9288300F265FA /* SportsView.swift */; };
+		166C1D0828E9289B00F265FA /* SportsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0728E9289B00F265FA /* SportsCellView.swift */; };
+		166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0928E928BA00F265FA /* SportsDetailView.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -125,6 +136,17 @@
 		166C1CEF28E921F400F265FA /* MenuCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellView.swift; sourceTree = "<group>"; };
 		166C1CF128E9221100F265FA /* MenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailView.swift; sourceTree = "<group>"; };
 		166C1CF328E9224200F265FA /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
+		166C1CF528E923BA00F265FA /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
+		166C1CF728E924F800F265FA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		166C1CF928E925B100F265FA /* SportsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsRepository.swift; sourceTree = "<group>"; };
+		166C1CFB28E9263700F265FA /* EventsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListViewModel.swift; sourceTree = "<group>"; };
+		166C1CFD28E926C700F265FA /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		166C1CFF28E926DE00F265FA /* EventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellView.swift; sourceTree = "<group>"; };
+		166C1D0128E926FA00F265FA /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		166C1D0328E9286400F265FA /* SportsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsListViewModel.swift; sourceTree = "<group>"; };
+		166C1D0528E9288300F265FA /* SportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsView.swift; sourceTree = "<group>"; };
+		166C1D0728E9289B00F265FA /* SportsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCellView.swift; sourceTree = "<group>"; };
+		166C1D0928E928BA00F265FA /* SportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsDetailView.swift; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				1622390828E24F3300AB404F /* Response.swift */,
+				166C1CF728E924F800F265FA /* Event.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -269,6 +292,8 @@
 				1612194828E14F4E0063BC3A /* TaskRepository.swift */,
 				1612195628E15A7B0063BC3A /* APIService.swift */,
 				166C1CE928E91F3000F265FA /* MenusRepository.swift */,
+				166C1CF528E923BA00F265FA /* EventsRepository.swift */,
+				166C1CF928E925B100F265FA /* SportsRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -435,6 +460,9 @@
 		1637163828C0571400DF15D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				166C1D0528E9288300F265FA /* SportsView.swift */,
+				166C1D0728E9289B00F265FA /* SportsCellView.swift */,
+				166C1D0928E928BA00F265FA /* SportsDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -442,6 +470,7 @@
 		1637163928C0571700DF15D4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				166C1D0328E9286400F265FA /* SportsListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -449,6 +478,9 @@
 		1637163A28C0571A00DF15D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				166C1CFD28E926C700F265FA /* EventsView.swift */,
+				166C1CFF28E926DE00F265FA /* EventCellView.swift */,
+				166C1D0128E926FA00F265FA /* EventDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +488,7 @@
 		1637163B28C0571C00DF15D4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				166C1CFB28E9263700F265FA /* EventsListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -767,24 +800,32 @@
 				1622390928E24F3300AB404F /* Response.swift in Sources */,
 				166C1CF228E9221100F265FA /* MenuDetailView.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
+				166C1D0828E9289B00F265FA /* SportsCellView.swift in Sources */,
 				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				166C1CEE28E9209200F265FA /* MenusListViewModel.swift in Sources */,
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
+				166C1CF628E923BA00F265FA /* EventsRepository.swift in Sources */,
 				1618018E28D90ADF006B5291 /* AppView.swift in Sources */,
 				16CE393328E283B200D1F5D4 /* SignInViewModel.swift in Sources */,
 				1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */,
 				166C1CEA28E91F3000F265FA /* MenusRepository.swift in Sources */,
 				1604B17A28D80EE600931C90 /* RouterView.swift in Sources */,
 				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
+				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
 				1622390728E249A700AB404F /* SwiftRSA.swift in Sources */,
 				1618019528D90B55006B5291 /* TabBarItemViewModifier.swift in Sources */,
 				166C1CEC28E9208200F265FA /* MenusView.swift in Sources */,
 				1618019428D90B55006B5291 /* TabBarItem.swift in Sources */,
+				166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */,
+				166C1D0028E926DE00F265FA /* EventCellView.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
 				16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */,
+				166C1CF828E924F800F265FA /* Event.swift in Sources */,
 				1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */,
+				166C1CFA28E925B100F265FA /* SportsRepository.swift in Sources */,
+				166C1D0628E9288300F265FA /* SportsView.swift in Sources */,
 				1604B18828D8E69700931C90 /* SignInView.swift in Sources */,
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
@@ -794,8 +835,11 @@
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
+				166C1D0428E9286400F265FA /* SportsListViewModel.swift in Sources */,
+				166C1D0228E926FA00F265FA /* EventDetailView.swift in Sources */,
 				1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */,
 				166C1CF428E9224200F265FA /* FoodView.swift in Sources */,
+				166C1CFE28E926C700F265FA /* EventsView.swift in Sources */,
 				1612195C28E15D0D0063BC3A /* Debouncer.swift in Sources */,
 				16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */,
 				16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */,
