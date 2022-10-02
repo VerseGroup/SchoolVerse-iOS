@@ -10,7 +10,7 @@ import SwiftUI
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
-//    @State var previousTasks: [Task]
+    //    @State var previousTasks: [Task]
     
     var body: some View {
         ZStack {
@@ -18,12 +18,6 @@ struct TasksView: View {
                 .ignoresSafeArea()
             
             List {
-                Button {
-                    vm.scrape()
-                } label: {
-                    Text("Scrape")
-                }
-                
                 DisclosureGroup {
                     ForEach(vm.previousTaskCellViewModels) { taskCellVM in
                         TaskTileView(vm: taskCellVM)
@@ -53,6 +47,22 @@ struct TasksView: View {
                 if vm.isLoading {
                     ProgressView("Scraping tasks...")
                 }
+            }
+            .if(vm.isAvailable) { view in
+                view.refreshable {
+                    vm.scrape()
+                }
+            }
+        }
+        .navigationTitle("Tasks")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    vm.scrape()
+                } label: {
+                    Label("Scrape", systemImage: "arrow.clockwise")
+                }
+                .disabled(!vm.isAvailable)
             }
         }
     }

@@ -36,7 +36,12 @@ class TaskListViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
+    @Published var isAvailable: Bool = true
+    
     init() {
+        Timer.scheduledTimer(withTimeInterval: 200, repeats: true, block: { _ in
+            self.isAvailable = true
+        })
         addSubscribers()
     }
     
@@ -207,21 +212,31 @@ class TaskListViewModel: ObservableObject {
         api.ping()
     }
     
-    private let debouncer = Debouncer(timeInterval: 10)
-    
-    // don't scrape too much (MONEY!!!!!)
     func scrape() {
-        debouncer.renewInterval()
-        debouncer.handler = {
+        if isAvailable {
+            self.isAvailable = false
             self.isLoading = true
             self.repo.removeListener()
-            self.api.scrape()
-            // might need to change the DispatchQueue to match the api scrape
-            // TODO: find a way to know when request is finished and then call addlistener()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.api.scrape(completion: { scrapeResponse in
                 self.repo.addListener()
                 self.isLoading = false
-            }
+            })
+        } else {
+            print("WAIT! Is not available")
         }
     }
+    
+//    private let debouncer = Debouncer(timeInterval: 200)
+    
+//    func scrape() {
+//        debouncer.renewInterval()
+//        debouncer.handler = {
+//            self.isLoading = true
+//            self.repo.removeListener()
+//            self.api.scrape(completion: { scrapeResponse in
+//                self.repo.addListener()
+//                self.isLoading = false
+//            })
+//        }
+//    }
 }

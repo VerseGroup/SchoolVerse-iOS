@@ -104,30 +104,26 @@ class LinkingViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func getKey(creds: CredentialsDetails) {
-        api.getKey(creds: creds)
+    func getKey(creds: CredentialsDetails, completion: @escaping () -> ()) {
+        api.getKey(creds: creds, completion: completion)
     }
     
-    func ensure() {
-        api.ensure()
+    func ensure(completion: @escaping (EnsureResponse?) -> ()) {
+        api.ensure(completion: completion)
     }
     
     func linkSchoology(creds: CredentialsDetails) {
         self.isLoading = true
-        getKey(creds: creds)
-        print("step 1")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            self.ensure()
-            print("Step 2")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                if self.ensureResponse?.message == .success {
+        getKey(creds: creds, completion: {
+            self.ensure(completion: { ensureResponse in
+                if ensureResponse?.message == .success {
                     print("Linking success")
                 } else {
                     print("Linking failed - vm")
                 }
-                
                 self.isLoading = false
-            }
-        }
+            })
+            
+        })
     }
 }

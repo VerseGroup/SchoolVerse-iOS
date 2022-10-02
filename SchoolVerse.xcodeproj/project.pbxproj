@@ -62,6 +62,7 @@
 		166C1D0828E9289B00F265FA /* SportsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0728E9289B00F265FA /* SportsCellView.swift */; };
 		166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0928E928BA00F265FA /* SportsDetailView.swift */; };
 		166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0B28E94A5700F265FA /* Date+Distance.swift */; };
+		166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0D28EA06AC00F265FA /* View+If.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -149,6 +150,7 @@
 		166C1D0728E9289B00F265FA /* SportsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCellView.swift; sourceTree = "<group>"; };
 		166C1D0928E928BA00F265FA /* SportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsDetailView.swift; sourceTree = "<group>"; };
 		166C1D0B28E94A5700F265FA /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
+		166C1D0D28EA06AC00F265FA /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				1612195D28E15D250063BC3A /* Date+Format.swift */,
 				16791C5228E2284A00FD03EF /* String+Base64.swift */,
 				166C1D0B28E94A5700F265FA /* Date+Distance.swift */,
+				166C1D0D28EA06AC00F265FA /* View+If.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
+				166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

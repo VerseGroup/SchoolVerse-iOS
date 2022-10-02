@@ -41,7 +41,7 @@ class APIService: ObservableObject {
         
     }
     
-    func scrape() {
+    func scrape(completion: @escaping (ScrapeResponse?) -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
             return
@@ -76,6 +76,7 @@ class APIService: ObservableObject {
             .responseDecodable(of: ScrapeResponse.self) { response in
                 debugPrint("scrape response: \(response.description)")
                 self.scrapeResponse = response.value
+                completion(response.value)
             }
     }
     
@@ -90,7 +91,7 @@ class APIService: ObservableObject {
     }
     
     // gets a public key from api, encrypts username and password with public key, saves public key and encrypted credentials to userDefaults
-    func getKey(creds: CredentialsDetails) {
+    func getKey(creds: CredentialsDetails, completion:@escaping  () -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
             return
@@ -138,7 +139,7 @@ class APIService: ObservableObject {
                     } catch {
                         print("Could not encrypt and write to UserDefaults")
                     }
-                    
+                    completion()
                 } else {
                     print("No public key")
                 }
@@ -146,7 +147,7 @@ class APIService: ObservableObject {
     }
     
     // ensures schoology creds are valid ( called after getKey() )
-    func ensure() {
+    func ensure(completion: @escaping (EnsureResponse?) -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
             return
