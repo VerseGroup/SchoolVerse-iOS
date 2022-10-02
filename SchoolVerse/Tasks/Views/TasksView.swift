@@ -10,7 +10,7 @@ import SwiftUI
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
-    //    @State var previousTasks: [Task]
+    @State var classSort: Bool = true
     
     var body: some View {
         ZStack {
@@ -18,30 +18,41 @@ struct TasksView: View {
                 .ignoresSafeArea()
             
             List {
-                DisclosureGroup {
-                    ForEach(vm.previousTaskCellViewModels) { taskCellVM in
-                        TaskTileView(vm: taskCellVM)
+                if classSort {
+                    ForEach(vm.tasksDictionary.keys.sorted(), id:\.self) { key in
+                        DisclosureGroup {
+                            ForEach(vm.tasksDictionary[key] ?? []) { task in
+                                TaskTileView(vm: TaskCellViewModel(task: task))
+                            }
+                        } label: {
+                            Text(key)
+                        }
                     }
-                } label: {
-                    Text("Previous tasks")
-                }
-                
-                DisclosureGroup {
-                    ForEach(vm.currentTaskCellViewModels) { taskCellVM in
-                        TaskTileView(vm: taskCellVM)
+                } else {
+                    DisclosureGroup {
+                        ForEach(vm.previousTasks) { task in
+                            TaskTileView(vm: TaskCellViewModel(task: task))
+                        }
+                    } label: {
+                        Text("Previous tasks")
                     }
-                } label: {
-                    Text("Current tasks")
-                }
-                
-                DisclosureGroup {
-                    ForEach(vm.futureTaskCellViewModels) { taskCellVM in
-                        TaskTileView(vm: taskCellVM)
+                    
+                    DisclosureGroup {
+                        ForEach(vm.currentTasks) { task in
+                            TaskTileView(vm: TaskCellViewModel(task: task))
+                        }
+                    } label: {
+                        Text("Current tasks")
                     }
-                } label: {
-                    Text("Future tasks")
+                    
+                    DisclosureGroup {
+                        ForEach(vm.futureTasks) { task in
+                            TaskTileView(vm: TaskCellViewModel(task: task))
+                        }
+                    } label: {
+                        Text("Future tasks")
+                    }
                 }
-                
             }
             .overlay {
                 if vm.isLoading {
@@ -57,6 +68,14 @@ struct TasksView: View {
         .navigationTitle("Tasks")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Picker(selection: $classSort) {
+                    Text("Sort by class").tag(true)
+                    Text("Sort by due date").tag(false)
+                } label: {
+                    Label("Sorting", systemImage: "line.3.horizontal.decrease.circle")
+                }
+                
+                Spacer()
                 Button {
                     vm.scrape()
                 } label: {

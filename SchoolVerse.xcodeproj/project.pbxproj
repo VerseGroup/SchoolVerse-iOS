@@ -63,6 +63,8 @@
 		166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0928E928BA00F265FA /* SportsDetailView.swift */; };
 		166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0B28E94A5700F265FA /* Date+Distance.swift */; };
 		166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0D28EA06AC00F265FA /* View+If.swift */; };
+		166C1D1328EA249200F265FA /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 166C1D1228EA249200F265FA /* Collections */; };
+		166C1D1528EA249200F265FA /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 166C1D1428EA249200F265FA /* OrderedCollections */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -182,8 +184,10 @@
 			files = (
 				1618018C28D90926006B5291 /* Popovers in Frameworks */,
 				1637161328C0405C00DF15D4 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				166C1D1528EA249200F265FA /* OrderedCollections in Frameworks */,
 				1637160F28C0405C00DF15D4 /* FirebaseFirestoreSwift in Frameworks */,
 				1637161F28C0514B00DF15D4 /* Resolver in Frameworks */,
+				166C1D1328EA249200F265FA /* Collections in Frameworks */,
 				1637160728C0405C00DF15D4 /* FirebaseAuth in Frameworks */,
 				1612195A28E15B8F0063BC3A /* Alamofire in Frameworks */,
 				1637160D28C0405C00DF15D4 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -675,6 +679,8 @@
 				1637161E28C0514B00DF15D4 /* Resolver */,
 				1618018B28D90926006B5291 /* Popovers */,
 				1612195928E15B8F0063BC3A /* Alamofire */,
+				166C1D1228EA249200F265FA /* Collections */,
+				166C1D1428EA249200F265FA /* OrderedCollections */,
 			);
 			productName = SchoolVerse;
 			productReference = 1674C2CB28C00FC400D92969 /* SchoolVerse.app */;
@@ -753,6 +759,7 @@
 				1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */,
 				1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */,
 				1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				166C1D1128EA249200F265FA /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 1674C2CC28C00FC400D92969 /* Products */;
 			projectDirPath = "";
@@ -1494,6 +1501,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		166C1D1128EA249200F265FA /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1546,6 +1561,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1637161D28C0514B00DF15D4 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
+		};
+		166C1D1228EA249200F265FA /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 166C1D1128EA249200F265FA /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		166C1D1428EA249200F265FA /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 166C1D1128EA249200F265FA /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
