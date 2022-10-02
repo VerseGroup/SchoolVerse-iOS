@@ -15,5 +15,4 @@ struct Coursework: Codable {
 struct Course: Codable {
     var id: String
     var name: String
-    var color: String // TODO: change to Color or UIColor
 }
