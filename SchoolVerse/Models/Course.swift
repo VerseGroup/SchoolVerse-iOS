@@ -8,11 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct Coursework: Codable {
-    var courses: [Course]
-}
-
-struct Course: Codable {
+struct Course: Codable, Hashable {
     var id: String
     var name: String
+    var section: String
 }

@@ -18,7 +18,7 @@ struct UserModel: Codable, Identifiable {
     
     var key: String
     var schedule: Schedule
-    var coursework: Coursework?
+    var courses: [Course]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,6 +29,6 @@ struct UserModel: Codable, Identifiable {
         
         case key = "private_key"
         case schedule
-        case coursework
+        case courses
     }
 }

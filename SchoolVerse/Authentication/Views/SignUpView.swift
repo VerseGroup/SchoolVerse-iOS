@@ -15,7 +15,7 @@ struct SignUpView: View {
     @ObservedObject var vm: SignUpViewModel = SignUpViewModel()
     
     @State var appCreds: AppCredentialsDetails = AppCredentialsDetails(email: "", password: "")
-    @State var details: UserModel = UserModel(userId: "", displayName: "", gradeLevel: 9, email: "", key: "", schedule: Schedule(days: []))
+    @State var details: UserModel = UserModel(userId: "", displayName: "", gradeLevel: 9, email: "", key: "", schedule: Schedule(days: []), courses: [])
     @State var schoologyCreds: CredentialsDetails =
     CredentialsDetails(username: "", password: "")
     
