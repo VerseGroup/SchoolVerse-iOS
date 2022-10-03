@@ -11,6 +11,7 @@ struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
     @State var classSort: Bool = true
+    @State var showAddTaskView: Bool = false
     
     var body: some View {
         ZStack {
@@ -74,7 +75,14 @@ struct TasksView: View {
                 } label: {
                     Label("Sorting", systemImage: "line.3.horizontal.decrease.circle")
                 }
+                Spacer()
                 
+                Button {
+                    showAddTaskView.toggle()
+                } label: {
+                    Label("New Task", systemImage: "square.and.pencil")
+                }
+
                 Spacer()
                 Button {
                     vm.scrape()
@@ -82,6 +90,11 @@ struct TasksView: View {
                     Label("Scrape", systemImage: "arrow.clockwise")
                 }
                 .disabled(!vm.isAvailable)
+            }
+        }
+        .sheet(isPresented: $showAddTaskView) {
+            NavigationStack {
+                AddTaskView()
             }
         }
     }

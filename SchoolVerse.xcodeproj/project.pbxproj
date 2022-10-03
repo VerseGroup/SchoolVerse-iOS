@@ -65,6 +65,8 @@
 		166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D0D28EA06AC00F265FA /* View+If.swift */; };
 		166C1D1328EA249200F265FA /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 166C1D1228EA249200F265FA /* Collections */; };
 		166C1D1528EA249200F265FA /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 166C1D1428EA249200F265FA /* OrderedCollections */; };
+		166C1D1728EA322D00F265FA /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D1628EA322D00F265FA /* AddTaskView.swift */; };
+		166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -153,6 +155,8 @@
 		166C1D0928E928BA00F265FA /* SportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsDetailView.swift; sourceTree = "<group>"; };
 		166C1D0B28E94A5700F265FA /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
 		166C1D0D28EA06AC00F265FA /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
+		166C1D1628EA322D00F265FA /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -416,6 +420,8 @@
 			children = (
 				1612194C28E157400063BC3A /* TasksView.swift */,
 				16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */,
+				166C1D1628EA322D00F265FA /* AddTaskView.swift */,
+				166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -849,11 +855,13 @@
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
+				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,
 				166C1D0428E9286400F265FA /* SportsListViewModel.swift in Sources */,
 				166C1D0228E926FA00F265FA /* EventDetailView.swift in Sources */,
 				1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */,
 				166C1CF428E9224200F265FA /* FoodView.swift in Sources */,
 				166C1CFE28E926C700F265FA /* EventsView.swift in Sources */,
+				166C1D1728EA322D00F265FA /* AddTaskView.swift in Sources */,
 				1612195C28E15D0D0063BC3A /* Debouncer.swift in Sources */,
 				16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */,
 				16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */,

@@ -24,6 +24,8 @@ class TaskRepository: ObservableObject {
     @Published var tasks: [SchoolTask] = []
     @Published var errorMessage: String?
     
+    @Published var courses: [Course] = []
+    
     @Published var counter: Int = 0
     
     init() {
@@ -37,11 +39,23 @@ class TaskRepository: ObservableObject {
         userId = uid
         collectionRef = db.collection("users").document(userId).collection(path)
         
+        getCourses()
         addListener()
     }
     
     deinit {
         print("Deinit task repo")
+    }
+    
+    func getCourses() {
+        db.collection("users").document(userId).getDocument(as: UserModel.self) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.courses = user.courses
+            case .failure(let error):
+                print("Couldn't get courses: \(error.localizedDescription)")
+            }
+        }
     }
     
     func addListener() {

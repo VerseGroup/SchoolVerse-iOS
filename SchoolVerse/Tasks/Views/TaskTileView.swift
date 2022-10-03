@@ -43,7 +43,7 @@ struct TaskTileView: View {
         .cornerRadius(10)
         .sheet(isPresented: $showTaskDetailView) {
             NavigationView {
-//                TaskDetailView(vm: vm)
+                TaskDetailView(vm: vm)
             }
         }
     }
