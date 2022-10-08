@@ -9,31 +9,20 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-// make sure to edit for next year's schedule
-//struct Schedule: Codable, Identifiable {
-//    @DocumentID var id: String?
-//    var days: [DaySchedule] {
-//        didSet {
-//            days.sort()
-//        }
-//    }
-//
-//    var userId: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case days
-//        case userId = "user_id"
-//    }
-//}
-
-// TODO: add documentation
-// TODO: adapt to new schedule
-
-struct Schedule: Codable {
+struct Schedule: Codable, Identifiable {
+    @DocumentID var id: String?
+    
     var days: [DaySchedule] {
         didSet {
             days.sort()
         }
+    }
+    
+    var userId: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case days
+        case userId = "user_id"
     }
 }
 
@@ -62,17 +51,29 @@ struct UniquePeriodInfo: Identifiable {
 
 struct PeriodInfo: Codable, Comparable {
     var period: Period
-    var className: String
+    var course: CourseInfo
     var startTime: String
     var endTime: String
     var information: String
     
     enum CodingKeys: String, CodingKey {
         case period
-        case className = "class_name"
+        case course
         case startTime = "start_time"
         case endTime = "end_time"
         case information
+    }
+}
+
+struct CourseInfo: Codable {
+    var name: String
+    var teacher: String
+//    var room: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case teacher
+//        case room
     }
 }
 
@@ -89,13 +90,14 @@ extension PeriodInfo {
 
 enum Period: String, Codable, Comparable {
     case homeroom
-    case classPeriodOne
-    case specialPeriod
-    case classPeriodTwo
-    case classPeriodThree
-    case lunch
-    case classPeriodFour
-    case classPeriodFive
+    case periodOne
+    case communityTime
+    case periodTwo
+    case periodThree
+    case lunchOne
+    case lunchTwo
+    case periodFour
+    case periodFive
     
     case failed
 }
@@ -107,20 +109,22 @@ extension Period {
         switch self {
         case .homeroom:
             return 0
-        case .classPeriodOne:
+        case .periodOne:
             return 1
-        case .specialPeriod:
+        case .communityTime:
             return 2
-        case .classPeriodTwo:
+        case .periodTwo:
             return 3
-        case .classPeriodThree:
+        case .periodThree:
             return 4
-        case .lunch:
+        case .lunchOne:
             return 5
-        case .classPeriodFour:
+        case .lunchTwo:
             return 6
-        case .classPeriodFive:
+        case .periodFour:
             return 7
+        case .periodFive:
+            return 8
         case .failed:
             return -1
         }
@@ -144,20 +148,22 @@ extension Period {
             switch self {
             case .homeroom:
                 return "Homeroom"
-            case .classPeriodOne:
-                return "Class Period 1"
-            case .specialPeriod:
-                return "Special Period"
-            case .classPeriodTwo:
-                return "Class Period 2"
-            case .classPeriodThree:
-                return "Class Period 3"
-            case .lunch:
-                return "Lunch"
-            case .classPeriodFour:
-                return "Class Period 4"
-            case .classPeriodFive:
-                return "Class Period 5"
+            case .periodOne:
+                return "Period 1"
+            case .communityTime:
+                return "Community Time"
+            case .periodTwo:
+                return "Period 2"
+            case .periodThree:
+                return "Period 3"
+            case .lunchOne:
+                return "First Lunch"
+            case .lunchTwo:
+                return "Second Lunch"
+            case .periodFour:
+                return "Period 4"
+            case .periodFive:
+                return "Period 5"
             case .failed:
                 return "Failed"
             }
@@ -168,20 +174,22 @@ extension Period {
         switch period {
         case "Homeroom":
             return .homeroom
-        case "Class Period 1":
-            return .classPeriodOne
-        case "Special Period": // refactor for later (accomodate all special periods)
-            return .specialPeriod
-        case "Class Period 2":
-            return .classPeriodTwo
-        case "Class Period 3":
-            return .classPeriodThree
-        case "Lunch":
-            return .lunch
-        case "Class Period 4":
-            return .classPeriodFour
-        case "Class Period 5":
-            return .classPeriodFive
+        case "Period 1":
+            return .periodOne
+        case "Community Time":
+            return .communityTime
+        case "Period 2":
+            return .periodTwo
+        case "Period 3":
+            return .periodThree
+        case "First Lunch":
+            return .lunchOne
+        case "Second Lunch":
+            return .lunchTwo
+        case "Period 4":
+            return .periodFour
+        case "Period 5":
+            return .periodFive
         default:
             return .failed
         }
