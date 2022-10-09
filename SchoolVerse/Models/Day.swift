@@ -11,7 +11,6 @@ import FirebaseFirestoreSwift
 
 // TODO: implement error handling for Day.failed
 
-// make sure to edit for next year's schedule
 struct DayEvent: Codable, Identifiable {
     var id: String // custom id, not Firebase generated @DocumentID
     var date: Date
