@@ -54,14 +54,12 @@ struct PeriodInfo: Codable, Comparable {
     var course: CourseInfo
     var startTime: String
     var endTime: String
-    var information: String
     
     enum CodingKeys: String, CodingKey {
         case period
         case course
         case startTime = "start_time"
         case endTime = "end_time"
-        case information
     }
 }
 
