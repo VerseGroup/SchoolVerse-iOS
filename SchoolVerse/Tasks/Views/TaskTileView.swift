@@ -14,6 +14,9 @@ struct TaskTileView: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: vm.task.completed ? "checkmark.circle.fill" : "circle")
+                .foregroundColor(Color.white)
+                .font(.system(size: 30))
+                .padding(.leading, 5)
                 .onTapGesture {
                     withAnimation(.easeIn) {
                         self.vm.task.completed.toggle()
@@ -23,12 +26,22 @@ struct TaskTileView: View {
             VStack(alignment: .leading) {
                 Text(vm.task.name)
                     .font(.headline)
-                
-                Text(vm.task.description)
-                    .font(.subheadline)
+                    .fontWeight(.bold)
                     .lineLimit(2)
                 
-                Text(vm.task.dueDate.weekDateTimeString())
+                Text(vm.task.courseName)
+                    .font(.caption)
+                    .lineLimit(2)
+                
+                HStack {
+                    Image(systemName: "clock.arrow.circlepath")
+                        .font(.system(size: 10))
+                        .fontWeight(.semibold)
+                    
+                    Text(vm.task.dueDate.weekDateTimeString())
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                }
             }
             .onTapGesture {
                 showTaskDetailView.toggle()
@@ -36,13 +49,13 @@ struct TaskTileView: View {
             
             Spacer()
         }
-        .padding()
         .frame(maxWidth: .infinity)
         .foregroundColor(Color.white)
-        .background(Color.purple)
-        .cornerRadius(10)
+        .padding()
+        .padding(.leading, 10)
+        .glassCardFull()
         .sheet(isPresented: $showTaskDetailView) {
-            NavigationView {
+            NavigationStack {
                 TaskDetailView(vm: vm)
             }
         }

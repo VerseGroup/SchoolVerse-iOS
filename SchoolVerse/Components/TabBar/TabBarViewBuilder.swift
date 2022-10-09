@@ -41,12 +41,13 @@ struct TabBarViewBuilder<Content:View, TabBar: View>: View {
         case .vStack:
             VStack(spacing: 0) {
                 ZStack {
+                    ColorfulBackgroundView()
+                    
                     content
                 }
                 //.frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 tabBar
-                    .foregroundColor(Color.app.screen)
             }
         case .zStack:
             ZStack(alignment: .bottom) {

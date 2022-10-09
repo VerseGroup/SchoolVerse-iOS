@@ -45,7 +45,10 @@ class TaskCellViewModel: ObservableObject, Identifiable {
             .store(in: &cancellables)
     }
     
-    func updateTask() {
+    func updateTask(_ editedTask: SchoolTask? = nil) {
+        if let editedTask {
+            task = editedTask
+        }
         repo.updateTask(task)
     }
     

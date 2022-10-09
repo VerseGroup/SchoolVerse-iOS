@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: include ALL classes, not just classes with assignments, in the class sort view
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
@@ -15,49 +16,105 @@ struct TasksView: View {
     
     var body: some View {
         ZStack {
-            Color.app.screen
-                .ignoresSafeArea()
+            ColorfulBackgroundView()
             
-            List {
-                if classSort {
-                    ForEach(vm.tasksDictionary.keys.sorted(), id:\.self) { key in
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if classSort {
+                        ForEach(vm.tasksDictionary.keys.sorted(), id:\.self) { key in
+                            DisclosureGroup {
+                                if (vm.tasksDictionary[key] ?? []).isEmpty {
+                                    Text("No assignments soon!")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+                                        .glass()
+                                } else {
+                                    ForEach(vm.tasksDictionary[key] ?? []) { task in
+                                        TaskTileView(vm: TaskCellViewModel(task: task))
+                                            .padding(.horizontal, 5)
+                                            .padding(.top, 2)
+                                            .padding(.bottom, 7)
+                                    }
+                                }
+                            } label: {
+                                HeaderLabel(name: key)
+                            }
+                            .padding(.horizontal)
+                            .padding(5)
+                            .tint(Color.white)
+                        }
+                    } else {
                         DisclosureGroup {
-                            ForEach(vm.tasksDictionary[key] ?? []) { task in
-                                TaskTileView(vm: TaskCellViewModel(task: task))
+                            if vm.previousTasks.isEmpty {
+                                Text("No assignments soon!")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .glass()
+                            } else {
+                                ForEach(vm.previousTasks) { task in
+                                    TaskTileView(vm: TaskCellViewModel(task: task))
+                                        .padding(.horizontal, 5)
+                                        .padding(.top, 2)
+                                        .padding(.bottom, 7)
+                                }
                             }
                         } label: {
-                            Text(key)
+                            HeaderLabel(name: "Previous tasks")
                         }
-                    }
-                } else {
-                    DisclosureGroup {
-                        ForEach(vm.previousTasks) { task in
-                            TaskTileView(vm: TaskCellViewModel(task: task))
+                        .padding(.horizontal)
+                        .padding(5)
+                        .tint(Color.white)
+                        
+                        DisclosureGroup {
+                            if vm.currentTasks.isEmpty {
+                                Text("No assignments soon!")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .glass()
+                            } else {
+                                ForEach(vm.currentTasks) { task in
+                                    TaskTileView(vm: TaskCellViewModel(task: task))
+                                        .padding(.horizontal, 5)
+                                        .padding(.top, 2)
+                                        .padding(.bottom, 7)
+                                }
+                            }
+                        } label: {
+                            HeaderLabel(name: "Current tasks")
                         }
-                    } label: {
-                        Text("Previous tasks")
+                        .padding(.horizontal)
+                        .padding(5)
+                        .tint(Color.white)
+                        
+                        DisclosureGroup {
+                            if vm.currentTasks.isEmpty {
+                                Text("No assignments soon!")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .glass()
+                            } else {
+                                ForEach(vm.futureTasks) { task in
+                                    TaskTileView(vm: TaskCellViewModel(task: task))
+                                        .padding(.horizontal, 5)
+                                        .padding(.top, 2)
+                                        .padding(.bottom, 7)
+                                }
+                            }
+                        } label: {
+                            HeaderLabel(name: "Future tasks")
+                        }
+                        .padding(.horizontal)
+                        .padding(5)
+                        .tint(Color.white)
                     }
                     
-                    DisclosureGroup {
-                        ForEach(vm.currentTasks) { task in
-                            TaskTileView(vm: TaskCellViewModel(task: task))
-                        }
-                    } label: {
-                        Text("Current tasks")
-                    }
-                    
-                    DisclosureGroup {
-                        ForEach(vm.futureTasks) { task in
-                            TaskTileView(vm: TaskCellViewModel(task: task))
-                        }
-                    } label: {
-                        Text("Future tasks")
-                    }
+                    Spacer()
+                        .frame(height: 75)
                 }
             }
             .overlay {
                 if vm.isLoading {
-                    ProgressView("Scraping tasks...")
+                    LoadingView(text: "Scraping tasks...")
                 }
             }
             .if(vm.isAvailable) { view in
@@ -68,28 +125,31 @@ struct TasksView: View {
         }
         .navigationTitle("Tasks")
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Picker(selection: $classSort) {
-                    Text("Sort by class").tag(true)
-                    Text("Sort by due date").tag(false)
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    vm.scrape()
                 } label: {
-                    Label("Sorting", systemImage: "line.3.horizontal.decrease.circle")
+                    NavButtonView(systemName: "arrow.clockwise")
+                        .opacity(vm.isAvailable ? 1 : 0.25)
                 }
-                Spacer()
+                .disabled(!vm.isAvailable)
+            }
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Menu {
+                    Picker(selection: $classSort, label: Text("Sorting options")) {
+                        Text("Sort by class").tag(true)
+                        Text("Sort by due date").tag(false)
+                    }
+                } label: {
+                    NavButtonView(systemName: "line.3.horizontal.decrease")
+                }
                 
                 Button {
                     showAddTaskView.toggle()
                 } label: {
-                    Label("New Task", systemImage: "square.and.pencil")
+                    NavButtonView(systemName: "plus")
                 }
-
-                Spacer()
-                Button {
-                    vm.scrape()
-                } label: {
-                    Label("Scrape", systemImage: "arrow.clockwise")
-                }
-                .disabled(!vm.isAvailable)
             }
         }
         .sheet(isPresented: $showAddTaskView) {
