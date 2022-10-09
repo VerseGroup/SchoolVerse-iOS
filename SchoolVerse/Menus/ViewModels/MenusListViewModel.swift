@@ -10,7 +10,7 @@ import Combine
 
 class MenusListViewModel: ObservableObject {
     private let repo = MenusRepository()
-    @Published var menus = [Menu]()
+    @Published var menus = [SchoolMenu]()
     @Published var errorMessage: String?
     
     private var cancellables = Set<AnyCancellable>()
