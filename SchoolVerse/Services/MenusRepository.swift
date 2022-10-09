@@ -15,7 +15,7 @@ class MenusRepository: ObservableObject {
     private let path: String = "menus"
     private let db = Firestore.firestore()
 
-    @Published var menus: [Menu] = []
+    @Published var menus: [SchoolMenu] = []
     @Published var errorMessage: String?
     
     init() {
@@ -30,7 +30,7 @@ class MenusRepository: ObservableObject {
                     return
                 }
                 self?.menus = documents.compactMap({ queryDocumentSnapshot in
-                    let result = Result { try queryDocumentSnapshot.data(as: Menu.self) }
+                    let result = Result { try queryDocumentSnapshot.data(as: SchoolMenu.self) }
                     
                     switch result {
                     case .success(let menu):

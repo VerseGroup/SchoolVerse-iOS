@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuCellView: View {
-    let menu: Menu
+    let menu: SchoolMenu
     @State var showMenuDetailView: Bool = false
     
     var body: some View {
@@ -33,6 +33,6 @@ struct MenuCellView: View {
 
 struct MenuCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuCellView(menu: Menu(id: nil, date: Date.now, breakfast: [], lunch: [], dinner: []))
+        MenuCellView(menu: SchoolMenu(id: nil, date: Date.now, breakfast: [], lunch: [], dinner: []))
     }
 }

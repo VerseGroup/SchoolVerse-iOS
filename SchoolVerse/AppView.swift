@@ -52,6 +52,7 @@ struct AppView: View {
         } tabBar: {
             TabBarView(tabs: tabs, selection: $selection, localSelection: selection)
         }
+        .preferredColorScheme(.dark)
     }
 }
 

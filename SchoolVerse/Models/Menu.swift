@@ -85,7 +85,7 @@ struct Food: Codable, Hashable {
 
 // MARK: A menu for a complete day
 
-struct Menu: Codable, Identifiable {
+struct SchoolMenu: Codable, Identifiable {
     @DocumentID var id: String?
     var date: Date
     var breakfast: [Food]?
