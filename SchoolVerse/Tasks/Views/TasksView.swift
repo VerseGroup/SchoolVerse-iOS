@@ -117,11 +117,6 @@ struct TasksView: View {
                     LoadingView(text: "Scraping tasks...")
                 }
             }
-            .if(vm.isAvailable) { view in
-                view.refreshable {
-                    vm.scrape()
-                }
-            }
         }
         .navigationTitle("Tasks")
         .toolbar {
