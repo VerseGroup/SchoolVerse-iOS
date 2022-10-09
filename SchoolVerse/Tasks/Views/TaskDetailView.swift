@@ -52,6 +52,7 @@ struct TaskDetailView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
                     vm.removeTask()
+                    dismiss()
                 } label: {
                     NavButtonView(systemName: "trash")
                 }

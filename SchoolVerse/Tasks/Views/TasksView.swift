@@ -46,7 +46,7 @@ struct TasksView: View {
                     } else {
                         DisclosureGroup {
                             if vm.previousTasks.isEmpty {
-                                Text("No assignments soon!")
+                                Text("No assignments!")
                                     .font(.headline)
                                     .fontWeight(.bold)
                                     .glass()
