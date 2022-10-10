@@ -37,6 +37,12 @@ struct SignUpView: View {
             
             VStack {
                 VStack {
+                    Text("Sign Up")
+                        .font(.title)
+                        .bold()
+                        .padding(.vertical, 20)
+                    Spacer()
+                    
                     VStack(spacing: 10) {
                         CustomTextField(placeholder: "Enter email", text: $appCreds.email)
                             .textInputAutocapitalization(.never)
@@ -101,7 +107,6 @@ struct SignUpView: View {
             }
             .padding()
         }
-        .navigationTitle("Sign Up")
     }
 }
 

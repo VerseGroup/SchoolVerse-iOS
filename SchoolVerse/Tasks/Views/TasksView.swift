@@ -117,6 +117,11 @@ struct TasksView: View {
                     LoadingView(text: "Scraping tasks...")
                 }
             }
+            .alert("Error", isPresented: $vm.hasError, actions: {
+                Button("OK", role: .cancel) { }
+            }) {
+                Text(vm.errorMessage ?? "")
+            }
         }
         .navigationTitle("Tasks")
         .toolbar {

@@ -9,7 +9,8 @@ import Foundation
 
 struct ScrapeResponse: Codable {
     let message: ResponseMessage
-    let exception: String? // only happens when ResponseMessage.failure
+    let exception: String? // only happens when ResponseMessage.failure or .error
+    let passed: Bool? // only happens when scrape fails to pass
 }
 
 struct KeyResponse: Codable {

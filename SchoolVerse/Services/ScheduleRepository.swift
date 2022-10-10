@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import Combine
 
 
-// TODO: add dayevents
+// TODO: add cache for schedule on UserDefaults
 class ScheduleRepository: ObservableObject {
     private let dayPath: String = "days"
     private let schedulePath: String = "schedule"

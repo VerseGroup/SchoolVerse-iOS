@@ -23,6 +23,12 @@ struct SignInView: View {
             
             VStack {
                 VStack {
+                    Text("Sign In")
+                        .font(.title)
+                        .bold()
+                        .padding(.vertical, 20)
+                    Spacer()
+                    
                     VStack(spacing: 10) {
                         
                         CustomTextField(placeholder: "Enter email", text: $appCreds.email)
@@ -67,7 +73,6 @@ struct SignInView: View {
             }
             .padding()
         }
-        .navigationTitle("Sign In")
         
     }
 }

@@ -76,6 +76,12 @@ class APIService: ObservableObject {
             .responseDecodable(of: ScrapeResponse.self) { response in
                 debugPrint("scrape response: \(response.description)")
                 self.scrapeResponse = response.value
+                if response.value?.message == .success {
+                    
+                } else {
+                    self.errorMessage = response.value?.exception
+                    self.hasError = true
+                }
                 completion(response.value)
             }
     }
