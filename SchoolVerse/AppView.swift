@@ -8,6 +8,7 @@
 import SwiftUI
 import Resolver
 
+// TODO: pop to root of navstack when clicking tab bar icon
 struct AppView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
