@@ -19,48 +19,49 @@ struct AccountView: View {
             
             VStack {
                 if let user = vm.userModel {
-                    ScrollView {
-                        VStack(spacing: 20) {
-                            TextWithTitle(placeholder: "Email", text: user.email)
-                                .padding(.horizontal)
-                            
-                            TextWithTitle(placeholder: "Name", text: user.displayName)
-                                .padding(.horizontal)
-                            
-                            colorPicker
-                                .padding(.horizontal)
-                            
-                            Spacer()
-                                .frame(height: 30)
-                            
-                            Button {
-                                vm.sendPasswordReset()
-                            } label: {
-                                Text("Send Password Reset")
-                            }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                            .padding(.horizontal, 45)
-                            
-                            Button {
-                                Task {
-                                    await vm.signOut()
-                                }
-                            } label: {
-                                Text("Sign Out")
-                            }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                            .padding(.horizontal, 45)
+                    VStack(spacing: 20) {
+                        TextWithTitle(placeholder: "Email", text: user.email)
+                            .padding(.horizontal)
+                        
+                        TextWithTitle(placeholder: "Name", text: user.displayName)
+                            .padding(.horizontal)
+                        
+                        colorPicker
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                            .frame(height: 30)
+                        
+                        Button {
+                            vm.sendPasswordReset()
+                        } label: {
+                            Text("Send Password Reset")
                         }
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.white)
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .glassCardFull()
+                        .padding(.horizontal, 45)
+                        
+                        Button {
+                            Task {
+                                await vm.signOut()
+                            }
+                        } label: {
+                            Text("Sign Out")
+                        }
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.white)
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .glassCardFull()
+                        .padding(.horizontal, 45)
+                        
+                        Spacer()
+                            .frame(height: 90)
                     }
                 } else {
                     Text("User not availale")
@@ -87,7 +88,7 @@ extension AccountView {
             .padding(.leading, 15)
             .padding(.bottom, 7)
             
-            HStack (spacing: 35) {
+            HStack (spacing: 30) {
                 ForEach(0..<colors.count, id: \.self) { index in
                     VStack {
                         Circle()
@@ -99,7 +100,7 @@ extension AccountView {
                         
                         Text(colorNames[index].description)
                             .foregroundColor(Color.white)
-                            .font(.headline)
+                            .font(.subheadline)
                             .fontWeight(vm.accentColorLocal.rawValue == colors[index].rawValue ? .bold : .light)
                     }
                     .onTapGesture {
