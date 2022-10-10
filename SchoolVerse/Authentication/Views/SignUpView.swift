@@ -23,19 +23,88 @@ struct SignUpView: View {
     @State var validPassword: Bool = false
     @State var validName: Bool = false
     
+    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    
+    init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(accentColor)
+//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+    }
+    
     var body: some View {
-        TabView {
-            credentialsPage
-            detailsPage
-            buttonPage
+        ZStack {
+            ColorfulBackgroundView()
+            
+            VStack {
+                VStack {
+                    HeaderLabel(name: "Set your credentials")
+                        .padding(.horizontal, 5)
+                    
+                    VStack(spacing: 10) {
+                        CustomTextField(placeholder: "Enter email", text: $appCreds.email)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
+                            .warningAccessory($appCreds.email, valid: $validEmail, warning: "Invalid email") { email in
+                                isValidEmail(text: email)
+                            }
+                        
+                        CustomSecureField(placeholder: "Enter password", text: $appCreds.password)
+                            .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
+                                isValidLength(text: password)
+                            }
+                    }
+                }
+                .padding(.vertical)
+                
+                VStack {
+                    VStack(spacing: 10) {
+                        CustomTextField(placeholder: "Enter name", text: $details.displayName)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .warningAccessory($details.displayName, valid: $validName, warning: "Enter a name") { name in
+                                isNotEmpty(text: name)
+                            }
+                        
+                        Picker("Grade level", selection: $details.gradeLevel) {
+                            ForEach(9..<13) { grade in
+                                Text("Grade \(grade)")
+                                    .foregroundColor(.white)
+                                    .tag(grade)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    }
+                }
+                .padding(.vertical)
+                
+                VStack {
+                    
+                    Button {
+                        Task {
+                            await vm.signUp(creds: appCreds, details: details)
+                        }
+                    } label: {
+                        Text("Join SchoolVerse!")
+                    }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor((validEmail && validPassword && validName) ? Color.white: Color.gray)
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+                    .padding(.horizontal, 45)
+                    .disabled(!(validEmail && validPassword && validName))
+                }
+                .padding(.vertical)
+                
+                Spacer()
+                    .frame(height: 95)
+            }
+            .padding()
         }
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-        .alert("Error", isPresented: $vm.hasError, actions: {
-            Button("OK", role: .cancel) { }
-        }) {
-            Text(vm.errorMessage ?? "")
-        }
+        .navigationTitle("Sign Up")
     }
 }
 
@@ -46,69 +115,6 @@ struct SignUpView_Previews: PreviewProvider {
 }
 
 extension SignUpView {
-    private var credentialsPage: some View {
-        VStack {
-            Text("Set your credentials for SchoolVerse")
-                .font(.largeTitle)
-                .bold()
-            
-            VStack {
-                TextField("Enter email", text: $appCreds.email)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .warningAccessory($appCreds.email, valid: $validEmail, warning: "Invalid email") { email in
-                        isValidEmail(text: email)
-                    }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-                
-                SecureField("Enter password", text: $appCreds.password)
-                    .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
-                        isValidLength(text: password)
-                    }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-            }
-            
-            Spacer()
-        }
-        .padding()
-    }
-    
-    private var detailsPage: some View {
-        VStack {
-            TextField("Enter your name", text: $details.displayName)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .warningAccessory($details.displayName, valid: $validName, warning: "Enter a name") { name in
-                    isNotEmpty(text: name)
-                }
-                .padding(10)
-                .background(
-                    Color.gray
-                )
-                .cornerRadius(10)
-            
-            Picker("Grade level", selection: $details.gradeLevel) {
-                ForEach(9..<13) { grade in
-                    Text("Grade \(grade)")
-                        .tag(grade)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            Spacer()
-        }
-        .padding()
-    }
-    
     private var buttonPage: some View {
         VStack {
             Text("Sign up!")

@@ -54,6 +54,7 @@
 		164A895F28F3A0C900419637 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895E28F3A0C900419637 /* AccountViewModel.swift */; };
 		164A896328F3A41500419637 /* TextWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896228F3A41500419637 /* TextWithTitle.swift */; };
 		164A896528F3B57700419637 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896428F3B57700419637 /* AboutView.swift */; };
+		164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896628F3CEB100419637 /* View+Placeholder.swift */; };
 		165CA07028F1ED2D007547FB /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA06F28F1ED2D007547FB /* Glass.swift */; };
 		165CA07228F1ED37007547FB /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA07128F1ED37007547FB /* GlassCard.swift */; };
 		165CA07428F1ED47007547FB /* FullGlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA07328F1ED47007547FB /* FullGlassCard.swift */; };
@@ -176,6 +177,7 @@
 		164A895E28F3A0C900419637 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		164A896228F3A41500419637 /* TextWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithTitle.swift; sourceTree = "<group>"; };
 		164A896428F3B57700419637 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		164A896628F3CEB100419637 /* View+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Placeholder.swift"; sourceTree = "<group>"; };
 		165CA06F28F1ED2D007547FB /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
 		165CA07128F1ED37007547FB /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		165CA07328F1ED47007547FB /* FullGlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGlassCard.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				166C1D0B28E94A5700F265FA /* Date+Distance.swift */,
 				166C1D0D28EA06AC00F265FA /* View+If.swift */,
 				164A895528F3834200419637 /* AnyTransition+Backslide.swift */,
+				164A896628F3CEB100419637 /* View+Placeholder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				166C1D0A28E928BA00F265FA /* SportsDetailView.swift in Sources */,
 				165CA08F28F1F4C7007547FB /* DayScheduleTile.swift in Sources */,
 				166C1D0028E926DE00F265FA /* EventCellView.swift in Sources */,
+				164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
 				16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */,
 				166C1CF828E924F800F265FA /* Event.swift in Sources */,
