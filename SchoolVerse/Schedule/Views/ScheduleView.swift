@@ -8,7 +8,6 @@
 import SwiftUI
 
 // TODO: figure out transitions
-// TODO: auto dismiss date picker when selecting a date
 struct ScheduleView: View {
     @StateObject var vm = ScheduleViewModel()
     
@@ -126,6 +125,11 @@ struct ScheduleView: View {
                 )
                 .opacity(showPicker ? 1 : 0 )
                 .offset(x: 0, y: -100)
+                .onChange(of: vm.selectedDate) { _ in
+                    withAnimation {
+                        showPicker.toggle()
+                    }
+                }
         }
         .navigationTitle("Schedule")
     }
