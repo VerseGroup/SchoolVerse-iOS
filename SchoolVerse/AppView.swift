@@ -33,7 +33,7 @@ struct AppView: View {
             .tabBarItem(tab: TabBarItem.tasks, selection: selection)
             
             NavigationStack {
-                Text("Clubs")
+                ComingSoonView(title: "Clubs")
             }
             .tabBarItem(tab: TabBarItem.clubs, selection: selection)
             
