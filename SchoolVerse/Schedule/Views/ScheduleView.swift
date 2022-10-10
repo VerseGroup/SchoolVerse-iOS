@@ -30,6 +30,7 @@ struct ScheduleView: View {
                             Image(systemName: "chevron.left")
                         }
                         .foregroundColor(.white)
+                        .bold()
                         .padding(2)
                         
                         Spacer()
@@ -59,6 +60,7 @@ struct ScheduleView: View {
                             Image(systemName: "chevron.right")
                         }
                         .foregroundColor(.white)
+                        .bold()
                         .padding(2)
                     }
                     .padding()
@@ -127,7 +129,7 @@ struct ScheduleView: View {
                 .offset(x: 0, y: -100)
                 .onChange(of: vm.selectedDate) { _ in
                     withAnimation {
-                        showPicker.toggle()
+                        showPicker = false
                     }
                 }
         }
