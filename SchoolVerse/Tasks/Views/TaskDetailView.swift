@@ -9,48 +9,63 @@ import SwiftUI
 
 struct TaskDetailView: View {
     @ObservedObject var vm: TaskCellViewModel
+    @State var task: SchoolTask
+
+    @State var validName: Bool = false
+    
+    @Environment(\.dismiss) var dismiss
+
+    init(vm: TaskCellViewModel) {
+        self.vm = vm
+        self._task = State(initialValue: vm.task)
+    }
     
     var body: some View {
-        VStack {
-            Form {
-                Section {
-                    HStack() {
-                        Image(systemName: vm.task.completed ? "checkmark.circle.fill" : "circle")
-                            .onTapGesture {
-                                withAnimation(.easeIn) {
-                                    self.vm.task.completed.toggle()
-                                }
-                            }
-                        
-                        ZStack(alignment: .leading) {
-                            Text(vm.task.name)
-                                .padding([.leading, .trailing], 5)
-                                .padding([.top, .bottom], 8)
-                                .foregroundColor(Color.clear)
-                            TextEditor(text: $vm.task.name)
-                        }
-                        .font(.title2.bold())
+        ZStack {
+            ColorfulBackgroundView()
+            
+            VStack(spacing: 10) {
+                Spacer().frame(height: 65)
+                
+                CustomTextField(placeholder: "Enter a task name", text: $task.name)
+                    .warningAccessory($vm.task.name, valid: $validName, warning: "Invalid Name") { name in
+                        isNotEmpty(text: name)
                     }
-                    
-                    // hacky workaround
-                    // source: https://developer.apple.com/forums/thread/651210
-                    // TODO: EXTRACT TO CUSTOM VIEW
-                    ZStack(alignment: .leading) {
-                        Text(vm.task.description)
-                            .padding([.leading, .trailing], 5)
-                            .padding([.top, .bottom], 8)
-                            .foregroundColor(Color.clear)
-                        TextEditor(text: $vm.task.description)
-                    }
-                    .font(.subheadline)
+                    .padding(.horizontal)
+                
+                CustomTextEditor(text: $task.description)
+                    .padding(.horizontal)
+                
+                DatePicker(selection: $task.dueDate, displayedComponents: [.date, .hourAndMinute]) {
+                    Text("Due date")
+                        .padding(.leading)
                 }
-
-                Section {
-                    DatePicker("Due Date", selection: $vm.task.dueDate, displayedComponents: [.date, .hourAndMinute])
-                }
+                .padding(10)
+                .glass()
+                .padding(.horizontal)
+                
+                Spacer()
             }
         }
-        .navigationTitle("Details")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Task Details")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    vm.removeTask()
+                    dismiss()
+                } label: {
+                    NavButtonView(systemName: "trash")
+                }
+                
+                Button {
+                    vm.updateTask(task)
+                    dismiss()
+                } label: {
+                    NavButtonView(systemName: "externaldrive.badge.checkmark")
+                        .opacity((task.name == vm.task.name && task.description == vm.task.description && task.dueDate == vm.task.dueDate) ? 0.25 : 1)
+                }
+                .disabled(task.name == vm.task.name && task.description == vm.task.description && task.dueDate == vm.task.dueDate)
+            }
+        }
     }
 }

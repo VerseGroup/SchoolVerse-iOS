@@ -16,80 +16,72 @@ struct LinkingView: View {
     @State var validPassword: Bool = false
     
     var body: some View {
-        VStack {
-            TabView {
-                veracrossPage
-                schoologyPage
+        ZStack {
+            ColorfulBackgroundView()
+            
+            VStack(spacing: 10) {
+                Text("Link Schoology/Veracross to SchoolVerse")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .bold()
+                    .padding(.vertical, 20)
+                
+                Text("Your credentials are saved on device and whenever your tasks are updated, they are end to end encrypted blah blah blah")
+                
+                Spacer()
+                
+                VStack(spacing: 10) {
+                    HeaderLabel(name: "Enter your Schoology credentials")
+                    
+                    CustomTextField(placeholder: "Enter username", text: $schoologyCreds.username)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                        .warningAccessory($schoologyCreds.username, valid: $validUsername, warning: "Username must not be empty") { username in
+                            isNotEmpty(text: username)
+                        }
+                    
+                    CustomSecureField(placeholder: "Enter password", text: $schoologyCreds.password)
+                        .warningAccessory($schoologyCreds.password, valid: $validPassword, warning: "Password must not be empty") { password in
+                            isNotEmpty(text: password)
+                        }
+                    
+                    Button {
+                        vm.linkSchoology(creds: schoologyCreds)
+                    } label: {
+                        Text("Link Schoology creds")
+                    }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor((validUsername && validPassword) ? Color.white: Color.gray)
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+                    .padding(.horizontal, 45)
+                    .padding(.vertical, 20)
+                    .disabled(!(validUsername && validPassword))
+                }
+                
+                Spacer()
+                    .frame(height: 95)
             }
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            .padding(.horizontal)
+        }
+        .overlay {
+            if vm.isLoading {
+                LoadingView(text: "Verifying Schoology credentials...")
+            }
         }
         .alert("Error", isPresented: $vm.hasError, actions: {
             Button("OK", role: .cancel) { }
         }) {
             Text(vm.errorMessage ?? "")
         }
+        .preferredColorScheme(.dark)
     }
 }
 
 struct LinkingView_Previews: PreviewProvider {
     static var previews: some View {
         LinkingView()
-    }
-}
-
-extension LinkingView {
-    
-    private var schoologyPage: some View {
-        VStack {
-            Text("Link Schoology to SchoolVerse")
-            
-            Text("Your credentials are saved on device and whenever your tasks are updated, they are end to end encrypted blah blah blah")
-            
-            Text("Please enter your Schoology credentials to link Schoology to SchoolVerse")
-            
-            VStack {
-                TextField("Enter username", text: $schoologyCreds.username)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .warningAccessory($schoologyCreds.username, valid: $validUsername, warning: "Username must not be empty") { username in
-                        isNotEmpty(text: username)
-                    }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-                
-                SecureField("Enter password", text: $schoologyCreds.password)
-                    .warningAccessory($schoologyCreds.password, valid: $validPassword, warning: "Password must not be empty") { password in
-                        isNotEmpty(text: password)
-                    }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-                
-                Button {
-                    vm.linkSchoology(creds: schoologyCreds)
-                } label: {
-                    Text("Link Schoology creds")
-                }
-                .disabled(!(validUsername && validPassword))
-
-            }
-        }
-        .overlay {
-            if vm.isLoading {
-                ProgressView("Verifying Schoology credentials...")
-            }
-        }
-    }
-    
-    private var veracrossPage: some View {
-        VStack {
-            Text("Link veracross")
-        }
     }
 }

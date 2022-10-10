@@ -11,7 +11,7 @@ import Resolver
 struct RouterView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
-    @AppStorage("show_onboarding") var showOnboarding: Bool = true
+//    @AppStorage("show_onboarding") var showOnboarding: Bool = true
     @AppStorage("show_linking") var showLinking: Bool = false
     
     var body: some View {
@@ -23,11 +23,14 @@ struct RouterView: View {
                 AppView()
             }
         } else {
-            if showOnboarding {
-                OnboardingView(showOnboarding: $showOnboarding)
-            } else {
-                AuthenticationView()
-            }
+            AuthenticationView()
+            
+//            if showOnboarding {
+//                OnboardingView(showOnboarding: $showOnboarding)
+//                    .transition(.move(edge: .bottom))
+//            } else {
+//                AuthenticationView()
+//            }
         }
     }
 }

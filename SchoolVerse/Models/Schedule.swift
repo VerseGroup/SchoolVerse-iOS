@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+// TODO: edit when paul fixes "special" case bug
 struct Schedule: Codable, Identifiable {
     @DocumentID var id: String?
     
@@ -54,14 +55,12 @@ struct PeriodInfo: Codable, Comparable {
     var course: CourseInfo
     var startTime: String
     var endTime: String
-    var information: String
     
     enum CodingKeys: String, CodingKey {
         case period
         case course
         case startTime = "start_time"
         case endTime = "end_time"
-        case information
     }
 }
 
@@ -176,7 +175,7 @@ extension Period {
             return .homeroom
         case "Period 1":
             return .periodOne
-        case "Community Time":
+        case "Special":
             return .communityTime
         case "Period 2":
             return .periodTwo

@@ -8,6 +8,7 @@
 import SwiftUI
 import Resolver
 
+// TODO: pop to root of navstack when clicking tab bar icon
 struct AppView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
@@ -22,7 +23,7 @@ struct AppView: View {
             .tabBarItem(tab: TabBarItem.home, selection: selection)
             
             NavigationStack {
-                Text("Schedule")
+                ScheduleView()
             }
             .tabBarItem(tab: TabBarItem.schedule, selection: selection)
             
@@ -37,15 +38,7 @@ struct AppView: View {
             .tabBarItem(tab: TabBarItem.clubs, selection: selection)
             
             NavigationStack {
-                Text("More")
-                Button {
-                    Task {
-                        await authManager.signOut()
-                    }
-                } label: {
-                    Text("Sign Out")
-                }
-
+                MoreView()
             }
             .tabBarItem(tab: TabBarItem.more, selection: selection)
             

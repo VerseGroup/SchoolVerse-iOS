@@ -16,5 +16,7 @@ extension Resolver: ResolverRegistering {
             .scope(.application)
         register { APIService() }
             .scope(.application)
+        register { ScheduleRepository() }
+            .scope(.application)
     }
 }

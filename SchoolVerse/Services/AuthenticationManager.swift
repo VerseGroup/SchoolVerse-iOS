@@ -210,6 +210,13 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
             }
         }
     }
+    
+    @MainActor
+    func sendPasswordReset() {
+        if let email = Auth.auth().currentUser?.email {
+            Auth.auth().sendPasswordReset(withEmail: email)
+        }
+    }
 }
 
 //class DummyAuthenticationManager: ObservableObject, AuthenticationManagerProtocol {

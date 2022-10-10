@@ -11,7 +11,7 @@ import Resolver
 struct AddTaskView: View {
     @ObservedObject private var repo: TaskRepository = Resolver.resolve()
     @State var task: SchoolTask = SchoolTask(id: nil, name: "", completed: false, dueDate: Date.now, description: "", courseId: "", courseName: "", platformInformation: PlatformInformation(assignmentCode: UUID().uuidString, platformCode: "sv"))
-    @State var course: Course = Course(id: "custom", name: "Custom", section: "custom")
+    @State var course: Course = Course(id: "other", name: "Other", section: "other")
     @State var validName: Bool = false
     
     // replaces presentationMode
@@ -19,55 +19,75 @@ struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        List {
-            Section(header: Text("Task Details")) {
-                TextField("Enter a task name", text: $task.name)
-                    .warningAccessory($task.name, valid: $validName, warning: "Invalid Name") { name in
-                        isNotEmpty(text: name)
-                    }
-                TextField("Enter a task description", text: $task.description)
-                DatePicker("Due Date", selection: $task.dueDate, displayedComponents: [.date, .hourAndMinute])
-                Toggle(isOn: $task.completed) {
-                    Text("Finished")
-                }
-            }
+        ZStack {
+            ColorfulBackgroundView()
             
-            // change to a picker that chooses from user's array
-            Section(header: Text("Course Details")) {
-                Picker(selection: $course) {
-                    ForEach(repo.courses, id:\.id) { course in
-                        Text(course.name).tag(course)
+            VStack(spacing: 10) {
+                Spacer().frame(height: 65)
+                
+                Group {
+                    HeaderLabel(name: "Task Details")
+                        .padding(.horizontal, 5)
+                    
+                    CustomTextField(placeholder: "Enter a task name", text: $task.name)
+                        .warningAccessory($task.name, valid: $validName, warning: "Invalid Name") { name in
+                            isNotEmpty(text: name)
+                        }
+                        .padding(.horizontal)
+                    
+                    CustomTextField(placeholder: "Enter a task description", text: $task.description)
+                        .padding(.horizontal)
+                    
+                    DatePicker(selection: $task.dueDate, displayedComponents: [.date, .hourAndMinute]) {
+                        Text("Due date")
+                            .padding(.leading)
                     }
-                    Text("Custom").tag(Course(id: "custom", name: "Custom", section: "custom"))
-                } label: {
-                    Text("Course")
+                    .padding(10)
+                    .glass()
+                    .padding(.horizontal)
                 }
-                .pickerStyle(.menu)
-            }
-            
-            // change to viewmodifier later
-            // source: https://stackoverflow.com/questions/56692933/swiftui-centre-content-on-a-list
-            Section() {
-                Button() {
+                
+                Group {
+                    HeaderLabel(name: "Course Details")
+                        .padding(.horizontal, 5)
+                    
+                    
+                    Picker(selection: $course) {
+                        ForEach(repo.courses, id:\.id) { course in
+                            Text(course.name).tag(course)
+                        }
+                        Text("Other").tag(Course(id: "other", name: "Other", section: "other"))
+                    } label: {
+                        Text("Course")
+                    }
+                    .pickerStyle(.menu)
+                    .tint(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .glass()
+                    .padding()
+                }
+                
+                Spacer()
+                
+                Button {
                     task.courseId = course.id
                     task.courseName = course.name
                     repo.addTask(task)
                     dismiss()
                 } label: {
-                    Text("Add Task")
-                        .bold()
-                        .frame(maxWidth: .infinity)
+                    Text("Submit")
+                        .foregroundColor(Color.white)
+                        .padding()
+                        .padding(.horizontal)
+                        .glassCardFull()
                 }
-                .disabled(!validName)
-                .tint(.purple) // change to custom color scheme later
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
                 
-            }                        .listRowBackground(EmptyView())
-            
+                Spacer()
+            }
         }
-        .listStyle(.insetGrouped)
         .navigationTitle("Add a Task")
+        .preferredColorScheme(.dark)
     }
 }
 

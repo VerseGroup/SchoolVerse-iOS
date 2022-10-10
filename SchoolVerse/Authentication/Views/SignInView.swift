@@ -18,55 +18,57 @@ struct SignInView: View {
     @State var validPassword: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Sign in to SchoolVerse")
-                .font(.largeTitle)
-                .bold()
+        ZStack {
+            ColorfulBackgroundView()
             
             VStack {
-                TextField("Enter email", text: $appCreds.email)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                    .keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .warningAccessory($appCreds.email, valid: $validEmail, warning: "Invalid email") { email in
-                        isValidEmail(text: email)
+                VStack {
+                    VStack(spacing: 10) {
+                        
+                        CustomTextField(placeholder: "Enter email", text: $appCreds.email)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .keyboardType(.emailAddress)
+                            .textContentType(.emailAddress)
+                            .warningAccessory($appCreds.email, valid: $validEmail, warning: "Invalid email") { email in
+                                isValidEmail(text: email)
+                            }
+                        
+                        CustomSecureField(placeholder: "Enter password", text: $appCreds.password)
+                            .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
+                                isValidLength(text: password)
+                            }
                     }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-                
-                SecureField("Enter password", text: $appCreds.password)
-                    .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
-                        isValidLength(text: password)
-                    }
-                    .padding(10)
-                    .background(
-                        Color.gray
-                    )
-                    .cornerRadius(10)
-            }
-            
-            Button {
-                Task {
-                    await vm.signIn(creds: appCreds)
                 }
-            } label: {
-                Text("Sign In")
+                .padding(.vertical)
+                
+                VStack {
+                    
+                    Button {
+                        Task {
+                            await vm.signIn(creds: appCreds)
+                        }
+                    } label: {
+                        Text("Sign In")
+                    }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor((validEmail && validPassword) ? Color.white: Color.gray)
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+                    .padding(.horizontal, 45)
+                    .disabled(!(validEmail && validPassword))
+                }
+                .padding(.vertical)
+                
+                Spacer()
+                    .frame(height: 95)
             }
-            .disabled(!(validEmail && validPassword))
-
-            
-            Spacer()
+            .padding()
         }
-        .padding()
-        .alert("Error", isPresented: $vm.hasError, actions: {
-            Button("OK", role: .cancel) { }
-        }) {
-            Text(vm.errorMessage ?? "")
-        }
+        .navigationTitle("Sign In")
+        
     }
 }
 

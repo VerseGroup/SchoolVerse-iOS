@@ -38,7 +38,7 @@ private struct WarningAccessoryModifier: ViewModifier {
     let validation: (String) -> (Bool)
     
     func body(content: Content) -> some View {
-        HStack {
+        ZStack(alignment: .trailing) {
             content
                 .popover(
                     present: $present,
@@ -58,6 +58,7 @@ private struct WarningAccessoryModifier: ViewModifier {
             if !validation(text) {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .foregroundColor(.red)
+                    .padding(.trailing)
             }
         }
         .onChange(of: text) { _ in

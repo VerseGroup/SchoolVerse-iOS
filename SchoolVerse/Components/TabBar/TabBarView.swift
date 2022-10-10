@@ -11,7 +11,8 @@ import SwiftUI
 // TODO: change to custom, more custom
 
 struct TabBarView: View {
-    
+    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
     @Namespace private var namespace
@@ -35,7 +36,7 @@ struct TabBarView_Previews: PreviewProvider {
     
     static var previews: some View {
         ZStack {
-            Color.app.screen.ignoresSafeArea()
+            ColorfulBackgroundView()
             
             VStack {
                 Spacer()
@@ -54,7 +55,7 @@ extension TabBarView {
 
         Image(systemName: tab.iconName)
             .font(.title)
-            .foregroundStyle(localSelection == tab ? Color.app.secondary.shadow(.drop(radius: 0, y: 0)) : Color.app.text.shadow(.drop(radius: 0, y: 0)))
+            .foregroundColor(Color.white)
             .padding(.vertical, 7.0)
             .frame(maxWidth: .infinity)
             .frame(height: 50)
@@ -62,7 +63,7 @@ extension TabBarView {
                 ZStack {
                     if localSelection == tab {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accent.cyan.gradient)
+                            .fill(accentColor.gradient)
                             .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                             .frame(width: 60, height: 60)
                     }
@@ -84,14 +85,19 @@ extension TabBarView {
                 Spacer()
             }
         }
-        .padding(.top, 15.0)
-        .shadow(color: Color.accent.cyan.opacity(0.3), radius: 10, x: 0, y: 5)
+        .padding(.top, 20.0)
+        .shadow(color: accentColor.opacity(0.3), radius: 10, x: 0, y: 5)
         .padding(.horizontal)
         .background(
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.app.secondary)
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color.white)
+                .opacity(0.1)
+                .background(
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(Color("BG2"))
+                        .opacity(0.9)
+                )
                 .ignoresSafeArea()
-                .shadow(color: Color.primary.opacity(0.2), radius: 5, x: 0, y: -2)
         )
         
     }

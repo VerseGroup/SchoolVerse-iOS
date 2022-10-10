@@ -7,18 +7,10 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 extension Color {
-    static let app = AppTheme()
     static let accent = AccentColors()
-    static let classColor = ClassColors()
-}
-
-
-struct AppTheme {
-    let screen = Color("Screen Color")
-    let text = Color("Text Color")
-    let secondary = Color("Secondary App Color")
 }
 
 struct AccentColors {
@@ -28,16 +20,38 @@ struct AccentColors {
     let purple = Color("Purple")
 }
 
-struct ClassColors {
-    let blue = Color("Blue Class")
-    let green = Color("Green Class")
-    let lightBlue = Color("Light Blue Class")
-    let lime = Color("Lime Class")
-    let magenta = Color("Magenta Class")
-    let none = Color("None Class")
-    let orange = Color("Orange Class")
-    let pink = Color("Pink Class")
-    let purple = Color("Purple Class")
-    let red = Color("Red Class")
-    let yellow = Color("Yellow Class")
+// allows color to be put in UserDefaults
+// source: https://stackoverflow.com/questions/73184367/swift-swiftui-saving-color-to-userdefaults-and-use-it-from-appstorage
+extension Color: RawRepresentable {
+
+    public init?(rawValue: String) {
+        
+        guard let data = Data(base64Encoded: rawValue) else{
+            self = .black
+            return
+        }
+        
+        do{
+            let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor ?? .black
+            self = Color(color)
+        }catch{
+            self = .black
+        }
+        
+    }
+
+    public var rawValue: String {
+        
+        do{
+            let data = try NSKeyedArchiver.archivedData(withRootObject: UIColor(self), requiringSecureCoding: false) as Data
+            return data.base64EncodedString()
+            
+        }catch{
+            
+            return ""
+            
+        }
+        
+    }
+
 }

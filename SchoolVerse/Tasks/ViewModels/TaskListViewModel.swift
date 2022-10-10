@@ -227,11 +227,15 @@ class TaskListViewModel: ObservableObject {
     func scrape() {
         if isAvailable {
             self.isAvailable = false
-            self.isLoading = true
+            withAnimation(.spring()) {
+                self.isLoading = true
+            }
             self.repo.removeListener()
             self.api.scrape(completion: { scrapeResponse in
                 self.repo.addListener()
-                self.isLoading = false
+                withAnimation(.spring()) {
+                    self.isLoading = false
+                }
             })
         } else {
             print("WAIT! Is not available")
