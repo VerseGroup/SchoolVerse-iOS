@@ -24,6 +24,7 @@ struct LoadingView: View {
                 ProgressView()
                     .scaleEffect(1.5)
                 Text(text)
+                    .multilineTextAlignment(.center)
                     .font(.headline)
             }
             .foregroundColor(.white)

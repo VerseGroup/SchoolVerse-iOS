@@ -68,7 +68,7 @@ struct LinkingView: View {
         }
         .overlay {
             if vm.isLoading {
-                ProgressView("Verifying Schoology credentials...")
+                LoadingView(text: "Verifying Schoology credentials...")
             }
         }
         .alert("Error", isPresented: $vm.hasError, actions: {
