@@ -16,7 +16,15 @@ struct AuthenticationView: View {
             ColorfulBackgroundView()
             
             VStack {
-                Text("Continue with SchoolVerse")
+                Image("VG-ClearBG")
+                    .frame(width: 300, height: 300)
+                    .glassCard()
+                    .padding(30)
+                
+                Text("Welcome to SchoolVerse")
+                    .foregroundColor(Color.white)
+                    .font(.system(size: 50, weight: .bold))
+                    .multilineTextAlignment(.center)
                 
                 Button {
                     showSignUp.toggle()
@@ -29,6 +37,7 @@ struct AuthenticationView: View {
                 .padding(.vertical, 20)
                 .padding(.horizontal, 60)
                 .glassCardFull()
+                .padding()
                 
                 Button {
                     showSignIn.toggle()
@@ -41,6 +50,7 @@ struct AuthenticationView: View {
                 .padding(.vertical, 20)
                 .padding(.horizontal, 60)
                 .glassCardFull()
+                .padding()
                 
             }
         }
