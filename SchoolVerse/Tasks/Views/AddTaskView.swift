@@ -77,6 +77,7 @@ struct AddTaskView: View {
                     dismiss()
                 } label: {
                     Text("Submit")
+                        .foregroundColor(Color.white)
                         .padding()
                         .padding(.horizontal)
                         .glassCardFull()

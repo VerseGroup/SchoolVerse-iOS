@@ -25,6 +25,7 @@ struct RouterView: View {
         } else {
             if showOnboarding {
                 OnboardingView(showOnboarding: $showOnboarding)
+                    .transition(.move(edge: .bottom))
             } else {
                 AuthenticationView()
             }

@@ -12,21 +12,37 @@ struct AuthenticationView: View {
     @State private var showSignIn: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Continue with SchoolVerse")
+        ZStack {
+            ColorfulBackgroundView()
             
-            Button {
-                showSignUp.toggle()
-            } label: {
-                Text("Sign Up")
+            VStack {
+                Text("Continue with SchoolVerse")
+                
+                Button {
+                    showSignUp.toggle()
+                } label: {
+                    Text("Sign Up")
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.white)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 60)
+                .glassCardFull()
+                
+                Button {
+                    showSignIn.toggle()
+                } label: {
+                    Text("Sign In")
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.white)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 60)
+                .glassCardFull()
+                
             }
-            
-            Button {
-                showSignIn.toggle()
-            } label: {
-                Text("Sign In")
-            }
-
         }
         .sheet(isPresented: $showSignUp) {
             SignUpView()

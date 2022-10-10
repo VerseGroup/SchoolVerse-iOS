@@ -21,15 +21,22 @@ struct PeriodTileAndHeader: View {
                 Text("\(periodInfo.startTime) - \(periodInfo.endTime)")
                     .font(.caption)
                 
-                Text(periodInfo.course.name)
-                    .font(
-                        periodInfo.course.name == "Lunch" ||
-                        periodInfo.course.name == "Free Period!"
-                        ? .title : .headline)
-                    .fontWeight(.semibold)
+                if periodInfo.course.name.contains(": ") {
+                    Text(periodInfo.course.name.split(separator: ": ", maxSplits: 1)[1])
+                        .font(.headline)
+                } else if periodInfo.course.name == "Free" || periodInfo.course.name == "Lunch"  {
+                    Text(periodInfo.course.name)
+                        .font(.title)
+                        .bold()
+                } else {
+                    Text(periodInfo.course.name)
+                        .font(.headline)
+                }
                 
                 HStack {
-                    Text(periodInfo.course.teacher)
+                    if periodInfo.course.teacher != "N/A" {
+                        Text(periodInfo.course.teacher)
+                    }
                     
                     Spacer()
                     
@@ -43,5 +50,6 @@ struct PeriodTileAndHeader: View {
             .padding(.leading, 10)
             .glassCardFull()
         }
+        .padding(.horizontal)
     }
 }
