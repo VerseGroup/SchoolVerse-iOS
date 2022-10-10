@@ -88,7 +88,7 @@ struct Food: Codable, Hashable {
 struct SchoolMenu: Codable, Identifiable {
     @DocumentID var id: String?
     var date: Date
-    var breakfast: [Food]?
-    var lunch: [Food]?
-    var dinner: [Food]?
+    var breakfast: [Food]
+    var lunch: [Food]
+    var dinner: [Food]
 }

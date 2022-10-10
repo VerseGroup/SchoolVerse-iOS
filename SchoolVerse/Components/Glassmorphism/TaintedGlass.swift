@@ -26,7 +26,7 @@ struct TaintedGlass: ViewModifier {
 }
 
 extension View {
-    func taintedGlass(color: Color) -> some View {
+    func taintedGlass() -> some View {
         modifier(TaintedGlass())
     }
 }

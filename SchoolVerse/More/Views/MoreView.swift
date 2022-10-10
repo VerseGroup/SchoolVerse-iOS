@@ -23,7 +23,7 @@ struct MoreView: View {
                         }
                         
                         NavigationLink {
-//                            MenuView()
+                            MenusView()
                         } label: {
                             MoreInfoCardView(imageName: "menucard", name: "Menu")
                         }

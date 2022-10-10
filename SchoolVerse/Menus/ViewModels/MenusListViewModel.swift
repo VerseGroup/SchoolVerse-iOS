@@ -13,9 +13,16 @@ class MenusListViewModel: ObservableObject {
     @Published var menus = [SchoolMenu]()
     @Published var errorMessage: String?
     
+    @Published var selectedMenu: SchoolMenu?
+    
+    @Published var selectedDate: Date
+    @Published var selectedWeek: [Date] = []
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
+        selectedDate = Date()
+        getSelectedWeek()
         addSubscribers()
     }
     
@@ -34,5 +41,44 @@ class MenusListViewModel: ObservableObject {
                 self?.errorMessage = returnedErrorMessage
             }
             .store(in: &cancellables)
+        
+        // sets selectedMenu to the current day ***on init***
+        $menus
+            .sink { (dayEvents) in
+                self.selectedMenu = self.menus.first(where: { menu in
+                    Calendar.current.isDateInToday(menu.date)
+                }) ?? nil
+            }
+            .store(in: &cancellables)
+        
+        // sets selectedMenu to the selectedDate
+        // sets selectedWeek to the selectedDate
+        $selectedDate
+            .sink{ (date) in
+                self.getSelectedWeek()
+                self.selectedMenu = self.menus.first(where: { menu in
+                    Calendar.current.isDate(menu.date, equalTo: date, toGranularity: .day)
+                }) ?? nil
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getSelectedWeek() {
+        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: selectedDate)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        (0..<7).forEach { day in
+            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
+                selectedWeek.append(weekday)
+                print(weekday)
+            }
+        }
+    }
+    
+    func updateSelectedMenu(date: Date) {
+        selectedDate = date
     }
 }

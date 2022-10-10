@@ -20,6 +20,7 @@ struct ScheduleView: View {
             
             VStack {
                 if let _ = vm.schedule {
+                    // date picker
                     HStack {
                         // go to previous day
                         Button {
@@ -64,6 +65,7 @@ struct ScheduleView: View {
                         .padding(2)
                     }
                     .padding()
+                    
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
                             ScrollView(showsIndicators: false) {
