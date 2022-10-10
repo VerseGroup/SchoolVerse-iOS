@@ -55,11 +55,16 @@ struct AuthenticationView: View {
             }
         }
         .sheet(isPresented: $showSignUp) {
-            SignUpView()
+            NavigationStack {
+                SignUpView()
+            }
         }
         .sheet(isPresented: $showSignIn) {
-            SignInView()
+            NavigationStack {
+                SignInView()
+            }
         }
+        .preferredColorScheme(.dark)
     }
 }
 

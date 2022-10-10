@@ -37,9 +37,6 @@ struct SignUpView: View {
             
             VStack {
                 VStack {
-                    HeaderLabel(name: "Set your credentials")
-                        .padding(.horizontal, 5)
-                    
                     VStack(spacing: 10) {
                         CustomTextField(placeholder: "Enter email", text: $appCreds.email)
                             .textInputAutocapitalization(.never)
