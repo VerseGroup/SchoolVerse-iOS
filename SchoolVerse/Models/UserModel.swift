@@ -19,6 +19,7 @@ struct UserModel: Codable, Identifiable {
     var key: String
     var schedule: Schedule
     var courses: [Course]
+    var subscribedSports: [Sport]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -30,5 +31,6 @@ struct UserModel: Codable, Identifiable {
         case key = "private_key"
         case schedule
         case courses
+        case subscribedSports = "subscribed_sports"
     }
 }
