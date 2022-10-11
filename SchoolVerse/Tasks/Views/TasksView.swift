@@ -11,8 +11,12 @@ import SwiftUI
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
-    @State var classSort: Bool = true
+    @State var classSort: Bool = false
     @State var showAddTaskView: Bool = false
+    
+    @State var revealPrevious: Bool = false
+    @State var revealCurrent: Bool = true
+    @State var revealFuture: Bool = true
     
     var body: some View {
         ZStack {
@@ -44,7 +48,7 @@ struct TasksView: View {
                             .tint(Color.white)
                         }
                     } else {
-                        DisclosureGroup {
+                        DisclosureGroup(isExpanded: $revealPrevious) {
                             if vm.previousTasks.isEmpty {
                                 Text("No assignments!")
                                     .font(.headline)
@@ -65,7 +69,7 @@ struct TasksView: View {
                         .padding(5)
                         .tint(Color.white)
                         
-                        DisclosureGroup {
+                        DisclosureGroup(isExpanded: $revealCurrent) {
                             if vm.currentTasks.isEmpty {
                                 Text("No assignments soon!")
                                     .font(.headline)
@@ -86,8 +90,8 @@ struct TasksView: View {
                         .padding(5)
                         .tint(Color.white)
                         
-                        DisclosureGroup {
-                            if vm.currentTasks.isEmpty {
+                        DisclosureGroup(isExpanded: $revealFuture) {
+                            if vm.futureTasks.isEmpty {
                                 Text("No assignments soon!")
                                     .font(.headline)
                                     .fontWeight(.bold)

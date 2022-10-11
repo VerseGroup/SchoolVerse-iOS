@@ -27,4 +27,14 @@ extension Date {
     func weekDateString() -> String {
         return weekDateFormatter.string(from: self)
     }
+    
+    private var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }
+    
+    func timeString() -> String {
+        return timeFormatter.string(from: self)
+    }
 }

@@ -9,11 +9,12 @@ import Foundation
 
 struct Event: Codable, Identifiable {
     var id: String // custom id, not Firebase generated @DocumentID
-    var name: String
+    var summary: String // title/name, most important
     var description: String
-    var location: String?
-    var start: Date
-    var end: Date
+    var location: String
+    var start: Date?
+    var end: Date?
+    var day: Date
 }
 
 // change model later

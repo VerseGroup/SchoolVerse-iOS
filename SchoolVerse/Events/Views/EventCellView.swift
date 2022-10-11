@@ -9,36 +9,41 @@ import SwiftUI
 
 struct EventCellView: View {
     let event: Event
-    @State var showEventDetailView: Bool = false
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(event.start.weekDateTimeString())
-                Text(event.name)
-                    .font(.title2)
-                    .bold()
-                Text(event.description)
-                    .font(.headline)
+        VStack (alignment: .leading, spacing: 15) {
+            Text(event.summary.split(separator: " - ", maxSplits: 1)[1])
+                .font(.system(size: 25))
+            
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Image(systemName: "clock")
+                    
+                    VStack (alignment: .leading, spacing: 10){
+                        Text(event.day.weekDateString())
+                        
+                        if let start = event.start, let end = event.end {
+                            Text("\(start.timeString()) - \(end.timeString())")
+                        }
+                    }
+                    
+                    Spacer()
+                }
+                
+                HStack {
+                    if let location = event.location {
+                        Image(systemName: "mappin")
+                        
+                        Text(location)
+                        
+                        Spacer()
+                    }
+                }
             }
-            Spacer()
         }
         .padding()
+        .fontWeight(.semibold)
         .frame(maxWidth: .infinity)
-        .foregroundColor(Color.white)
-        .background(Color.purple)
-        .cornerRadius(10)
-        .sheet(isPresented: $showEventDetailView) {
-            EventDetailView(event: event)
-        }
-        .onTapGesture {
-            showEventDetailView.toggle()
-        }
-    }
-}
-
-struct EventCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventCellView(event: Event(id: "uuid", name: "Name of Event", description: "This is a description of an event.", location: "School", start: Date(), end: Date()))
+        .taintedGlass()
     }
 }

@@ -37,7 +37,7 @@ struct MoreView: View {
                         }
                         
                         NavigationLink {
-//                            EventsView()
+                            EventsView()
                         } label: {
                             MoreInfoCardView(imageName: "calendar.badge.exclamationmark", name: "Events")
                         }
