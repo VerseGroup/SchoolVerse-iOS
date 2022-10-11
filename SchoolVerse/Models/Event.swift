@@ -17,19 +17,18 @@ struct Event: Codable, Identifiable {
     var day: Date
 }
 
-// change model later
 struct SportsEvent: Codable, Identifiable {
     var id: String // custom id, not Firebase generated @DocumentID
+    var summary: String
     var description: String
-    var location: String?
+    var location: String
     var start: Date
-    var end: Date
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case description
-        case location
-        case start = "start_date"
-        case end = "end_date"
-    }
+    var end: Date?
+}
+
+struct Sport: Codable, Identifiable {
+    var id: String // custom id, not Firebase generated @DocumentID
+    var name: String
+    var link: String
+    var events: [SportsEvent]
 }
