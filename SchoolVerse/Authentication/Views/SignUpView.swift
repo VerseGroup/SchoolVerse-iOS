@@ -22,6 +22,7 @@ struct SignUpView: View {
     @State var validEmail: Bool = false
     @State var validPassword: Bool = false
     @State var validName: Bool = false
+    @State var validAgreement: Bool = false
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
@@ -35,13 +36,24 @@ struct SignUpView: View {
         ZStack {
             ColorfulBackgroundView()
             
-            VStack {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     Text("Sign Up")
                         .font(.title)
                         .bold()
                         .padding(.vertical, 20)
                     Spacer()
+                    
+                    DisclosureGroup {
+                        ParagraphLabel(name:
+        """
+        \tHackley school administration authorized "VerseGroup" and "SchoolVerse" to read your school data with the sole purpose of providing you this software. The "SchoolVerse" software will not read your data without your explicit permission given by linking your account to the software. Your security and data privacy is our number one priority at "VerseGroup" & "SchoolVerse". Your sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that access to both your phone and our servers is required to view your sensitive data. This means that even the SchoolVerse development team does not have access to and cannot view your data (as someone would require both the client device, your phone, and our server's database, secured by "Google", in order decrypt your information). Your non-sensitive data is secured in a "Google" secured database. However, "VerseGroup" and "SchoolVerse" are not liable for your data, and you use our software at your own risk. We reserve the right to modify or amend this policy at any time; especially as the "SchoolVerse" and "VerseGroup" team continues to add new policies in order to ensure the future security and privacy of your data. Further, "VerseGroup" and "SchoolVerse" will not sell or misuse your data.
+        """
+                        )
+                    } label: {
+                        HeaderLabel(name: "Security/Privacy Policy")
+                            .padding(.horizontal, 8)
+                    }
                     
                     VStack(spacing: 10) {
                         CustomTextField(placeholder: "Enter email", text: $appCreds.email)
@@ -62,7 +74,7 @@ struct SignUpView: View {
                 .padding(.vertical)
                 
                 VStack {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 20) {
                         CustomTextField(placeholder: "Enter name", text: $details.displayName)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
@@ -78,6 +90,18 @@ struct SignUpView: View {
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
+                        
+                        HStack {
+                            Image(systemName: validAgreement ? "checkmark.square.fill" : "checkmark.square")
+                                .font(.system(size: 25))
+                            Text("I agree to the Privacy/Security Policy")
+                                .bold(validAgreement)
+                        }
+                        .padding(15)
+                        .glass()
+                        .onTapGesture {
+                            validAgreement.toggle()
+                        }
                     }
                 }
                 .padding(.vertical)
@@ -93,12 +117,12 @@ struct SignUpView: View {
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor((validEmail && validPassword && validName) ? Color.white: Color.gray)
+                    .foregroundColor((validEmail && validPassword && validName && validAgreement) ? Color.white: Color.gray)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity)
                     .glassCardFull()
                     .padding(.horizontal, 45)
-                    .disabled(!(validEmail && validPassword && validName))
+                    .disabled(!(validEmail && validPassword && validName && validAgreement))
                 }
                 .padding(.vertical)
                 

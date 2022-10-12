@@ -47,8 +47,22 @@ extension AboutView {
                 .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu luctus tortor. Ut neque metus, iaculis a blandit ac, mollis et magna. In hac habitasse platea dictumst. Nullam sodales enim orci, ut posuere tellus commodo sit amet. Fusce ultricies mattis ante, id consequat lacus. Praesent facilisis commodo tortor."
+"""
+\tThe \"VerseGroup\" company mission is to provide polished and effective software solutions to all.
+"""
             )
+            .padding(.horizontal, 10)
+            
+            DisclosureGroup {
+                ParagraphLabel(name:
+"""
+\tHackley school administration authorized "VerseGroup" and "SchoolVerse" to read your school data with the sole purpose of providing you this software. The "SchoolVerse" software will not read your data without your explicit permission given by linking your account to the software. Your security and data privacy is our number one priority at "VerseGroup" & "SchoolVerse". Your sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that access to both your phone and our servers is required to view your sensitive data. This means that even the SchoolVerse development team does not have access to and cannot view your data (as someone would require both the client device, your phone, and our server's database, secured by "Google", in order decrypt your information). Your non-sensitive data is secured in a "Google" secured database. However, "VerseGroup" and "SchoolVerse" are not liable for your data, and you use our software at your own risk. We reserve the right to modify or amend this policy at any time; especially as the "SchoolVerse" and "VerseGroup" team continues to add new policies in order to ensure the future security and privacy of your data. Further, "VerseGroup" and "SchoolVerse" will not sell or misuse your data.
+"""
+                )
+            } label: {
+                HeaderLabel(name: "Security/Privacy Policy")
+                    .padding(.horizontal, 8)
+            }
             .padding(.horizontal, 10)
             
             LinkLabel(name: "Click to visit our website", link: URL(string: "https://www.versegroup.tech")!)
@@ -60,10 +74,12 @@ extension AboutView {
 extension AboutView {
     private var sourceCodeView: some View {
         Group {
-            HeaderLabel(name: "SchoolVerse Description") .padding(.horizontal, 8)
+            HeaderLabel(name: "Open source") .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu luctus tortor. Ut neque metus, iaculis a blandit ac, mollis et magna. In hac habitasse platea dictumst. Nullam sodales enim orci, ut posuere tellus commodo sit amet. Fusce ultricies mattis ante, id consequat lacus. Praesent facilisis commodo tortor."
+"""
+\t\"VerseGroup\" commits to the \"SchoolVerse\" project being open source for 2022 in hope that other developers may learn from our software.
+"""
             )
             .padding(.horizontal, 10)
             
@@ -82,7 +98,7 @@ extension AboutView {
                 .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tWe would like to give a shout-out to Mrs. Tranchida, Mr. Dioguardi, Mrs. Maguire, Mr. King, Dr. Ying and so many other faculty and students for giving us significant help, support, and feedback vital to the creation of this app for Hackley School."
+                            "\tWe would like to give a shout-out to Mrs. Tranchida, Mr. Dioguardi, Mrs. Maguire, Mr. King, Dr. Ying and so many other faculty and students for giving us significant help, support, and feedback vital to the creation of this app for Hackley School."
             )
             .padding(.horizontal, 10)
         }

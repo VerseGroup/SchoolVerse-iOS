@@ -20,13 +20,21 @@ struct LinkingView: View {
             ColorfulBackgroundView()
             
             VStack(spacing: 10) {
-                Text("Link Schoology/Veracross to SchoolVerse")
+                Text("Link School Accounts to SchoolVerse")
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .bold()
                     .padding(.vertical, 20)
                 
-                Text("Your credentials are saved on device and whenever your tasks are updated, they are end to end encrypted blah blah blah")
+                HeaderLabel(name: "Linking Notice")
+                    .padding(.horizontal, 8)
+                
+                
+                ParagraphLabel(name:
+"""
+\tYour sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your sensitive data.
+"""
+                )
                 
                 Spacer()
                 
@@ -45,6 +53,8 @@ struct LinkingView: View {
                             isNotEmpty(text: password)
                         }
                     
+                    
+                    
                     Button {
                         vm.linkSchoology(creds: schoologyCreds)
                     } label: {
@@ -62,7 +72,8 @@ struct LinkingView: View {
                 }
                 
                 Spacer()
-                    .frame(height: 95)
+                Spacer()
+                Spacer()
             }
             .padding(.horizontal)
         }
