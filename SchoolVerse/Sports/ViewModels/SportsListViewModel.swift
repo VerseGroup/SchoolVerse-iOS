@@ -17,7 +17,7 @@ class SportsListViewModel: ObservableObject {
     @Published var allSportsEvents = [SportsEvent]()
     @Published var selectedAllSportsEvents = [SportsEvent]()
     
-    @Published var selectedDate: Date
+    @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
     @Published var hasError: Bool = false
@@ -26,9 +26,12 @@ class SportsListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        selectedDate = Date()
         getSelectedWeek()
         addSubscribers()
+        // fixes bug where on first appear of the view, selected sports isnt seen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateSelectedDay(date: Date())
+        }
     }
     
     func addSubscribers() {

@@ -15,15 +15,18 @@ class EventsListViewModel: ObservableObject {
     
     @Published var selectedEvents = [Event]()
     
-    @Published var selectedDate: Date
+    @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        selectedDate = Date()
         getSelectedWeek()
         addSubscribers()
+        // fixes bug where on first appear of the view, selected events isnt seen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateSelectedDay(date: Date())
+        }
     }
     
     func addSubscribers() {

@@ -12,8 +12,13 @@ struct EventCellView: View {
     
     var body: some View {
         VStack (alignment: .leading, spacing: 15) {
-            Text(event.summary.split(separator: " - ", maxSplits: 1)[1])
-                .font(.system(size: 25))
+            if event.summary.contains(" - ") {
+                Text(event.summary.split(separator: " - ", maxSplits: 1)[1])
+                    .font(.system(size: 25))
+            } else {
+                Text(event.summary)
+                    .font(.system(size: 25))
+            }
             
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
