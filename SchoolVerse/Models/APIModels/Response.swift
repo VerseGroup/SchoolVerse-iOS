@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct VersionResponse: Codable {
+    let iosVersion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case iosVersion = "ios_version"
+    }
+}
+
 struct ScrapeResponse: Codable {
     let message: ResponseMessage
     let exception: String? // only happens when ResponseMessage.failure or .error
