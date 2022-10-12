@@ -8,6 +8,7 @@
 import SwiftUI
 import Resolver
 
+// TODO: fix transition between app view and linking view
 struct RouterView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
@@ -19,8 +20,10 @@ struct RouterView: View {
         if authManager.isAuthenticated {
             if showLinking {
                 LinkingView()
+                    .transition(.move(edge: .bottom))
             } else {
                 AppView()
+                    .transition(.move(edge: .bottom))
             }
         } else {
             AuthenticationView()

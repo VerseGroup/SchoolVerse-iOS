@@ -1,5 +1,5 @@
 //
-//  EventCellView.swift
+//  SportsEventCellView.swift
 //  SchoolVerse
 //
 //  Created by Steven Yu on 10/1/22.
@@ -7,28 +7,25 @@
 
 import SwiftUI
 
-struct EventCellView: View {
-    let event: Event
+struct SportsEventCellView: View {
+    let sportsEvent: SportsEvent
     
     var body: some View {
         VStack (alignment: .leading, spacing: 15) {
-            if event.summary.contains(" - ") {
-                Text(event.summary.split(separator: " - ", maxSplits: 1)[1])
-                    .font(.system(size: 25))
-            } else {
-                Text(event.summary)
-                    .font(.system(size: 25))
-            }
+            Text(sportsEvent.summary)
+                .font(.system(size: 25))
             
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Image(systemName: "clock")
                     
                     VStack (alignment: .leading, spacing: 10){
-                        Text(event.day.weekDateString())
+                        Text(sportsEvent.start.weekDateString())
                         
-                        if let start = event.start, let end = event.end {
-                            Text("\(start.timeString()) - \(end.timeString())")
+                        if let end = sportsEvent.end {
+                            Text("\(sportsEvent.start.timeString()) - \(end.timeString())")
+                        } else {
+                            Text("\(sportsEvent.start.timeString())")
                         }
                     }
                     
@@ -36,7 +33,7 @@ struct EventCellView: View {
                 }
                 
                 HStack {
-                    if let location = event.location {
+                    if let location = sportsEvent.location {
                         Image(systemName: "mappin")
                         
                         Text(location)

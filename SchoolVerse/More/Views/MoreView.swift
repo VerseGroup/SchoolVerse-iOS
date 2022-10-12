@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MoreView: View {
-        
+    
+    @Binding var selection: TabBarItem
+    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
@@ -23,31 +25,51 @@ struct MoreView: View {
                         }
                         
                         NavigationLink {
-//                            MenuView()
+                            AboutView()
                         } label: {
-                            MoreInfoCardView(imageName: "menucard", name: "Menu")
+                            MoreInfoCardView(imageName: "info.circle.fill", name: "About")
                         }
                     }
                     
                     GridRow {
                         NavigationLink {
-//                            SportsView()
+                            SportsView()
                         } label: {
                             MoreInfoCardView(imageName: "sportscourt", name: "Sports")
                         }
                         
                         NavigationLink {
-//                            EventsView()
+                            EventsView()
                         } label: {
                             MoreInfoCardView(imageName: "calendar.badge.exclamationmark", name: "Events")
                         }
                     }
                     
                     GridRow {
-                        NavigationLink {
-                            AboutView()
+                        Button {
+                            selection = .menu
                         } label: {
-                            MoreInfoCardView(imageName: "info.circle.fill", name: "About")
+                            MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
+                        }
+                        
+                        Button {
+                            selection = .clubs
+                        } label: {
+                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
+                        }
+                    }
+                    
+                    GridRow {
+                        Button {
+                            selection = .tasks
+                        } label: {
+                            MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
+                        }
+                        
+                        Button {
+                            selection = .schedule
+                        } label: {
+                            MoreInfoCardView(imageName: "calendar", name: "Schedule")
                         }
                     }
                 } //: Grid
@@ -63,9 +85,3 @@ struct MoreView: View {
         } //: ZStack
     } //: body
 } //: More View
-
-struct MoreView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoreView()
-    }
-}

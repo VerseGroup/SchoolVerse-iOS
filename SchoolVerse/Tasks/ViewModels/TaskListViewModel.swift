@@ -26,6 +26,7 @@ class TaskListViewModel: ObservableObject {
     @Published var tasksDictionary: [String: [SchoolTask]] = [:]
     
     @Published var errorMessage: String?
+    @Published var hasError: Bool = false
     
     @InjectedObject private var api: APIService
     @Published var apiStatus: Bool = false
@@ -55,7 +56,7 @@ class TaskListViewModel: ObservableObject {
         // creates task dictionary
         repo.$tasks
             .sink { [weak self] (returnedTasks) in
-                var dict = Dictionary(grouping: returnedTasks, by: { (element: SchoolTask) in
+                let dict = Dictionary(grouping: returnedTasks, by: { (element: SchoolTask) in
                     return element.courseName
                 })
                 withAnimation(.default) {
@@ -69,8 +70,6 @@ class TaskListViewModel: ObservableObject {
                         })
                     }
                 }
-                print("Dictionary")
-                print(self?.tasksDictionary)
             }
             .store(in: &cancellables)
         
@@ -189,10 +188,24 @@ class TaskListViewModel: ObservableObject {
         repo.$errorMessage
             .sink { [weak self] (returnedErrorMessage) in
                 self?.errorMessage = returnedErrorMessage
+
+                if returnedErrorMessage != nil {
+                    self?.hasError = true
+                }
             }
             .store(in: &cancellables)
         
         // api vars
+        
+        api.$errorMessage
+            .sink { [weak self] (returnedErrorMessage) in
+                self?.errorMessage = returnedErrorMessage
+
+                if returnedErrorMessage != nil {
+                    self?.hasError = true
+                }
+            }
+            .store(in: &cancellables)
         
         api.$status
             .sink { [weak self] (returnedStatus) in

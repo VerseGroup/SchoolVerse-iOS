@@ -196,7 +196,7 @@ public class EncryptedText {
   }
 }
 
-public protocol Key: class {
+public protocol Key: AnyObject {
   var key: SecKey { get }
   
   init(key: SecKey)

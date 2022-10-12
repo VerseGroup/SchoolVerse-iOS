@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+// TODO: add subscribed sports model
 struct UserModel: Codable, Identifiable {
     @DocumentID var id: String?
     var userId: String

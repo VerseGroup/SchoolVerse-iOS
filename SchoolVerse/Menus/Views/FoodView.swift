@@ -7,60 +7,124 @@
 
 import SwiftUI
 
+
 struct FoodView: View {
     let food: Food
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(food.name)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                Spacer()
+        DisclosureGroup {
+            VStack(spacing: 10) {
+                servingSize
+                nutritionInfo
+                ingredients
             }
-            Text(food.ingredients)
-                .fontWeight(.medium)
-            
-            DisclosureGroup(
-                content: {
-                    VStack(alignment: .leading) {
-                        // extract to view that expands vstack
-                        HStack {
-                            Spacer()
-                        }
-                        Text("Calories: \(food.nutrition.calories?.description ?? "N/A")")
-                        
-                        Text("Grams of Added Sugar: \(food.nutrition.gramsAddedSugar?.description ?? "N/A")")
-                        
-                        Text("Grams of Carbs: \(food.nutrition.gramsCarbs?.description ?? "N/A")")
-                         
-                         Text("Grams of Fat: \(food.nutrition.gramsFat?.description ?? "N/A")")
-                        
-                        Text("Grams of Fiber: \(food.nutrition.gramsFiber?.description ?? "N/A")")
-                        
-                        Text("Grams of Protein: \(food.nutrition.gramsProtein?.description ?? "N/A")")
-                        
-                        Text("Grams of Saturated Fat: \(food.nutrition.gramsSaturatedFat?.description ?? "N/A")")
-                        
-                        Text("Grams of Sugar: \(food.nutrition.gramsSugar?.description ?? "N/A")")
-                    }
-                }, label: {
-                    Text("Nutrition")
-                        .font(.headline)
-                }
-            )
-            .accentColor(Color.white)
+            .padding(5)
+        } label: {
+            HeaderLabel(name: food.name)
         }
-        .padding()
-        .frame(maxWidth: .infinity)
         .foregroundColor(Color.white)
-        .background(Color.purple)
-        .cornerRadius(10)
+        .tint(Color.white)
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .taintedGlass()
     }
 }
 
-struct FoodView_Previews: PreviewProvider {
-    static var previews: some View {
-        FoodView(food: Food(name: "Hamburger", ingredients: "Beef, cheese, bun, onion", nutrition: Nutrition(calories: 100, gramsAddedSugar: 100, gramsCarbs: 100, gramsFat: 100, gramsFiber: 100, gramsProtein: 100, gramsSaturatedFat: 100, gramsSugar: 100, gramsTransFat: 100, iuVitaminA: 100, mgCalcium: 100, mgCholesterol: 100, mgIron: 100, mgPotassium: 100, mgSodium: 100, mgVitaminC: 100, mgVitaminD: 100, rawCalories: 100, reVitaminA: 100), servingSize: ServingSize(servingSizeAmount: "100", servingSizeUnit: "Grams")))
+extension FoodView {
+    var servingSize: some View {
+        HStack { // Serving Size
+            Text("Serving Size")
+                .fontWeight(.bold)
+            
+            Spacer()
+            
+            Text("\(food.servingSize.servingSizeAmount ?? "N/A")" + "  \(food.servingSize.servingSizeUnit ?? "N/A")")
+                .fontWeight(.semibold)
+                .padding(.trailing, 7)
+            
+        }
+        .padding(.horizontal, 5)
+    }
+    
+    var nutritionInfo: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Nutrition Info")
+                .fontWeight(.bold)
+            
+            HStack {
+                Text("Calories")
+                
+                Spacer()
+                
+                Text("\(food.nutrition.calories?.formatted() ?? "N/A") cal")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+            
+            HStack {
+                Text("Total Fat")
+                
+                Spacer()
+                
+                Text("\(food.nutrition.gramsFat?.formatted() ?? "N/A") g")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+            
+            HStack {
+                Text("Total Carbs")
+                
+                Spacer()
+                
+                Text("\(food.nutrition.gramsCarbs?.formatted() ?? "N/A") g")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+            
+            HStack {
+                Text("Protein")
+                
+                Spacer()
+                
+                Text("\(food.nutrition.gramsProtein?.formatted() ?? "N/A") g")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+            
+            HStack {
+                Text("Sugar")
+
+                Spacer()
+
+                Text("\(food.nutrition.gramsSugar?.formatted() ?? "N/A") g")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+            
+            HStack {
+                Text("Sodium")
+
+                Spacer()
+
+                Text("\(food.nutrition.mgSodium?.formatted() ?? "N/A") mg")
+                    .fontWeight(.semibold)
+            }
+            .padding(.horizontal, 7)
+        }
+        .padding(.horizontal, 5)
+    }
+    
+    var ingredients: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Ingredients")
+                .fontWeight(.bold)
+            
+            HStack {
+                Text(food.ingredients)
+                Spacer()
+            }
+            .padding(.horizontal, 7)
+        }
+        .padding(.horizontal, 5)
     }
 }

@@ -31,7 +31,7 @@ struct TabBarView: View {
 struct TabBarView_Previews: PreviewProvider {
     
     static let tabs: [TabBarItem] = [
-        .home, .schedule, .tasks, .clubs, .more
+        .menu, .schedule, .tasks, .clubs, .more
     ]
     
     static var previews: some View {

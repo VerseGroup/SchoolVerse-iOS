@@ -13,10 +13,20 @@ class EventsListViewModel: ObservableObject {
     @Published var events = [Event]()
     @Published var errorMessage: String?
     
+    @Published var selectedEvents = [Event]()
+    
+    @Published var selectedDate: Date = Date()
+    @Published var selectedWeek: [Date] = []
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
+        getSelectedWeek()
         addSubscribers()
+        // fixes bug where on first appear of the view, selected events isnt seen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateSelectedDay(date: Date())
+        }
     }
     
     func addSubscribers() {
@@ -34,5 +44,37 @@ class EventsListViewModel: ObservableObject {
                 self?.errorMessage = returnedErrorMessage
             }
             .store(in: &cancellables)
+        
+        
+        // sets selectedWeek to the selectedDate
+        $selectedDate
+            .sink{ (date) in
+                self.getSelectedWeek()
+                self.selectedEvents = self.events.filter({ event in
+                    event.day.calendarDistance(from: date, resultIn: .day) == 0
+                }).sorted(by: { one, two in
+                    one.day < two.day
+                })
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getSelectedWeek() {
+        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: selectedDate)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        (0..<7).forEach { day in
+            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
+                selectedWeek.append(weekday)
+                print(weekday)
+            }
+        }
+    }
+    
+    func updateSelectedDay(date: Date) {
+        selectedDate = date
     }
 }

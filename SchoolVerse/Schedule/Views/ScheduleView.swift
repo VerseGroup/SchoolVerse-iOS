@@ -20,6 +20,7 @@ struct ScheduleView: View {
             
             VStack {
                 if let _ = vm.schedule {
+                    // date picker
                     HStack {
                         // go to previous day
                         Button {
@@ -30,6 +31,7 @@ struct ScheduleView: View {
                             Image(systemName: "chevron.left")
                         }
                         .foregroundColor(.white)
+                        .bold()
                         .padding(2)
                         
                         Spacer()
@@ -59,9 +61,11 @@ struct ScheduleView: View {
                             Image(systemName: "chevron.right")
                         }
                         .foregroundColor(.white)
+                        .bold()
                         .padding(2)
                     }
                     .padding()
+                    
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
                             ScrollView(showsIndicators: false) {
@@ -127,7 +131,7 @@ struct ScheduleView: View {
                 .offset(x: 0, y: -100)
                 .onChange(of: vm.selectedDate) { _ in
                     withAnimation {
-                        showPicker.toggle()
+                        showPicker = false
                     }
                 }
         }
