@@ -12,20 +12,15 @@ import Resolver
 struct AppView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
-    @State private var selection: TabBarItem = .tasks
-    let tabs: [TabBarItem] = [.menu, .schedule, .tasks, .clubs, .more]
+    @State var selection: TabBarItem = .schedule
+    let tabs: [TabBarItem] = [.clubs, .tasks, .schedule, .menu, .more]
     
     var body: some View {
         TabBarViewBuilder {
             NavigationStack {
-                MenusView()
+                ComingSoonView(title: "Clubs")
             }
-            .tabBarItem(tab: TabBarItem.menu, selection: selection)
-            
-            NavigationStack {
-                ScheduleView()
-            }
-            .tabBarItem(tab: TabBarItem.schedule, selection: selection)
+            .tabBarItem(tab: TabBarItem.clubs, selection: selection)
             
             NavigationStack {
                 TasksView()
@@ -33,12 +28,17 @@ struct AppView: View {
             .tabBarItem(tab: TabBarItem.tasks, selection: selection)
             
             NavigationStack {
-                ComingSoonView(title: "Clubs")
+                ScheduleView()
             }
-            .tabBarItem(tab: TabBarItem.clubs, selection: selection)
+            .tabBarItem(tab: TabBarItem.schedule, selection: selection)
             
             NavigationStack {
-                MoreView()
+                MenusView()
+            }
+            .tabBarItem(tab: TabBarItem.menu, selection: selection)
+            
+            NavigationStack {
+                MoreView(selection: $selection)
             }
             .tabBarItem(tab: TabBarItem.more, selection: selection)
             
