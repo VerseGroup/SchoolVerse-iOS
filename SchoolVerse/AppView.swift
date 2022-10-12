@@ -12,15 +12,15 @@ import Resolver
 struct AppView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
-    @State private var selection: TabBarItem = .home
-    let tabs: [TabBarItem] = [.home, .schedule, .tasks, .clubs, .more]
+    @State private var selection: TabBarItem = .tasks
+    let tabs: [TabBarItem] = [.menu, .schedule, .tasks, .clubs, .more]
     
     var body: some View {
         TabBarViewBuilder {
             NavigationStack {
-                Text("Home")
+                MenusView()
             }
-            .tabBarItem(tab: TabBarItem.home, selection: selection)
+            .tabBarItem(tab: TabBarItem.menu, selection: selection)
             
             NavigationStack {
                 ScheduleView()

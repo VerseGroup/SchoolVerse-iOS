@@ -31,7 +31,7 @@ struct MoreView: View {
                     
                     GridRow {
                         NavigationLink {
-//                            SportsView()
+                            SportsView()
                         } label: {
                             MoreInfoCardView(imageName: "sportscourt", name: "Sports")
                         }

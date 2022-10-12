@@ -218,27 +218,3 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
         }
     }
 }
-
-//class DummyAuthenticationManager: ObservableObject, AuthenticationManagerProtocol {
-//    var userModel: UserModel?
-//
-//    var isAuthenticated: Bool
-//
-//    var errorMessage: String?
-//
-//    func signIn(creds: CredentialsDetails) {
-//        <#code#>
-//    }
-//
-//    func signOut(creds: CredentialsDetails) {
-//        <#code#>
-//    }
-//
-//    var userModel: User?
-//
-//    init() {
-//
-//    }
-//
-//
-//}

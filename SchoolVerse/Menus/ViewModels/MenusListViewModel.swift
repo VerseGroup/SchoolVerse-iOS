@@ -15,15 +15,18 @@ class MenusListViewModel: ObservableObject {
     
     @Published var selectedMenu: SchoolMenu?
     
-    @Published var selectedDate: Date
+    @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        selectedDate = Date()
         getSelectedWeek()
         addSubscribers()
+        // fixes bug where on first appear of the view, selected menu isnt seen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateSelectedMenu(date: Date())
+        }
     }
     
     func addSubscribers() {
@@ -55,6 +58,8 @@ class MenusListViewModel: ObservableObject {
         // sets selectedWeek to the selectedDate
         $selectedDate
             .sink{ (date) in
+                print("Called selected date $")
+                print(self.menus.capacity)
                 self.getSelectedWeek()
                 self.selectedMenu = self.menus.first(where: { menu in
                     Calendar.current.isDate(menu.date, equalTo: date, toGranularity: .day)

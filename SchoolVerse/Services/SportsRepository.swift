@@ -15,7 +15,7 @@ class SportsRepository: ObservableObject {
     private let path: String = "sports"
     private let db = Firestore.firestore()
     
-    @Published var sports: [SportsEvent] = []
+    @Published var sports: [Sport] = []
     @Published var errorMessage: String?
     
     init() {
@@ -26,16 +26,16 @@ class SportsRepository: ObservableObject {
         db.collection(path)
             .addSnapshotListener { [weak self] (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
-                    self?.errorMessage = "No sports events yet"
+                    self?.errorMessage = "No sports yet"
                     return
                 }
                 self?.sports = documents.compactMap({ queryDocumentSnapshot in
-                    let result = Result { try queryDocumentSnapshot.data(as: SportsEvent.self) }
+                    let result = Result { try queryDocumentSnapshot.data(as: Sport.self) }
                     
                     switch result {
-                    case .success(let sportsEvent):
+                    case .success(let sport):
                         self?.errorMessage = nil
-                        return sportsEvent
+                        return sport
                     case .failure(let error):
                         switch error {
                         case DecodingError.typeMismatch(_, let context):
