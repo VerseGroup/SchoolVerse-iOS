@@ -21,11 +21,7 @@ struct MenusView: View {
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(accentColor)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
+    @Namespace var animation
     
     var body: some View {
         ZStack {
@@ -79,15 +75,46 @@ struct MenusView: View {
                 
                 VStack(spacing: 20) {
                     if let menu = vm.selectedMenu {
-                        Picker("", selection: $selectedMeal) {
-                            ForEach(Meal.allCases, id:\.self) { meal in
+//                        Picker("", selection: $selectedMeal) {
+//                            ForEach(Meal.allCases, id:\.self) { meal in
+//                                Text(meal.rawValue)
+//                                    .foregroundColor(.white)
+//                                    .tag(meal)
+//                            }
+//                        }
+//                        .pickerStyle(SegmentedPickerStyle())
+//                        .padding(.horizontal)
+                        
+                        HStack (spacing: 20) {
+                            ForEach (Meal.allCases, id: \.self) { meal in
                                 Text(meal.rawValue)
-                                    .foregroundColor(.white)
-                                    .tag(meal)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.horizontal)
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 2)
+                                    .background (
+                                        ZStack {
+                                            if meal == selectedMeal {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(.clear)
+                                                    .padding(25)
+                                                    .padding(.horizontal)
+                                                    .taintedGlass()
+                                                    .matchedGeometryEffect(id: "currentMeal", in: animation)
+                                            } //: if
+                                        } //: Zstack
+                                    ) //: background
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedMeal = meal
+                                        }
+                                    }
+                            } //: ForEach
+                        } //: HStack
+                        .padding()
+                        .padding(.vertical, 5)
+                        .heavyGlass()
+                        
                         
                         switch selectedMeal {
                         case .breakfast:
