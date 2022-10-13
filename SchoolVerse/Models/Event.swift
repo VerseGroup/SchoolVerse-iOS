@@ -24,6 +24,8 @@ struct SportsEvent: Codable, Identifiable {
     var location: String
     var start: Date
     var end: Date?
+    
+    var name: String
 }
 
 struct Sport: Codable, Identifiable {

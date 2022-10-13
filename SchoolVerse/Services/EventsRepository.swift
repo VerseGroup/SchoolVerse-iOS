@@ -19,22 +19,26 @@ class EventRepository: ObservableObject {
     @Published var errorMessage: String?
 
     init() {
-        loadEvents()
+        loadEvents(date: Date())
     }
     
-    func loadEvents() {
+    func loadEvents(date: Date) {
         db.collection(path)
+            .whereField("day", isDateInToday: date)
             .addSnapshotListener { [weak self] (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     self?.errorMessage = "No events yet"
                     return
                 }
-                self?.events = documents.compactMap({ queryDocumentSnapshot in
+                documents.compactMap({ queryDocumentSnapshot in
                     let result = Result { try queryDocumentSnapshot.data(as: Event.self) }
                     
                     switch result {
                     case .success(let event):
                         self?.errorMessage = nil
+                        if !(self?.events ?? []).contains(where: {$0.id == event.id}) {
+                            self?.events.append(event)
+                        }
                         return event
                     case .failure(let error):
                         switch error {

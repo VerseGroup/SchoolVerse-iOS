@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+// read doc where(date = selectedDate)
 class EventsListViewModel: ObservableObject {
     private let repo = EventRepository()
     @Published var events = [Event]()
@@ -21,7 +22,6 @@ class EventsListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        getSelectedWeek()
         addSubscribers()
         // fixes bug where on first appear of the view, selected events isnt seen
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -38,43 +38,27 @@ class EventsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // updates error message
-        repo.$errorMessage
-            .sink { [weak self] (returnedErrorMessage) in
-                self?.errorMessage = returnedErrorMessage
-            }
-            .store(in: &cancellables)
-        
-        
-        // sets selectedWeek to the selectedDate
-        $selectedDate
-            .sink{ (date) in
-                self.getSelectedWeek()
-                self.selectedEvents = self.events.filter({ event in
+        // update when events changes based on the selected day
+        $events.combineLatest($selectedDate)
+            .sink { (events, date) in
+                self.selectedEvents = events.filter({ event in
                     event.day.calendarDistance(from: date, resultIn: .day) == 0
                 }).sorted(by: { one, two in
                     one.day < two.day
                 })
             }
             .store(in: &cancellables)
-    }
-    
-    func getSelectedWeek() {
-        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: selectedDate)
         
-        guard let firstWeekDay = week?.start else {
-            return
-        }
-        
-        (0..<7).forEach { day in
-            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
-                selectedWeek.append(weekday)
-                print(weekday)
+        // updates error message
+        repo.$errorMessage
+            .sink { [weak self] (returnedErrorMessage) in
+                self?.errorMessage = returnedErrorMessage
             }
-        }
+            .store(in: &cancellables)
     }
     
     func updateSelectedDay(date: Date) {
         selectedDate = date
+        repo.loadEvents(date: date)
     }
 }

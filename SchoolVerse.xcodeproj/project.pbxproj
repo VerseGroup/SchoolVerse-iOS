@@ -43,6 +43,7 @@
 		1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */; };
 		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
 		1637164128C057B300DF15D4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637164028C057B300DF15D4 /* Menu.swift */; };
+		16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */; };
 		164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894B28F2660300419637 /* CustomTextEditor.swift */; };
 		164A894E28F346F800419637 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894D28F346F800419637 /* ScheduleRepository.swift */; };
 		164A895028F34AC400419637 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894F28F34AC400419637 /* ScheduleViewModel.swift */; };
@@ -165,6 +166,7 @@
 		163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironment.swift; sourceTree = "<group>"; };
 		1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		1637164028C057B300DF15D4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+CollectionRef.swift"; sourceTree = "<group>"; };
 		164A894B28F2660300419637 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		164A894D28F346F800419637 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 		164A894F28F34AC400419637 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				166C1D0D28EA06AC00F265FA /* View+If.swift */,
 				164A895528F3834200419637 /* AnyTransition+Backslide.swift */,
 				164A896628F3CEB100419637 /* View+Placeholder.swift */,
+				16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				165CA07228F1ED37007547FB /* GlassCard.swift in Sources */,
 				1698FD4328F65FB00057A453 /* UpgradeView.swift in Sources */,
 				166C1D0428E9286400F265FA /* SportsListViewModel.swift in Sources */,
+				16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */,
 				165CA08B28F1F350007547FB /* MoreInfoCard.swift in Sources */,
 				164A895628F3834200419637 /* AnyTransition+Backslide.swift in Sources */,
 				16BE778B28F24D9C000248A9 /* LoadingView.swift in Sources */,
@@ -1070,6 +1074,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WV5B78VHQ8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1109,6 +1114,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SchoolVerse/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SchoolVerse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1203,6 +1210,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WV5B78VHQ8;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1236,6 +1244,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SchoolVerse/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SchoolVerse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1330,6 +1340,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WV5B78VHQ8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1391,6 +1402,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WV5B78VHQ8;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1425,6 +1437,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SchoolVerse/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SchoolVerse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1459,6 +1473,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = SchoolVerse/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SchoolVerse;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
