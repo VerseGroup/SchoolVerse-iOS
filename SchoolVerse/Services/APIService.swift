@@ -169,7 +169,9 @@ class APIService: ObservableObject {
                     }
                     completion()
                 } else {
-                    print("No public key")
+                    print("No public key - too many links")
+                    self.hasError = true
+                    self.errorMessage = "No public key - too many links"
                 }
             }
     }

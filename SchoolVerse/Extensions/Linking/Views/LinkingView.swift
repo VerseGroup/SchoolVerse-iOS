@@ -69,6 +69,22 @@ struct LinkingView: View {
                     .padding(.horizontal, 45)
                     .padding(.vertical, 20)
                     .disabled(!(validUsername && validPassword))
+                    
+                    Button {
+                        Task {
+                            await vm.signOut()
+                        }
+                    } label: {
+                        Text("Sign Out")
+                    }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+                    .padding(.horizontal, 45)
+                    .padding(.vertical, 20)
                 }
                 
                 Spacer()

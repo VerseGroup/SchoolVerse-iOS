@@ -120,10 +120,16 @@ class LinkingViewModel: ObservableObject {
                     print("Linking success")
                 } else {
                     print("Linking failed - vm")
+                    self.errorMessage = ensureResponse?.exception
+                    self.hasError = true
                 }
                 self.isLoading = false
             })
             
         })
+    }
+    
+    func signOut() async {
+        await authManager.signOut()
     }
 }

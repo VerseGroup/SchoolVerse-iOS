@@ -33,12 +33,14 @@ struct KeyResponse: Codable {
 
 struct EnsureResponse: Codable {
     let message: ResponseMessage
+    let exception: String?
 }
 
 enum ResponseMessage: String, Codable {
     case success
     case failure
     case error
+    case overuse
 }
 
 // codable functionality
@@ -52,6 +54,8 @@ extension ResponseMessage {
                 return "Failure"
             case .error:
                 return "error"
+            case .overuse:
+                return "overuse"
             }
         }
     }
@@ -64,6 +68,8 @@ extension ResponseMessage {
             return .failure
         case "user does not exist":
             return .failure
+        case "overuse":
+            return .overuse
         default:
             return .error
         }

@@ -33,7 +33,24 @@ class TaskRepository: ObservableObject {
         
         let uid = Auth.auth().currentUser?.uid
         guard let uid else {
-            fatalError("userId invalid")
+            do {
+                try Auth.auth().signOut()
+
+                // clear user defaults
+                UserDefaults.standard.removeObject(forKey: "e_username")
+                UserDefaults.standard.removeObject(forKey: "e_password")
+                UserDefaults.standard.removeObject(forKey: "public_key")
+                UserDefaults.standard.removeObject(forKey: "show_linking")
+                UserDefaults.standard.set(false, forKey: "authenticated")
+                print("Signed out")
+            } catch {
+                print("There was an issue when trying to sign out: \(error)")
+            }
+            userId = "bruh"
+
+            collectionRef = db.collection("users").document(userId).collection(path)
+
+            return
         }
         
         userId = uid
