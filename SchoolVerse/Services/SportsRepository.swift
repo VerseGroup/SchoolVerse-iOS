@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Combine
 
-// TODO: optimize sports to use less reads with whereField
+// TODO: optimize sports to use less reads with whereField == date
 class SportsRepository: ObservableObject {
     private let path: String = "sports"
     private let db = Firestore.firestore()

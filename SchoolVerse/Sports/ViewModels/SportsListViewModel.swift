@@ -18,7 +18,6 @@ class SportsListViewModel: ObservableObject {
     @Published var selectedAllSportsEvents = [SportsEvent]()
     
     @Published var selectedDate: Date = Date()
-    @Published var selectedWeek: [Date] = []
     
     @Published var hasError: Bool = false
     @Published var errorMessage: String?
@@ -26,7 +25,6 @@ class SportsListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        getSelectedWeek()
         addSubscribers()
         // fixes bug where on first appear of the view, selected sports isnt seen
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -74,10 +72,9 @@ class SportsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // sets selectedWeek to the selectedDate
+        // sets selectedAllSportsEvents to the selectedDate
         $selectedDate
             .sink{ (date) in
-                self.getSelectedWeek()
                 self.selectedAllSportsEvents = self.allSportsEvents.filter({ sportEvent in
                     sportEvent.start.calendarDistance(from: date, resultIn: .day) == 0
                 }).sorted(by: { one, two in
@@ -86,21 +83,6 @@ class SportsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-    }
-    
-    func getSelectedWeek() {
-        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: selectedDate)
-        
-        guard let firstWeekDay = week?.start else {
-            return
-        }
-        
-        (0..<7).forEach { day in
-            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
-                selectedWeek.append(weekday)
-                print(weekday)
-            }
-        }
     }
     
     func updateSelectedDay(date: Date) {

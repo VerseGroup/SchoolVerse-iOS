@@ -18,13 +18,15 @@ class ScheduleViewModel: ObservableObject {
     @Published var schedule: Schedule?
     
     @Published var selectedDayEvent: DayEvent?
-    @Published var selectedDate: Date
+    @Published var selectedDate: Date = Date()
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        selectedDate = Date()
         addSubscribers()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateSelectedDayEvent(date: Date())
+        }
     }
     
     func addSubscribers() {
