@@ -16,7 +16,7 @@ struct NavButtonView: View {
             .foregroundColor(accentColor)
             .font(.system(size:15))
             .frame(width: 25, height: 25)
-            .padding(10)
+            .padding(5)
             .heavyGlass()
     }
 }
