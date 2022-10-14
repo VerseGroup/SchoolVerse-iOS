@@ -20,6 +20,8 @@ struct AboutView: View {
                     
                     sourceCodeView
                     
+                    linkView
+                    
                     recognition
                     
                     Spacer()
@@ -52,16 +54,6 @@ extension AboutView {
 """
             )
             .padding(.horizontal, 10)
-            
-            
-            LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
-                .padding(10)
-            
-            LinkLabel(name: "Tap to visit our website", link: URL(string: "https://www.versegroup.tech")!)
-                .padding(10)
-            
-            LinkLabel(name: "Tap to visit our Instagram", link: URL(string: "https://www.instagram.com/schoolverse_app")!)
-                .padding(10)
         }
     }
 }
@@ -69,7 +61,7 @@ extension AboutView {
 extension AboutView {
     private var sourceCodeView: some View {
         Group {
-            HeaderLabel(name: "Open source") .padding(.horizontal, 8)
+            HeaderLabel(name: "Open Source") .padding(.horizontal, 8)
             
             ParagraphLabel(name:
 """
@@ -77,10 +69,27 @@ extension AboutView {
 """
             )
             .padding(.horizontal, 10)
+        }
+    }
+}
+
+extension AboutView {
+    private var linkView: some View {
+        Group {
+            HeaderLabel(name: "Links") .padding(.horizontal, 8)
             
-            
-            LinkLabel(name: "Click to visit our Github", link: URL(string: "https://github.com/VerseGroup")!)
+            LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
                 .padding(10)
+            
+            LinkLabel(name: "Instagram", link: URL(string: "https://www.instagram.com/schoolverse_app")!)
+                .padding(10)
+            
+            LinkLabel(name: "Github", link: URL(string: "https://github.com/VerseGroup")!)
+                .padding(10)
+            
+            LinkLabel(name: "VerseGroup Website", link: URL(string: "https://www.versegroup.tech")!)
+                .padding(10)
+            
         }
     }
 }
