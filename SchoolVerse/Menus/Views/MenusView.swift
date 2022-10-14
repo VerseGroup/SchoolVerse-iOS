@@ -36,10 +36,11 @@ struct MenusView: View {
                         }
                     } label: {
                         Image(systemName: "chevron.left")
+                            .frame(width: 75, height: 75)
                     }
                     .foregroundColor(.white)
                     .bold()
-                    .padding(2)
+                    .padding(5)
                     
                     Spacer()
                     
@@ -66,10 +67,11 @@ struct MenusView: View {
                         }
                     } label: {
                         Image(systemName: "chevron.right")
+                            .frame(width: 75, height: 75)
                     }
                     .foregroundColor(.white)
                     .bold()
-                    .padding(2)
+                    .padding(5)
                 }
                 .padding()
                 
