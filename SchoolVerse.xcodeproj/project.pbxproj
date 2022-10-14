@@ -44,6 +44,7 @@
 		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
 		1637164128C057B300DF15D4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637164028C057B300DF15D4 /* Menu.swift */; };
 		16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */; };
+		164831B428F9F191001793B7 /* days.json in Resources */ = {isa = PBXBuildFile; fileRef = 164831B328F9F191001793B7 /* days.json */; };
 		164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894B28F2660300419637 /* CustomTextEditor.swift */; };
 		164A894E28F346F800419637 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894D28F346F800419637 /* ScheduleRepository.swift */; };
 		164A895028F34AC400419637 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894F28F34AC400419637 /* ScheduleViewModel.swift */; };
@@ -167,6 +168,7 @@
 		1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		1637164028C057B300DF15D4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+CollectionRef.swift"; sourceTree = "<group>"; };
+		164831B328F9F191001793B7 /* days.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = days.json; sourceTree = "<group>"; };
 		164A894B28F2660300419637 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		164A894D28F346F800419637 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
 		164A894F28F34AC400419637 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 		1674C2CD28C00FC400D92969 /* SchoolVerse */ = {
 			isa = PBXGroup;
 			children = (
+				164831B328F9F191001793B7 /* days.json */,
 				1637162228C054AF00DF15D4 /* Models */,
 				1637162128C0546B00DF15D4 /* Services */,
 				1637162528C054D400DF15D4 /* Authentication */,
@@ -887,6 +890,7 @@
 				1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */,
 				16A3AB4528F4C08E006799C9 /* GoogleService-Info-Dev.plist in Resources */,
 				1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */,
+				164831B428F9F191001793B7 /* days.json in Resources */,
 				1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
