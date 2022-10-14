@@ -101,7 +101,7 @@ extension EventsView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
-                    .frame(width: 75, height: 75)
+                    .frame(width: 50, height: 50)
             }
             .foregroundColor(.white)
             .bold()
@@ -132,7 +132,7 @@ extension EventsView {
                 }
             } label: {
                 Image(systemName: "chevron.right")
-                    .frame(width: 75, height: 75)
+                    .frame(width: 50, height: 50)
             }
             .foregroundColor(.white)
             .bold()

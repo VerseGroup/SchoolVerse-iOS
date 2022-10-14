@@ -28,52 +28,7 @@ struct MenusView: View {
             ColorfulBackgroundView()
             
             VStack {
-                HStack {
-                    // go to previous day
-                    Button {
-                        withAnimation(.easeInOut) {
-                            vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
-                        }
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .frame(width: 75, height: 75)
-                    }
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(5)
-                    
-                    Spacer()
-                    
-                    Button {
-                        withAnimation {
-                            showPicker.toggle()
-                        }
-                    }  label: {
-                        Text(vm.selectedDate.weekDateString())
-                            .fontWeight(.semibold)
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                    }
-                    
-                    Spacer()
-                    
-                    // go to next day
-                    Button {
-                        withAnimation {
-                            vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
-                        }
-                    } label: {
-                        Image(systemName: "chevron.right")
-                            .frame(width: 75, height: 75)
-                    }
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(5)
-                }
-                .padding()
+                dateSelector
                 
                 VStack(spacing: 20) {
                     if let menu = vm.selectedMenu {
@@ -176,5 +131,52 @@ struct MenuListView_Previews: PreviewProvider {
 }
 
 extension MenusView {
-    
+    var dateSelector: some View {
+        HStack {
+            // go to previous day
+            Button {
+                withAnimation(.easeInOut) {
+                    vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+            
+            Spacer()
+            
+            Button {
+                withAnimation {
+                    showPicker.toggle()
+                }
+            }  label: {
+                Text(vm.selectedDate.weekDateString())
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+            }
+            
+            Spacer()
+            
+            // go to next day
+            Button {
+                withAnimation {
+                    vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.right")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+        }
+        .padding()
+    }
 }
