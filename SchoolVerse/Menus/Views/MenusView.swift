@@ -90,15 +90,13 @@ struct MenusView: View {
                                 Text(meal.rawValue)
                                     .fontWeight(.semibold)
                                     .font(.headline)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 2)
+                                    .frame(width: UIScreen.main.bounds.width / 4.5)
                                     .background (
                                         ZStack {
                                             if meal == selectedMeal {
                                                 RoundedRectangle(cornerRadius: 20)
                                                     .fill(.clear)
-                                                    .padding(25)
-                                                    .padding(.horizontal)
+                                                    .padding(20)
                                                     .taintedGlass()
                                                     .matchedGeometryEffect(id: "currentMeal", in: animation)
                                             } //: if
@@ -111,9 +109,11 @@ struct MenusView: View {
                                     }
                             } //: ForEach
                         } //: HStack
-                        .padding()
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 5)
+                        .cornerRadius(20)
                         .heavyGlass()
+                        .padding()
                         
                         
                         switch selectedMeal {
