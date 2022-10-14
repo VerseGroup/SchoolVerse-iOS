@@ -21,20 +21,25 @@ struct LinkingView: View {
             
             VStack(spacing: 10) {
                 Text("Link School Accounts to SchoolVerse")
+                    .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .bold()
                     .padding(.vertical, 20)
                 
-                HeaderLabel(name: "Linking Notice")
-                    .padding(.horizontal, 8)
                 
-                
-                ParagraphLabel(name:
-"""
-\tYour sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your sensitive data.
-"""
-                )
+                DisclosureGroup {
+                    
+                    ParagraphLabel(name:
+    """
+    \tYour sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your confidential data. The VerseGroup team cannot see this data.
+    """
+                    )
+                } label: {
+                    HeaderLabel(name: "Linking Notice")
+                        .padding(.horizontal, 8)
+                }
+                .padding(.horizontal, 10)
                 
                 Spacer()
                 

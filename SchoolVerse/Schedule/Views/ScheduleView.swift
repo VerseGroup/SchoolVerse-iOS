@@ -106,15 +106,20 @@ struct ScheduleView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-//                    .background {
-//                        if showPicker {
-//                            Color.black.opacity(0.5)
-//                                .blur(radius: 50)
-//                        }
-//                    }
+                    //                    .background {
+                    //                        if showPicker {
+                    //                            Color.black.opacity(0.5)
+                    //                                .blur(radius: 50)
+                    //                        }
+                    //                    }
                     
                 } else {
                     Text("Schedule unavailable")
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
                 }
             }
             

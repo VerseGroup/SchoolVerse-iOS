@@ -53,19 +53,14 @@ extension AboutView {
             )
             .padding(.horizontal, 10)
             
-            DisclosureGroup {
-                ParagraphLabel(name:
-"""
-\tHackley school administration authorized "VerseGroup" and "SchoolVerse" to read your school data with the sole purpose of providing you this software. The "SchoolVerse" software will not read your data without your explicit permission given by linking your account to the software. Your security and data privacy is our number one priority at "VerseGroup" & "SchoolVerse". Your sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that access to both your phone and our servers is required to view your sensitive data. This means that even the SchoolVerse development team does not have access to and cannot view your data (as someone would require both the client device, your phone, and our server's database, secured by "Google", in order decrypt your information). Your non-sensitive data is secured in a "Google" secured database. However, "VerseGroup" and "SchoolVerse" are not liable for your data, and you use our software at your own risk. We reserve the right to modify or amend this policy at any time; especially as the "SchoolVerse" and "VerseGroup" team continues to add new policies in order to ensure the future security and privacy of your data. Further, "VerseGroup" and "SchoolVerse" will not sell or misuse your data.
-"""
-                )
-            } label: {
-                HeaderLabel(name: "Security/Privacy Policy")
-                    .padding(.horizontal, 8)
-            }
-            .padding(.horizontal, 10)
             
-            LinkLabel(name: "Click to visit our website", link: URL(string: "https://www.versegroup.tech")!)
+            LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                .padding(10)
+            
+            LinkLabel(name: "Tap to visit our website", link: URL(string: "https://www.versegroup.tech")!)
+                .padding(10)
+            
+            LinkLabel(name: "Tap to visit our Instagram", link: URL(string: "https://www.instagram.com/schoolverse_app")!)
                 .padding(10)
         }
     }

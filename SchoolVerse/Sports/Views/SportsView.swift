@@ -60,6 +60,11 @@ struct SportsView: View {
                     
                 }
             }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
+                }
+            }
             
             DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)

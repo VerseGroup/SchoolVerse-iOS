@@ -140,6 +140,11 @@ struct MenusView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical)
             }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
+                }
+            }
             
             DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)

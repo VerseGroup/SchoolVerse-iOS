@@ -58,6 +58,11 @@ struct EventsView: View {
                     }
                 }
             }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
+                }
+            }
             
             DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
@@ -96,10 +101,11 @@ extension EventsView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
+                    .frame(width: 75, height: 75)
             }
             .foregroundColor(.white)
             .bold()
-            .padding(2)
+            .padding(5)
             
             Spacer()
             
@@ -126,10 +132,11 @@ extension EventsView {
                 }
             } label: {
                 Image(systemName: "chevron.right")
+                    .frame(width: 75, height: 75)
             }
             .foregroundColor(.white)
             .bold()
-            .padding(2)
+            .padding(5)
         }
         .padding()
     }
