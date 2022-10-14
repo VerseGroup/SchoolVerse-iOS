@@ -19,22 +19,29 @@ class MenusRepository: ObservableObject {
     @Published var errorMessage: String?
     
     init() {
-        loadMenus()
+        loadMenus(date: Date.now)
     }
     
-    func loadMenus() {
+    func loadMenus(date: Date) {
         db.collection(path)
+            .whereField("date", isDateInToday: date)
             .addSnapshotListener { [weak self] (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
                     self?.errorMessage = "No menus yet"
                     return
                 }
-                self?.menus = documents.compactMap({ queryDocumentSnapshot in
+                documents.compactMap({ queryDocumentSnapshot in
                     let result = Result { try queryDocumentSnapshot.data(as: SchoolMenu.self) }
                     
                     switch result {
                     case .success(let menu):
                         self?.errorMessage = nil
+                        print(menu.date.description + "DAETE!")
+                        
+                        if !(self?.menus ?? []).contains(where: {$0.id == menu.id}) {
+                            self?.menus.append(menu)
+                        }
+                        self?.menus.append(menu)
                         return menu
                     case .failure(let error):
                         switch error {

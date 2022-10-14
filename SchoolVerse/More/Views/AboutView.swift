@@ -47,11 +47,20 @@ extension AboutView {
                 .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu luctus tortor. Ut neque metus, iaculis a blandit ac, mollis et magna. In hac habitasse platea dictumst. Nullam sodales enim orci, ut posuere tellus commodo sit amet. Fusce ultricies mattis ante, id consequat lacus. Praesent facilisis commodo tortor."
+"""
+\tThe \"VerseGroup\" company mission is to provide polished and effective software solutions to all.
+"""
             )
             .padding(.horizontal, 10)
             
-            LinkLabel(name: "Click to visit our website", link: URL(string: "https://www.versegroup.tech")!)
+            
+            LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                .padding(10)
+            
+            LinkLabel(name: "Tap to visit our website", link: URL(string: "https://www.versegroup.tech")!)
+                .padding(10)
+            
+            LinkLabel(name: "Tap to visit our Instagram", link: URL(string: "https://www.instagram.com/schoolverse_app")!)
                 .padding(10)
         }
     }
@@ -60,10 +69,12 @@ extension AboutView {
 extension AboutView {
     private var sourceCodeView: some View {
         Group {
-            HeaderLabel(name: "SchoolVerse Description") .padding(.horizontal, 8)
+            HeaderLabel(name: "Open source") .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu luctus tortor. Ut neque metus, iaculis a blandit ac, mollis et magna. In hac habitasse platea dictumst. Nullam sodales enim orci, ut posuere tellus commodo sit amet. Fusce ultricies mattis ante, id consequat lacus. Praesent facilisis commodo tortor."
+"""
+\t\"VerseGroup\" commits to the \"SchoolVerse\" project being open source for 2022 in hope that other developers may learn from our software.
+"""
             )
             .padding(.horizontal, 10)
             
@@ -82,7 +93,7 @@ extension AboutView {
                 .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                "\tWe would like to give a shout-out to Mrs. Tranchida, Mr. Dioguardi, Mrs. Maguire, Mr. King, Dr. Ying and so many other faculty and students for giving us significant help, support, and feedback vital to the creation of this app for Hackley School."
+                            "\tWe would like to give a shout-out to Mrs. Tranchida, Mr. Dioguardi, Mrs. Maguire, Mr. King, Dr. Ying and so many other faculty and students for giving us significant help, support, and feedback vital to the creation of this app for Hackley School."
             )
             .padding(.horizontal, 10)
         }

@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct VersionResponse: Codable {
+    let iosVersion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case iosVersion = "ios_version"
+    }
+}
+
 struct ScrapeResponse: Codable {
     let message: ResponseMessage
     let exception: String? // only happens when ResponseMessage.failure or .error
@@ -25,12 +33,14 @@ struct KeyResponse: Codable {
 
 struct EnsureResponse: Codable {
     let message: ResponseMessage
+    let exception: String?
 }
 
 enum ResponseMessage: String, Codable {
     case success
     case failure
     case error
+    case overuse
 }
 
 // codable functionality
@@ -44,6 +54,8 @@ extension ResponseMessage {
                 return "Failure"
             case .error:
                 return "error"
+            case .overuse:
+                return "overuse"
             }
         }
     }
@@ -56,6 +68,8 @@ extension ResponseMessage {
             return .failure
         case "user does not exist":
             return .failure
+        case "overuse":
+            return .overuse
         default:
             return .error
         }

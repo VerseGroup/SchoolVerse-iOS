@@ -20,51 +20,7 @@ struct ScheduleView: View {
             
             VStack {
                 if let _ = vm.schedule {
-                    // date picker
-                    HStack {
-                        // go to previous day
-                        Button {
-                            withAnimation(.easeInOut) {
-                                vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
-                            }
-                        } label: {
-                            Image(systemName: "chevron.left")
-                        }
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(2)
-                        
-                        Spacer()
-                        
-                        Button {
-                            withAnimation {
-                                showPicker.toggle()
-                            }
-                        }  label: {
-                            Text(vm.selectedDate.weekDateString())
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                                .foregroundColor(Color.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .glassCardFull()
-                        }
-                        
-                        Spacer()
-                        
-                        // go to next day
-                        Button {
-                            withAnimation {
-                                vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
-                            }
-                        } label: {
-                            Image(systemName: "chevron.right")
-                        }
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding(2)
-                    }
-                    .padding()
+                    dateSelector
                     
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
@@ -106,15 +62,20 @@ struct ScheduleView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-//                    .background {
-//                        if showPicker {
-//                            Color.black.opacity(0.5)
-//                                .blur(radius: 50)
-//                        }
-//                    }
+                    //                    .background {
+                    //                        if showPicker {
+                    //                            Color.black.opacity(0.5)
+                    //                                .blur(radius: 50)
+                    //                        }
+                    //                    }
                     
                 } else {
                     Text("Schedule unavailable")
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
                 }
             }
             
@@ -142,5 +103,56 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView()
+    }
+}
+
+extension ScheduleView {
+    var dateSelector: some View {
+        HStack {
+            // go to previous day
+            Button {
+                withAnimation(.easeInOut) {
+                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+            
+            Spacer()
+            
+            Button {
+                withAnimation {
+                    showPicker.toggle()
+                }
+            }  label: {
+                Text(vm.selectedDate.weekDateString())
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+            }
+            
+            Spacer()
+            
+            // go to next day
+            Button {
+                withAnimation {
+                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.right")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+        }
+        .padding()
     }
 }

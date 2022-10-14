@@ -22,6 +22,7 @@ struct SignUpView: View {
     @State var validEmail: Bool = false
     @State var validPassword: Bool = false
     @State var validName: Bool = false
+    @State var validAgreement: Bool = false
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
@@ -35,7 +36,7 @@ struct SignUpView: View {
         ZStack {
             ColorfulBackgroundView()
             
-            VStack {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     Text("Sign Up")
                         .font(.title)
@@ -62,7 +63,7 @@ struct SignUpView: View {
                 .padding(.vertical)
                 
                 VStack {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 20) {
                         CustomTextField(placeholder: "Enter name", text: $details.displayName)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
@@ -78,6 +79,21 @@ struct SignUpView: View {
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
+                        
+                        LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                            .padding(8)
+                        
+                        HStack {
+                            Image(systemName: validAgreement ? "checkmark.square.fill" : "square")
+                                .font(.system(size: 25))
+                            Text("I agree to the Privacy/Security Policy")
+                                .bold(validAgreement)
+                        }
+                        .padding(15)
+                        .glass()
+                        .onTapGesture {
+                            validAgreement.toggle()
+                        }
                     }
                 }
                 .padding(.vertical)
@@ -93,12 +109,12 @@ struct SignUpView: View {
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor((validEmail && validPassword && validName) ? Color.white: Color.gray)
+                    .foregroundColor((validEmail && validPassword && validName && validAgreement) ? Color.white: Color.gray)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity)
                     .glassCardFull()
                     .padding(.horizontal, 45)
-                    .disabled(!(validEmail && validPassword && validName))
+                    .disabled(!(validEmail && validPassword && validName && validAgreement))
                 }
                 .padding(.vertical)
                 
@@ -107,6 +123,12 @@ struct SignUpView: View {
             }
             .padding()
         }
+        .alert("Error", isPresented: $vm.hasError, actions: {
+            Button("OK", role: .cancel) { }
+        }) {
+            Text(vm.errorMessage ?? "")
+        }
+        .preferredColorScheme(.dark)
     }
 }
 

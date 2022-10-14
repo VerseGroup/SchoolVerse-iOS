@@ -20,13 +20,26 @@ struct LinkingView: View {
             ColorfulBackgroundView()
             
             VStack(spacing: 10) {
-                Text("Link Schoology/Veracross to SchoolVerse")
+                Text("Link School Accounts to SchoolVerse")
+                    .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
                     .font(.title)
                     .bold()
                     .padding(.vertical, 20)
                 
-                Text("Your credentials are saved on device and whenever your tasks are updated, they are end to end encrypted blah blah blah")
+                
+                DisclosureGroup {
+                    
+                    ParagraphLabel(name:
+    """
+    \tYour sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your confidential data. The VerseGroup team cannot see this data.
+    """
+                    )
+                } label: {
+                    HeaderLabel(name: "Linking Notice")
+                        .padding(.horizontal, 8)
+                }
+                .padding(.horizontal, 10)
                 
                 Spacer()
                 
@@ -45,6 +58,8 @@ struct LinkingView: View {
                             isNotEmpty(text: password)
                         }
                     
+                    
+                    
                     Button {
                         vm.linkSchoology(creds: schoologyCreds)
                     } label: {
@@ -59,10 +74,27 @@ struct LinkingView: View {
                     .padding(.horizontal, 45)
                     .padding(.vertical, 20)
                     .disabled(!(validUsername && validPassword))
+                    
+                    Button {
+                        Task {
+                            await vm.signOut()
+                        }
+                    } label: {
+                        Text("Sign Out")
+                    }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+                    .padding(.horizontal, 45)
+                    .padding(.vertical, 20)
                 }
                 
                 Spacer()
-                    .frame(height: 95)
+                Spacer()
+                Spacer()
             }
             .padding(.horizontal)
         }

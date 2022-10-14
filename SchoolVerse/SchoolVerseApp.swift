@@ -15,7 +15,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // chooses firebase plist based on prod or dev
         let filePath = Bundle.main.path(forResource: CustomEnvironment.firebasePlist, ofType: "plist")
         guard let fileopts = FirebaseOptions(contentsOfFile: filePath!)
-          else { assert(false, "Couldn't load config file") }
+          else {
+            assert(false, "Couldn't load config file")
+            fatalError("Couldn't load config file")
+        }
         FirebaseApp.configure(options: fileopts)
         return true
     }

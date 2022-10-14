@@ -41,6 +41,14 @@ struct SportsEventCellView: View {
                         Spacer()
                     }
                 }
+                
+                HStack {
+                    Image(systemName: "figure.run")
+                    
+                    Text(sportsEvent.name)
+                    
+                    Spacer()
+                }
             }
         }
         .padding()

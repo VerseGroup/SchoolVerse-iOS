@@ -91,6 +91,7 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
     
     init() {
         print("Authentication Manager initialized")
+        print(isAuthenticated)
         addSubscribers()
         registerStateListener()
     }
@@ -178,8 +179,8 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
             UserDefaults.standard.removeObject(forKey: "e_password")
             UserDefaults.standard.removeObject(forKey: "public_key")
             UserDefaults.standard.removeObject(forKey: "show_linking")
-            UserDefaults.standard.removeObject(forKey: "authenticated")
-
+            UserDefaults.standard.set(false, forKey: "authenticated")
+            print("Signed out")
         } catch {
             print("There was an issue when trying to sign out: \(error)")
             DispatchQueue.main.async {

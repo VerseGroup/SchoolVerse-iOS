@@ -11,29 +11,31 @@ import Resolver
 // TODO: fix transition between app view and linking view
 struct RouterView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
+    @InjectedObject var api: APIService
     
 //    @AppStorage("show_onboarding") var showOnboarding: Bool = true
     @AppStorage("show_linking") var showLinking: Bool = false
     
     var body: some View {
-        
-        if authManager.isAuthenticated {
-            if showLinking {
-                LinkingView()
-                    .transition(.move(edge: .bottom))
+        VStack(spacing: 0) {
+            if api.sameVersion {
+                if authManager.isAuthenticated {
+                    if showLinking {
+                        LinkingView()
+                            .transition(.move(edge: .bottom))
+                    } else {
+                        AppView()
+                            .transition(.move(edge: .bottom))
+                    }
+                } else {
+                    AuthenticationView()
+                }
             } else {
-                AppView()
-                    .transition(.move(edge: .bottom))
+                UpgradeView()
             }
-        } else {
-            AuthenticationView()
-            
-//            if showOnboarding {
-//                OnboardingView(showOnboarding: $showOnboarding)
-//                    .transition(.move(edge: .bottom))
-//            } else {
-//                AuthenticationView()
-//            }
+        }
+        .onAppear {
+            api.version()
         }
     }
 }

@@ -14,9 +14,9 @@ struct NavButtonView: View {
     var body: some View {
         Image(systemName: systemName)
             .foregroundColor(accentColor)
-            .font(.system(size:20))
-            .frame(width: 28, height: 28)
-            .padding(10)
+            .font(.system(size:15))
+            .frame(width: 25, height: 25)
+            .padding(5)
             .heavyGlass()
     }
 }

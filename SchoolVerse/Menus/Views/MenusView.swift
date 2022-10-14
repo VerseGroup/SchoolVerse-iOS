@@ -21,73 +21,57 @@ struct MenusView: View {
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(accentColor)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
+    @Namespace var animation
     
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
             
             VStack {
-                HStack {
-                    // go to previous day
-                    Button {
-                        withAnimation(.easeInOut) {
-                            vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
-                        }
-                    } label: {
-                        Image(systemName: "chevron.left")
-                    }
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(2)
-                    
-                    Spacer()
-                    
-                    Button {
-                        withAnimation {
-                            showPicker.toggle()
-                        }
-                    }  label: {
-                        Text(vm.selectedDate.weekDateString())
-                            .fontWeight(.semibold)
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                    }
-                    
-                    Spacer()
-                    
-                    // go to next day
-                    Button {
-                        withAnimation {
-                            vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
-                        }
-                    } label: {
-                        Image(systemName: "chevron.right")
-                    }
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(2)
-                }
-                .padding()
+                dateSelector
                 
                 VStack(spacing: 20) {
                     if let menu = vm.selectedMenu {
-                        Picker("", selection: $selectedMeal) {
-                            ForEach(Meal.allCases, id:\.self) { meal in
+//                        Picker("", selection: $selectedMeal) {
+//                            ForEach(Meal.allCases, id:\.self) { meal in
+//                                Text(meal.rawValue)
+//                                    .foregroundColor(.white)
+//                                    .tag(meal)
+//                            }
+//                        }
+//                        .pickerStyle(SegmentedPickerStyle())
+//                        .padding(.horizontal)
+                        
+                        HStack (spacing: 20) {
+                            ForEach (Meal.allCases, id: \.self) { meal in
                                 Text(meal.rawValue)
-                                    .foregroundColor(.white)
-                                    .tag(meal)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.horizontal)
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                    .frame(width: UIScreen.main.bounds.width / 4.5)
+                                    .background (
+                                        ZStack {
+                                            if meal == selectedMeal {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(.clear)
+                                                    .padding(20)
+                                                    .taintedGlass()
+                                                    .matchedGeometryEffect(id: "currentMeal", in: animation)
+                                            } //: if
+                                        } //: Zstack
+                                    ) //: background
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedMeal = meal
+                                        }
+                                    }
+                            } //: ForEach
+                        } //: HStack
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 5)
+                        .cornerRadius(20)
+                        .heavyGlass()
+                        .padding()
+                        
                         
                         switch selectedMeal {
                         case .breakfast:
@@ -112,6 +96,11 @@ struct MenusView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical)
+            }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
+                }
             }
             
             DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
@@ -142,5 +131,52 @@ struct MenuListView_Previews: PreviewProvider {
 }
 
 extension MenusView {
-    
+    var dateSelector: some View {
+        HStack {
+            // go to previous day
+            Button {
+                withAnimation(.easeInOut) {
+                    vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+            
+            Spacer()
+            
+            Button {
+                withAnimation {
+                    showPicker.toggle()
+                }
+            }  label: {
+                Text(vm.selectedDate.weekDateString())
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .glassCardFull()
+            }
+            
+            Spacer()
+            
+            // go to next day
+            Button {
+                withAnimation {
+                    vm.updateSelectedMenu(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
+                }
+            } label: {
+                Image(systemName: "chevron.right")
+                    .frame(width: 50, height: 50)
+            }
+            .foregroundColor(.white)
+            .bold()
+            .padding(5)
+        }
+        .padding()
+    }
 }

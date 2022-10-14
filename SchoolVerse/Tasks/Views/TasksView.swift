@@ -53,6 +53,7 @@ struct TasksView: View {
                                 Text("No assignments!")
                                     .font(.headline)
                                     .fontWeight(.bold)
+                                    .padding(15)
                                     .glass()
                             } else {
                                 ForEach(vm.previousTasks) { task in
@@ -74,6 +75,7 @@ struct TasksView: View {
                                 Text("No assignments soon!")
                                     .font(.headline)
                                     .fontWeight(.bold)
+                                    .padding(15)
                                     .glass()
                             } else {
                                 ForEach(vm.currentTasks) { task in
@@ -95,6 +97,7 @@ struct TasksView: View {
                                 Text("No assignments soon!")
                                     .font(.headline)
                                     .fontWeight(.bold)
+                                    .padding(15)
                                     .glass()
                             } else {
                                 ForEach(vm.futureTasks) { task in

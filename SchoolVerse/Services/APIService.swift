@@ -17,6 +17,9 @@ class APIService: ObservableObject {
     @Published var scrapeResponse: ScrapeResponse?
     @Published var keyResponse: KeyResponse?
     @Published var ensureResponse: EnsureResponse?
+    @Published var versionResponse: VersionResponse?
+    
+    @Published var sameVersion: Bool = true
     
     @Published var hasError: Bool = false
     @Published var errorMessage: String?
@@ -96,6 +99,25 @@ class APIService: ObservableObject {
             }
     }
     
+    func version() {
+        AF.request(baseURL + "/version")
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: VersionResponse.self) { response in
+                debugPrint("response: \(response.description)")
+                if let value = response.value {
+                    print("Server version: \(value.iosVersion)")
+                    print("iOS version: \(String(describing: Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String))")
+                    self.versionResponse = value
+                    self.sameVersion = value.iosVersion == Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+                }
+            }
+    }
+    
     // gets a public key from api, encrypts username and password with public key, saves public key and encrypted credentials to userDefaults
     func getKey(creds: CredentialsDetails, completion:@escaping  () -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -147,7 +169,9 @@ class APIService: ObservableObject {
                     }
                     completion()
                 } else {
-                    print("No public key")
+                    print("No public key - too many links")
+                    self.hasError = true
+                    self.errorMessage = "No public key - too many links"
                 }
             }
     }

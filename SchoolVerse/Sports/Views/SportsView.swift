@@ -60,6 +60,11 @@ struct SportsView: View {
                     
                 }
             }
+            .onTapGesture {
+                withAnimation {
+                    showPicker = false
+                }
+            }
             
             DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
@@ -98,10 +103,11 @@ extension SportsView {
                 }
             } label: {
                 Image(systemName: "chevron.left")
+                    .frame(width: 50, height: 50)
             }
             .foregroundColor(.white)
             .bold()
-            .padding(2)
+            .padding(5)
             
             Spacer()
             
@@ -128,10 +134,11 @@ extension SportsView {
                 }
             } label: {
                 Image(systemName: "chevron.right")
+                    .frame(width: 50, height: 50)
             }
             .foregroundColor(.white)
             .bold()
-            .padding(2)
+            .padding(5)
         }
         .padding()
     }
