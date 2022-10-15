@@ -26,6 +26,7 @@ struct OnboardingView: View {
                     .padding(30)
                 
                 Text("Welcome to SchoolVerse")
+                    .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(Color.white)
                     .font(.system(size: 50, weight: .bold))
                     .multilineTextAlignment(.center)

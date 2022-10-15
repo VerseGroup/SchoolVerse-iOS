@@ -97,6 +97,7 @@ extension AccountView {
                                 Circle().foregroundStyle(colors[index].gradient)
                             )
                             .frame(width: 50)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         Text(colorNames[index].description)
                             .foregroundColor(Color.white)

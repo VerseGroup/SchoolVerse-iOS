@@ -63,7 +63,7 @@ struct LinkingView: View {
                     Button {
                         vm.linkSchoology(creds: schoologyCreds)
                     } label: {
-                        Text("Link Schoology creds")
+                        Text("Link School Accounts")
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
