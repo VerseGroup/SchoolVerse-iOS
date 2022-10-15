@@ -19,8 +19,11 @@ struct SignUpView: View {
     @State var schoologyCreds: CredentialsDetails =
     CredentialsDetails(username: "", password: "")
     
+    @State var confirmPassword: String = ""
+    
     @State var validEmail: Bool = false
     @State var validPassword: Bool = false
+    @State var validConfirmPassword: Bool = false
     @State var validName: Bool = false
     @State var validAgreement: Bool = false
     
@@ -57,6 +60,11 @@ struct SignUpView: View {
                         CustomSecureField(placeholder: "Enter password", text: $appCreds.password)
                             .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
                                 isValidLength(text: password)
+                            }
+                        
+                        CustomSecureField(placeholder: "Confirm password", text: $confirmPassword)
+                            .warningAccessory($confirmPassword, valid: $validConfirmPassword, warning: "Passwords must match") { password in
+                                password == appCreds.password
                             }
                     }
                 }
@@ -109,12 +117,12 @@ struct SignUpView: View {
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor((validEmail && validPassword && validName && validAgreement) ? Color.white: Color.gray)
+                    .foregroundColor((validEmail && validPassword && validConfirmPassword && validName && validAgreement) ? Color.white: Color.gray)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity)
                     .glassCardFull()
                     .padding(.horizontal, 45)
-                    .disabled(!(validEmail && validPassword && validName && validAgreement))
+                    .disabled(!(validEmail && validPassword && validConfirmPassword && validName && validAgreement))
                 }
                 .padding(.vertical)
                 
