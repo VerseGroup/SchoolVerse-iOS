@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class MenusListViewModel: ObservableObject {
-    private let repo = MenusRepository()
+    @Published private var repo = MenusRepository()
     @Published var menus = [SchoolMenu]()
     @Published var errorMessage: String?
     

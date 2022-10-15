@@ -12,7 +12,7 @@ import SwiftUI
 import Collections
 
 class TaskListViewModel: ObservableObject {
-    @ObservedObject private var repo: TaskRepository = Resolver.resolve()
+    @Published private var repo: TaskRepository = Resolver.resolve()
     //    @Published var taskCellViewModels = [TaskCellViewModel]()
     
     @Published var previousTasks = [SchoolTask]()
@@ -28,7 +28,7 @@ class TaskListViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
     
-    @InjectedObject private var api: APIService
+    @Published private var api: APIService = Resolver.resolve()
     @Published var apiStatus: Bool = false
     @Published var getDataResponse: GetDataResponse?
     

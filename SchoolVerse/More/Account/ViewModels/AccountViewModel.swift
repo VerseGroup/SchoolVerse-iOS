@@ -11,8 +11,8 @@ import Resolver
 import SwiftUI
 
 class AccountViewModel: ObservableObject {
-    @InjectedObject private var authManager: FirebaseAuthenticationManager
-    
+    @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
+
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
     
@@ -72,6 +72,7 @@ class AccountViewModel: ObservableObject {
         accentColorLocal = color
     }
     
+    @MainActor
     func sendPasswordReset() {
         authManager.sendPasswordReset()
     }

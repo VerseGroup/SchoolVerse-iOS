@@ -11,8 +11,8 @@ import Resolver
 
 // TODO: add and expose error handling to the linking
 class LinkingViewModel: ObservableObject {
-    @InjectedObject private var authManager: FirebaseAuthenticationManager
-    @InjectedObject private var api: APIService
+    @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
+    @Published private var api: APIService = Resolver.resolve()
     
     // firebase
     @Published var errorMessage: String?

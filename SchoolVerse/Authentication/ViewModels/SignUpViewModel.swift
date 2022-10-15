@@ -10,7 +10,7 @@ import Combine
 import Resolver
 
 class SignUpViewModel: ObservableObject {
-    @InjectedObject private var authManager: FirebaseAuthenticationManager
+    @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
     
     @Published var errorMessage: String?
     @Published var hasError: Bool = false

@@ -8,10 +8,9 @@
 import Foundation
 import Combine
 import Resolver
-import SwiftUI
 
 class ScheduleViewModel: ObservableObject {
-    @ObservedObject private var repo: ScheduleRepository = Resolver.resolve()
+    @Published private var repo: ScheduleRepository = Resolver.resolve()
     @Published var errorMessage: String?
     
     @Published var dayEvents: [DayEvent] = []
