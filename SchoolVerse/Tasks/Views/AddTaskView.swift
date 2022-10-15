@@ -11,7 +11,7 @@ import Resolver
 struct AddTaskView: View {
     @ObservedObject private var repo: TaskRepository = Resolver.resolve()
     @State var task: SchoolTask = SchoolTask(id: nil, name: "", completed: false, dueDate: Date.now, description: "", courseId: "", courseName: "", platformInformation: PlatformInformation(assignmentCode: UUID().uuidString, platformCode: "sv"))
-    @State var course: Course = Course(id: "other", name: "Other", section: "other")
+    @State var course: Course = Course(id: "other", name: "Other")
     @State var validName: Bool = false
     
     // replaces presentationMode
@@ -56,7 +56,7 @@ struct AddTaskView: View {
                         ForEach(repo.courses, id:\.id) { course in
                             Text(course.name).tag(course)
                         }
-                        Text("Other").tag(Course(id: "other", name: "Other", section: "other"))
+                        Text("Other").tag(Course(id: "other", name: "Other"))
                     } label: {
                         Text("Course")
                     }

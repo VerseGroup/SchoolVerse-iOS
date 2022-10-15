@@ -15,6 +15,12 @@ struct VersionResponse: Codable {
     }
 }
 
+struct ApproveResponse: Codable {
+    let message: ResponseMessage
+    let exception: String?
+    let approved: Bool?
+}
+
 struct GetDataResponse: Codable {
     let message: ResponseMessage
     let exception: String? // only happens when ResponseMessage.failure or .error

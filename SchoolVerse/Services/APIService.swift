@@ -18,11 +18,14 @@ class APIService: ObservableObject {
     @Published var keyResponse: KeyResponse?
     @Published var ensureResponse: EnsureResponse?
     @Published var versionResponse: VersionResponse?
+    @Published var approveResponse: ApproveResponse?
     
     @Published var sameVersion: Bool = true
     
     @Published var hasError: Bool = false
     @Published var errorMessage: String?
+    
+    @Published var approved: Bool = true
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -223,6 +226,47 @@ class APIService: ObservableObject {
                     print("Linking failed - service")
                     self.hasError = true
                     self.errorMessage = "Linking failed"
+                }
+            }
+    }
+    
+    func approve() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "user_id": userId,
+            "api_key": CustomEnvironment.apiKey
+        ]
+        
+        AF.request(baseURL + "/approve", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: ApproveResponse.self) { response in
+                debugPrint("ensure response: \(response.description)")
+                self.approveResponse = response.value
+                
+                if let value = response.value {
+                    if value.message == .success {
+                        if response.value?.approved ?? false {
+                            self.approved = true
+                        } else {
+                            self.approved = false
+                            self.hasError = true
+                            self.errorMessage = "Approve failed"
+                        }
+                    } else {
+                        self.approved = false
+                        print("Approve failed")
+                        self.hasError = true
+                        self.errorMessage = "Approve failed"
+                    }
                 }
             }
     }

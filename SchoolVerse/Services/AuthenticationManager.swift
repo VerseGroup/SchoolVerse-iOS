@@ -137,7 +137,7 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
                                 self.isAuthenticated = false
                                 UserDefaults.standard.set(false, forKey: "authenticated")
                             }
-                            self.errorMessage = "Couldn't get user document from Firestore: \(error.localizedDescription)"
+                            self.errorMessage = "Couldn't get user document from Firestore: \(error)"
                             self.hasError = true
                         }
                     }

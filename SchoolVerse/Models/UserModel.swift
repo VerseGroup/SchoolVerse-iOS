@@ -17,9 +17,9 @@ struct UserModel: Codable, Identifiable {
     var gradeLevel: Int
     var email: String
     
-    var key: String
-    var schedule: Schedule
     var courses: [Course]
+    
+    var approved: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,8 +28,8 @@ struct UserModel: Codable, Identifiable {
         case gradeLevel = "grade_level"
         case email
         
-        case key = "private_key"
-        case schedule
         case courses
+        
+        case approved
     }
 }
