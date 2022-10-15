@@ -14,7 +14,7 @@ class APIService: ObservableObject {
     let baseURL = CustomEnvironment.rootURLString
     @Published var status: Bool = false
     
-    @Published var scrapeResponse: ScrapeResponse?
+    @Published var getDataResponse: GetDataResponse?
     @Published var keyResponse: KeyResponse?
     @Published var ensureResponse: EnsureResponse?
     @Published var versionResponse: VersionResponse?
@@ -44,7 +44,7 @@ class APIService: ObservableObject {
         
     }
     
-    func scrape(completion: @escaping (ScrapeResponse?) -> ()) {
+    func getData(completion: @escaping (GetDataResponse?) -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
             return
@@ -67,18 +67,19 @@ class APIService: ObservableObject {
             "user_id": userId,
             "e_username": encryptedUsername,
             "e_password": encryptedPassword,
+            "api_key": CustomEnvironment.apiKey
         ]
         
-        AF.request(baseURL + "/scrape", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        AF.request(baseURL + "/getdata", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .cURLDescription { description in
                 print(description)
             }
             .response(completionHandler: { data in
                 debugPrint(data)
             })
-            .responseDecodable(of: ScrapeResponse.self) { response in
-                debugPrint("scrape response: \(response.description)")
-                self.scrapeResponse = response.value
+            .responseDecodable(of: GetDataResponse.self) { response in
+                debugPrint("get data response: \(response.description)")
+                self.getDataResponse = response.value
                 if response.value?.message == .success {
                     
                 } else {
@@ -119,7 +120,7 @@ class APIService: ObservableObject {
     }
     
     // gets a public key from api, encrypts username and password with public key, saves public key and encrypted credentials to userDefaults
-    func getKey(creds: CredentialsDetails, completion:@escaping  () -> ()) {
+    func getKey(creds: CredentialsDetails, completion: @escaping () -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
             return
@@ -127,6 +128,7 @@ class APIService: ObservableObject {
         
         let parameters: [String: String] = [
             "user_id": userId,
+            "api_key": CustomEnvironment.apiKey
         ]
         
         AF.request(baseURL + "/getkey", method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -176,7 +178,7 @@ class APIService: ObservableObject {
             }
     }
     
-    // ensures schoology creds are valid ( called after getKey() )
+    // ensures creds are valid ( called after getKey() )
     func ensure(completion: @escaping (EnsureResponse?) -> ()) {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("user not initialized")
@@ -200,6 +202,7 @@ class APIService: ObservableObject {
             "user_id": userId,
             "e_username": encryptedUsername,
             "e_password": encryptedPassword,
+            "api_key": CustomEnvironment.apiKey
         ]
         
         AF.request(baseURL + "/ensure", method: .post, parameters: parameters, encoding: JSONEncoding.default)

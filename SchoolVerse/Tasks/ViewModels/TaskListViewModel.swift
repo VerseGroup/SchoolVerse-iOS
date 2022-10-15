@@ -30,7 +30,7 @@ class TaskListViewModel: ObservableObject {
     
     @InjectedObject private var api: APIService
     @Published var apiStatus: Bool = false
-    @Published var scrapeResponse: ScrapeResponse?
+    @Published var getDataResponse: GetDataResponse?
     
     @Published var showBanner: Bool = false
     @Published var bannerTitle: String = ""
@@ -216,17 +216,17 @@ class TaskListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        api.$scrapeResponse
-            .sink { [weak self] (returnedScrapeResponse) in
-                self?.scrapeResponse = returnedScrapeResponse
+        api.$getDataResponse
+            .sink { [weak self] (returnedGetDataResponse) in
+                self?.getDataResponse = returnedGetDataResponse
             }
             .store(in: &cancellables)
         
         // dismisses after 5 seconds
-        $scrapeResponse
+        $getDataResponse
             .debounce(for: .seconds(5), scheduler: RunLoop.main)
             .sink { _ in
-                self.scrapeResponse = nil
+                self.getDataResponse = nil
             }
             .store(in: &cancellables)
         
@@ -237,14 +237,14 @@ class TaskListViewModel: ObservableObject {
         api.ping()
     }
     
-    func scrape() {
+    func getData() {
         if isAvailable {
             self.isAvailable = false
             withAnimation(.spring()) {
                 self.isLoading = true
             }
             self.repo.removeListener()
-            self.api.scrape(completion: { scrapeResponse in
+            self.api.getData(completion: { getDataResponse in
                 self.repo.addListener()
                 withAnimation(.spring()) {
                     self.isLoading = false
@@ -257,12 +257,12 @@ class TaskListViewModel: ObservableObject {
     
 //    private let debouncer = Debouncer(timeInterval: 200)
     
-//    func scrape() {
+//    func getData() {
 //        debouncer.renewInterval()
 //        debouncer.handler = {
 //            self.isLoading = true
 //            self.repo.removeListener()
-//            self.api.scrape(completion: { scrapeResponse in
+//            self.api.getData(completion: { getDataResponse in
 //                self.repo.addListener()
 //                self.isLoading = false
 //            })

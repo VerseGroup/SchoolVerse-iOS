@@ -121,7 +121,7 @@ struct TasksView: View {
             }
             .overlay {
                 if vm.isLoading {
-                    LoadingView(text: "Scraping tasks...")
+                    LoadingView(text: "Getting tasks...")
                 }
             }
             .alert("Error", isPresented: $vm.hasError, actions: {
@@ -134,7 +134,7 @@ struct TasksView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 Button {
-                    vm.scrape()
+                    vm.getData()
                 } label: {
                     NavButtonView(systemName: "arrow.clockwise")
                         .opacity(vm.isAvailable ? 1 : 0.25)

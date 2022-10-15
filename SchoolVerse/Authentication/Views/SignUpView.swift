@@ -16,8 +16,7 @@ struct SignUpView: View {
     
     @State var appCreds: AppCredentialsDetails = AppCredentialsDetails(email: "", password: "")
     @State var details: UserModel = UserModel(userId: "", displayName: "", gradeLevel: 9, email: "", key: "", schedule: Schedule(days: []), courses: [])
-    @State var schoologyCreds: CredentialsDetails =
-    CredentialsDetails(username: "", password: "")
+    @State var accountCreds: CredentialsDetails = CredentialsDetails(username: "", password: "")
     
     @State var confirmPassword: String = ""
     
@@ -29,12 +28,6 @@ struct SignUpView: View {
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     @Namespace var animation
-    
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(accentColor)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
     
     var body: some View {
         ZStack {

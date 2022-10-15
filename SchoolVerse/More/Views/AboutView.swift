@@ -90,6 +90,8 @@ extension AboutView {
             LinkLabel(name: "VerseGroup Website", link: URL(string: "https://www.versegroup.tech")!)
                 .padding(10)
             
+            LinkLabel(name: "Donations", link: URL(string: "https://www.buymeacoffee.com/schoolverse")!)
+                .padding(10)
         }
     }
 }

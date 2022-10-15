@@ -117,7 +117,6 @@ class TaskRepository: ObservableObject {
         listener?.remove()
     }
     
-    // possible solution: detach the snapshot listener when scraping and reattach after finishing listen
 //    func loadTasks() {
 //        let listener = collectionRef
 //            .addSnapshotListener { [weak self] (querySnapshot, error) in
