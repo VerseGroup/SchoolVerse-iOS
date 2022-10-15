@@ -111,13 +111,13 @@ struct SignUpView: View {
                         .cornerRadius(20)
                         .heavyGlass()
                         
-                        LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                        LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
                             .padding(8)
                         
                         HStack {
                             Image(systemName: validAgreement ? "checkmark.square.fill" : "square")
                                 .font(.system(size: 25))
-                            Text("I agree to the Privacy/Security Policy")
+                            Text("I agree to the TOS & Privacy Policy")
                                 .bold(validAgreement)
                         }
                         .padding(15)
