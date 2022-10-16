@@ -11,15 +11,15 @@ import Resolver
 
 // TODO: add and expose error handling to the linking
 class LinkingViewModel: ObservableObject {
-    @InjectedObject private var authManager: FirebaseAuthenticationManager
-    @InjectedObject private var api: APIService
+    @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
+    @Published private var api: APIService = Resolver.resolve()
     
     // firebase
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
     
     // api
-    @Published var scrapeResponse: ScrapeResponse?
+    @Published var getDataResponse: GetDataResponse?
     @Published var keyResponse: KeyResponse?
     @Published var ensureResponse: EnsureResponse?
     
@@ -63,17 +63,17 @@ class LinkingViewModel: ObservableObject {
             .store(in: &cancellables)
         
         
-        api.$scrapeResponse
-            .sink { [weak self] (returnedScrapeResponse) in
-                self?.scrapeResponse = returnedScrapeResponse
+        api.$getDataResponse
+            .sink { [weak self] (returnedGetDataResponse) in
+                self?.getDataResponse = returnedGetDataResponse
             }
             .store(in: &cancellables)
         
         // dismisses after 5 seconds
-        $scrapeResponse
+        $getDataResponse
             .debounce(for: .seconds(5), scheduler: RunLoop.main)
             .sink { _ in
-                self.scrapeResponse = nil
+                self.getDataResponse = nil
             }
             .store(in: &cancellables)
         
@@ -112,7 +112,7 @@ class LinkingViewModel: ObservableObject {
         api.ensure(completion: completion)
     }
     
-    func linkSchoology(creds: CredentialsDetails) {
+    func linkAccount(creds: CredentialsDetails) {
         self.isLoading = true
         getKey(creds: creds, completion: {
             self.ensure(completion: { ensureResponse in

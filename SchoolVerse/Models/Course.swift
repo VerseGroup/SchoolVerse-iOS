@@ -11,5 +11,5 @@ import SwiftUI
 struct Course: Codable, Hashable {
     var id: String
     var name: String
-    var section: String
+//    var section: String
 }

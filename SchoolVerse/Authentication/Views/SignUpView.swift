@@ -15,22 +15,19 @@ struct SignUpView: View {
     @ObservedObject var vm: SignUpViewModel = SignUpViewModel()
     
     @State var appCreds: AppCredentialsDetails = AppCredentialsDetails(email: "", password: "")
-    @State var details: UserModel = UserModel(userId: "", displayName: "", gradeLevel: 9, email: "", key: "", schedule: Schedule(days: []), courses: [])
-    @State var schoologyCreds: CredentialsDetails =
-    CredentialsDetails(username: "", password: "")
+    @State var details: UserModel = UserModel(userId: "", displayName: "", gradeLevel: 9, email: "", courses: [], approved: false)
+    @State var accountCreds: CredentialsDetails = CredentialsDetails(username: "", password: "")
+    
+    @State var confirmPassword: String = ""
     
     @State var validEmail: Bool = false
     @State var validPassword: Bool = false
+    @State var validConfirmPassword: Bool = false
     @State var validName: Bool = false
     @State var validAgreement: Bool = false
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
-    
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(accentColor)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
+    @Namespace var animation
     
     var body: some View {
         ZStack {
@@ -58,6 +55,11 @@ struct SignUpView: View {
                             .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
                                 isValidLength(text: password)
                             }
+                        
+                        CustomSecureField(placeholder: "Confirm password", text: $confirmPassword)
+                            .warningAccessory($confirmPassword, valid: $validConfirmPassword, warning: "Passwords must match") { password in
+                                password == appCreds.password
+                            }
                     }
                 }
                 .padding(.vertical)
@@ -71,22 +73,51 @@ struct SignUpView: View {
                                 isNotEmpty(text: name)
                             }
                         
-                        Picker("Grade level", selection: $details.gradeLevel) {
-                            ForEach(9..<13) { grade in
+//                        Picker("Grade level", selection: $details.gradeLevel) {
+//                            ForEach(9..<13) { grade in
+//                                Text("Grade \(grade)")
+//                                    .foregroundColor(.white)
+//                                    .tag(grade)
+//                            }
+//                        }
+//                        .pickerStyle(SegmentedPickerStyle())
+                        HStack (spacing: 10) {
+                            ForEach (9..<13) { grade in
                                 Text("Grade \(grade)")
-                                    .foregroundColor(.white)
                                     .tag(grade)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                    .frame(width: UIScreen.main.bounds.width / 5)
+                                    .background (
+                                        ZStack {
+                                            if grade == details.gradeLevel {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(.clear)
+                                                    .padding(20)
+                                                    .taintedGlass()
+                                                    .matchedGeometryEffect(id: "selectedGrade", in: animation)
+                                            } //: if
+                                        } //: Zstack
+                                    ) //: background
+                                    .onTapGesture {
+                                        withAnimation {
+                                            details.gradeLevel = grade
+                                        }
+                                    }
+                            } //: ForEach
+                        } //: HStack
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 5)
+                        .cornerRadius(20)
+                        .heavyGlass()
                         
-                        LinkLabel(name: "Privacy/Security Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                        LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
                             .padding(8)
                         
                         HStack {
                             Image(systemName: validAgreement ? "checkmark.square.fill" : "square")
                                 .font(.system(size: 25))
-                            Text("I agree to the Privacy/Security Policy")
+                            Text("I agree to the TOS & Privacy Policy")
                                 .bold(validAgreement)
                         }
                         .padding(15)
@@ -109,12 +140,12 @@ struct SignUpView: View {
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor((validEmail && validPassword && validName && validAgreement) ? Color.white: Color.gray)
+                    .foregroundColor((validEmail && validPassword && validConfirmPassword && validName && validAgreement) ? Color.white: Color.gray)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity)
                     .glassCardFull()
                     .padding(.horizontal, 45)
-                    .disabled(!(validEmail && validPassword && validName && validAgreement))
+                    .disabled(!(validEmail && validPassword && validConfirmPassword && validName && validAgreement))
                 }
                 .padding(.vertical)
                 

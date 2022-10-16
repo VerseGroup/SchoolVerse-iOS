@@ -15,19 +15,27 @@ struct VersionResponse: Codable {
     }
 }
 
-struct ScrapeResponse: Codable {
+struct ApproveResponse: Codable {
+    let message: ResponseMessage
+    let exception: String?
+    let approved: Bool?
+}
+
+struct GetDataResponse: Codable {
     let message: ResponseMessage
     let exception: String? // only happens when ResponseMessage.failure or .error
-    let passed: Bool? // only happens when scrape fails to pass
+    let passed: Bool? // only happens when get data fails to pass
 }
 
 struct KeyResponse: Codable {
     let message: ResponseMessage
     let publicKey: String? // only happens when ResponseMessage.success
+    let approved: Bool
     
     enum CodingKeys: String, CodingKey {
         case message
         case publicKey = "public_key"
+        case approved
     }
 }
 
@@ -64,8 +72,6 @@ extension ResponseMessage {
         switch message {
         case "success":
             return .success
-        case "failed to scrape schoology":
-            return .failure
         case "user does not exist":
             return .failure
         case "overuse":

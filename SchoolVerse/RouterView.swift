@@ -16,20 +16,33 @@ struct RouterView: View {
 //    @AppStorage("show_onboarding") var showOnboarding: Bool = true
     @AppStorage("show_linking") var showLinking: Bool = false
     
+    @State var approveAvailable: Bool = true
+    
     var body: some View {
         VStack(spacing: 0) {
             if api.sameVersion {
+                
                 if authManager.isAuthenticated {
-                    if showLinking {
-                        LinkingView()
-                            .transition(.move(edge: .bottom))
-                    } else {
-                        AppView()
-                            .transition(.move(edge: .bottom))
+                    VStack(spacing: 0) {
+                        if api.approved {
+                            if showLinking {
+                                LinkingView()
+                                    .transition(.move(edge: .bottom))
+                            } else {
+                                AppView()
+                                    .transition(.move(edge: .bottom))
+                            }
+                        } else {
+                            approvalView
+                        }
+                    }
+                    .onAppear {
+                        api.approve()
                     }
                 } else {
                     AuthenticationView()
                 }
+                
             } else {
                 UpgradeView()
             }
@@ -43,5 +56,61 @@ struct RouterView: View {
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
         RouterView()
+    }
+}
+
+extension RouterView {
+    private var approvalView: some View {
+        ZStack {
+            ColorfulBackgroundView()
+            
+            VStack {
+                Image("VG-ClearBG")
+                    .frame(width: 300, height: 300)
+                    .glassCard()
+                    .padding(30)
+                
+                Text("Awaiting Approval\nPlease Check Later")
+                    .multilineTextAlignment(.center)
+                    .font(.title)
+                    .bold()
+                    .padding(20)
+                    .glassCard()
+                    .padding()
+                
+                Button {
+                    api.approve()
+                    approveAvailable = false
+                } label: {
+                    Text("Refresh Approval")
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(approveAvailable ? Color.white: Color.gray)
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity)
+                .glassCardFull()
+                .padding(.horizontal, 45)
+                .padding(.vertical, 20)
+                .disabled(!approveAvailable)
+                
+                Button {
+                    Task {
+                        await authManager.signOut()
+                    }
+                } label: {
+                    Text("Sign Out")
+                }
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.white)
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity)
+                .glassCardFull()
+                .padding(.horizontal, 45)
+                .padding(.vertical, 20)
+            }
+        }
+        .preferredColorScheme(.dark)
     }
 }

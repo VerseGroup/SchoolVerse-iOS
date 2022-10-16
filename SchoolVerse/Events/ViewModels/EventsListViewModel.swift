@@ -10,7 +10,7 @@ import Combine
 
 // read doc where(date = selectedDate)
 class EventsListViewModel: ObservableObject {
-    private let repo = EventRepository()
+    @Published private var repo = EventRepository()
     @Published var events = [Event]()
     @Published var errorMessage: String?
     

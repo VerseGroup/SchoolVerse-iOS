@@ -8,10 +8,9 @@
 import Foundation
 import Combine
 import Resolver
-import SwiftUI
 
 class TaskCellViewModel: ObservableObject, Identifiable {
-    @ObservedObject private var repo: TaskRepository = Resolver.resolve()
+    @Published private var repo: TaskRepository = Resolver.resolve()
     @Published var task: SchoolTask
     
     var id: String = ""

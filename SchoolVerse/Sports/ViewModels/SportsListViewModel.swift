@@ -10,9 +10,9 @@ import Combine
 import Resolver
 
 class SportsListViewModel: ObservableObject {
-    private let repo = SportsRepository()
-    @InjectedObject private var api: APIService
-    
+    @Published private var repo = SportsRepository()
+    @Published private var api: APIService = Resolver.resolve()
+
     @Published var allSports = [Sport]()
     @Published var allSportsEvents = [SportsEvent]()
     @Published var selectedAllSportsEvents = [SportsEvent]()

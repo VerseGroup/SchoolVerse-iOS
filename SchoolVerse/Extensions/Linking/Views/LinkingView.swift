@@ -10,7 +10,7 @@ import SwiftUI
 struct LinkingView: View {
     @ObservedObject var vm: LinkingViewModel = LinkingViewModel()
     
-    @State var schoologyCreds = CredentialsDetails(username: "", password: "")
+    @State var accountCreds = CredentialsDetails(username: "", password: "")
     
     @State var validUsername: Bool = false
     @State var validPassword: Bool = false
@@ -32,7 +32,7 @@ struct LinkingView: View {
                     
                     ParagraphLabel(name:
     """
-    \tYour sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your confidential data. The VerseGroup team cannot see this data.
+    \tHackley School has authorized SchoolVerse and VerseGroup to use your data for the sole purpose of providing you this software. Your sensitive data (linked accounts) is end-to-end encrypted, split across both your device and our servers so that physical access to both your phone and our servers is required to view your confidential data. The VerseGroup team cannot see this data. View our privacy policy for extended information on our website.
     """
                     )
                 } label: {
@@ -44,26 +44,25 @@ struct LinkingView: View {
                 Spacer()
                 
                 VStack(spacing: 10) {
-                    HeaderLabel(name: "Enter your Schoology credentials")
+                    HeaderLabel(name: "Enter your Hackley School credentials")
                     
-                    CustomTextField(placeholder: "Enter username", text: $schoologyCreds.username)
+                    CustomTextField(placeholder: "Enter username", text: $accountCreds.username)
                         .textInputAutocapitalization(.never)
                         .disableAutocorrection(true)
-                        .warningAccessory($schoologyCreds.username, valid: $validUsername, warning: "Username must not be empty") { username in
+                        .warningAccessory($accountCreds.username, valid: $validUsername, warning: "Username must not be empty") { username in
                             isNotEmpty(text: username)
                         }
                     
-                    CustomSecureField(placeholder: "Enter password", text: $schoologyCreds.password)
-                        .warningAccessory($schoologyCreds.password, valid: $validPassword, warning: "Password must not be empty") { password in
+                    CustomSecureField(placeholder: "Enter password", text: $accountCreds.password)
+                        .warningAccessory($accountCreds.password, valid: $validPassword, warning: "Password must not be empty") { password in
                             isNotEmpty(text: password)
                         }
                     
                     
-                    
                     Button {
-                        vm.linkSchoology(creds: schoologyCreds)
+                        vm.linkAccount(creds: accountCreds)
                     } label: {
-                        Text("Link Schoology creds")
+                        Text("Link School Accounts")
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
@@ -100,7 +99,7 @@ struct LinkingView: View {
         }
         .overlay {
             if vm.isLoading {
-                LoadingView(text: "Verifying Schoology credentials...")
+                LoadingView(text: "Verifying account...")
             }
         }
         .alert("Error", isPresented: $vm.hasError, actions: {
