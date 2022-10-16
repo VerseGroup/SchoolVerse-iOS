@@ -16,64 +16,125 @@ struct MoreView: View {
             ColorfulBackgroundView()
             
             ScrollView(showsIndicators: false) {
-                Grid(horizontalSpacing: 20, verticalSpacing: 20) {
-                    GridRow {
-                        NavigationLink {
-                            AccountView()
-                        } label: {
-                            MoreInfoCardView(imageName: "person.text.rectangle", name: "Account")
-                        }
-                        
-                        NavigationLink {
-                            AboutView()
-                        } label: {
-                            MoreInfoCardView(imageName: "info.circle.fill", name: "About")
-                        }
-                    }
+                // ipad
+                if(UIDevice.current.userInterfaceIdiom == .pad) {
                     
-                    GridRow {
-                        NavigationLink {
-                            SportsView()
-                        } label: {
-                            MoreInfoCardView(imageName: "sportscourt", name: "Sports")
+                    Grid(horizontalSpacing: 20, verticalSpacing: 20) {
+                        GridRow {
+                            NavigationLink {
+                                AccountView()
+                            } label: {
+                                MoreInfoCardView(imageName: "person.text.rectangle", name: "Account")
+                            }
+                            
+                            NavigationLink {
+                                AboutView()
+                            } label: {
+                                MoreInfoCardView(imageName: "info.circle.fill", name: "About")
+                            }
+                            
+                            NavigationLink {
+                                SportsView()
+                            } label: {
+                                MoreInfoCardView(imageName: "sportscourt", name: "Sports")
+                            }
+                            
+                            NavigationLink {
+                                EventsView()
+                            } label: {
+                                MoreInfoCardView(imageName: "calendar.badge.exclamationmark", name: "Events")
+                            }
                         }
                         
-                        NavigationLink {
-                            EventsView()
-                        } label: {
-                            MoreInfoCardView(imageName: "calendar.badge.exclamationmark", name: "Events")
+                        GridRow {
+                            Button {
+                                selection = .menu
+                            } label: {
+                                MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
+                            }
+                            
+                            Button {
+                                selection = .tasks
+                            } label: {
+                                MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
+                            }
+                            
+                            //                        Button {
+                            //                            selection = .clubs
+                            //                        } label: {
+                            //                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
+                            //                        }
+                            
+                            Button {
+                                selection = .schedule
+                            } label: {
+                                MoreInfoCardView(imageName: "calendar", name: "Schedule")
+                            }
                         }
                     }
+                    .padding(15)
                     
-                    GridRow {
-                        Button {
-                            selection = .menu
-                        } label: {
-                            MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
+                // iphone
+                } else {
+                    Grid(horizontalSpacing: 20, verticalSpacing: 20) {
+                        GridRow {
+                            NavigationLink {
+                                AccountView()
+                            } label: {
+                                MoreInfoCardView(imageName: "person.text.rectangle", name: "Account")
+                            }
+                            
+                            NavigationLink {
+                                AboutView()
+                            } label: {
+                                MoreInfoCardView(imageName: "info.circle.fill", name: "About")
+                            }
                         }
                         
-                        Button {
-                            selection = .tasks
-                        } label: {
-                            MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
+                        GridRow {
+                            NavigationLink {
+                                SportsView()
+                            } label: {
+                                MoreInfoCardView(imageName: "sportscourt", name: "Sports")
+                            }
+                            
+                            NavigationLink {
+                                EventsView()
+                            } label: {
+                                MoreInfoCardView(imageName: "calendar.badge.exclamationmark", name: "Events")
+                            }
                         }
-                    }
-                    
-                    GridRow {
-//                        Button {
-//                            selection = .clubs
-//                        } label: {
-//                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
-//                        }
                         
-                        Button {
-                            selection = .schedule
-                        } label: {
-                            MoreInfoCardView(imageName: "calendar", name: "Schedule")
+                        GridRow {
+                            Button {
+                                selection = .menu
+                            } label: {
+                                MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
+                            }
+                            
+                            Button {
+                                selection = .tasks
+                            } label: {
+                                MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
+                            }
                         }
-                    }
-                } //: Grid
-                .padding(15)
+                        
+                        GridRow {
+                            //                        Button {
+                            //                            selection = .clubs
+                            //                        } label: {
+                            //                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
+                            //                        }
+                            
+                            Button {
+                                selection = .schedule
+                            } label: {
+                                MoreInfoCardView(imageName: "calendar", name: "Schedule")
+                            }
+                        }
+                    } //: Grid
+                    .padding(15)
+                }
                 
                 
                 Spacer()

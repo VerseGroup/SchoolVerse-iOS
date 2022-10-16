@@ -19,36 +19,72 @@ struct RouterView: View {
     @State var approveAvailable: Bool = true
     
     var body: some View {
-        VStack(spacing: 0) {
-            if api.sameVersion {
-                
-                if authManager.isAuthenticated {
-                    VStack(spacing: 0) {
-                        if api.approved {
-                            if showLinking {
-                                LinkingView()
-                                    .transition(.move(edge: .bottom))
+        // ipad
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            VStack(spacing: 10) {
+                if api.sameVersion {
+                    
+                    if authManager.isAuthenticated {
+                        VStack(spacing: 10) {
+                            if api.approved {
+                                if showLinking {
+                                    LinkingView()
+                                        .transition(.move(edge: .bottom))
+                                } else {
+                                    AppView()
+                                        .transition(.move(edge: .bottom))
+                                }
                             } else {
-                                AppView()
-                                    .transition(.move(edge: .bottom))
+                                approvalView
                             }
-                        } else {
-                            approvalView
                         }
+                        .onAppear {
+                            api.approve()
+                        }
+                    } else {
+                        AuthenticationView()
                     }
-                    .onAppear {
-                        api.approve()
-                    }
+                    
                 } else {
-                    AuthenticationView()
+                    UpgradeView()
                 }
-                
-            } else {
-                UpgradeView()
             }
-        }
-        .onAppear {
-            api.version()
+            .onAppear {
+                api.version()
+            }
+        // iphone
+        } else {
+            VStack(spacing: 0) {
+                if api.sameVersion {
+                    
+                    if authManager.isAuthenticated {
+                        VStack(spacing: 0) {
+                            if api.approved {
+                                if showLinking {
+                                    LinkingView()
+                                        .transition(.move(edge: .bottom))
+                                } else {
+                                    AppView()
+                                        .transition(.move(edge: .bottom))
+                                }
+                            } else {
+                                approvalView
+                            }
+                        }
+                        .onAppear {
+                            api.approve()
+                        }
+                    } else {
+                        AuthenticationView()
+                    }
+                    
+                } else {
+                    UpgradeView()
+                }
+            }
+            .onAppear {
+                api.version()
+            }
         }
     }
 }
