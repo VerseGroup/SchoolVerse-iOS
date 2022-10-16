@@ -53,18 +53,18 @@ struct MoreView: View {
                         }
                         
                         Button {
-                            selection = .clubs
-                        } label: {
-                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
-                        }
-                    }
-                    
-                    GridRow {
-                        Button {
                             selection = .tasks
                         } label: {
                             MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
                         }
+                    }
+                    
+                    GridRow {
+//                        Button {
+//                            selection = .clubs
+//                        } label: {
+//                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
+//                        }
                         
                         Button {
                             selection = .schedule
