@@ -68,6 +68,10 @@ class AccountViewModel: ObservableObject {
         await authManager.signOut()
     }
     
+    func deleteAccount() {
+        authManager.deleteUser()
+    }
+    
     func changeAccentColor(color: Color) {
         accentColorLocal = color
     }

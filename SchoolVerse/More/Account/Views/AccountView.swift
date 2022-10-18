@@ -13,6 +13,8 @@ struct AccountView: View {
     var colors: [Color] = [Color.accent.blue, Color.accent.cyan, Color.accent.pink, Color.accent.purple]
     var colorNames: [String] = ["Blue", "Cyan", "Pink", "Purple"]
     
+    @State var showDelete: Bool = false
+    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
@@ -60,6 +62,19 @@ struct AccountView: View {
                         .glassCardFull()
                         .padding(.horizontal, 45)
                         
+                        Button {
+                            showDelete.toggle()
+                        } label: {
+                            Text("Delete Account")
+                        }
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.white)
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .glassCardFull()
+                        .padding(.horizontal, 45)
+                        
                         Spacer()
                             .frame(height: 90)
                     }
@@ -68,6 +83,15 @@ struct AccountView: View {
                 }
             }
             .padding(.horizontal)
+            .alert(isPresented: $showDelete) {
+                Alert(
+                    title: Text("Are you sure you want to delete your account?"),
+                    primaryButton: .destructive(Text("Delete Account")) {
+                        vm.deleteAccount()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
         .navigationTitle("Account")
     }
