@@ -33,7 +33,7 @@ struct AccountView: View {
                                 .padding(.horizontal)
                             
                             Spacer()
-                                .frame(height: 30)
+                                .frame(height: 20)
                             
                             Button {
                                 vm.sendPasswordReset()
