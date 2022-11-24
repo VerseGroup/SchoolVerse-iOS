@@ -38,6 +38,7 @@ class SportsRepository: ObservableObject {
                         self?.errorMessage = nil
                         return sport
                     case .failure(let error):
+                        print(error)
                         switch error {
                         case DecodingError.typeMismatch(_, let context):
                             self?.errorMessage = "\(error.localizedDescription): \(context.debugDescription)"
