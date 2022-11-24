@@ -76,7 +76,7 @@ struct EventsView: View {
                         in: RoundedRectangle(cornerRadius: 25, style: .continuous)
                     )
                     .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
+                    .offset(x: UIScreen.main.bounds.width/9, y: -UIScreen.main.bounds.height/4)
                     .onChange(of: vm.selectedDate) { _ in
                         withAnimation {
                             showPicker = false
@@ -86,6 +86,15 @@ struct EventsView: View {
             }
         }
         .navigationTitle("Events")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+            })
+        }
     }
 }
 

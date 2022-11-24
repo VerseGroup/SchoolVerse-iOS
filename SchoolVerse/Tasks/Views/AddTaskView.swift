@@ -14,12 +14,14 @@ struct AddTaskView: View {
     @State var course: Course = Course(id: "other", name: "Other")
     @State var validName: Bool = false
     
+    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    
     // replaces presentationMode
     // source: https://developer.apple.com/documentation/swiftui/environmentvalues/dismiss
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
+        ZStack { 
             ColorfulBackgroundView()
             
             VStack(spacing: 10) {
@@ -42,9 +44,13 @@ struct AddTaskView: View {
                         Text("Due date")
                             .padding(.leading)
                     }
+                    .tint(accentColor)
                     .padding(10)
                     .glass()
                     .padding(.horizontal)
+                    
+                    
+
                 }
                 
                 Group {

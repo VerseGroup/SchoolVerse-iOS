@@ -118,6 +118,10 @@
 		16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393928E283E300D1F5D4 /* LinkingView.swift */; };
 		16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */; };
 		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
+		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
+		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
+		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
+		AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753C2930076700633CE3 /* TasksByDateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +247,10 @@
 		16CE393928E283E300D1F5D4 /* LinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingView.swift; sourceTree = "<group>"; };
 		16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTileView.swift; sourceTree = "<group>"; };
 		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
+		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
+		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
+		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
+		AF61753C2930076700633CE3 /* TasksByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByDateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -475,6 +483,9 @@
 				16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */,
 				166C1D1628EA322D00F265FA /* AddTaskView.swift */,
 				166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */,
+				AF6175382930049E00633CE3 /* TasksByClassView.swift */,
+				AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */,
+				AF61753C2930076700633CE3 /* TasksByDateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -632,6 +643,7 @@
 				165CA08228F1EEA0007547FB /* TitleLabel.swift */,
 				165CA08428F1EEB2007547FB /* DestructiveButtonLabel.swift */,
 				165CA08628F1EED2007547FB /* NavigationLinkLabel.swift */,
+				AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -943,6 +955,7 @@
 				166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */,
 				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
 				165CA07828F1ED62007547FB /* TaintedGlass.swift in Sources */,
+				AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */,
 				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				165CA09E28F205A6007547FB /* CustomTextField.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
@@ -973,6 +986,7 @@
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
 				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
+				AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
@@ -988,6 +1002,7 @@
 				16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */,
 				165CA08B28F1F350007547FB /* MoreInfoCard.swift in Sources */,
 				164A895628F3834200419637 /* AnyTransition+Backslide.swift in Sources */,
+				AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */,
 				16BE778B28F24D9C000248A9 /* LoadingView.swift in Sources */,
 				164A895028F34AC400419637 /* ScheduleViewModel.swift in Sources */,
 				1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */,
@@ -1006,6 +1021,7 @@
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
+				AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */,
 				166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

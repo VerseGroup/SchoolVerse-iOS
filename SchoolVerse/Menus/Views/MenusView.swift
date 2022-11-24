@@ -30,17 +30,8 @@ struct MenusView: View {
             VStack {
                 dateSelector
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 5) {
                     if let menu = vm.selectedMenu {
-//                        Picker("", selection: $selectedMeal) {
-//                            ForEach(Meal.allCases, id:\.self) { meal in
-//                                Text(meal.rawValue)
-//                                    .foregroundColor(.white)
-//                                    .tag(meal)
-//                            }
-//                        }
-//                        .pickerStyle(SegmentedPickerStyle())
-//                        .padding(.horizontal)
                         
                         HStack (spacing: 20) {
                             ForEach (Meal.allCases, id: \.self) { meal in
@@ -70,7 +61,7 @@ struct MenusView: View {
                         .padding(.horizontal, 5)
                         .cornerRadius(20)
                         .heavyGlass()
-                        .padding()
+                        .padding(.bottom)
                         
                         
                         switch selectedMeal {
@@ -116,7 +107,7 @@ struct MenusView: View {
                         in: RoundedRectangle(cornerRadius: 25, style: .continuous)
                     )
                     .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
+                    .offset(x: UIScreen.main.bounds.width/9, y: -UIScreen.main.bounds.height/4)
                     .onChange(of: vm.selectedDate) { _ in
                         withAnimation {
                             showPicker = false
@@ -125,7 +116,17 @@ struct MenusView: View {
                 
             }
         }
+        
         .navigationTitle("Menus")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+            })
+        }
     }
 }
 
@@ -182,6 +183,5 @@ extension MenusView {
             .bold()
             .padding(5)
         }
-        .padding()
     }
 }

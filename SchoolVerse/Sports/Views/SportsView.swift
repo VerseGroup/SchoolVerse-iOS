@@ -11,6 +11,7 @@ struct SportsView: View {
     @StateObject var vm: SportsListViewModel = SportsListViewModel()
     
     @State var showPicker: Bool = false
+    @State var allSportsSort: Bool = true
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
@@ -23,24 +24,54 @@ struct SportsView: View {
                 
                 VStack(spacing: 20) {
                     if !vm.selectedAllSportsEvents.isEmpty {
-                        VStack {
-                            Spacer()
-                                .frame(height: 20)
-                            
-                            ScrollView(showsIndicators: false) {
-                                ForEach(vm.selectedAllSportsEvents) { sportEvent in
-                                    SportsEventCellView(sportsEvent: sportEvent)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 5)
+                        
+                        if allSportsSort {
+                            VStack {
+                                Spacer()
+                                    .frame(height: 20)
+                                
+                                Text("All Sports")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                
+                                ScrollView(showsIndicators: false) {
+                                    ForEach(vm.selectedAllSportsEvents) { sportEvent in
+                                        SportsEventCellView(sportsEvent: sportEvent)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 5)
+                                    }
+                                    
+                                    Spacer()
+                                        .frame(height: 95)
                                 }
                                 
-                                Spacer()
-                                    .frame(height: 95)
                             }
-                            
+                            .frame(maxWidth: .infinity)
+                            .heavyGlass()
+                        } else {
+                            VStack {
+                                Spacer()
+                                    .frame(height: 20)
+                                
+                                Text("My Sports")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                
+                                ScrollView(showsIndicators: false) {
+                                    ForEach(vm.selectedAllSportsEvents) { sportEvent in
+                                        SportsEventCellView(sportsEvent: sportEvent)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 5)
+                                    }
+                                    
+                                    Spacer()
+                                        .frame(height: 95)
+                                }
+                                
+                            }
+                            .frame(maxWidth: .infinity)
+                            .heavyGlass()
                         }
-                        .frame(maxWidth: .infinity)
-                        .heavyGlass()
                     } else {
                         VStack {
                             Spacer()
@@ -79,7 +110,7 @@ struct SportsView: View {
                         in: RoundedRectangle(cornerRadius: 25, style: .continuous)
                     )
                     .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
+                    .offset(x: UIScreen.main.bounds.width/9, y: -UIScreen.main.bounds.height/4)
                     .onChange(of: vm.selectedDate) { _ in
                         withAnimation {
                             showPicker = false
@@ -89,6 +120,24 @@ struct SportsView: View {
             }
         }
         .navigationTitle("Sports")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+                
+                Menu {
+                    Picker(selection: $allSportsSort, label: Text("Sorting options")) {
+                        Text("All Sports").tag(true)
+                        Text("My Sports").tag(false)
+                    }
+                } label: {
+                    NavButtonView(systemName: "line.3.horizontal.decrease")
+                }
+            })
+        }
     }
 }
 
