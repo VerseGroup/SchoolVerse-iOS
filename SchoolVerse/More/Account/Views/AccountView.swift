@@ -19,78 +19,80 @@ struct AccountView: View {
         ZStack {
             ColorfulBackgroundView()
             
-            VStack {
-                if let user = vm.userModel {
-                    VStack(spacing: 20) {
-                        TextWithTitle(placeholder: "Email", text: user.email)
-                            .padding(.horizontal)
-                        
-                        TextWithTitle(placeholder: "Name", text: user.displayName)
-                            .padding(.horizontal)
-                        
-                        colorPicker
-                            .padding(.horizontal)
-                        
-                        Spacer()
-                            .frame(height: 30)
-                        
-                        Button {
-                            vm.sendPasswordReset()
-                        } label: {
-                            Text("Send Password Reset")
-                        }
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .padding(.vertical, 20)
-                        .frame(maxWidth: .infinity)
-                        .glassCardFull()
-                        .padding(.horizontal, 45)
-                        
-                        Button {
-                            Task {
-                                await vm.signOut()
+            ScrollView {
+                VStack {
+                    if let user = vm.userModel {
+                        VStack(spacing: 20) {
+                            TextWithTitle(placeholder: "Email", text: user.email)
+                                .padding(.horizontal)
+                            
+                            TextWithTitle(placeholder: "Name", text: user.displayName)
+                                .padding(.horizontal)
+                            
+                            colorPicker
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                                .frame(height: 30)
+                            
+                            Button {
+                                vm.sendPasswordReset()
+                            } label: {
+                                Text("Send Password Reset")
                             }
-                        } label: {
-                            Text("Sign Out")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: .infinity)
+                            .glassCardFull()
+                            .padding(.horizontal, 45)
+                            
+                            Button {
+                                Task {
+                                    await vm.signOut()
+                                }
+                            } label: {
+                                Text("Sign Out")
+                            }
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: .infinity)
+                            .glassCardFull()
+                            .padding(.horizontal, 45)
+                            
+                            Button {
+                                showDelete.toggle()
+                            } label: {
+                                Text("Delete Account")
+                            }
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.white)
+                            .padding(.vertical, 20)
+                            .frame(maxWidth: .infinity)
+                            .glassCardFull()
+                            .padding(.horizontal, 45)
+                            
+                            Spacer()
+                                .frame(height: 90)
                         }
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .padding(.vertical, 20)
-                        .frame(maxWidth: .infinity)
-                        .glassCardFull()
-                        .padding(.horizontal, 45)
-                        
-                        Button {
-                            showDelete.toggle()
-                        } label: {
-                            Text("Delete Account")
-                        }
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color.white)
-                        .padding(.vertical, 20)
-                        .frame(maxWidth: .infinity)
-                        .glassCardFull()
-                        .padding(.horizontal, 45)
-                        
-                        Spacer()
-                            .frame(height: 90)
+                    } else {
+                        Text("User not availale")
                     }
-                } else {
-                    Text("User not availale")
                 }
+                .padding(.horizontal)
+                .alert(isPresented: $showDelete) {
+                    Alert(
+                        title: Text("Are you sure you want to delete your account?"),
+                        primaryButton: .destructive(Text("Delete Account")) {
+                            vm.deleteAccount()
+                        },
+                        secondaryButton: .cancel()
+                    )
             }
-            .padding(.horizontal)
-            .alert(isPresented: $showDelete) {
-                Alert(
-                    title: Text("Are you sure you want to delete your account?"),
-                    primaryButton: .destructive(Text("Delete Account")) {
-                        vm.deleteAccount()
-                    },
-                    secondaryButton: .cancel()
-                )
             }
         }
         .navigationTitle("Account")
