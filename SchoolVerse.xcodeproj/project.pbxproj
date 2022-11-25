@@ -122,6 +122,7 @@
 		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
 		AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753C2930076700633CE3 /* TasksByDateView.swift */; };
+		AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +252,7 @@
 		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
 		AF61753C2930076700633CE3 /* TasksByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByDateView.swift; sourceTree = "<group>"; };
+		AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicalDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -591,6 +593,7 @@
 				16BE778A28F24D9C000248A9 /* LoadingView.swift */,
 				164A896228F3A41500419637 /* TextWithTitle.swift */,
 				16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */,
+				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -987,6 +990,7 @@
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
 				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
 				AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */,
+				AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,

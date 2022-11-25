@@ -81,24 +81,7 @@ struct ScheduleView: View {
             
             // iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                
-                DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
-                    .tint(accentColor)
-                    .frame(width: 310, height: 300)
-                    .clipped()
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    )
-                    .opacity(showPicker ? 1 : 0 )
-                    .offset(x: UIScreen.main.bounds.width/9, y: -UIScreen.main.bounds.height/4)
-                    .onChange(of: vm.selectedDate) { _ in
-                        withAnimation {
-                            showPicker = false
-                        }
-                    }
-                
+                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
         .navigationTitle("Schedule")
