@@ -70,7 +70,7 @@ struct ScheduleView: View {
                     //                    }
                     
                 } else {
-                    Text("Schedule unavailable")
+                    LoadingView(text: "Getting Schedule")
                 }
             }
             .onTapGesture {

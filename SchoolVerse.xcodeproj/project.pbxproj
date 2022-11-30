@@ -118,6 +118,7 @@
 		16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393928E283E300D1F5D4 /* LinkingView.swift */; };
 		16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */; };
 		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
+		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
 		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
 		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
@@ -248,6 +249,7 @@
 		16CE393928E283E300D1F5D4 /* LinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingView.swift; sourceTree = "<group>"; };
 		16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTileView.swift; sourceTree = "<group>"; };
 		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
+		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
 		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				164A895528F3834200419637 /* AnyTransition+Backslide.swift */,
 				164A896628F3CEB100419637 /* View+Placeholder.swift */,
 				16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */,
+				AF4B42A82937C47A00639B9B /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -996,6 +999,7 @@
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
+				AF4B42A92937C47A00639B9B /* String.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
 				164A895928F39F4600419637 /* MoreView.swift in Sources */,
 				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,
