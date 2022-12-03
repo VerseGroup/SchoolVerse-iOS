@@ -69,6 +69,8 @@ struct SportsEventCellView: View {
                         Image(systemName: "figure.softball")
                     case .lacrosse:
                         Image(systemName: "figure.lacrosse")
+                    case .golf:
+                        Image(systemName: "figure.golf")
                     default:
                         Image(systemName: "figure.run")
                     }

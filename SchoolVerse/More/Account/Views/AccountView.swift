@@ -32,6 +32,15 @@ struct AccountView: View {
                             TextWithTitle(placeholder: "Name", text: user.displayName)
                                 .padding(.horizontal)
                             
+                            NavigationLink(
+                                destination: JoinSportsView(),
+                                label: {
+                                    NavigationLinkLabel(name: "My Sports")
+                                        .padding(.horizontal)
+                                    
+                                }
+                            )
+                            
                             colorPicker
                                 .padding(.horizontal)
                             
@@ -65,7 +74,7 @@ struct AccountView: View {
                                 .frame(height: 90)
                         }
                     } else {
-                        Text("User not availale")
+                        LoadingView(text: "Getting User Data")
                     }
                 }
                 .padding(.horizontal)

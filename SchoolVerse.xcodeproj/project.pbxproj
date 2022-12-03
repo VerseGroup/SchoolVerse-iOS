@@ -119,6 +119,10 @@
 		16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */; };
 		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
 		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
+		AF4B42AB2937EAAD00639B9B /* JoinSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */; };
+		AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */; };
+		AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25F293A918400B12401 /* AllSportsView.swift */; };
+		AF5FD262293A922900B12401 /* MySportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD261293A922900B12401 /* MySportsView.swift */; };
 		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
 		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
@@ -250,6 +254,10 @@
 		16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTileView.swift; sourceTree = "<group>"; };
 		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
 		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSportsView.swift; sourceTree = "<group>"; };
+		AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedSportsTile.swift; sourceTree = "<group>"; };
+		AF5FD25F293A918400B12401 /* AllSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSportsView.swift; sourceTree = "<group>"; };
+		AF5FD261293A922900B12401 /* MySportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySportsView.swift; sourceTree = "<group>"; };
 		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
 		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
@@ -448,7 +456,6 @@
 			isa = PBXGroup;
 			children = (
 				164A895728F39EFB00419637 /* Account */,
-				1637163728C0571000DF15D4 /* ViewModels */,
 				1637163628C0570E00DF15D4 /* Views */,
 			);
 			path = More;
@@ -538,18 +545,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1637163728C0571000DF15D4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		1637163828C0571400DF15D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				166C1D0528E9288300F265FA /* SportsView.swift */,
 				166C1D0728E9289B00F265FA /* SportsEventCellView.swift */,
+				AF5FD25F293A918400B12401 /* AllSportsView.swift */,
+				AF5FD261293A922900B12401 /* MySportsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -597,6 +599,7 @@
 				164A896228F3A41500419637 /* TextWithTitle.swift */,
 				16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */,
 				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
+				AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				164A895C28F3A0A600419637 /* AccountView.swift */,
+				AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -943,6 +947,7 @@
 				165CA07F28F1EE6A007547FB /* ParagraphLabel.swift in Sources */,
 				164A895D28F3A0A600419637 /* AccountView.swift in Sources */,
 				1622390928E24F3300AB404F /* Response.swift in Sources */,
+				AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */,
 				165CA07B28F1EE03007547FB /* HeaderLabel.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
 				166C1D0828E9289B00F265FA /* SportsEventCellView.swift in Sources */,
@@ -975,6 +980,7 @@
 				164A894E28F346F800419637 /* ScheduleRepository.swift in Sources */,
 				1618019428D90B55006B5291 /* TabBarItem.swift in Sources */,
 				165CA08F28F1F4C7007547FB /* DayScheduleTile.swift in Sources */,
+				AF5FD262293A922900B12401 /* MySportsView.swift in Sources */,
 				166C1D0028E926DE00F265FA /* EventCellView.swift in Sources */,
 				164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
@@ -993,6 +999,7 @@
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
 				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
 				AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */,
+				AF4B42AB2937EAAD00639B9B /* JoinSportsView.swift in Sources */,
 				AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
@@ -1000,6 +1007,7 @@
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
 				AF4B42A92937C47A00639B9B /* String.swift in Sources */,
+				AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
 				164A895928F39F4600419637 /* MoreView.swift in Sources */,
 				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,

@@ -22,6 +22,7 @@ extension String {
         case baseball
         case softball
         case lacrosse
+        case golf
         case defaultSport
     }
     
@@ -50,6 +51,8 @@ extension String {
             return .softball
         } else if self.contains("Lacrosse") {
             return .lacrosse
+        } else if self.contains("Golf") {
+            return .golf
         }
         
         return .defaultSport
