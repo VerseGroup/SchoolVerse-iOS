@@ -9,14 +9,12 @@ import SwiftUI
 
 struct NavButtonView: View {
     var systemName: String
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
 
     var body: some View {
         Image(systemName: systemName)
-            .foregroundColor(accentColor)
-            .font(.system(size:15))
+            .foregroundColor(.white)
+            .font(.system(size:20))
             .frame(width: 25, height: 25)
             .padding(5)
-            .heavyGlass()
     }
 }

@@ -123,6 +123,7 @@
 		AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */; };
 		AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25F293A918400B12401 /* AllSportsView.swift */; };
 		AF5FD262293A922900B12401 /* MySportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD261293A922900B12401 /* MySportsView.swift */; };
+		AF5FD264293BFEED00B12401 /* BorderedTaintedGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */; };
 		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
 		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
@@ -258,6 +259,7 @@
 		AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedSportsTile.swift; sourceTree = "<group>"; };
 		AF5FD25F293A918400B12401 /* AllSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSportsView.swift; sourceTree = "<group>"; };
 		AF5FD261293A922900B12401 /* MySportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySportsView.swift; sourceTree = "<group>"; };
+		AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTaintedGlass.swift; sourceTree = "<group>"; };
 		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
 		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 				165CA07328F1ED47007547FB /* FullGlassCard.swift */,
 				165CA07528F1ED55007547FB /* HeavyGlass.swift */,
 				165CA07728F1ED62007547FB /* TaintedGlass.swift */,
+				AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */,
 				16BE778C28F258AD000248A9 /* FrostedGlass.swift */,
 			);
 			path = Glassmorphism;
@@ -953,6 +956,7 @@
 				166C1D0828E9289B00F265FA /* SportsEventCellView.swift in Sources */,
 				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				166C1CEE28E9209200F265FA /* MenusListViewModel.swift in Sources */,
+				AF5FD264293BFEED00B12401 /* BorderedTaintedGlass.swift in Sources */,
 				165CA07028F1ED2D007547FB /* Glass.swift in Sources */,
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
