@@ -26,7 +26,7 @@ struct SignUpView: View {
     @State var validName: Bool = false
     @State var validAgreement: Bool = false
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     @Namespace var animation
     
     var body: some View {

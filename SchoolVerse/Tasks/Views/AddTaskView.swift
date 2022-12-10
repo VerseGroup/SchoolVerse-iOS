@@ -14,7 +14,7 @@ struct AddTaskView: View {
     @State var course: Course = Course(id: "other", name: "Other")
     @State var validName: Bool = false
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     // replaces presentationMode
     // source: https://developer.apple.com/documentation/swiftui/environmentvalues/dismiss

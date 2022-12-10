@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TasksByUrgencyView: View {
-    @StateObject var vm = TaskListViewModel()
-    
+    @EnvironmentObject var vm: TaskListViewModel
+
     @State var revealPrevious: Bool = false
     @State var revealCurrent: Bool = true
     @State var revealFuture: Bool = true

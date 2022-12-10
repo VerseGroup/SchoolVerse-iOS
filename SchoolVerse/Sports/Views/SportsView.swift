@@ -13,7 +13,7 @@ struct SportsView: View {
     @State var showPicker: Bool = false
     @State var allSportsSort: Bool = true
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     var body: some View {
         ZStack {

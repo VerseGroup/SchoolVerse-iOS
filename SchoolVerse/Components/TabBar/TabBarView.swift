@@ -11,7 +11,7 @@ import SwiftUI
 // TODO: change to custom, more custom
 
 struct TabBarView: View {
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
 
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem

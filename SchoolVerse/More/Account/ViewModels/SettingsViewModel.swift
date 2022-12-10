@@ -18,9 +18,9 @@ class SettingsViewModel: ObservableObject {
     
     @Published var userModel: UserModel?
     
-    @Published var accentColorLocal: Color = .accent.cyan
+    @Published var accentColorLocal: Color = .accent.blue
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     private var cancellables = Set<AnyCancellable>()
     

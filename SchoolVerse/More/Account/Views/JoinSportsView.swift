@@ -18,7 +18,7 @@ struct JoinSportsView: View {
     @State var selectedView: MySports = .joined
     @State var showSheet: Bool = false
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     @Namespace var animation
     
