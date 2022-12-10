@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GraphicalDatePicker: View {
     @Binding var selectedDate : Date
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     @Binding var isPresented: Bool
     
     var body: some View {

@@ -12,7 +12,7 @@ struct ScheduleView: View {
     @StateObject var vm = ScheduleViewModel()
     
     @State var showPicker: Bool = false
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     var body: some View {
         ZStack {
