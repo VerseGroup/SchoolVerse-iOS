@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoreInfoCardView: View {
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
 
     var imageName: String
     var name: String

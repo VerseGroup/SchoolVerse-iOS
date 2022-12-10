@@ -10,7 +10,7 @@ import SwiftUI
 // TODO: fix frosted glass
 
 struct LoadingView: View {
-    @AppStorage("accent_color") var accentColor: Color = .accent.pink
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     var text: String
     

@@ -23,7 +23,8 @@ class TaskListViewModel: ObservableObject {
     @Published var currentTaskCellViewModels = [TaskCellViewModel]()
     @Published var futureTaskCellViewModels = [TaskCellViewModel]()
     
-    @Published var tasksDictionary: [String: [SchoolTask]] = [:]
+    @Published var tasksClassDictionary: [String: [SchoolTask]] = [:]
+    @Published var tasksDateDictionary: [String: [SchoolTask]] = [:]
     
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
@@ -53,14 +54,34 @@ class TaskListViewModel: ObservableObject {
         
         // firebase vars
         
-        // creates task dictionary
+        // creates task class dictionary
         repo.$tasks
             .sink { [weak self] (returnedTasks) in
                 let dict = Dictionary(grouping: returnedTasks, by: { (element: SchoolTask) in
                     return element.courseName
                 })
                 withAnimation(.default) {
-                    self?.tasksDictionary = dict.mapValues { tasks in
+                    self?.tasksClassDictionary = dict.mapValues { tasks in
+                        return tasks.sorted(by: {
+                            if $0.completed != $1.completed {
+                                return !$0.completed
+                            } else {
+                                return $0.dueDate < $1.dueDate
+                            }
+                        })
+                    }
+                }
+            }
+            .store(in: &cancellables)
+        
+        // creates task date dictionary
+        repo.$tasks
+            .sink { [weak self] (returnedTasks) in
+                let dict = Dictionary(grouping: returnedTasks, by: { (element: SchoolTask) in
+                    return element.dueDate.weekDateString()
+                })
+                withAnimation(.default) {
+                    self?.tasksDateDictionary = dict.mapValues { tasks in
                         return tasks.sorted(by: {
                             if $0.completed != $1.completed {
                                 return !$0.completed

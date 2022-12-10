@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaintedGlass: ViewModifier {
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     func body(content: Content) -> some View {
         content

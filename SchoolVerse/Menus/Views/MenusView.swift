@@ -19,7 +19,7 @@ struct MenusView: View {
     @State var showPicker: Bool = false
     @State var selectedMeal: Meal = .lunch
     
-    @AppStorage("accent_color") var accentColor: Color = .accent.cyan
+    @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
     @Namespace var animation
     

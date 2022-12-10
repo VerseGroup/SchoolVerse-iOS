@@ -25,7 +25,7 @@ struct LinkLabel: View {
             Spacer()
         }
         .padding()
-        .foregroundColor(Color.accent.cyan)
+        .foregroundColor(Color.accent.blue)
         .glass()
     }
 }
