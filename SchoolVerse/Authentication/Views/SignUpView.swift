@@ -116,7 +116,7 @@ struct SignUpView: View {
                             .heavyGlass()
                         }
                         
-                        LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+                        LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://schoolverse.app/privacypolicy")!)
                             .padding(8)
                         
                         HStack {
