@@ -41,7 +41,9 @@ struct GraphicalDatePicker: View {
             in: RoundedRectangle(cornerRadius: 25, style: .continuous)
         )
         .opacity(isPresented ? 1 : 0 )
-        .offset(x: UIScreen.main.bounds.width/9, y: -UIScreen.main.bounds.height/6)
+        .offset (
+            y: -UIScreen.main.bounds.height / 6
+        )
         .onChange(of: selectedDate) { _ in
             withAnimation {
                 isPresented = false

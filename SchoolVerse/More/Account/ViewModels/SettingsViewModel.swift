@@ -1,5 +1,5 @@
 //
-//  AccountViewModel.swift
+//  SettingsViewModel.swift
 //  SchoolVerse
 //
 //  Created by Steven Yu on 10/9/22.
@@ -10,7 +10,7 @@ import Combine
 import Resolver
 import SwiftUI
 
-class AccountViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject {
     @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
 
     @Published var errorMessage: String?
