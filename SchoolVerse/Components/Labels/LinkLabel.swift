@@ -32,7 +32,7 @@ struct LinkLabel: View {
 
 struct LinkLabel_Previews: PreviewProvider {
     static var previews: some View {
-        LinkLabel(name: "SchoolVerse by VerseGroup, LLC", link: URL(string: "https://www.versegroup.tech")!)
+        LinkLabel(name: "SchoolVerse by VerseGroup, LLC", link: URL(string: "https://schoolverse.app/")!)
             .previewLayout(.sizeThatFits)
             .padding(30)
     }
