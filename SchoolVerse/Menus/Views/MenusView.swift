@@ -30,17 +30,8 @@ struct MenusView: View {
             VStack {
                 dateSelector
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 5) {
                     if let menu = vm.selectedMenu {
-//                        Picker("", selection: $selectedMeal) {
-//                            ForEach(Meal.allCases, id:\.self) { meal in
-//                                Text(meal.rawValue)
-//                                    .foregroundColor(.white)
-//                                    .tag(meal)
-//                            }
-//                        }
-//                        .pickerStyle(SegmentedPickerStyle())
-//                        .padding(.horizontal)
                         
                         HStack (spacing: 20) {
                             ForEach (Meal.allCases, id: \.self) { meal in
@@ -70,7 +61,7 @@ struct MenusView: View {
                         .padding(.horizontal, 5)
                         .cornerRadius(20)
                         .heavyGlass()
-                        .padding()
+                        .padding(.bottom)
                         
                         
                         switch selectedMeal {
@@ -105,27 +96,20 @@ struct MenusView: View {
             
             // iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                
-                DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
-                    .tint(accentColor)
-                    .frame(width: 310, height: 300)
-                    .clipped()
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    )
-                    .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
-                    .onChange(of: vm.selectedDate) { _ in
-                        withAnimation {
-                            showPicker = false
-                        }
-                    }
-                
+                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
+        
         .navigationTitle("Menus")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+            })
+        }
     }
 }
 
@@ -182,6 +166,5 @@ extension MenusView {
             .bold()
             .padding(5)
         }
-        .padding()
     }
 }

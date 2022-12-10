@@ -23,30 +23,36 @@ struct AccountView: View {
                 VStack {
                     if let user = vm.userModel {
                         VStack(spacing: 20) {
+                            Spacer()
+                                .frame(height: 5)
+                            
                             TextWithTitle(placeholder: "Email", text: user.email)
                                 .padding(.horizontal)
                             
                             TextWithTitle(placeholder: "Name", text: user.displayName)
                                 .padding(.horizontal)
                             
+                            NavigationLink(
+                                destination: JoinSportsView(),
+                                label: {
+                                    NavigationLinkLabel(name: "My Sports")
+                                        .padding(.horizontal)
+                                    
+                                }
+                            )
+                            
                             colorPicker
                                 .padding(.horizontal)
                             
                             Spacer()
-                                .frame(height: 20)
+                                .frame(height: 15)
                             
                             Button {
                                 vm.sendPasswordReset()
                             } label: {
                                 Text("Send Password Reset")
                             }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                            .padding(.horizontal, 45)
+                            .largeButton()
                             
                             Button {
                                 Task {
@@ -55,32 +61,20 @@ struct AccountView: View {
                             } label: {
                                 Text("Sign Out")
                             }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                            .padding(.horizontal, 45)
+                            .largeButton()
                             
                             Button {
                                 showDelete.toggle()
                             } label: {
                                 Text("Delete Account")
                             }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.white)
-                            .padding(.vertical, 20)
-                            .frame(maxWidth: .infinity)
-                            .glassCardFull()
-                            .padding(.horizontal, 45)
+                            .largeButton()
                             
                             Spacer()
                                 .frame(height: 90)
                         }
                     } else {
-                        Text("User not availale")
+                        LoadingView(text: "Getting User Data")
                     }
                 }
                 .padding(.horizontal)

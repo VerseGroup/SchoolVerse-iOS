@@ -65,27 +65,19 @@ struct EventsView: View {
             }
             // iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                
-                DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
-                    .tint(accentColor)
-                    .frame(width: 310, height: 300)
-                    .clipped()
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    )
-                    .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
-                    .onChange(of: vm.selectedDate) { _ in
-                        withAnimation {
-                            showPicker = false
-                        }
-                    }
-                
+                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
         .navigationTitle("Events")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+            })
+        }
     }
 }
 

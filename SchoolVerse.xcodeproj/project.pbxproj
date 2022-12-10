@@ -118,6 +118,17 @@
 		16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393928E283E300D1F5D4 /* LinkingView.swift */; };
 		16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */; };
 		16FF894328D91BE70003B01E /* FormValidationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FF894228D91BE70003B01E /* FormValidationPopover.swift */; };
+		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
+		AF4B42AB2937EAAD00639B9B /* JoinSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */; };
+		AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */; };
+		AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25F293A918400B12401 /* AllSportsView.swift */; };
+		AF5FD262293A922900B12401 /* MySportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD261293A922900B12401 /* MySportsView.swift */; };
+		AF5FD264293BFEED00B12401 /* BorderedTaintedGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */; };
+		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
+		AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6175382930049E00633CE3 /* TasksByClassView.swift */; };
+		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
+		AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753C2930076700633CE3 /* TasksByDateView.swift */; };
+		AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +254,17 @@
 		16CE393928E283E300D1F5D4 /* LinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingView.swift; sourceTree = "<group>"; };
 		16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTileView.swift; sourceTree = "<group>"; };
 		16FF894228D91BE70003B01E /* FormValidationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationPopover.swift; sourceTree = "<group>"; };
+		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSportsView.swift; sourceTree = "<group>"; };
+		AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedSportsTile.swift; sourceTree = "<group>"; };
+		AF5FD25F293A918400B12401 /* AllSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSportsView.swift; sourceTree = "<group>"; };
+		AF5FD261293A922900B12401 /* MySportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySportsView.swift; sourceTree = "<group>"; };
+		AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTaintedGlass.swift; sourceTree = "<group>"; };
+		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
+		AF6175382930049E00633CE3 /* TasksByClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByClassView.swift; sourceTree = "<group>"; };
+		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
+		AF61753C2930076700633CE3 /* TasksByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByDateView.swift; sourceTree = "<group>"; };
+		AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicalDatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +383,7 @@
 				164A895528F3834200419637 /* AnyTransition+Backslide.swift */,
 				164A896628F3CEB100419637 /* View+Placeholder.swift */,
 				16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */,
+				AF4B42A82937C47A00639B9B /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,7 +458,6 @@
 			isa = PBXGroup;
 			children = (
 				164A895728F39EFB00419637 /* Account */,
-				1637163728C0571000DF15D4 /* ViewModels */,
 				1637163628C0570E00DF15D4 /* Views */,
 			);
 			path = More;
@@ -475,6 +497,9 @@
 				16CE393B28E2991A00D1F5D4 /* TaskTileView.swift */,
 				166C1D1628EA322D00F265FA /* AddTaskView.swift */,
 				166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */,
+				AF6175382930049E00633CE3 /* TasksByClassView.swift */,
+				AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */,
+				AF61753C2930076700633CE3 /* TasksByDateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,18 +547,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1637163728C0571000DF15D4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		1637163828C0571400DF15D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				166C1D0528E9288300F265FA /* SportsView.swift */,
 				166C1D0728E9289B00F265FA /* SportsEventCellView.swift */,
+				AF5FD25F293A918400B12401 /* AllSportsView.swift */,
+				AF5FD261293A922900B12401 /* MySportsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -580,6 +600,8 @@
 				16BE778A28F24D9C000248A9 /* LoadingView.swift */,
 				164A896228F3A41500419637 /* TextWithTitle.swift */,
 				16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */,
+				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
+				AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -597,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				164A895C28F3A0A600419637 /* AccountView.swift */,
+				AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -617,6 +640,7 @@
 				165CA07328F1ED47007547FB /* FullGlassCard.swift */,
 				165CA07528F1ED55007547FB /* HeavyGlass.swift */,
 				165CA07728F1ED62007547FB /* TaintedGlass.swift */,
+				AF5FD263293BFEED00B12401 /* BorderedTaintedGlass.swift */,
 				16BE778C28F258AD000248A9 /* FrostedGlass.swift */,
 			);
 			path = Glassmorphism;
@@ -632,6 +656,7 @@
 				165CA08228F1EEA0007547FB /* TitleLabel.swift */,
 				165CA08428F1EEB2007547FB /* DestructiveButtonLabel.swift */,
 				165CA08628F1EED2007547FB /* NavigationLinkLabel.swift */,
+				AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -925,11 +950,13 @@
 				165CA07F28F1EE6A007547FB /* ParagraphLabel.swift in Sources */,
 				164A895D28F3A0A600419637 /* AccountView.swift in Sources */,
 				1622390928E24F3300AB404F /* Response.swift in Sources */,
+				AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */,
 				165CA07B28F1EE03007547FB /* HeaderLabel.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
 				166C1D0828E9289B00F265FA /* SportsEventCellView.swift in Sources */,
 				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				166C1CEE28E9209200F265FA /* MenusListViewModel.swift in Sources */,
+				AF5FD264293BFEED00B12401 /* BorderedTaintedGlass.swift in Sources */,
 				165CA07028F1ED2D007547FB /* Glass.swift in Sources */,
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
@@ -943,6 +970,7 @@
 				166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */,
 				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
 				165CA07828F1ED62007547FB /* TaintedGlass.swift in Sources */,
+				AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */,
 				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				165CA09E28F205A6007547FB /* CustomTextField.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
@@ -956,6 +984,7 @@
 				164A894E28F346F800419637 /* ScheduleRepository.swift in Sources */,
 				1618019428D90B55006B5291 /* TabBarItem.swift in Sources */,
 				165CA08F28F1F4C7007547FB /* DayScheduleTile.swift in Sources */,
+				AF5FD262293A922900B12401 /* MySportsView.swift in Sources */,
 				166C1D0028E926DE00F265FA /* EventCellView.swift in Sources */,
 				164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
@@ -973,11 +1002,16 @@
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
 				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
+				AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */,
+				AF4B42AB2937EAAD00639B9B /* JoinSportsView.swift in Sources */,
+				AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
+				AF4B42A92937C47A00639B9B /* String.swift in Sources */,
+				AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
 				164A895928F39F4600419637 /* MoreView.swift in Sources */,
 				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,
@@ -988,6 +1022,7 @@
 				16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */,
 				165CA08B28F1F350007547FB /* MoreInfoCard.swift in Sources */,
 				164A895628F3834200419637 /* AnyTransition+Backslide.swift in Sources */,
+				AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */,
 				16BE778B28F24D9C000248A9 /* LoadingView.swift in Sources */,
 				164A895028F34AC400419637 /* ScheduleViewModel.swift in Sources */,
 				1612195528E159870063BC3A /* TaskCellViewModel.swift in Sources */,
@@ -1006,6 +1041,7 @@
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
+				AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */,
 				166C1D0E28EA06AC00F265FA /* View+If.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
