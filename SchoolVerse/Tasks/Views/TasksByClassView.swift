@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TasksByClassView: View {
-    @StateObject var vm = TaskListViewModel()
+    @EnvironmentObject var vm: TaskListViewModel
     
     var body: some View {
         ForEach(vm.tasksDictionary.keys.sorted(), id:\.self) { key in

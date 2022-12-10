@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TasksByDateView: View {
-    @StateObject var vm = TaskListViewModel()
-    
+    @EnvironmentObject var vm: TaskListViewModel
+
     var body: some View {
         Text("Work in Progress")
             .font(.system(size: 20))

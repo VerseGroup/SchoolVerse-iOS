@@ -18,8 +18,6 @@ struct TasksView: View {
     @State var taskSort: TaskSort = .sortUrgency
     @State var showAddTaskView: Bool = false
     
-    
-    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
@@ -85,6 +83,7 @@ struct TasksView: View {
                 AddTaskView()
             }
         }
+        .environmentObject(vm)
     }
 }
 
@@ -93,3 +92,4 @@ struct TasksView_Previews: PreviewProvider {
         TasksView()
     }
 }
+
