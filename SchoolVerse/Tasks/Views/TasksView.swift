@@ -15,7 +15,7 @@ enum TaskSort {
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
-    @State var taskSort: TaskSort = .sortUrgency
+    @State var taskSort: TaskSort = .sortDate
     @State var showAddTaskView: Bool = false
     
     var body: some View {

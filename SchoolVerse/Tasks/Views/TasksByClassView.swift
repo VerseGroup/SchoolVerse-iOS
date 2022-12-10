@@ -11,15 +11,15 @@ struct TasksByClassView: View {
     @EnvironmentObject var vm: TaskListViewModel
     
     var body: some View {
-        ForEach(vm.tasksDictionary.keys.sorted(), id:\.self) { key in
+        ForEach(vm.tasksClassDictionary.keys.sorted(), id:\.self) { key in
             DisclosureGroup {
-                if (vm.tasksDictionary[key] ?? []).isEmpty {
+                if (vm.tasksClassDictionary[key] ?? []).isEmpty {
                     Text("No assignments soon!")
                         .font(.headline)
                         .fontWeight(.bold)
                         .glass()
                 } else {
-                    ForEach(vm.tasksDictionary[key] ?? []) { task in
+                    ForEach(vm.tasksClassDictionary[key] ?? []) { task in
                         TaskTileView(vm: TaskCellViewModel(task: task))
                             .padding(.horizontal, 5)
                             .padding(.top, 2)
