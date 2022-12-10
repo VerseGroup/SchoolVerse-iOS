@@ -44,6 +44,12 @@ struct EnsureResponse: Codable {
     let exception: String?
 }
 
+
+struct DeleteResponse: Codable {
+    let message: ResponseMessage
+    let exception: String?
+}
+
 enum ResponseMessage: String, Codable {
     case success
     case failure

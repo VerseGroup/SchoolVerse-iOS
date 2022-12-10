@@ -12,6 +12,7 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
+    @Published private var api: APIService = Resolver.resolve()
 
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
@@ -69,7 +70,11 @@ class SettingsViewModel: ObservableObject {
     }
     
     func deleteAccount() {
-        authManager.deleteUser()
+        api.deleteUser {
+            Task {
+                await self.authManager.signOut()
+            }
+        }
     }
     
     func changeAccentColor(color: Color) {

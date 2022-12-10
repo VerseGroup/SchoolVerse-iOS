@@ -19,6 +19,7 @@ class APIService: ObservableObject {
     @Published var ensureResponse: EnsureResponse?
     @Published var versionResponse: VersionResponse?
     @Published var approveResponse: ApproveResponse?
+    @Published var deleteResponse: DeleteResponse?
     
     @Published var sameVersion: Bool = true
     
@@ -269,6 +270,31 @@ class APIService: ObservableObject {
                     }
                 }
             }
+    }
+    
+    func deleteUser(completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "user_id": userId,
+            "api_key": CustomEnvironment.apiKey
+        ]
+        
+        AF.request(baseURL + "/delete_user", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: DeleteResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                completion()
+            }
+
     }
 }
 

@@ -212,42 +212,42 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
         }
     }
     
-    func deleteUser() {
-        if let user = Auth.auth().currentUser {
-            // delete user doc
-            self.db.collection(self.path)
-                .document(user.uid)
-                .delete { error in
-                    if let error = error {
-                        self.errorMessage = error.localizedDescription
-                        self.hasError = true
-                    }
-                    // delete user
-                    user.delete { error in
-                        if let error {
-                            print("Could not delete user")
-                            DispatchQueue.main.async {
-                                self.errorMessage = error.localizedDescription
-                                self.hasError = true
-                            }
-                        }
-                        
-                        // clear user defaults
-                        UserDefaults.standard.removeObject(forKey: "e_username")
-                        UserDefaults.standard.removeObject(forKey: "e_password")
-                        UserDefaults.standard.removeObject(forKey: "public_key")
-                        UserDefaults.standard.removeObject(forKey: "show_linking")
-                        UserDefaults.standard.set(false, forKey: "authenticated")
-                        print("Delete account")
-                    }
-                }
-        }
-    }
+//    func deleteUser() {
+//        if let user = Auth.auth().currentUser {
+//            // delete user doc
+//            self.db.collection(self.path)
+//                .document(user.uid)
+//                .delete { error in
+//                    if let error = error {
+//                        self.errorMessage = error.localizedDescription
+//                        self.hasError = true
+//                    }
+//                    // delete user
+//                    user.delete { error in
+//                        if let error {
+//                            print("Could not delete user")
+//                            DispatchQueue.main.async {
+//                                self.errorMessage = error.localizedDescription
+//                                self.hasError = true
+//                            }
+//                        }
+//
+//                        // clear user defaults
+//                        UserDefaults.standard.removeObject(forKey: "e_username")
+//                        UserDefaults.standard.removeObject(forKey: "e_password")
+//                        UserDefaults.standard.removeObject(forKey: "public_key")
+//                        UserDefaults.standard.removeObject(forKey: "show_linking")
+//                        UserDefaults.standard.set(false, forKey: "authenticated")
+//                        print("Delete account")
+//                    }
+//                }
+//        }
+//    }
         
-        @MainActor
-        func sendPasswordReset() {
-            if let email = Auth.auth().currentUser?.email {
-                Auth.auth().sendPasswordReset(withEmail: email)
-            }
+    @MainActor
+    func sendPasswordReset() {
+        if let email = Auth.auth().currentUser?.email {
+            Auth.auth().sendPasswordReset(withEmail: email)
         }
     }
+}
