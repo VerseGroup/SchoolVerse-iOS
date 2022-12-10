@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+enum GlassType {
+    case glass
+    case glassCard
+    case glassCardFull
+    case darkGlass
+    case stainedGlass
+    case borderedStainedGlass
+    case frostedGlass
+}
+
 struct Glass: ViewModifier {
     func body(content: Content) -> some View {
         content

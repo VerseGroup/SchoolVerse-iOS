@@ -22,9 +22,9 @@ struct MoreView: View {
                     Grid(horizontalSpacing: 20, verticalSpacing: 20) {
                         GridRow {
                             NavigationLink {
-                                AccountView()
+                                SettingsView()
                             } label: {
-                                MoreInfoCardView(imageName: "person.text.rectangle", name: "Account")
+                                MoreInfoCardView(imageName: "gear", name: "Settings")
                             }
                             
                             NavigationLink {
@@ -79,9 +79,9 @@ struct MoreView: View {
                     Grid(horizontalSpacing: 20, verticalSpacing: 20) {
                         GridRow {
                             NavigationLink {
-                                AccountView()
+                                SettingsView()
                             } label: {
-                                MoreInfoCardView(imageName: "person.text.rectangle", name: "Account")
+                                MoreInfoCardView(imageName: "gear", name: "Settings")
                             }
                             
                             NavigationLink {
