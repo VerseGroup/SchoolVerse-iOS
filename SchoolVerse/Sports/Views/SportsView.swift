@@ -11,6 +11,7 @@ struct SportsView: View {
     @StateObject var vm: SportsListViewModel = SportsListViewModel()
     
     @State var showPicker: Bool = false
+    @State var allSportsSort: Bool = true
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
@@ -23,24 +24,12 @@ struct SportsView: View {
                 
                 VStack(spacing: 20) {
                     if !vm.selectedAllSportsEvents.isEmpty {
-                        VStack {
-                            Spacer()
-                                .frame(height: 20)
-                            
-                            ScrollView(showsIndicators: false) {
-                                ForEach(vm.selectedAllSportsEvents) { sportEvent in
-                                    SportsEventCellView(sportsEvent: sportEvent)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 5)
-                                }
-                                
-                                Spacer()
-                                    .frame(height: 95)
-                            }
-                            
+                        
+                        if allSportsSort {
+                            AllSportsView()
+                        } else {
+                            MySportsView()
                         }
-                        .frame(maxWidth: .infinity)
-                        .heavyGlass()
                     } else {
                         VStack {
                             Spacer()
@@ -68,27 +57,28 @@ struct SportsView: View {
             
             // iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                
-                DatePicker("", selection: $vm.selectedDate, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
-                    .tint(accentColor)
-                    .frame(width: 310, height: 300)
-                    .clipped()
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    )
-                    .opacity(showPicker ? 1 : 0 )
-                    .offset(x: 0, y: -100)
-                    .onChange(of: vm.selectedDate) { _ in
-                        withAnimation {
-                            showPicker = false
-                        }
-                    }
-                
+                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
         .navigationTitle("Sports")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
+                }
+                
+                Menu {
+                    Picker(selection: $allSportsSort, label: Text("Sorting options")) {
+                        Text("All Sports").tag(true)
+                        Text("My Sports").tag(false)
+                    }
+                } label: {
+                    NavButtonView(systemName: "line.3.horizontal.decrease")
+                }
+            })
+        }
     }
 }
 
