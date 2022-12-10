@@ -1,5 +1,5 @@
 //
-//  AccountView.swift
+//  SettingsView.swift
 //  SchoolVerse
 //
 //  Created by Steven Yu on 10/9/22.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct AccountView: View {
-    @StateObject var vm: AccountViewModel = AccountViewModel()
+struct SettingsView: View {
+    @StateObject var vm: SettingsViewModel = SettingsViewModel()
     
     var colors: [Color] = [Color.accent.blue, Color.accent.cyan, Color.accent.pink, Color.accent.purple]
     var colorNames: [String] = ["Blue", "Cyan", "Pink", "Purple"]
@@ -89,11 +89,11 @@ struct AccountView: View {
             }
             }
         }
-        .navigationTitle("Account")
+        .navigationTitle("Settings")
     }
 }
 
-extension AccountView {
+extension SettingsView {
     
     var colorPicker: some View {
         VStack(spacing: 0) {

@@ -51,8 +51,8 @@
 		164A895228F34B3800419637 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895128F34B3800419637 /* ScheduleView.swift */; };
 		164A895628F3834200419637 /* AnyTransition+Backslide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895528F3834200419637 /* AnyTransition+Backslide.swift */; };
 		164A895928F39F4600419637 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895828F39F4600419637 /* MoreView.swift */; };
-		164A895D28F3A0A600419637 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895C28F3A0A600419637 /* AccountView.swift */; };
-		164A895F28F3A0C900419637 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895E28F3A0C900419637 /* AccountViewModel.swift */; };
+		164A895D28F3A0A600419637 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895C28F3A0A600419637 /* SettingsView.swift */; };
+		164A895F28F3A0C900419637 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A895E28F3A0C900419637 /* SettingsViewModel.swift */; };
 		164A896328F3A41500419637 /* TextWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896228F3A41500419637 /* TextWithTitle.swift */; };
 		164A896528F3B57700419637 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896428F3B57700419637 /* AboutView.swift */; };
 		164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896628F3CEB100419637 /* View+Placeholder.swift */; };
@@ -186,8 +186,8 @@
 		164A895128F34B3800419637 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		164A895528F3834200419637 /* AnyTransition+Backslide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Backslide.swift"; sourceTree = "<group>"; };
 		164A895828F39F4600419637 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
-		164A895C28F3A0A600419637 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		164A895E28F3A0C900419637 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		164A895C28F3A0A600419637 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		164A895E28F3A0C900419637 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		164A896228F3A41500419637 /* TextWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithTitle.swift; sourceTree = "<group>"; };
 		164A896428F3B57700419637 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		164A896628F3CEB100419637 /* View+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Placeholder.swift"; sourceTree = "<group>"; };
@@ -618,7 +618,7 @@
 		164A895A28F3A06000419637 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				164A895C28F3A0A600419637 /* AccountView.swift */,
+				164A895C28F3A0A600419637 /* SettingsView.swift */,
 				AF4B42AA2937EAAD00639B9B /* JoinSportsView.swift */,
 			);
 			path = Views;
@@ -627,7 +627,7 @@
 		164A895B28F3A06300419637 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				164A895E28F3A0C900419637 /* AccountViewModel.swift */,
+				164A895E28F3A0C900419637 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -948,7 +948,7 @@
 				164A896528F3B57700419637 /* AboutView.swift in Sources */,
 				16CE393A28E283E300D1F5D4 /* LinkingView.swift in Sources */,
 				165CA07F28F1EE6A007547FB /* ParagraphLabel.swift in Sources */,
-				164A895D28F3A0A600419637 /* AccountView.swift in Sources */,
+				164A895D28F3A0A600419637 /* SettingsView.swift in Sources */,
 				1622390928E24F3300AB404F /* Response.swift in Sources */,
 				AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */,
 				165CA07B28F1EE03007547FB /* HeaderLabel.swift in Sources */,
@@ -1036,7 +1036,7 @@
 				1604B17828D7B3E500931C90 /* App+Injection.swift in Sources */,
 				165CA08728F1EED2007547FB /* NavigationLinkLabel.swift in Sources */,
 				164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */,
-				164A895F28F3A0C900419637 /* AccountViewModel.swift in Sources */,
+				164A895F28F3A0C900419637 /* SettingsViewModel.swift in Sources */,
 				1612195328E159760063BC3A /* TaskListViewModel.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
@@ -1167,7 +1167,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1301,7 +1301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1498,7 +1498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1538,7 +1538,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -16,6 +16,7 @@ enum MySports: String, CaseIterable, Hashable {
 struct JoinSportsView: View {
     @StateObject var vm: SportsListViewModel = SportsListViewModel()
     @State var selectedView: MySports = .joined
+    @State var showSheet: Bool = false
     
     @AppStorage("accent_color") var accentColor: Color = .accent.cyan
     
@@ -29,47 +30,12 @@ struct JoinSportsView: View {
                     Spacer()
                         .frame(height: 10)
                     
-                    HStack (spacing: 20) {
-                        ForEach (MySports.allCases, id: \.self) { selection in
-                            Text(selection.rawValue)
-                                .fontWeight(.semibold)
-                                .font(.headline)
-                                .frame(width: UIScreen.main.bounds.width / 4)
-                                .background (
-                                    ZStack {
-                                        if selection == selectedView {
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .fill(.clear)
-                                                .padding(20)
-                                                .taintedGlass()
-                                                .matchedGeometryEffect(id: "currentView", in: animation)
-                                        } //: if
-                                    } //: Zstack
-                                ) //: background
-                                .onTapGesture {
-                                    withAnimation {
-                                        selectedView = selection
-                                    }
-                                }
-                        } //: ForEach
-                    } //: HStack
-                    .padding(.vertical, 15)
-                    .padding(.horizontal, 5)
-                    .cornerRadius(20)
-                    .heavyGlass()
-                    .padding(.bottom)
-                    
                     VStack {
                         Spacer()
                             .frame(height: 20)
                         
                         ScrollView(showsIndicators: false) {
-                            switch selectedView{
-                            case .joined:
-                                joinedList
-                            case .all:
-                                allList
-                            }
+                            joinedList
                             
                             Spacer()
                                 .frame(height: 115)
@@ -81,8 +47,18 @@ struct JoinSportsView: View {
                     
                 }
         }
+        //.sheet(isPresented: $showSheet, content: MySportsView)
         .preferredColorScheme(.dark)
         .navigationTitle("Joined Sports")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showSheet.toggle()
+                } label: {
+                    NavButtonView(systemName: "plus")
+                }
+            })
+        }
     }
 }
 
