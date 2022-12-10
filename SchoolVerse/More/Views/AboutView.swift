@@ -78,7 +78,7 @@ extension AboutView {
         Group {
             HeaderLabel(name: "Links") .padding(.horizontal, 8)
             
-            LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://www.versegroup.tech/privacy")!)
+            LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://schoolverse.app/privacypolicy")!)
                 .padding(10)
             
             LinkLabel(name: "Instagram", link: URL(string: "https://www.instagram.com/schoolverse_app")!)
@@ -87,7 +87,7 @@ extension AboutView {
             LinkLabel(name: "Github", link: URL(string: "https://github.com/VerseGroup")!)
                 .padding(10)
             
-            LinkLabel(name: "VerseGroup Website", link: URL(string: "https://www.versegroup.tech")!)
+            LinkLabel(name: "SchoolVerse Website", link: URL(string: "https://schoolverse.app/")!)
                 .padding(10)
             
             LinkLabel(name: "Donations", link: URL(string: "https://www.buymeacoffee.com/schoolverse")!)
