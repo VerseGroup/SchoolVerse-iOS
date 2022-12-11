@@ -110,6 +110,7 @@
 		16A3AB4528F4C08E006799C9 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A3AB4428F4C08E006799C9 /* GoogleService-Info-Dev.plist */; };
 		16A3AB4728F4C255006799C9 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3AB4628F4C255006799C9 /* MealView.swift */; };
 		16A3AB4928F4CD08006799C9 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */; };
+		16B92EF32946813F00EBED71 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B92EF22946813F00EBED71 /* String+Date.swift */; };
 		16BE778B28F24D9C000248A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE778A28F24D9C000248A9 /* LoadingView.swift */; };
 		16BE778D28F258AD000248A9 /* FrostedGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE778C28F258AD000248A9 /* FrostedGlass.swift */; };
 		16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */; };
@@ -246,6 +247,7 @@
 		16A3AB4428F4C08E006799C9 /* GoogleService-Info-Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Dev.plist"; sourceTree = "<group>"; };
 		16A3AB4628F4C255006799C9 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
+		16B92EF22946813F00EBED71 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		16BE778A28F24D9C000248A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		16BE778C28F258AD000248A9 /* FrostedGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostedGlass.swift; sourceTree = "<group>"; };
 		16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				164A896628F3CEB100419637 /* View+Placeholder.swift */,
 				16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */,
 				AF4B42A82937C47A00639B9B /* String.swift */,
+				16B92EF22946813F00EBED71 /* String+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -953,6 +956,7 @@
 				AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */,
 				165CA07B28F1EE03007547FB /* HeaderLabel.swift in Sources */,
 				1688F96028C2ACBB0077B8F6 /* Course.swift in Sources */,
+				16B92EF32946813F00EBED71 /* String+Date.swift in Sources */,
 				166C1D0828E9289B00F265FA /* SportsEventCellView.swift in Sources */,
 				1618019928D90CF4006B5291 /* Color.swift in Sources */,
 				166C1CEE28E9209200F265FA /* MenusListViewModel.swift in Sources */,
