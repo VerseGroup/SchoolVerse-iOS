@@ -28,7 +28,7 @@ struct MenusView: View {
             ColorfulBackgroundView()
             
             VStack {
-                dateSelector
+                weekDateSelector
                 
                 VStack(spacing: 5) {
                     if let menu = vm.selectedMenu {
@@ -116,6 +116,49 @@ struct MenusView: View {
 struct MenuListView_Previews: PreviewProvider {
     static var previews: some View {
         MenusView()
+    }
+}
+
+extension MenusView {
+    var weekDateSelector: some View {
+        HStack {
+            Spacer()
+            
+            ForEach(vm.selectedWeek, id: \.self) { day in
+                VStack(spacing: 10) {
+                    Text(day.dateNumberString())
+                        .fontWeight(.semibold)
+                    
+                    Text(day.weekDayString())
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                    
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 8)
+                        .opacity(day.hasSame(.day, as: vm.selectedDate) ? 1 : 0)
+                }
+                .foregroundColor(Color.white)
+                .frame(width: 45, height: 95)
+                .background(
+                    ZStack{
+                        if day.hasSame(.day, as: vm.selectedDate) {
+                            Capsule()
+                                .fill(.clear)
+                                .taintedGlass()
+                                .matchedGeometryEffect(id: "currentday", in: animation)
+                        }
+                    }
+                )
+                .onTapGesture {
+                    withAnimation {
+                        vm.updateSelectedMenu(date: day)
+                    }
+                }
+                
+                Spacer()
+            } //: ForEach
+        } //: HStack
     }
 }
 

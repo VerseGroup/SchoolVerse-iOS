@@ -54,10 +54,34 @@ class MenusListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        $selectedDate
+            .sink{ (date) in
+                self.getSelectedWeek(date: date)
+            }
+            .store(in: &cancellables)
+        
     }
     
     func updateSelectedMenu(date: Date) {
         selectedDate = date
         repo.loadMenus(date: date)
     }
+    
+    func getSelectedWeek(date: Date) {
+        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: date)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        selectedWeek = []
+        
+        (0..<7).forEach { day in
+            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
+                selectedWeek.append(weekday)
+            }
+        }
+    }
+    
+    
 }

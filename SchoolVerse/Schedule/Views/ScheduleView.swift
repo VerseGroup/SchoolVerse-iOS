@@ -14,13 +14,15 @@ struct ScheduleView: View {
     @State var showPicker: Bool = false
     @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
+    @Namespace var animation
+    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
             
             VStack {
                 if let _ = vm.schedule {
-                    dateSelector
+                    weekDateSelector
                     
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
@@ -100,6 +102,49 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView()
+    }
+}
+
+extension ScheduleView {
+    var weekDateSelector: some View {
+        HStack {
+            Spacer()
+            
+            ForEach(vm.selectedWeek, id: \.self) { day in
+                VStack(spacing: 10) {
+                    Text(day.dateNumberString())
+                        .fontWeight(.semibold)
+                    
+                    Text(day.weekDayString())
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                    
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 8)
+                        .opacity(day.hasSame(.day, as: vm.selectedDate) ? 1 : 0)
+                }
+                .foregroundColor(Color.white)
+                .frame(width: 45, height: 95)
+                .background(
+                    ZStack{
+                        if day.hasSame(.day, as: vm.selectedDate) {
+                            Capsule()
+                                .fill(.clear)
+                                .taintedGlass()
+                                .matchedGeometryEffect(id: "currentday", in: animation)
+                        }
+                    }
+                )
+                .onTapGesture {
+                    withAnimation {
+                        vm.updateSelectedDayEvent(date: day)
+                    }
+                }
+                
+                Spacer()
+            } //: ForEach
+        } //: HStack
     }
 }
 
