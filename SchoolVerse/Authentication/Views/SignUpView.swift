@@ -69,6 +69,7 @@ struct SignUpView: View {
                         CustomTextField(placeholder: "Enter name", text: $details.displayName)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
+                            .keyboardType(.asciiCapable)
                             .warningAccessory($details.displayName, valid: $validName, warning: "Enter a name") { name in
                                 isNotEmpty(text: name)
                             }

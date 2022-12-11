@@ -8,9 +8,11 @@
 import Foundation
 import Combine
 import Resolver
+import FirebaseAuth
 
 class SignUpViewModel: ObservableObject {
     @Published private var authManager: FirebaseAuthenticationManager = Resolver.resolve()
+    @Published private var api: APIService = Resolver.resolve()
     
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
@@ -45,6 +47,27 @@ class SignUpViewModel: ObservableObject {
     }
     
     func signUp(creds: AppCredentialsDetails, details: UserModel) async {
-        await authManager.signUp(creds: creds, userDetails: details)
+        do {
+            authManager.removeStateListener()
+            let authDataResult = try await Auth.auth().createUser(withEmail: creds.email, password: creds.password)
+            
+            var finalUserDetails = details
+            finalUserDetails.email = creds.email
+            print("CREDS_EMAIL : \(creds.email)")
+            finalUserDetails.userId = authDataResult.user.uid
+            
+            api.createUser(details: finalUserDetails) {
+                self.authManager.finishSignUp()
+            }
+            
+        } catch {
+            print("There was an issue when trying to sign up: \(error)")
+            DispatchQueue.main.async {
+                self.authManager.reinstallStateListener()
+                self.errorMessage = error.localizedDescription
+                self.hasError = true
+            }
+        }
+        
     }
 }

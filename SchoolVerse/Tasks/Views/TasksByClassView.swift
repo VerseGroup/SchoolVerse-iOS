@@ -11,27 +11,41 @@ struct TasksByClassView: View {
     @EnvironmentObject var vm: TaskListViewModel
     
     var body: some View {
-        ForEach(vm.tasksClassDictionary.keys.sorted(), id:\.self) { key in
-            DisclosureGroup {
-                if (vm.tasksClassDictionary[key] ?? []).isEmpty {
-                    Text("No assignments soon!")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .glass()
-                } else {
-                    ForEach(vm.tasksClassDictionary[key] ?? []) { task in
-                        TaskTileView(vm: TaskCellViewModel(task: task))
-                            .padding(.horizontal, 5)
-                            .padding(.top, 2)
-                            .padding(.bottom, 7)
+        if !vm.tasksClassDictionary.isEmpty {
+            ForEach(vm.tasksClassDictionary.keys.sorted(), id:\.self) { key in
+                DisclosureGroup {
+                    if (vm.tasksClassDictionary[key] ?? []).isEmpty {
+                        Text("No assignments soon!")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .glass()
+                    } else {
+                        ForEach(vm.tasksClassDictionary[key] ?? []) { task in
+                            TaskTileView(vm: TaskCellViewModel(task: task))
+                                .padding(.horizontal, 5)
+                                .padding(.top, 2)
+                                .padding(.bottom, 7)
+                        }
                     }
+                } label: {
+                    HeaderLabel(name: key)
                 }
-            } label: {
-                HeaderLabel(name: key)
+                .padding(.horizontal)
+                .padding(5)
+                .tint(Color.white)
             }
-            .padding(.horizontal)
-            .padding(5)
-            .tint(Color.white)
+        } else {
+            VStack {
+                Spacer()
+                Text("No Tasks Yet!")
+                    .fontWeight(.semibold)
+                    .font(.largeTitle)
+                    .foregroundColor(Color.white)
+                Text("Refresh tasks with the upper left button.")
+                Spacer()
+                Spacer()
+            }
+            .transition(.opacity)
         }
     }
 }
