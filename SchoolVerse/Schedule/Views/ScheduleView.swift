@@ -103,6 +103,12 @@ struct ScheduleView_Previews: PreviewProvider {
     }
 }
 
+//extension ScheduleView {
+//    var weekDateSelector: some View {
+//        
+//    }
+//}
+
 extension ScheduleView {
     var dateSelector: some View {
         HStack {
