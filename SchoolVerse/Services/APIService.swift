@@ -119,7 +119,7 @@ class APIService: ObservableObject {
                     print("Server version: \(value.iosVersion)")
                     print("iOS version: \(String(describing: Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String))")
                     self.versionResponse = value
-                    self.sameVersion = value.iosVersion == Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+                    self.sameVersion = value.iosVersion.contains(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? "")
                 }
             }
     }
