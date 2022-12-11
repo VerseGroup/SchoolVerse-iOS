@@ -33,7 +33,7 @@ struct SettingsView: View {
                                 .padding(.horizontal)
                             
                             NavigationLink(
-                                destination: JoinSportsView(),
+                                destination: JoinedSportsView(),
                                 label: {
                                     NavigationLinkLabel(name: "My Sports")
                                         .padding(.horizontal)
