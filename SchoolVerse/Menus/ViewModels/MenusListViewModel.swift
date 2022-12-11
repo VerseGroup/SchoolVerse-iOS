@@ -82,4 +82,5 @@ class MenusListViewModel: ObservableObject {
             }
         }
     }
+    
 }
