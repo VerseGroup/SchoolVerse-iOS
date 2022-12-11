@@ -48,6 +48,16 @@ struct DaySchedule: Codable, Comparable {
 struct UniquePeriodInfo: Identifiable {
     var id = UUID()
     var period: PeriodInfo
+    var startDate: Date
+    var endDate: Date
+    
+    init(period: PeriodInfo, date: Date) {
+        self.period = period
+        let startDateString = date.shortDateString() + " " + period.startTime
+        let endDateString = date.shortDateString() + " " + period.endTime
+        self.startDate = startDateString.convertToDate() ?? Date.now
+        self.endDate = endDateString.convertToDate() ?? Date.now
+    }
 }
 
 struct PeriodInfo: Codable, Comparable {

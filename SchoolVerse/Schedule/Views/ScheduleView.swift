@@ -37,12 +37,16 @@ struct ScheduleView: View {
                                     ForEach(
                                         // converting PeriodInfo to UniquePeriodInfo
                                         daySchedule.periods.compactMap({ period in
-                                            UniquePeriodInfo(period: period)
+                                            UniquePeriodInfo(period: period, date: day.date)
                                         }).sorted(by: { one, two in
                                             one.period < two.period
                                         })
                                     ) { uniquePeriod in
-                                        PeriodTileAndHeader(periodInfo: uniquePeriod.period)
+                                        if Date.now.fallsBetween(start: uniquePeriod.startDate, end: uniquePeriod.endDate) {
+                                            CurrentPeriodTileAndHeader(periodInfo: uniquePeriod.period)
+                                        } else {
+                                            PeriodTileAndHeader(periodInfo: uniquePeriod.period)
+                                        }
                                     }
                                 }
                                 

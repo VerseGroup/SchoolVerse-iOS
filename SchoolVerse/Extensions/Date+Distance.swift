@@ -21,4 +21,8 @@ extension Date {
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
         distance(from: date, only: component) == 0
     }
+    
+    func fallsBetween(start: Date, end: Date) -> Bool {
+        (start...end).contains(self)
+    }
 }

@@ -15,19 +15,28 @@ struct BorderedTaintedGlass: ViewModifier {
         content
             .background(
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(accentColor)
-                    .opacity(0.3)
+                    .fill(Color.white)
+                    .opacity(0.1)
                     .background(
-                        accentColor
-                            .opacity(0.005)
+                        Color.white
+                            .opacity(0.08)
                             .blur(radius: 10)
                     )
-                    // Strokes
+                // Strokes
                     .background(
                         RoundedRectangle(cornerRadius: 25)
-                            .trim(from: animate ? 0: 1, to: animate ? 1: 0)
-                            .stroke(.white, lineWidth: 3)
-                            .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: false))
+//                            .trim(from: animate ? 0: 1, to: animate ? 0.5: 1)
+//                            .stroke (
+//                                .linearGradient(.init(colors: [
+//                                    Color("Purple"),
+//                                    Color("Purple").opacity(0.5),
+//                                    Color("OnboardingCyan").opacity(0.5),
+//                                    Color("OnboardingCyan")
+//                                ]),startPoint: .topLeading, endPoint: .bottomTrailing) ,lineWidth: 2.5
+//                            )
+                            .stroke(accentColor, lineWidth: 4)
+                            .opacity(animate ? 1: 0.25)
+                            .animation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true))
                             .onAppear() {
                                 self.animate.toggle()
                             }
