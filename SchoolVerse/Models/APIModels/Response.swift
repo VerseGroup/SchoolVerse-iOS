@@ -44,6 +44,10 @@ struct EnsureResponse: Codable {
     let exception: String?
 }
 
+struct CreateResponse: Codable {
+    let message: ResponseMessage
+    let exception: String?
+}
 
 struct DeleteResponse: Codable {
     let message: ResponseMessage

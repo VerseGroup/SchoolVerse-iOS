@@ -25,7 +25,8 @@ protocol AuthenticationManagerProtocol: ObservableObject {
     
     func signIn(creds: AppCredentialsDetails) async
     func signOut() async
-    func signUp(creds: AppCredentialsDetails, userDetails: UserModel) async
+//    func signUp(creds: AppCredentialsDetails, userDetails: UserModel) async
+    func finishSignUp()
 }
 
 // doesn't work because published properties don't update
@@ -152,6 +153,15 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
         }
     }
     
+    func reinstallStateListener() {
+        registerStateListener()
+    }
+    
+    func removeStateListener() {
+        guard let handle = handle else { return }
+        Auth.auth().removeStateDidChangeListener(handle)
+    }
+    
     @MainActor
     func signIn(creds: AppCredentialsDetails) async {
         do {
@@ -190,26 +200,31 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
         }
     }
     
-    @MainActor
-    func signUp(creds: AppCredentialsDetails, userDetails: UserModel) async {
-        do {
-            let authDataResult = try await Auth.auth().createUser(withEmail: creds.email, password: creds.password)
-            
-            var finalUserDetails = userDetails
-            finalUserDetails.email = creds.email
-            finalUserDetails.userId = authDataResult.user.uid
-            
-            try db.collection(path).document(authDataResult.user.uid).setData(from: finalUserDetails)
-            
-            // show linking page every time a user signs up
-            UserDefaults.standard.set(true, forKey: "show_linking")
-        } catch {
-            print("There was an issue when trying to sign up: \(error)")
-            DispatchQueue.main.async {
-                self.errorMessage = error.localizedDescription
-                self.hasError = true
-            }
-        }
+//    @MainActor
+//    func signUp(creds: AppCredentialsDetails, userDetails: UserModel) async {
+//        do {
+//            let authDataResult = try await Auth.auth().createUser(withEmail: creds.email, password: creds.password)
+//
+//            var finalUserDetails = userDetails
+//            finalUserDetails.email = creds.email
+//            finalUserDetails.userId = authDataResult.user.uid
+//
+//            try db.collection(path).document(authDataResult.user.uid).setData(from: finalUserDetails)
+//
+//            // show linking page every time a user signs up
+//            UserDefaults.standard.set(true, forKey: "show_linking")
+//        } catch {
+//            print("There was an issue when trying to sign up: \(error)")
+//            DispatchQueue.main.async {
+//                self.errorMessage = error.localizedDescription
+//                self.hasError = true
+//            }
+//        }
+//    }
+    
+    func finishSignUp() {
+        registerStateListener()
+        UserDefaults.standard.set(true, forKey: "show_linking")
     }
     
 //    func deleteUser() {
