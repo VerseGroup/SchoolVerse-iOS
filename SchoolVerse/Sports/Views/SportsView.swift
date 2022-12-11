@@ -15,12 +15,17 @@ struct SportsView: View {
     
     @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
+    @Namespace var animation
+    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
             
             VStack {
-                dateSelector
+                weekDateSelector
+                
+                Spacer()
+                    .frame(height: 10)
                 
                 VStack(spacing: 20) {
                     if !vm.selectedAllSportsEvents.isEmpty {
@@ -85,6 +90,49 @@ struct SportsView: View {
 struct SportsView_Previews: PreviewProvider {
     static var previews: some View {
         SportsView()
+    }
+}
+
+extension SportsView {
+    var weekDateSelector: some View {
+        HStack {
+            Spacer()
+            
+            ForEach(vm.selectedWeek, id: \.self) { day in
+                VStack(spacing: 10) {
+                    Text(day.dateNumberString())
+                        .fontWeight(.semibold)
+                    
+                    Text(day.weekDayString())
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                    
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 8)
+                        .opacity(day.hasSame(.day, as: vm.selectedDate) ? 1 : 0)
+                }
+                .foregroundColor(Color.white)
+                .frame(width: 45, height: 95)
+                .background(
+                    ZStack{
+                        if day.hasSame(.day, as: vm.selectedDate) {
+                            Capsule()
+                                .fill(.clear)
+                                .taintedGlass()
+                                .matchedGeometryEffect(id: "currentday", in: animation)
+                        }
+                    }
+                )
+                .onTapGesture {
+                    withAnimation {
+                        vm.updateSelectedDay(date: day)
+                    }
+                }
+                
+                Spacer()
+            } //: ForEach
+        } //: HStack
     }
 }
 

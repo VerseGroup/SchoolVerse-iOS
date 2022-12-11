@@ -37,4 +37,24 @@ extension Date {
     func timeString() -> String {
         return timeFormatter.string(from: self)
     }
+    
+    private var dateNumberFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        return formatter
+    }
+    
+    func dateNumberString() -> String {
+        return dateNumberFormatter.string(from: self)
+    }
+    
+    private var weekDayFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE"
+        return formatter
+    }
+    
+    func weekDayString() -> String {
+        return weekDayFormatter.string(from: self)
+    }
 }
