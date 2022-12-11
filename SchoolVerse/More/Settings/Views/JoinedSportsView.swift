@@ -1,5 +1,5 @@
 //
-//  JoinSportsView.swift
+//  JoinedSportsView.swift
 //  SchoolVerse
 //
 //  Created by dshola-philips on 11/30/22.
@@ -13,7 +13,7 @@ enum MySports: String, CaseIterable, Hashable {
     case all = "All Sports"
 }
 
-struct JoinSportsView: View {
+struct JoinedSportsView: View {
     @StateObject var vm: SportsListViewModel = SportsListViewModel()
     @State var selectedView: MySports = .joined
     @State var showSheet: Bool = false
@@ -47,7 +47,9 @@ struct JoinSportsView: View {
                     
                 }
         }
-        //.sheet(isPresented: $showSheet, content: MySportsView)
+        .sheet(isPresented: $showSheet) {
+            allList
+        }
         .preferredColorScheme(.dark)
         .navigationTitle("Joined Sports")
         .toolbar {
@@ -62,7 +64,7 @@ struct JoinSportsView: View {
     }
 }
 
-extension JoinSportsView {
+extension JoinedSportsView {
     var joinedList: some View {
         Group {
             SubscribedSportsTile(joined: true, sport: Sport(id: "baseball", name: "Baseball - Varsity", link: "testtest", events: []))
@@ -73,11 +75,45 @@ extension JoinSportsView {
     }
     
     var allList: some View {
-        ForEach(vm.allSports, content: { sport in
-            if !sport.name.contains("Middle School") {
-                SubscribedSportsTile(joined: false, sport: sport)
+        NavigationStack {
+            ZStack {
+                ColorfulBackgroundView()
+                
+                VStack {
+                    Spacer()
+                        .frame(height: 10)
+                    
+                    VStack {
+                        Spacer()
+                            .frame(height: 20)
+                        
+                        ScrollView(showsIndicators: false) {
+                            ForEach(vm.allSports, content: { sport in
+                                if !sport.name.contains("Middle School") {
+                                    SubscribedSportsTile(joined: false, sport: sport)
+                                }
+                            })
+                            
+                            Spacer()
+                                .frame(height: 115)
+                        }
+                    }
+                    .heavyGlass()
+                    .ignoresSafeArea()
+                    .frame(maxWidth: .infinity)
+                    
+                }
             }
-        })
-        
+            .navigationTitle("Edit My Sports")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        NavButtonView(systemName: "xmark")
+                    }
+                })
+            }
+        }
     }
 }
