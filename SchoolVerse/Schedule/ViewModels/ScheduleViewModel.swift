@@ -88,4 +88,5 @@ class ScheduleViewModel: ObservableObject {
             }
         }
     }
+    
 }
