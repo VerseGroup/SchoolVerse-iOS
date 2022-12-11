@@ -8,7 +8,7 @@
 import Foundation
 
 struct VersionResponse: Codable {
-    let iosVersion: String
+    let iosVersion: [String]
     
     enum CodingKeys: String, CodingKey {
         case iosVersion = "ios_version"

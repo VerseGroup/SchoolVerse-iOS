@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MySportsView: View {
-    @StateObject var vm: SportsListViewModel = SportsListViewModel()
+    @EnvironmentObject var vm: SportsListViewModel
     
     var body: some View {
         VStack {
@@ -20,14 +20,10 @@ struct MySportsView: View {
                 .fontWeight(.bold)
             
             ScrollView(showsIndicators: false) {
-                ForEach(vm.selectedAllSportsEvents) { sportEvent in
-                    SportsEventCellView(sportsEvent: sportEvent)
-                        .padding(.horizontal)
-                        .padding(.vertical, 5)
-                }
-                
-                Spacer()
-                    .frame(height: 95)
+                Text("Coming Soon...")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
             }
             
         }
