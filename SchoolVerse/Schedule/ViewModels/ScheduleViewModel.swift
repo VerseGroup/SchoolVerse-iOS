@@ -18,6 +18,7 @@ class ScheduleViewModel: ObservableObject {
     
     @Published var selectedDayEvent: DayEvent?
     @Published var selectedDate: Date = Date()
+    @Published var selectedWeek: [Date] = []
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -59,9 +60,32 @@ class ScheduleViewModel: ObservableObject {
                 }) ?? nil
             }
             .store(in: &cancellables)
+        
+        $selectedDate
+            .sink{ (date) in
+                self.getSelectedWeek(date: date)
+            }
+            .store(in: &cancellables)
+        
     }
     
     func updateSelectedDayEvent(date: Date) {
         selectedDate = date
+    }
+    
+    func getSelectedWeek(date: Date) {
+        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: date)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        selectedWeek = []
+        
+        (0..<7).forEach { day in
+            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
+                selectedWeek.append(weekday)
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ class SportsListViewModel: ObservableObject {
     @Published var selectedAllSportsEvents = [SportsEvent]()
     
     @Published var selectedDate: Date = Date()
+    @Published var selectedWeek: [Date] = []
     
     @Published var hasError: Bool = false
     @Published var errorMessage: String?
@@ -83,9 +84,31 @@ class SportsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        $selectedDate
+            .sink{ (date) in
+                self.getSelectedWeek(date: date)
+            }
+            .store(in: &cancellables)
+        
     }
     
     func updateSelectedDay(date: Date) {
         selectedDate = date
+    }
+    
+    func getSelectedWeek(date: Date) {
+        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: date)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        selectedWeek = []
+        
+        (0..<7).forEach { day in
+            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
+                selectedWeek.append(weekday)
+            }
+        }
     }
 }
