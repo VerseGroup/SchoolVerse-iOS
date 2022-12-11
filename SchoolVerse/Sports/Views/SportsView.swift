@@ -84,6 +84,7 @@ struct SportsView: View {
                 }
             })
         }
+        .environmentObject(vm)
     }
 }
 

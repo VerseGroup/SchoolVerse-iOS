@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AllSportsView: View {
-    @StateObject var vm: SportsListViewModel = SportsListViewModel()
+    @EnvironmentObject var vm: SportsListViewModel
     
     var body: some View {
         VStack {
