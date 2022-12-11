@@ -19,6 +19,8 @@ class APIService: ObservableObject {
     @Published var ensureResponse: EnsureResponse?
     @Published var versionResponse: VersionResponse?
     @Published var approveResponse: ApproveResponse?
+    @Published var createResponse: CreateResponse?
+    @Published var deleteResponse: DeleteResponse?
     
     @Published var sameVersion: Bool = true
     
@@ -269,6 +271,63 @@ class APIService: ObservableObject {
                     }
                 }
             }
+    }
+    
+    func createUser(details: UserModel, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "user_id": userId,
+            "email": details.email,
+            "display_name": details.displayName,
+            "grade_level": String(details.gradeLevel),
+            "api_key": CustomEnvironment.apiKey
+        ]
+        
+        AF.request(baseURL + "/create_user", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: DeleteResponse.self) { response in
+                debugPrint("create response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Creating user failed"
+                }
+            }
+    }
+    
+    func deleteUser(completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "user_id": userId,
+            "api_key": CustomEnvironment.apiKey
+        ]
+        
+        AF.request(baseURL + "/delete_user", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: DeleteResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                completion()
+            }
+
     }
 }
 
