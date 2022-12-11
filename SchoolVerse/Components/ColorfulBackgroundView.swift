@@ -34,7 +34,7 @@ struct ColorfulBackgroundView: View {
                     .offset(x: size.width / 2.2, y: -size.height / 2.5)
                 
                 Circle()
-                    .fill(Color.accent.blue)
+                    .fill(Color.accent.cyan)
                     .padding(50)
                     .blur(radius: 150)
                     .offset(x: size.width / 1.8, y: size.height / 2)
