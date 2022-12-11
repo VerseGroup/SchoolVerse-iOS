@@ -74,14 +74,14 @@ struct SportsView: View {
                     NavButtonView(systemName: "calendar")
                 }
                 
-                Menu {
-                    Picker(selection: $allSportsSort, label: Text("Sorting options")) {
-                        Text("All Sports").tag(true)
-                        Text("My Sports").tag(false)
-                    }
-                } label: {
-                    NavButtonView(systemName: "line.3.horizontal.decrease")
-                }
+//                Menu {
+//                    Picker(selection: $allSportsSort, label: Text("Sorting options")) {
+//                        Text("All Sports").tag(true)
+//                        Text("My Sports").tag(false)
+//                    }
+//                } label: {
+//                    NavButtonView(systemName: "line.3.horizontal.decrease")
+//                }
             })
         }
         .environmentObject(vm)
