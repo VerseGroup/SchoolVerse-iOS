@@ -34,9 +34,9 @@ struct BorderedTaintedGlass: ViewModifier {
 //                                    Color("OnboardingCyan")
 //                                ]),startPoint: .topLeading, endPoint: .bottomTrailing) ,lineWidth: 2.5
 //                            )
-                            .stroke(accentColor, lineWidth: 4)
+                            .stroke(accentColor, lineWidth: 5)
                             .opacity(animate ? 1: 0.25)
-                            .animation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true))
+                            .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false).delay(0.5))
                             .onAppear() {
                                 self.animate.toggle()
                             }
