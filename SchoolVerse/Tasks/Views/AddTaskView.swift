@@ -25,7 +25,7 @@ struct AddTaskView: View {
             ColorfulBackgroundView()
             
             VStack(spacing: 10) {
-                Spacer().frame(height: 65)
+                Spacer().frame(height: 75)
                 
                 Group {
                     HeaderLabel(name: "Task Details")
