@@ -57,4 +57,14 @@ extension Date {
     func weekDayString() -> String {
         return weekDayFormatter.string(from: self)
     }
+    
+    private var shortDateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+    
+    func shortDateString() -> String {
+        return shortDateFormatter.string(from: self)
+    }
 }
