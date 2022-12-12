@@ -24,6 +24,8 @@ struct AboutView: View {
                     
                     recognition
                     
+                    betaTesters
+                    
                     Spacer()
                         .frame(height: 90)
                 }
@@ -105,6 +107,18 @@ extension AboutView {
             
             ParagraphLabel(name:
                             "\tWe would like to give a shout-out to Mrs. Tranchida, Mr. Dioguardi, Mrs. Maguire, Mr. King, Dr. Ying and so many other faculty and students for giving us significant help, support, and feedback vital to the creation of this app for Hackley School."
+            )
+            .padding(.horizontal, 10)
+        }
+    }
+    
+    private var betaTesters: some View {
+        Group {
+            HeaderLabel(name: "Most Helpful Beta Testers")
+                .padding(.horizontal, 8)
+            
+            ParagraphLabel(name:
+                            "\tWe would like to give another shout-out to Maggie Zhang, Will Koranteng, Isabelle Cai, Joseph Reyes, Ella Rodriguez, Vivek Malik, Zara Haider and more for helping us during the beta development of SchoolVerse."
             )
             .padding(.horizontal, 10)
         }
