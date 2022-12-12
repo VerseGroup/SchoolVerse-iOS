@@ -106,7 +106,7 @@ class APIService: ObservableObject {
     }
     
     func version() {
-        AF.request(baseURL + "/version")
+        AF.request(baseURL + "/version2")
             .cURLDescription { description in
                 print(description)
             }
