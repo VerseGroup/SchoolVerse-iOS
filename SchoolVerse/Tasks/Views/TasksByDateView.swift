@@ -13,7 +13,7 @@ struct TasksByDateView: View {
     var body: some View {
         if !vm.tasksClassDictionary.isEmpty {
             ForEach(vm.tasksDateDictionary.keys.sorted(), id:\.self) { key in
-                DisclosureGroup(isExpanded: .constant(true)) {
+                DisclosureGroup() {
                     if (vm.tasksDateDictionary[key] ?? []).isEmpty {
                         Text("No assignments soon!")
                             .font(.headline)

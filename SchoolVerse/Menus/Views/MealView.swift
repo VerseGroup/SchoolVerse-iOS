@@ -24,6 +24,16 @@ struct MealView: View {
                             .padding(.vertical, 5)
                     }
                     
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 18))
+                        
+                        Text("This menu data is pulled directly from your school's dining service. Any issues with data should be brought to them directly.")
+                            .font(.system(size: 13))
+                    }
+                    .fontWeight(.semibold)
+                    .padding(.horizontal)
+                    
                     Spacer()
                         .frame(height: 95)
                 }
@@ -41,6 +51,20 @@ struct MealView: View {
                     .fontWeight(.bold)
                 
                 Spacer()
+                
+                
+                HStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 18))
+                    
+                    Text("This menu data is pulled directly from your school's dining service. Any issues with data should be brought to them directly.")
+                        .font(.system(size: 13))
+                }
+                .fontWeight(.semibold)
+                .padding(.horizontal)
+                
+                Spacer()
+                    .frame(height: 95)
             }
             .frame(maxWidth: .infinity)
             .heavyGlass()
