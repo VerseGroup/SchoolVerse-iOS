@@ -28,7 +28,7 @@ struct TasksByDateView: View {
                         }
                     }
                 } label: {
-                    HeaderLabel(name: key)
+                    HeaderLabel(name: key.weekDateString())
                 }
                 .padding(.horizontal)
                 .padding(5)

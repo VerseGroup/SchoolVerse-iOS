@@ -74,6 +74,7 @@
 		165CA09128F1F5B7007547FB /* PeriodTitleAndHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA09028F1F5B7007547FB /* PeriodTitleAndHeader.swift */; };
 		165CA09C28F1FF54007547FB /* NavButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA09B28F1FF54007547FB /* NavButtonView.swift */; };
 		165CA09E28F205A6007547FB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA09D28F205A6007547FB /* CustomTextField.swift */; };
+		1661E75729479DBA00E95C62 /* Date+Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1661E75629479DBA00E95C62 /* Date+Start.swift */; };
 		166C1CEA28E91F3000F265FA /* MenusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CE928E91F3000F265FA /* MenusRepository.swift */; };
 		166C1CEC28E9208200F265FA /* MenusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CEB28E9208200F265FA /* MenusView.swift */; };
 		166C1CEE28E9209200F265FA /* MenusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1CED28E9209200F265FA /* MenusListViewModel.swift */; };
@@ -210,6 +211,7 @@
 		165CA09028F1F5B7007547FB /* PeriodTitleAndHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodTitleAndHeader.swift; sourceTree = "<group>"; };
 		165CA09B28F1FF54007547FB /* NavButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButtonView.swift; sourceTree = "<group>"; };
 		165CA09D28F205A6007547FB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1661E75629479DBA00E95C62 /* Date+Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Start.swift"; sourceTree = "<group>"; };
 		166C1CE928E91F3000F265FA /* MenusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusRepository.swift; sourceTree = "<group>"; };
 		166C1CEB28E9208200F265FA /* MenusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusView.swift; sourceTree = "<group>"; };
 		166C1CED28E9209200F265FA /* MenusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusListViewModel.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */,
 				AF4B42A82937C47A00639B9B /* String.swift */,
 				16B92EF22946813F00EBED71 /* String+Date.swift */,
+				1661E75629479DBA00E95C62 /* Date+Start.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */,
 				164A895F28F3A0C900419637 /* SettingsViewModel.swift in Sources */,
 				1612195328E159760063BC3A /* TaskListViewModel.swift in Sources */,
+				1661E75729479DBA00E95C62 /* Date+Start.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,

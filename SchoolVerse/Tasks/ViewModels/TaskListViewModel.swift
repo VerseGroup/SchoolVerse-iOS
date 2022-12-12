@@ -24,7 +24,7 @@ class TaskListViewModel: ObservableObject {
     @Published var futureTaskCellViewModels = [TaskCellViewModel]()
     
     @Published var tasksClassDictionary: [String: [SchoolTask]] = [:]
-    @Published var tasksDateDictionary: [String: [SchoolTask]] = [:]
+    @Published var tasksDateDictionary: [Date: [SchoolTask]] = [:]
     
     @Published var errorMessage: String?
     @Published var hasError: Bool = false
@@ -78,7 +78,7 @@ class TaskListViewModel: ObservableObject {
         repo.$tasks
             .sink { [weak self] (returnedTasks) in
                 let dict = Dictionary(grouping: returnedTasks, by: { (element: SchoolTask) in
-                    return element.dueDate.weekDateString()
+                    return element.dueDate.startOfDay
                 })
                 withAnimation(.default) {
                     self?.tasksDateDictionary = dict.mapValues { tasks in
