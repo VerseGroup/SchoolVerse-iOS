@@ -37,6 +37,9 @@ class TaskListViewModel: ObservableObject {
     @Published var bannerTitle: String = ""
     @Published var bannerDetail: String? = nil
     
+    @Published var taskSortLocal: TaskSort = .sortUrgency
+    //@AppStorage("task_sort_preference") var taskSort: TaskSort = .sortUrgency
+    
     @Published var isLoading: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
@@ -47,10 +50,17 @@ class TaskListViewModel: ObservableObject {
         Timer.scheduledTimer(withTimeInterval: 200, repeats: true, block: { _ in
             self.isAvailable = true
         })
+        //taskSortLocal = taskSort
         addSubscribers()
     }
     
     func addSubscribers() {
+        
+//        $taskSortLocal
+//            .sink { (returnedSort) in
+//                self.taskSort = returnedSort
+//            }
+//            .store(in: &cancellables)
         
         // firebase vars
         
@@ -274,6 +284,10 @@ class TaskListViewModel: ObservableObject {
         } else {
             print("WAIT! Is not available")
         }
+    }
+    
+    func changeTaskSort(sort: TaskSort) {
+        taskSortLocal = sort
     }
     
 //    private let debouncer = Debouncer(timeInterval: 200)

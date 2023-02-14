@@ -13,7 +13,10 @@ struct TasksByDateView: View {
     var body: some View {
         if !vm.tasksClassDictionary.isEmpty {
             ForEach(vm.tasksDateDictionary.keys.sorted(), id:\.self) { key in
-                DisclosureGroup() {
+
+                VStack {
+                    HeaderLabel(name: key.weekDateString())
+                    
                     if (vm.tasksDateDictionary[key] ?? []).isEmpty {
                         Text("No assignments soon!")
                             .font(.headline)
@@ -27,8 +30,7 @@ struct TasksByDateView: View {
                                 .padding(.bottom, 7)
                         }
                     }
-                } label: {
-                    HeaderLabel(name: key.weekDateString())
+                    
                 }
                 .padding(.horizontal)
                 .padding(5)
