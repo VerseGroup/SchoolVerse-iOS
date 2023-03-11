@@ -106,17 +106,19 @@ struct MoreView: View {
                         }
                         
                         GridRow {
+                            NavigationLink {
+                                FriendsView()
+                            } label: {
+                                MoreInfoCardView(imageName: "person.2.fill", name: "Friends")
+                            }
+                            
                             Button {
                                 selection = .menu
                             } label: {
                                 MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
                             }
                             
-                            Button {
-                                selection = .tasks
-                            } label: {
-                                MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
-                            }
+                            
                         }
                         
                         GridRow {
@@ -125,6 +127,11 @@ struct MoreView: View {
                             //                        } label: {
                             //                            MoreInfoCardView(imageName: "person.2.fill", name: "Clubs")
                             //                        }
+                            Button {
+                                selection = .tasks
+                            } label: {
+                                MoreInfoCardView(imageName: "list.bullet.rectangle.portrait", name: "Tasks")
+                            }
                             
                             Button {
                                 selection = .schedule

@@ -22,7 +22,7 @@ struct ScheduleView: View {
             
             VStack {
                 if let _ = vm.schedule {
-                    weekDateSelector
+                    scrollingDateSelector
                     
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
@@ -150,7 +150,20 @@ extension ScheduleView {
             } //: ForEach
         } //: HStack
     }
+    
+    var scrollingDateSelector: some View {
+        TabView {
+            ForEach(0..<3) {_ in
+                weekDateSelector
+            }
+        }
+        .frame(height: UIScreen.main.bounds.height / 8)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+    }
 }
+
+
 
 extension ScheduleView {
     var dateSelector: some View {
