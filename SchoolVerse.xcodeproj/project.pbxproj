@@ -134,7 +134,6 @@
 		AF299C0A29BA2D4E00FE3CDF /* DiscoverClubsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0929BA2D4E00FE3CDF /* DiscoverClubsView.swift */; };
 		AF299C0C29BAB4C200FE3CDF /* ClubTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */; };
 		AF299C0E29BC179100FE3CDF /* ClubPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0D29BC179100FE3CDF /* ClubPageView.swift */; };
-		AF299C1129BC38FB00FE3CDF /* ClubAnnouncementsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C1029BC38FB00FE3CDF /* ClubAnnouncementsTile.swift */; };
 		AF299C1329BC465500FE3CDF /* ClubSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */; };
 		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
 		AF4B42AB2937EAAD00639B9B /* JoinedSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */; };
@@ -146,6 +145,7 @@
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
 		AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753C2930076700633CE3 /* TasksByDateView.swift */; };
 		AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */; };
+		AFAA82B929BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,7 +287,6 @@
 		AF299C0929BA2D4E00FE3CDF /* DiscoverClubsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverClubsView.swift; sourceTree = "<group>"; };
 		AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubTile.swift; sourceTree = "<group>"; };
 		AF299C0D29BC179100FE3CDF /* ClubPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubPageView.swift; sourceTree = "<group>"; };
-		AF299C1029BC38FB00FE3CDF /* ClubAnnouncementsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubAnnouncementsTile.swift; sourceTree = "<group>"; };
 		AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSettingsView.swift; sourceTree = "<group>"; };
 		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedSportsView.swift; sourceTree = "<group>"; };
@@ -299,6 +298,7 @@
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
 		AF61753C2930076700633CE3 /* TasksByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByDateView.swift; sourceTree = "<group>"; };
 		AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicalDatePicker.swift; sourceTree = "<group>"; };
+		AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubAnnouncementsTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -896,7 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */,
-				AF299C1029BC38FB00FE3CDF /* ClubAnnouncementsTile.swift */,
+				AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */,
 			);
 			path = Clubs;
 			sourceTree = "<group>";
@@ -1093,6 +1093,7 @@
 				AF299BFA29B3F54200FE3CDF /* FriendsViewModel.swift in Sources */,
 				165CA07828F1ED62007547FB /* TaintedGlass.swift in Sources */,
 				AF299C0C29BAB4C200FE3CDF /* ClubTile.swift in Sources */,
+				AFAA82B929BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift in Sources */,
 				AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */,
 				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				165CA09E28F205A6007547FB /* CustomTextField.swift in Sources */,
@@ -1122,7 +1123,6 @@
 				165CA07628F1ED55007547FB /* HeavyGlass.swift in Sources */,
 				166C1CFA28E925B100F265FA /* SportsRepository.swift in Sources */,
 				16BE778D28F258AD000248A9 /* FrostedGlass.swift in Sources */,
-				AF299C1129BC38FB00FE3CDF /* ClubAnnouncementsTile.swift in Sources */,
 				165CA07428F1ED47007547FB /* FullGlassCard.swift in Sources */,
 				166C1D0628E9288300F265FA /* SportsView.swift in Sources */,
 				1604B18828D8E69700931C90 /* SignInView.swift in Sources */,
