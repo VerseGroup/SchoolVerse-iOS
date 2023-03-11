@@ -13,7 +13,7 @@ struct AppView: View {
     @InjectedObject var authManager: FirebaseAuthenticationManager
     
     @State var selection: TabBarItem = .schedule
-    let tabs: [TabBarItem] = [.schedule, .tasks, .menu, .more]
+    let tabs: [TabBarItem] = [.schedule, .tasks, .menu, .clubs, .more]
     
     var body: some View {
         TabBarViewBuilder {
@@ -31,6 +31,11 @@ struct AppView: View {
                 MenusView()
             }
             .tabBarItem(tab: TabBarItem.menu, selection: selection)
+            
+            NavigationStack {
+                ClubsView()
+            }
+            .tabBarItem(tab: TabBarItem.clubs, selection: selection)
             
             NavigationStack {
                 MoreView(selection: $selection)

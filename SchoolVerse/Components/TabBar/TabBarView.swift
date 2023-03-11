@@ -65,7 +65,7 @@ extension TabBarView {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(accentColor.gradient)
                             .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                            .frame(width: 60, height: 60)
+                            .frame(width: 65, height: 65)
                     }
                 }
             )

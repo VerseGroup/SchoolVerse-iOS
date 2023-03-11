@@ -15,7 +15,7 @@ enum TabBarItem: Hashable {
         case .menu: return "menucard.fill"
         case .schedule: return "calendar"
         case .tasks: return "list.bullet.rectangle.portrait"
-        case .clubs: return "person.2.fill"
+        case .clubs: return "person.3.fill"
         case .more: return "line.3.horizontal"
         }
     }
