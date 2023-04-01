@@ -20,10 +20,14 @@ struct MySportsView: View {
                 .fontWeight(.bold)
             
             ScrollView(showsIndicators: false) {
-                Text("Coming Soon...")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
+                ForEach(vm.selectedSubscribedSportsEvents) { sportEvent in
+                    SportsEventCellView(sportsEvent: sportEvent)
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                }
+                
+                Spacer()
+                    .frame(height: 95)
             }
             
         }

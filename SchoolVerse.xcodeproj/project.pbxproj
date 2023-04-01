@@ -43,6 +43,7 @@
 		1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */; };
 		1637161F28C0514B00DF15D4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 1637161E28C0514B00DF15D4 /* Resolver */; };
 		1637164128C057B300DF15D4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637164028C057B300DF15D4 /* Menu.swift */; };
+		163DFB3D29BD3A9100190BDE /* SportsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163DFB3C29BD3A9100190BDE /* SportsCellViewModel.swift */; };
 		16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */; };
 		164831B428F9F191001793B7 /* days.json in Resources */ = {isa = PBXBuildFile; fileRef = 164831B328F9F191001793B7 /* days.json */; };
 		164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A894B28F2660300419637 /* CustomTextEditor.swift */; };
@@ -195,6 +196,7 @@
 		163715FE28C03A0C00DF15D4 /* CustomEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironment.swift; sourceTree = "<group>"; };
 		1637160428C03E9B00DF15D4 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		1637164028C057B300DF15D4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		163DFB3C29BD3A9100190BDE /* SportsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCellViewModel.swift; sourceTree = "<group>"; };
 		16421DC628F7B0EE00FC4CAD /* Firestore+CollectionRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firestore+CollectionRef.swift"; sourceTree = "<group>"; };
 		164831B328F9F191001793B7 /* days.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = days.json; sourceTree = "<group>"; };
 		164A894B28F2660300419637 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				166C1D0328E9286400F265FA /* SportsListViewModel.swift */,
+				163DFB3C29BD3A9100190BDE /* SportsCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1170,6 +1173,7 @@
 				AF299C0629B79CAE00FE3CDF /* ClubsViewModel.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,
 				1618019628D90B55006B5291 /* TabBarViewBuilder.swift in Sources */,
+				163DFB3D29BD3A9100190BDE /* SportsCellViewModel.swift in Sources */,
 				1618019C28D9192A006B5291 /* AlertViewPopover.swift in Sources */,
 				AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */,
 				AF299C0A29BA2D4E00FE3CDF /* DiscoverClubsView.swift in Sources */,

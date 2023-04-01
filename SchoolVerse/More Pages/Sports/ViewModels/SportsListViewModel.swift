@@ -17,6 +17,10 @@ class SportsListViewModel: ObservableObject {
     @Published var allSportsEvents = [SportsEvent]()
     @Published var selectedAllSportsEvents = [SportsEvent]()
     
+    @Published var subscribedSports = [Sport]()
+    @Published var subscribedSportsEvents = [SportsEvent]()
+    @Published var selectedSubscribedSportsEvents = [SportsEvent]()
+    
     @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
@@ -46,6 +50,21 @@ class SportsListViewModel: ObservableObject {
         $allSports
             .sink { returnedSports in
                 self.allSportsEvents = returnedSports.flatMap({ sport in
+                    sport.events
+                })
+            }
+            .store(in: &cancellables)
+        
+        // updates subscribed sports
+        repo.$subscribedSports
+            .sink { [weak self] (returnedSports) in
+                self?.subscribedSports = returnedSports
+            }
+            .store(in: &cancellables)
+        
+        $subscribedSports
+            .sink { returnedSports in
+                self.subscribedSportsEvents = returnedSports.flatMap({ sport in
                     sport.events
                 })
             }
@@ -84,12 +103,28 @@ class SportsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        // sets selectedSubscribedSportsEvents to the selectedDate
+        $selectedDate
+            .sink{ (date) in
+                self.selectedSubscribedSportsEvents = self.subscribedSportsEvents.filter({ sportEvent in
+                    sportEvent.start.calendarDistance(from: date, resultIn: .day) == 0
+                }).sorted(by: { one, two in
+                    one.start < two.start
+                })
+            }
+            .store(in: &cancellables)
+        
         $selectedDate
             .sink{ (date) in
                 self.getSelectedWeek(date: date)
             }
             .store(in: &cancellables)
         
+        repo.$subscribedSports
+            .sink { [weak self] (returnedSports) in
+                self?.subscribedSports = returnedSports
+            }
+            .store(in: &cancellables)
     }
     
     func updateSelectedDay(date: Date) {
@@ -110,5 +145,13 @@ class SportsListViewModel: ObservableObject {
                 selectedWeek.append(weekday)
             }
         }
+    }
+    
+    func addSport(_ sport: Sport) {
+        repo.addSport(sport.id)
+    }
+    
+    func removeSport(_ sport: Sport) {
+        repo.removeSport(sport.id)
     }
 }
