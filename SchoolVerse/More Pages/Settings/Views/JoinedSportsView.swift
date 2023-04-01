@@ -34,12 +34,29 @@ struct JoinedSportsView: View {
                         Spacer()
                             .frame(height: 20)
                         
-                        ScrollView(showsIndicators: false) {
-                            joinedList
-                            
-                            Spacer()
-                                .frame(height: 115)
+                        if !vm.subscribedSports.isEmpty {
+                            ScrollView(showsIndicators: false) {
+                                joinedList
+                                
+                                Spacer()
+                                    .frame(height: 115)
+                            }
+                        } else {
+                            VStack {
+                                Spacer()
+                                    .frame(height: 20)
+                                
+                                Text("No Joined Sports Yet!")
+                                    .multilineTextAlignment(.center)
+                                    .font(.system(size: 60))
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal)
+                                
+                                Spacer()
+                            }
+                            .frame(maxWidth: .infinity)
                         }
+                        
                     }
                     .ignoresSafeArea()
                     .heavyGlass()
@@ -67,8 +84,9 @@ struct JoinedSportsView: View {
 extension JoinedSportsView {
     var joinedList: some View {
         Group {
-            SubscribedSportsTile(joined: true, sport: Sport(id: "baseball", name: "Baseball - Varsity", link: "testtest", events: []))
-            SubscribedSportsTile(joined: true, sport: Sport(id: "basketball", name: "Basketball - Varsity Boys", link: "testtest2", events: []))
+            ForEach(vm.subscribedSports) { sport in
+                SubscribedSportsTile(vm: SportsCellViewModel(sport: sport))
+            }
             
             Spacer()
         }
@@ -90,7 +108,7 @@ extension JoinedSportsView {
                         ScrollView(showsIndicators: false) {
                             ForEach(vm.allSports, content: { sport in
                                 if !sport.name.contains("Middle School") {
-                                    SubscribedSportsTile(joined: false, sport: sport)
+                                    SubscribedSportsTile(vm: SportsCellViewModel(sport: sport))
                                 }
                             })
                             

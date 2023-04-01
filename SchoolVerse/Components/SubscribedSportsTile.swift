@@ -8,29 +8,28 @@
 import SwiftUI
 
 struct SubscribedSportsTile : View {
-    @State var joined: Bool = false
-    var sport: Sport
-    
-    
+    @ObservedObject var vm: SportsCellViewModel
+
     var body: some View {
         HStack(spacing: 10) {
-            Image(systemName: joined ? "checkmark.circle.fill" : "circle")
+            Image(systemName: vm.joined ? "checkmark.circle.fill" : "circle")
                 .foregroundColor(Color.white)
                 .font(.system(size: 30))
                 .padding(.leading, 5)
                 .onTapGesture {
+                    print("clicked")
                     withAnimation(.easeIn) {
-                        self.joined.toggle()
+                        self.vm.updateSport()
                     }
                 }
             
-            Text(sport.name)
+            Text(vm.sport.name)
                 .font(.headline)
                 .fontWeight(.bold)
             
             Spacer()
             
-            switch sport.name.checkSport() {
+            switch vm.sport.name.checkSport() {
             case .soccer:
                 Image(systemName: "soccerball.inverse")
                     .font(.system(size: 25))

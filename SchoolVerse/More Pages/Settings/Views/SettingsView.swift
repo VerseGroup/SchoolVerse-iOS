@@ -32,14 +32,14 @@ struct SettingsView: View {
                             TextWithTitle(placeholder: "Name", text: user.displayName)
                                 .padding(.horizontal)
                             
-//                            NavigationLink(
-//                                destination: JoinedSportsView(),
-//                                label: {
-//                                    NavigationLinkLabel(name: "My Sports")
-//                                        .padding(.horizontal)
-//                                    
-//                                }
-//                            )
+                            NavigationLink(
+                                destination: JoinedSportsView(),
+                                label: {
+                                    NavigationLinkLabel(name: "My Sports")
+                                        .padding(.horizontal)
+                                    
+                                }
+                            )
                             
                             colorPicker
                                 .padding(.horizontal)
