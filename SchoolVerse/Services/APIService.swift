@@ -106,7 +106,7 @@ class APIService: ObservableObject {
     }
     
     func version() {
-        AF.request(baseURL + "/version")
+        AF.request(baseURL + "/version2")
             .cURLDescription { description in
                 print(description)
             }
@@ -240,6 +240,7 @@ class APIService: ObservableObject {
         
         let parameters: [String: String] = [
             "user_id": userId,
+            "version": (String(describing: Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String)),
             "api_key": CustomEnvironment.apiKey
         ]
         

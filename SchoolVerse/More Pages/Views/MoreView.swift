@@ -105,21 +105,21 @@ struct MoreView: View {
                             }
                         }
                         
-                        GridRow {
-                            NavigationLink {
-                                FriendsView()
-                            } label: {
-                                MoreInfoCardView(imageName: "person.2.fill", name: "Friends")
-                            }
-                            
-                            Button {
-                                selection = .menu
-                            } label: {
-                                MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
-                            }
-                            
-                            
-                        }
+//                        GridRow {
+//                            NavigationLink {
+//                                FriendsView()
+//                            } label: {
+//                                MoreInfoCardView(imageName: "person.2.fill", name: "Friends")
+//                            }
+//                            
+//                            Button {
+//                                selection = .menu
+//                            } label: {
+//                                MoreInfoCardView(imageName: "menucard.fill", name: "Menu")
+//                            }
+//                            
+//                            
+//                        }
                         
                         GridRow {
                             //                        Button {

@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-// TODO: add subscribed sports model
 struct UserModel: Codable, Identifiable {
     @DocumentID var id: String?
     var userId: String
@@ -18,6 +17,7 @@ struct UserModel: Codable, Identifiable {
     var email: String
     
     var courses: [Course]
+    var subscribedSports: [String]
     
     var approved: Bool
     
@@ -29,6 +29,7 @@ struct UserModel: Codable, Identifiable {
         case email
         
         case courses
+        case subscribedSports = "subscribed_sports"
         
         case approved
     }
