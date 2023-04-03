@@ -138,7 +138,7 @@
 		AF299C1329BC465500FE3CDF /* ClubSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */; };
 		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
 		AF4B42AB2937EAAD00639B9B /* JoinedSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */; };
-		AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */; };
+		AF5FD25E293A873D00B12401 /* EditSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* EditSportsTile.swift */; };
 		AF5FD260293A918400B12401 /* AllSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25F293A918400B12401 /* AllSportsView.swift */; };
 		AF5FD262293A922900B12401 /* MySportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD261293A922900B12401 /* MySportsView.swift */; };
 		AF617537292F42EE00633CE3 /* LargeButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */; };
@@ -292,7 +292,7 @@
 		AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSettingsView.swift; sourceTree = "<group>"; };
 		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedSportsView.swift; sourceTree = "<group>"; };
-		AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedSportsTile.swift; sourceTree = "<group>"; };
+		AF5FD25D293A873D00B12401 /* EditSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSportsTile.swift; sourceTree = "<group>"; };
 		AF5FD25F293A918400B12401 /* AllSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSportsView.swift; sourceTree = "<group>"; };
 		AF5FD261293A922900B12401 /* MySportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySportsView.swift; sourceTree = "<group>"; };
 		AF617536292F42EE00633CE3 /* LargeButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButtonLabel.swift; sourceTree = "<group>"; };
@@ -646,7 +646,7 @@
 				164A896228F3A41500419637 /* TextWithTitle.swift */,
 				16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */,
 				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
-				AF5FD25D293A873D00B12401 /* SubscribedSportsTile.swift */,
+				AF5FD25D293A873D00B12401 /* EditSportsTile.swift */,
 				AF299BF529B3F41C00FE3CDF /* SearchBarView.swift */,
 			);
 			path = Components;
@@ -1141,7 +1141,7 @@
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
 				AF4B42A92937C47A00639B9B /* String.swift in Sources */,
-				AF5FD25E293A873D00B12401 /* SubscribedSportsTile.swift in Sources */,
+				AF5FD25E293A873D00B12401 /* EditSportsTile.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
 				164A895928F39F4600419637 /* MoreView.swift in Sources */,
 				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,

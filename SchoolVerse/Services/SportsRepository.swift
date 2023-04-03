@@ -151,7 +151,7 @@ class SportsRepository: ObservableObject {
     }
     
     func getSubscribedSports() {
-        let sportIds = subscribedSportIds + ["paul :))"]
+        let sportIds = subscribedSportIds + ["paul :))"] // prevents sportsIds from array being empty
         db.collection(path)
             .whereField("id", in: sportIds)
             .addSnapshotListener { [weak self] (querySnapshot, error) in
