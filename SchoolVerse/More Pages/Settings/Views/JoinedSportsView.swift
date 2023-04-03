@@ -74,7 +74,7 @@ struct JoinedSportsView: View {
                 Button {
                     showSheet.toggle()
                 } label: {
-                    NavButtonView(systemName: "plus")
+                    NavButtonView(systemName: "pencil")
                 }
             })
         }
@@ -85,7 +85,7 @@ extension JoinedSportsView {
     var joinedList: some View {
         Group {
             ForEach(vm.subscribedSports) { sport in
-                SubscribedSportsTile(vm: SportsCellViewModel(sport: sport))
+                MySportsTile(vm: SportsCellViewModel(sport: sport))
             }
             
             Spacer()
@@ -108,7 +108,7 @@ extension JoinedSportsView {
                         ScrollView(showsIndicators: false) {
                             ForEach(vm.allSports, content: { sport in
                                 if !sport.name.contains("Middle School") {
-                                    SubscribedSportsTile(vm: SportsCellViewModel(sport: sport))
+                                    EditSportsTile(vm: SportsCellViewModel(sport: sport))
                                 }
                             })
                             
