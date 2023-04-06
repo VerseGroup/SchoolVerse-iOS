@@ -128,7 +128,7 @@ extension ClubsView {
     
     var calendar: some View {
         Group {
-            scrollingDateSelector
+            weekDateSelector
             
             ScrollView(showsIndicators: false) {
                 Spacer()
