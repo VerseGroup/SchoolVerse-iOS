@@ -22,7 +22,7 @@ struct ScheduleView: View {
             
             VStack {
                 if let _ = vm.schedule {
-                    scrollingDateSelector
+                    weekDateSelector
                     
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
