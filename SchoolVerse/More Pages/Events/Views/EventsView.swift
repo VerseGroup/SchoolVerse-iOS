@@ -109,7 +109,7 @@ extension EventsView {
                     Circle()
                         .fill(.white)
                         .frame(width: 8)
-                        .opacity(day.hasSame(.day, as: vm.selectedDate) ? 1 : 0)
+                        .opacity(day.hasSame(.day, as: Date.now) ? 1 : 0)
                 }
                 .foregroundColor(Color.white)
                 .frame(width: 45, height: 95)

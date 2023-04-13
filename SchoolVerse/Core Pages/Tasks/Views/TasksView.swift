@@ -8,14 +8,14 @@
 import SwiftUI
 
 // TODO: include ALL classes, not just classes with assignments, in the class sort view
-enum TaskSort {
+enum TaskSort: String, Codable, CaseIterable {
     case sortClass, sortUrgency, sortDate
 }
 
 struct TasksView: View {
     @StateObject var vm = TaskListViewModel()
     
-    @State var taskSort: TaskSort = .sortUrgency
+    @AppStorage("task_sort") var taskSort: TaskSort = .sortUrgency
     @State var showAddTaskView: Bool = false
     
     var body: some View {
@@ -63,9 +63,9 @@ struct TasksView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Menu {
                     Picker(selection: $taskSort, label: Text("Sorting options")) {
-                        Text("Sort by class").tag(TaskSort.sortClass)
-                        Text("Sort by urgency").tag(TaskSort.sortUrgency)
-                        Text("Sort by due date").tag(TaskSort.sortDate)
+                        Text("Sort by class").tag(TaskSort.sortClass as TaskSort) // just to make sure
+                        Text("Sort by urgency").tag(TaskSort.sortUrgency as TaskSort) // just to make sure
+                        Text("Sort by due date").tag(TaskSort.sortDate as TaskSort) // just to make sure
                     }
                 } label: {
                     NavButtonView(systemName: "line.3.horizontal.decrease")
