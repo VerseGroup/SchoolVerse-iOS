@@ -11,7 +11,7 @@ struct SportsView: View {
     @StateObject var vm: SportsListViewModel = SportsListViewModel()
     
     @State var showPicker: Bool = false
-    @State var allSportsSort: Bool = true
+    @AppStorage("app_sports_sort") var allSportsSort: Bool = true
     
     @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
@@ -76,8 +76,8 @@ struct SportsView: View {
                 
                 Menu {
                     Picker(selection: $allSportsSort, label: Text("Sorting options")) {
-                        Text("All Sports").tag(true)
-                        Text("My Sports").tag(false)
+                        Text("All Sports").tag(true as Bool) // just to make sure
+                        Text("My Sports").tag(false as Bool) // just to make sure
                     }
                 } label: {
                     NavButtonView(systemName: "line.3.horizontal.decrease")
@@ -111,7 +111,7 @@ extension SportsView {
                     Circle()
                         .fill(.white)
                         .frame(width: 8)
-                        .opacity(day.hasSame(.day, as: vm.selectedDate) ? 1 : 0)
+                        .opacity(day.hasSame(.day, as: Date.now) ? 1 : 0)
                 }
                 .foregroundColor(Color.white)
                 .frame(width: 45, height: 95)
