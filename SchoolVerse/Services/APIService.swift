@@ -330,5 +330,86 @@ class APIService: ObservableObject {
             }
 
     }
+    
+    
+    
+    // club functions
+    
+    func createClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: Any] = [
+            "name": club.name,
+            "description": club.description,
+            "meeting_blocks": club.meetingBlocks,
+            "meeting_block_style": "BLOCK", // Block schedule only for now
+            "leader_id": [userId]
+        ]
+        
+        AF.request(baseURL + "/club/create", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: CreateClubResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                completion()
+            }
+        
+    }
+    
+    func joinClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "member_id": userId,
+            "club_id": club.id
+        ]
+        
+        AF.request(baseURL + "/club/join", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: JoinClubResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                completion()
+            }
+    }
+    
+    func leaveClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "member_id": userId,
+            "club_id": club.id
+        ]
+        
+        AF.request(baseURL + "/club/leave", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: LeaveClubResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                completion()
+            }
+    }
+    
 }
 

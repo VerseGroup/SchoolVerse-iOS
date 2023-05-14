@@ -54,6 +54,18 @@ struct DeleteResponse: Codable {
     let exception: String?
 }
 
+struct CreateClubResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct JoinClubResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct LeaveClubResponse: Codable {
+    let message: ResponseMessage
+}
+
 enum ResponseMessage: String, Codable {
     case success
     case failure
@@ -83,6 +95,8 @@ extension ResponseMessage {
         case "success":
             return .success
         case "user does not exist":
+            return .failure
+        case "club does not exist":
             return .failure
         case "overuse":
             return .overuse

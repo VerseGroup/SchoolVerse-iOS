@@ -210,6 +210,10 @@ extension Period {
         self = Period.getPeriod(period: rawValue)
     }
     
+    init(period: String) {
+        self = Period.getPeriod(period: period)
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.description)
