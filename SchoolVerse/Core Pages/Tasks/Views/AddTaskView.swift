@@ -16,6 +16,13 @@ struct AddTaskView: View {
     
     @AppStorage("accent_color") var accentColor: Color = .accent.blue
     
+    enum Field: Hashable {
+        case name
+        case description
+    }
+    
+    @FocusState private var focusedField: Field?
+    
     // replaces presentationMode
     // source: https://developer.apple.com/documentation/swiftui/environmentvalues/dismiss
     @Environment(\.dismiss) var dismiss
@@ -32,12 +39,14 @@ struct AddTaskView: View {
                         .padding(.horizontal, 5)
                     
                     CustomTextField(placeholder: "Enter a task name", text: $task.name)
+                        .focused($focusedField, equals: .name)
                         .warningAccessory($task.name, valid: $validName, warning: "Invalid Name") { name in
                             isNotEmpty(text: name)
                         }
                         .padding(.horizontal)
                     
                     CustomTextField(placeholder: "Enter a task description", text: $task.description)
+                        .focused($focusedField, equals: .name)
                         .padding(.horizontal)
                     
                     DatePicker(selection: $task.dueDate, displayedComponents: [.date, .hourAndMinute]) {
@@ -87,13 +96,30 @@ struct AddTaskView: View {
                         .padding()
                         .padding(.horizontal)
                         .glassCardFull()
+                        .opacity((task.name.isEmpty) ? 0.25 : 1)
                 }
+                .disabled(task.name.isEmpty)
                 
                 Spacer()
             }
         }
         .navigationTitle("Add a Task")
+        .navigationBarTitleDisplayMode(.inline)
         .preferredColorScheme(.dark)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                
+                Button {
+                    focusedField = nil
+                } label: {
+                    Text("Done")
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .glass()
+                }
+            }
+        }
     }
 }
 

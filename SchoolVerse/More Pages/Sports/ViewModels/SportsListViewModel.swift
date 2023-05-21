@@ -119,12 +119,6 @@ class SportsListViewModel: ObservableObject {
                 self.getSelectedWeek(date: date)
             }
             .store(in: &cancellables)
-        
-        repo.$subscribedSports
-            .sink { [weak self] (returnedSports) in
-                self?.subscribedSports = returnedSports
-            }
-            .store(in: &cancellables)
     }
     
     func updateSelectedDay(date: Date) {

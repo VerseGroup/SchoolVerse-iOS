@@ -20,5 +20,7 @@ extension Resolver: ResolverRegistering {
             .scope(.application)
         register { SportsRepository() }
             .scope(.application)
+        register { ClubsRepository() }
+            .scope(.application)
     }
 }

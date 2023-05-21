@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DiscoverClubsView: View {
-    @State var text: String
+    @ObservedObject var vm: ClubsViewModel
+    
+    @State var query: String = ""
     
     var body: some View {
         ZStack {
@@ -19,14 +21,7 @@ struct DiscoverClubsView: View {
                     .frame(height: 10)
                 
                 HStack{
-                    SearchBarView(searchText: $text)
-                    
-                    Button(action: {
-                        
-                    }, label: {
-                        NavButtonView(systemName: "line.3.horizontal.decrease")
-                            .padding(.trailing, 10)
-                    })
+                    SearchBarView(searchText: $query)
                 }
                 .padding(.leading, 10)
                 
@@ -38,16 +33,13 @@ struct DiscoverClubsView: View {
                         Spacer()
                             .frame(height: 20)
                         
-                        Text("There are no clubs registered yet.")
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 60))
-                            .fontWeight(.bold)
+                        // turn into function
+                        ForEach(vm.allClubs.filter(search)) { club in
+                            DiscoverClubTileView(vm: ClubViewModel(club: club))
+                        }
                         
                         Spacer()
-                        
-                        //                        Spacer()
-                        //                            .frame(height: 95)
-                        
+                            .frame(height: 95)
                     }
                     .frame(maxWidth: .infinity)
                     .heavyGlass()
@@ -55,5 +47,19 @@ struct DiscoverClubsView: View {
             }
         }
         .navigationTitle("Discover New Clubs")
+    }
+}
+
+extension DiscoverClubsView {
+    func search(_ club: Club) -> Bool {
+        if club.status {
+            if !query.isEmpty {
+                return club.name.lowercased().contains(query.lowercased())
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
     }
 }

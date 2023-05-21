@@ -67,4 +67,16 @@ extension Date {
     func shortDateString() -> String {
         return shortDateFormatter.string(from: self)
     }
+    
+    // api takes in dates in UTC time zone
+    private var apiDateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        return formatter
+    }
+    
+    func apiDateString() -> String {
+        return apiDateFormatter.string(from: self)
+    }
 }
