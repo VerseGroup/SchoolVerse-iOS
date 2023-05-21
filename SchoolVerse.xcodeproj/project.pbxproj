@@ -153,6 +153,7 @@
 		AF61753B2930053400633CE3 /* TasksByUrgencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */; };
 		AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753C2930076700633CE3 /* TasksByDateView.swift */; };
 		AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */; };
+		AF8203D42A199AEB00D4216B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF8203D32A199AEB00D4216B /* LaunchScreen.storyboard */; };
 		AFAA82B929BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */; };
 /* End PBXBuildFile section */
 
@@ -314,6 +315,7 @@
 		AF61753A2930053400633CE3 /* TasksByUrgencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByUrgencyView.swift; sourceTree = "<group>"; };
 		AF61753C2930076700633CE3 /* TasksByDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksByDateView.swift; sourceTree = "<group>"; };
 		AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicalDatePicker.swift; sourceTree = "<group>"; };
+		AF8203D32A199AEB00D4216B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubAnnouncementsTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -664,6 +666,7 @@
 				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
 				AF5FD25D293A873D00B12401 /* EditSportsTile.swift */,
 				AF299BF529B3F41C00FE3CDF /* SearchBarView.swift */,
+				AF8203D32A199AEB00D4216B /* LaunchScreen.storyboard */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				1637161428C0434000DF15D4 /* GoogleService-Info-Prod.plist in Resources */,
 				16A3AB4528F4C08E006799C9 /* GoogleService-Info-Dev.plist in Resources */,
 				1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */,
+				AF8203D42A199AEB00D4216B /* LaunchScreen.storyboard in Resources */,
 				164831B428F9F191001793B7 /* days.json in Resources */,
 				1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */,
 			);

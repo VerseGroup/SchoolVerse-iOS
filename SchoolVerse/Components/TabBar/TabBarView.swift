@@ -95,7 +95,7 @@ extension TabBarView {
                 .background(
                     RoundedRectangle(cornerRadius: 25)
                         .fill(Color("BG2"))
-                        .opacity(0.9)
+                        .opacity(0.7)
                 )
                 .ignoresSafeArea()
         )
