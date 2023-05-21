@@ -34,13 +34,11 @@ struct SportsEventCellView: View {
                 }
                 
                 HStack {
-                    if let location = sportsEvent.location {
-                        Image(systemName: "mappin")
-                        
-                        Text(location)
-                        
-                        Spacer()
-                    }
+                    Image(systemName: "mappin")
+                    
+                    Text(sportsEvent.location)
+                    
+                    Spacer()
                 }
                 
                 HStack {
