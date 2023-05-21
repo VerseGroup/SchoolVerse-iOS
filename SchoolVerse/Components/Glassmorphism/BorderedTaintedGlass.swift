@@ -36,7 +36,7 @@ struct BorderedTaintedGlass: ViewModifier {
 //                            )
                             .stroke(accentColor, lineWidth: 5)
                             .opacity(animate ? 1: 0.25)
-                            .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false).delay(0.5))
+                            .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: false).delay(0.5), value: animate)
                             .onAppear() {
                                 self.animate.toggle()
                             }
