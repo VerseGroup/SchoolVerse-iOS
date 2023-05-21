@@ -56,6 +56,12 @@ struct DeleteResponse: Codable {
 
 struct CreateClubResponse: Codable {
     let message: ResponseMessage
+    let exception: String?
+}
+
+struct DeleteClubResponse: Codable {
+    let message: ResponseMessage
+    let exception: String?
 }
 
 struct JoinClubResponse: Codable {
@@ -63,6 +69,22 @@ struct JoinClubResponse: Codable {
 }
 
 struct LeaveClubResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct AnnounceClubResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct CreateClubEventResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct UpdateClubEventResponse: Codable {
+    let message: ResponseMessage
+}
+
+struct DeleteClubEventResponse: Codable {
     let message: ResponseMessage
 }
 

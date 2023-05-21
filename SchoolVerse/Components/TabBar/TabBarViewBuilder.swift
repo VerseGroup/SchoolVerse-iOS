@@ -54,6 +54,7 @@ struct TabBarViewBuilder<Content:View, TabBar: View>: View {
                 content
                 tabBar
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
 }

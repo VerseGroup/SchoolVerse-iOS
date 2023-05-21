@@ -17,7 +17,6 @@ struct SearchBarView: View {
                 .foregroundColor(
                     searchText.isEmpty ? Color.secondary : Color.white
                 )
-                .padding(.leading)
             
             TextField("Search by name...", text: $searchText)
                 .foregroundColor(Color.white)
@@ -36,6 +35,9 @@ struct SearchBarView: View {
                     
         } //: HStack
         .font(.headline)
+        .padding(.horizontal)
         .glass()
+        .padding(.horizontal, 5)
+        .padding(.trailing, 5)
     }
 }
