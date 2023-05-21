@@ -666,7 +666,6 @@
 				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
 				AF5FD25D293A873D00B12401 /* EditSportsTile.swift */,
 				AF299BF529B3F41C00FE3CDF /* SearchBarView.swift */,
-				AF8203D32A199AEB00D4216B /* LaunchScreen.storyboard */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -762,6 +761,7 @@
 				1688F96128C301580077B8F6 /* Onboarding */,
 				1637162928C054F500DF15D4 /* More Pages */,
 				1674C2D228C00FC500D92969 /* Assets.xcassets */,
+				AF8203D32A199AEB00D4216B /* LaunchScreen.storyboard */,
 				163715F928C032D600DF15D4 /* Configs */,
 				1674C2D428C00FC500D92969 /* Preview Content */,
 			);
@@ -1334,7 +1334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1468,7 +1468,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1665,7 +1665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1705,7 +1705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
