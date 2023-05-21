@@ -18,11 +18,7 @@ class TaskListViewModel: ObservableObject {
     @Published var previousTasks = [SchoolTask]()
     @Published var currentTasks = [SchoolTask]()
     @Published var futureTasks = [SchoolTask]()
-    
-    @Published var previousTaskCellViewModels = [TaskCellViewModel]()
-    @Published var currentTaskCellViewModels = [TaskCellViewModel]()
-    @Published var futureTaskCellViewModels = [TaskCellViewModel]()
-    
+        
     @Published var tasksClassDictionary: [String: [SchoolTask]] = [:]
     @Published var tasksDateDictionary: [Date: [SchoolTask]] = [:]
     
@@ -129,17 +125,6 @@ class TaskListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // creates previous tasks vm
-//        $previousTasks
-//            .map { tasks in
-//                tasks.map { task in
-//                    return TaskCellViewModel(task: task)
-//                }
-//            }
-//            .sink { [weak self] (returnedTaskCellVMs) in
-//                self?.previousTaskCellViewModels = returnedTaskCellVMs
-//            }
-//            .store(in: &cancellables)
         
         // creates current tasks
         repo.$tasks
@@ -166,17 +151,6 @@ class TaskListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // creates current tasks vm
-//        $currentTasks
-//            .map { tasks in
-//                tasks.map { task in
-//                    return TaskCellViewModel(task: task)
-//                }
-//            }
-//            .sink { [weak self] (returnedTaskCellVMs) in
-//                self?.currentTaskCellViewModels = returnedTaskCellVMs
-//            }
-//            .store(in: &cancellables)
         
         // creates future tasks
         repo.$tasks
@@ -203,17 +177,6 @@ class TaskListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        // creates future tasks vm
-//        $futureTasks
-//            .map { tasks in
-//                tasks.map { task in
-//                    return TaskCellViewModel(task: task)
-//                }
-//            }
-//            .sink { [weak self] (returnedTaskCellVMs) in
-//                self?.futureTaskCellViewModels = returnedTaskCellVMs
-//            }
-//            .store(in: &cancellables)
         
         // updates error message
         repo.$errorMessage

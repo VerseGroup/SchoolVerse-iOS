@@ -7,54 +7,60 @@
 
 import Foundation
 
-struct Club: Identifiable {
+struct Club: Identifiable, Codable {
     var id: String
     
     var name: String
     var description: String
     
-    var leaders: [UserModel]
-    var members: [UserModel]
+    var leaderIds: [String]
+    var leaderNames: [String]
+    var memberIds: [String]
+    var memberNames: [String]
     
-    var meetingBlocks: [Date]
-    var announcement: String
-    //var updates: [ClubUpdate]
-    var events: [Date]
+    var groupNotice: String
+    var groupNoticeLastUpdated: Date
+    var groupNoticeAuthor: String
+    
+    var status: Bool
+    
+    var clubEvents: [ClubEvent]
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case description = "description"
+        case leaderIds = "leader_ids"
+        case leaderNames = "leader_names"
+        case memberIds = "member_ids"
+        case memberNames = "member_names"
+        case groupNotice = "group_notice"
+        case groupNoticeLastUpdated = "group_notice_last_updated"
+        case groupNoticeAuthor = "group_notice_author"
+        case status = "status"
+        case clubEvents = "club_events"
+    }
 }
 
-//struct ClubUpdate: Identifiable {
-//    var id: String
-//    var clubId: String
-//
-//    var title: String
-//    var description: String
-//
-//    var club: Club
-//    var datePosted: Date
-//}
-
-struct ClubMeeting: Identifiable {
+struct ClubEvent: Identifiable, Codable {
     var id: String
     var clubId: String
-    
+
     var title: String
     var description: String
     
-    var date: Date
     var location: String
-    var time: String
-}
 
-struct ClubEvent: Identifiable {
-    var id: String
-    var clubId: String
+    var start: Date
+    var end: Date
     
-    var title: String
-    var description: String
-    
-    var date: Date
-    var location: String
-    var time: String
-    
-    var meetingBlock: Date
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case clubId = "club_id"
+        case title = "title"
+        case description = "description"
+        case location = "location"
+        case start = "start"
+        case end = "end"
+    }
 }

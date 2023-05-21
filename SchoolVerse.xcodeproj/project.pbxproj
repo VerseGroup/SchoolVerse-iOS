@@ -13,6 +13,9 @@
 		1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18328D8E51B00931C90 /* AuthenticationView.swift */; };
 		1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18528D8E68C00931C90 /* SignUpView.swift */; };
 		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
+		16075FA82A158A5700273D37 /* ClubEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA72A158A5700273D37 /* ClubEventDetailView.swift */; };
+		16075FAA2A15B01E00273D37 /* CreateClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA92A15B01E00273D37 /* CreateClubView.swift */; };
+		16075FAC2A19CD1B00273D37 /* DayPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FAB2A19CD1B00273D37 /* DayPeriod.swift */; };
 		1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194828E14F4E0063BC3A /* TaskRepository.swift */; };
 		1612194B28E155020063BC3A /* SchoolTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194A28E155020063BC3A /* SchoolTask.swift */; };
 		1612194D28E157400063BC3A /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612194C28E157400063BC3A /* TasksView.swift */; };
@@ -95,6 +98,10 @@
 		166C1D1528EA249200F265FA /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 166C1D1428EA249200F265FA /* OrderedCollections */; };
 		166C1D1728EA322D00F265FA /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D1628EA322D00F265FA /* AddTaskView.swift */; };
 		166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */; };
+		166CFBAD2A1421FD009027C9 /* ClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CFBAC2A1421FD009027C9 /* ClubViewModel.swift */; };
+		166CFBAF2A1426A4009027C9 /* ClubsDirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CFBAE2A1426A4009027C9 /* ClubsDirectoryView.swift */; };
+		166CFBB12A14272A009027C9 /* ClubsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CFBB02A14272A009027C9 /* ClubsCalendarView.swift */; };
+		166CFBB32A154FF1009027C9 /* ClubEventTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166CFBB22A154FF1009027C9 /* ClubEventTile.swift */; };
 		1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */; };
 		1674C2D328C00FC500D92969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D228C00FC500D92969 /* Assets.xcassets */; };
 		1674C2D628C00FC500D92969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674C2D528C00FC500D92969 /* Preview Assets.xcassets */; };
@@ -102,6 +109,7 @@
 		1674C2EA28C00FC500D92969 /* SchoolVerseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */; };
 		1674C2EC28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */; };
 		16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16791C5228E2284A00FD03EF /* String+Base64.swift */; };
+		1680C6E52A0C1D4B006D22B9 /* ClubsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1680C6E42A0C1D4B006D22B9 /* ClubsRepository.swift */; };
 		1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */; };
 		1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95728C2A9140077B8F6 /* UserModel.swift */; };
 		1688F95A28C2AA1C0077B8F6 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1688F95928C2AA1C0077B8F6 /* Schedule.swift */; };
@@ -133,9 +141,8 @@
 		AF299C0629B79CAE00FE3CDF /* ClubsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0529B79CAE00FE3CDF /* ClubsViewModel.swift */; };
 		AF299C0829B79DAF00FE3CDF /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0729B79DAF00FE3CDF /* Club.swift */; };
 		AF299C0A29BA2D4E00FE3CDF /* DiscoverClubsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0929BA2D4E00FE3CDF /* DiscoverClubsView.swift */; };
-		AF299C0C29BAB4C200FE3CDF /* ClubTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */; };
+		AF299C0C29BAB4C200FE3CDF /* ClubTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0B29BAB4C200FE3CDF /* ClubTileView.swift */; };
 		AF299C0E29BC179100FE3CDF /* ClubPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C0D29BC179100FE3CDF /* ClubPageView.swift */; };
-		AF299C1329BC465500FE3CDF /* ClubSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */; };
 		AF4B42A92937C47A00639B9B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42A82937C47A00639B9B /* String.swift */; };
 		AF4B42AB2937EAAD00639B9B /* JoinedSportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */; };
 		AF5FD25E293A873D00B12401 /* EditSportsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD25D293A873D00B12401 /* EditSportsTile.swift */; };
@@ -173,6 +180,9 @@
 		1604B18328D8E51B00931C90 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		1604B18528D8E68C00931C90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		16075FA72A158A5700273D37 /* ClubEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEventDetailView.swift; sourceTree = "<group>"; };
+		16075FA92A15B01E00273D37 /* CreateClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClubView.swift; sourceTree = "<group>"; };
+		16075FAB2A19CD1B00273D37 /* DayPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPeriod.swift; sourceTree = "<group>"; };
 		1612194828E14F4E0063BC3A /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		1612194A28E155020063BC3A /* SchoolTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTask.swift; sourceTree = "<group>"; };
 		1612194C28E157400063BC3A /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
@@ -246,6 +256,10 @@
 		166C1D0D28EA06AC00F265FA /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
 		166C1D1628EA322D00F265FA /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		166C1D1A28EA7B2300F265FA /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		166CFBAC2A1421FD009027C9 /* ClubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubViewModel.swift; sourceTree = "<group>"; };
+		166CFBAE2A1426A4009027C9 /* ClubsDirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsDirectoryView.swift; sourceTree = "<group>"; };
+		166CFBB02A14272A009027C9 /* ClubsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsCalendarView.swift; sourceTree = "<group>"; };
+		166CFBB22A154FF1009027C9 /* ClubEventTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEventTile.swift; sourceTree = "<group>"; };
 		1674C2CB28C00FC400D92969 /* SchoolVerse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVerse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseApp.swift; sourceTree = "<group>"; };
 		1674C2D228C00FC500D92969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -256,6 +270,7 @@
 		1674C2E928C00FC500D92969 /* SchoolVerseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITests.swift; sourceTree = "<group>"; };
 		1674C2EB28C00FC500D92969 /* SchoolVerseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolVerseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		16791C5228E2284A00FD03EF /* String+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
+		1680C6E42A0C1D4B006D22B9 /* ClubsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsRepository.swift; sourceTree = "<group>"; };
 		1688F95328C167AA0077B8F6 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		1688F95728C2A9140077B8F6 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1688F95928C2AA1C0077B8F6 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -287,9 +302,8 @@
 		AF299C0529B79CAE00FE3CDF /* ClubsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsViewModel.swift; sourceTree = "<group>"; };
 		AF299C0729B79DAF00FE3CDF /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		AF299C0929BA2D4E00FE3CDF /* DiscoverClubsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverClubsView.swift; sourceTree = "<group>"; };
-		AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubTile.swift; sourceTree = "<group>"; };
+		AF299C0B29BAB4C200FE3CDF /* ClubTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubTileView.swift; sourceTree = "<group>"; };
 		AF299C0D29BC179100FE3CDF /* ClubPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubPageView.swift; sourceTree = "<group>"; };
-		AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSettingsView.swift; sourceTree = "<group>"; };
 		AF4B42A82937C47A00639B9B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF4B42AA2937EAAD00639B9B /* JoinedSportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedSportsView.swift; sourceTree = "<group>"; };
 		AF5FD25D293A873D00B12401 /* EditSportsTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSportsTile.swift; sourceTree = "<group>"; };
@@ -437,6 +451,7 @@
 				166C1CF528E923BA00F265FA /* EventsRepository.swift */,
 				166C1CF928E925B100F265FA /* SportsRepository.swift */,
 				164A894D28F346F800419637 /* ScheduleRepository.swift */,
+				1680C6E42A0C1D4B006D22B9 /* ClubsRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,6 +469,7 @@
 				1612194A28E155020063BC3A /* SchoolTask.swift */,
 				166C1CF728E924F800F265FA /* Event.swift */,
 				AF299C0729B79DAF00FE3CDF /* Club.swift */,
+				16075FAB2A19CD1B00273D37 /* DayPeriod.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -880,6 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				AF299C0529B79CAE00FE3CDF /* ClubsViewModel.swift */,
+				166CFBAC2A1421FD009027C9 /* ClubViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -888,9 +905,14 @@
 			isa = PBXGroup;
 			children = (
 				AF299C0329B77BD900FE3CDF /* ClubsView.swift */,
+				AF299C0B29BAB4C200FE3CDF /* ClubTileView.swift */,
+				166CFBAE2A1426A4009027C9 /* ClubsDirectoryView.swift */,
+				166CFBB02A14272A009027C9 /* ClubsCalendarView.swift */,
 				AF299C0929BA2D4E00FE3CDF /* DiscoverClubsView.swift */,
 				AF299C0D29BC179100FE3CDF /* ClubPageView.swift */,
-				AF299C1229BC465500FE3CDF /* ClubSettingsView.swift */,
+				166CFBB22A154FF1009027C9 /* ClubEventTile.swift */,
+				16075FA72A158A5700273D37 /* ClubEventDetailView.swift */,
+				16075FA92A15B01E00273D37 /* CreateClubView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -898,7 +920,6 @@
 		AF299C0F29BC38B500FE3CDF /* Clubs */ = {
 			isa = PBXGroup;
 			children = (
-				AF299C0B29BAB4C200FE3CDF /* ClubTile.swift */,
 				AFAA82B829BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift */,
 			);
 			path = Clubs;
@@ -1094,19 +1115,20 @@
 				166C1D0C28E94A5700F265FA /* Date+Distance.swift in Sources */,
 				1612194B28E155020063BC3A /* SchoolTask.swift in Sources */,
 				AF299BFA29B3F54200FE3CDF /* FriendsViewModel.swift in Sources */,
+				166CFBAD2A1421FD009027C9 /* ClubViewModel.swift in Sources */,
 				165CA07828F1ED62007547FB /* TaintedGlass.swift in Sources */,
-				AF299C0C29BAB4C200FE3CDF /* ClubTile.swift in Sources */,
+				AF299C0C29BAB4C200FE3CDF /* ClubTileView.swift in Sources */,
 				AFAA82B929BCEE2C00CF15F5 /* ClubAnnouncementsTile.swift in Sources */,
 				AF61753D2930076700633CE3 /* TasksByDateView.swift in Sources */,
 				166C1CFC28E9263700F265FA /* EventsListViewModel.swift in Sources */,
 				165CA09E28F205A6007547FB /* CustomTextField.swift in Sources */,
 				163715FF28C03A0C00DF15D4 /* CustomEnvironment.swift in Sources */,
+				166CFBB32A154FF1009027C9 /* ClubEventTile.swift in Sources */,
 				165CA07D28F1EE31007547FB /* LinkLabel.swift in Sources */,
 				164A896328F3A41500419637 /* TextWithTitle.swift in Sources */,
 				165CA08128F1EE8D007547FB /* SubtitleLabel.swift in Sources */,
 				1622390728E249A700AB404F /* SwiftRSA.swift in Sources */,
 				AF299BFC29B6779F00FE3CDF /* MyFriendsView.swift in Sources */,
-				AF299C1329BC465500FE3CDF /* ClubSettingsView.swift in Sources */,
 				165CA09128F1F5B7007547FB /* PeriodTitleAndHeader.swift in Sources */,
 				1618019528D90B55006B5291 /* TabBarItemViewModifier.swift in Sources */,
 				166C1CEC28E9208200F265FA /* MenusView.swift in Sources */,
@@ -1123,14 +1145,17 @@
 				165CA09C28F1FF54007547FB /* NavButtonView.swift in Sources */,
 				165CA08928F1F2FA007547FB /* ColorfulBackgroundView.swift in Sources */,
 				1688F95428C167AA0077B8F6 /* AuthenticationManager.swift in Sources */,
+				166CFBB12A14272A009027C9 /* ClubsCalendarView.swift in Sources */,
 				165CA07628F1ED55007547FB /* HeavyGlass.swift in Sources */,
 				166C1CFA28E925B100F265FA /* SportsRepository.swift in Sources */,
 				16BE778D28F258AD000248A9 /* FrostedGlass.swift in Sources */,
 				165CA07428F1ED47007547FB /* FullGlassCard.swift in Sources */,
 				166C1D0628E9288300F265FA /* SportsView.swift in Sources */,
 				1604B18828D8E69700931C90 /* SignInView.swift in Sources */,
+				16075FAC2A19CD1B00273D37 /* DayPeriod.swift in Sources */,
 				1688F95828C2A9140077B8F6 /* UserModel.swift in Sources */,
 				16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */,
+				16075FAA2A15B01E00273D37 /* CreateClubView.swift in Sources */,
 				1612195E28E15D250063BC3A /* Date+Format.swift in Sources */,
 				AF6175392930049E00633CE3 /* TasksByClassView.swift in Sources */,
 				AF4B42AB2937EAAD00639B9B /* JoinedSportsView.swift in Sources */,
@@ -1141,6 +1166,7 @@
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
 				AF4B42A92937C47A00639B9B /* String.swift in Sources */,
+				166CFBAF2A1426A4009027C9 /* ClubsDirectoryView.swift in Sources */,
 				AF5FD25E293A873D00B12401 /* EditSportsTile.swift in Sources */,
 				1612194928E14F4E0063BC3A /* TaskRepository.swift in Sources */,
 				164A895928F39F4600419637 /* MoreView.swift in Sources */,
@@ -1160,6 +1186,7 @@
 				16A3AB4728F4C255006799C9 /* MealView.swift in Sources */,
 				166C1CF428E9224200F265FA /* FoodView.swift in Sources */,
 				166C1CFE28E926C700F265FA /* EventsView.swift in Sources */,
+				1680C6E52A0C1D4B006D22B9 /* ClubsRepository.swift in Sources */,
 				166C1D1728EA322D00F265FA /* AddTaskView.swift in Sources */,
 				1612195C28E15D0D0063BC3A /* Debouncer.swift in Sources */,
 				16CE393C28E2991A00D1F5D4 /* TaskTileView.swift in Sources */,
@@ -1169,6 +1196,7 @@
 				164A894C28F2660300419637 /* CustomTextEditor.swift in Sources */,
 				164A895F28F3A0C900419637 /* SettingsViewModel.swift in Sources */,
 				1612195328E159760063BC3A /* TaskListViewModel.swift in Sources */,
+				16075FA82A158A5700273D37 /* ClubEventDetailView.swift in Sources */,
 				1661E75729479DBA00E95C62 /* Date+Start.swift in Sources */,
 				AF299C0629B79CAE00FE3CDF /* ClubsViewModel.swift in Sources */,
 				1618019728D90B55006B5291 /* TabBarView.swift in Sources */,

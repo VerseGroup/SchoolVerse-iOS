@@ -122,6 +122,10 @@ extension Day {
         self = Day.getDay(day: rawValue)
     }
     
+    init(day: String) {
+        self = Day.getDay(day: day)
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.description)

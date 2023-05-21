@@ -330,5 +330,261 @@ class APIService: ObservableObject {
             }
 
     }
+    
+    
+    
+    // club functions
+    
+    func createClub(club: Club, leaderName: String, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: Any] = [
+            "name": club.name,
+            "description": club.description,
+            "leader_ids": [userId],
+            "leader_names": [leaderName]
+        ]
+        
+        AF.request(baseURL + "/club/create", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: CreateClubResponse.self) { response in
+                debugPrint("create club response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Create club failed: \(response.value?.exception ?? "")"
+                }
+            }
+        
+    }
+    
+    func deleteClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: Any] = [
+            "club_id": club.id,
+            "leader_id": userId
+        ]
+        
+        AF.request(baseURL + "/club/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: DeleteClubResponse.self) { response in
+                debugPrint("delete response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Deleting club failed: \(response.value?.exception ?? "")"
+                }
+            }
+
+    }
+    
+    func joinClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "member_id": userId,
+            "club_id": club.id
+        ]
+        
+        AF.request(baseURL + "/club/join", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: JoinClubResponse.self) { response in
+                debugPrint("join response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Joining club failed"
+                }
+            }
+    }
+    
+    func leaveClub(club: Club, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "member_id": userId,
+            "club_id": club.id
+        ]
+        
+        AF.request(baseURL + "/club/leave", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: LeaveClubResponse.self) { response in
+                debugPrint("leave response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Leaving club failed"
+                }
+            }
+    }
+    
+    // finish below
+    
+    func announceClub(club: Club, announcement: String, leaderName: String, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "club_id": club.id,
+            "leader_id": userId,
+            "announcement": announcement,
+            "leader_name": leaderName
+        ]
+        
+        AF.request(baseURL + "/club/announce", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: AnnounceClubResponse.self) { response in
+                debugPrint("announce response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Making club announcement failed"
+                }
+            }
+    }
+    
+    func createClubEvent(clubEvent: ClubEvent, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "club_id": clubEvent.clubId,
+            "start": clubEvent.start.apiDateString(),
+            "end": clubEvent.end.apiDateString(),
+            "title": clubEvent.title,
+            "description": clubEvent.description,
+            "location": clubEvent.location,
+            "leader_id": userId
+        ]
+        
+        AF.request(baseURL + "/club/event/create", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: CreateClubEventResponse.self) { response in
+                debugPrint("create club event response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Create club event failed"
+                }
+            }
+    }
+    
+    func updateClubEvent(clubEvent: ClubEvent, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "club_id": clubEvent.clubId,
+            "id": clubEvent.id,
+            "title": clubEvent.title,
+            "description": clubEvent.description,
+            "start": clubEvent.start.apiDateString(),
+            "end": clubEvent.end.apiDateString(),
+            "location": clubEvent.location,
+            "leader_id": userId
+        ]
+        
+        AF.request(baseURL + "/club/event/update", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: UpdateClubEventResponse.self) { response in
+                debugPrint("update club event response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Create club event failed"
+                }
+            }
+    }
+    
+    func deleteClubEvent(clubEvent: ClubEvent, completion: @escaping () -> ()) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("user not initialized")
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "club_id": clubEvent.clubId,
+            "id": clubEvent.id,
+            "leader_id": userId
+        ]
+        
+        AF.request(baseURL + "/club/event/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .cURLDescription { description in
+                print(description)
+            }
+            .response(completionHandler: { data in
+                debugPrint(data)
+            })
+            .responseDecodable(of: DeleteClubEventResponse.self) { response in
+                debugPrint("delete club event response: \(response.description)")
+                if(response.value?.message == .success) {
+                    completion()
+                } else {
+                    self.hasError = true
+                    self.errorMessage = "Create club event failed"
+                }
+            }
+    }
 }
 

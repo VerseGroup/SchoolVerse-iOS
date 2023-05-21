@@ -10,25 +10,93 @@ import Combine
 import Resolver
 
 class ClubsViewModel: ObservableObject {
-    @Published var myClubs: [Club] = []
-    @Published var joinedCLubs: [Club] = []
-    @Published var allClubs: [Club] = []
+    @Published private var repo = ClubsRepository()
+    @Published private var api: APIService = Resolver.resolve()
     
-    @Published var searchText: String = ""
+    @Published var allClubs = [Club]()
+        
+    @Published var joinedClubs = [Club]()
+    
+    // calendar section
+    @Published var joinedClubsEvents = [ClubEvent]()
+    @Published var selectedJoinedClubsEvents = [ClubEvent]()
     
     @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
+    @Published var hasError: Bool = false
+    @Published var errorMessage: String?
+
     private var cancellables = Set<AnyCancellable>()
-    
+
     init() {
         addSubscribers()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.updateSelectedDayEvent(date: Date())
+        // fixes bug where on first appear of the view, selected clubs isn't seen
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.updateSelectedDay(date: Date())
         }
     }
     
     func addSubscribers() {
+        
+        // updates all clubs
+        repo.$clubs
+            .sink { [weak self] (returnedClubs) in
+                self?.allClubs = returnedClubs.sorted(by: { one, two in
+                    one.name < two.name
+                })
+            }
+            .store(in: &cancellables)
+        
+        // updates joinedClubs
+        repo.$joinedClubs
+            .sink { [weak self] (returnedClubs) in
+                self?.joinedClubs = returnedClubs
+            }
+            .store(in: &cancellables)
+        
+        // updates joined clubs events
+        $joinedClubs
+            .sink { returnedClubs in
+                self.joinedClubsEvents = returnedClubs.flatMap({ club in
+                    club.clubEvents
+                })
+            }
+            .store(in: &cancellables)
+        
+        // updates error message
+        repo.$errorMessage
+            .sink { [weak self] (returnedErrorMessage) in
+                self?.errorMessage = returnedErrorMessage
+                
+                if returnedErrorMessage != nil {
+                    self?.hasError = true
+                }
+            }
+            .store(in: &cancellables)
+        
+        api.$errorMessage
+            .sink { [weak self] (returnedErrorMessage) in
+                self?.errorMessage = returnedErrorMessage
+                
+                if returnedErrorMessage != nil {
+                    self?.hasError = true
+                }
+            }
+            .store(in: &cancellables)
+        
+        // sets selectedJoinedClubsEvents to the selectedDate
+        $selectedDate
+            .sink { (date) in
+                self.selectedJoinedClubsEvents = self.joinedClubsEvents.filter({ clubEvent in
+                    clubEvent.start.calendarDistance(from: date, resultIn: .day) == 0
+                }).sorted(by: { one, two in
+                    one.start < two.start
+                })
+            }
+            .store(in: &cancellables)
+        
+        
         $selectedDate
             .sink{ (date) in
                 self.getSelectedWeek(date: date)
@@ -36,7 +104,7 @@ class ClubsViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func updateSelectedDayEvent(date: Date) {
+    func updateSelectedDay(date: Date) {
         selectedDate = date
     }
     
@@ -55,4 +123,17 @@ class ClubsViewModel: ObservableObject {
             }
         }
     }
+    
+    func createClub(_ club: Club) {
+        repo.createClub(club)
+    }
+    
+    func joinClub(_ club: Club) {
+        repo.joinClub(club)
+    }
+    
+    func leaveClub(_ club: Club) {
+        repo.leaveClub(club)
+    }
+    
 }

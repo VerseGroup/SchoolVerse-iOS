@@ -18,6 +18,7 @@ struct UserModel: Codable, Identifiable {
     
     var courses: [Course]
     var subscribedSports: [String]
+    var joinedClubs: [String]
     
     var approved: Bool
     
@@ -30,6 +31,7 @@ struct UserModel: Codable, Identifiable {
         
         case courses
         case subscribedSports = "subscribed_sports"
+        case joinedClubs = "club_ids"
         
         case approved
     }

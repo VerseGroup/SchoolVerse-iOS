@@ -16,7 +16,7 @@ struct AuthenticationView: View {
             ColorfulBackgroundView()
             
             VStack {
-                Image("VG-ClearBG")
+                Image("SV-ClearBG")
                     .frame(width: 300, height: 300)
                     .glassCard()
                     .padding(30)
