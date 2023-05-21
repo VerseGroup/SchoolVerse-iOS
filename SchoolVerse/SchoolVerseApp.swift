@@ -20,6 +20,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             fatalError("Couldn't load config file")
         }
         FirebaseApp.configure(options: fileopts)
+        
+        try! FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
+
+        do {
+            sleep(1)
+        }
+        
         return true
     }
 }
