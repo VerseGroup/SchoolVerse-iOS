@@ -36,13 +36,11 @@ struct EventCellView: View {
                 }
                 
                 HStack {
-                    if let location = event.location {
-                        Image(systemName: "mappin")
-                        
-                        Text(location)
-                        
-                        Spacer()
-                    }
+                    Image(systemName: "mappin")
+                    
+                    Text(event.location)
+                    
+                    Spacer()
                 }
             }
         }

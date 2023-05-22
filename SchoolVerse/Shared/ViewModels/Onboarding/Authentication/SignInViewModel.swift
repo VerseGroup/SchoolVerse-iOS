@@ -47,4 +47,9 @@ class SignInViewModel: ObservableObject {
     func signIn(creds: AppCredentialsDetails) async {
         await authManager.signIn(creds: creds)
     }
+    
+    func sendPasswordReset(email: String) async {
+        await authManager.sendPasswordReset(email: email)
+    }
+    
 }

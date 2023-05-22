@@ -260,9 +260,21 @@ class FirebaseAuthenticationManager: AuthenticationManagerProtocol {
 //    }
         
     @MainActor
-    func sendPasswordReset() {
-        if let email = Auth.auth().currentUser?.email {
-            Auth.auth().sendPasswordReset(withEmail: email)
+    func sendPasswordReset(email: String? = nil) {
+        if let email {
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error {
+                    self.errorMessage = "Couldn't send password reset: \(error.localizedDescription)"
+                    self.hasError = true
+                }
+            }
+        } else if let email = Auth.auth().currentUser?.email {
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error {
+                    self.errorMessage = "Couldn't send password reset: \(error.localizedDescription)"
+                    self.hasError = true
+                }
+            }
         }
     }
 }

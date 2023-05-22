@@ -60,6 +60,7 @@
 		164A896328F3A41500419637 /* TextWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896228F3A41500419637 /* TextWithTitle.swift */; };
 		164A896528F3B57700419637 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896428F3B57700419637 /* AboutView.swift */; };
 		164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A896628F3CEB100419637 /* View+Placeholder.swift */; };
+		164C11E82A1BFB170041B250 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C11E72A1BFB170041B250 /* ForgotPasswordView.swift */; };
 		165CA07028F1ED2D007547FB /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA06F28F1ED2D007547FB /* Glass.swift */; };
 		165CA07228F1ED37007547FB /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA07128F1ED37007547FB /* GlassCard.swift */; };
 		165CA07428F1ED47007547FB /* FullGlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165CA07328F1ED47007547FB /* FullGlassCard.swift */; };
@@ -228,6 +229,7 @@
 		164A896228F3A41500419637 /* TextWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithTitle.swift; sourceTree = "<group>"; };
 		164A896428F3B57700419637 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		164A896628F3CEB100419637 /* View+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Placeholder.swift"; sourceTree = "<group>"; };
+		164C11E72A1BFB170041B250 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		165CA06F28F1ED2D007547FB /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
 		165CA07128F1ED37007547FB /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		165CA07328F1ED47007547FB /* FullGlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGlassCard.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 			children = (
 				1604B18528D8E68C00931C90 /* SignUpView.swift */,
 				1604B18728D8E69700931C90 /* SignInView.swift */,
+				164C11E72A1BFB170041B250 /* ForgotPasswordView.swift */,
 				1604B17F28D8120300931C90 /* OnboardingView.swift */,
 				1604B18328D8E51B00931C90 /* AuthenticationView.swift */,
 				16CE393928E283E300D1F5D4 /* LinkingView.swift */,
@@ -1168,6 +1171,7 @@
 				AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
+				164C11E82A1BFB170041B250 /* ForgotPasswordView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
 				165CA08528F1EEB2007547FB /* DestructiveButtonLabel.swift in Sources */,
