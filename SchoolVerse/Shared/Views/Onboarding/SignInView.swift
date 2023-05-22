@@ -17,6 +17,8 @@ struct SignInView: View {
     @State var validEmail: Bool = false
     @State var validPassword: Bool = false
     
+    @State var showForgotPasswordView: Bool = false
+    
     var body: some View {
         ZStack {
             ColorfulBackgroundView()
@@ -44,6 +46,20 @@ struct SignInView: View {
                             .warningAccessory($appCreds.password, valid: $validPassword, warning: "Password must be 6 or more characters") { password in
                                 isValidLength(text: password)
                             }
+                        
+                        HStack() {
+                            Spacer()
+                            
+                            Button {
+                                showForgotPasswordView.toggle()
+                            } label: {
+                                Text("Forgot password?")
+                                    .foregroundColor(Color.accent.cyan)
+                                    .padding(5)
+                            }
+                            
+                        }
+                        
                     }
                 }
                 .padding(.vertical)
@@ -79,6 +95,9 @@ struct SignInView: View {
             Text(vm.errorMessage ?? "")
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $showForgotPasswordView) {
+            ForgotPasswordView(vm: vm)
+        }
         
     }
 }
