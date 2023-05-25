@@ -19,6 +19,12 @@ struct AboutView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack {
+                    // if ipad
+                    if (UIDevice.current.userInterfaceIdiom == .pad){
+                        Spacer()
+                            .frame(height: 16)
+                    }
+                    
                     aboutView
                     
                     sourceCodeView
@@ -34,9 +40,18 @@ struct AboutView: View {
                         Spacer()
                             .frame(height: 95)
                     }
+                    
+                    // if ipad
+                    if (UIDevice.current.userInterfaceIdiom == .pad){
+                        Spacer()
+                            .frame(height: 16)
+                    }
                 }
             }
-            .navigationTitle("About")
+            .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+                view
+                    .navigationTitle("About")
+            }
         }
     }
 }
@@ -124,7 +139,7 @@ extension AboutView {
                 .padding(.horizontal, 8)
             
             ParagraphLabel(name:
-                            "\tWe would like to give another shout-out to Maggie Zhang, Will Koranteng, Isabelle Cai, Joseph Reyes, Ella Rodriguez, Vivek Malik, Zara Haider and more for helping us during the beta development of SchoolVerse."
+                            "\tWe would like to give another shout-out to Maggie Zhang, Joseph Reyes, Isabelle Cai, Rafa Castro, Will Koranteng, Ella Rodriguez, Vivek Malik, Zara Haider and everyone else for helping us during the beta development of SchoolVerse."
             )
             .padding(.horizontal, 10)
         }

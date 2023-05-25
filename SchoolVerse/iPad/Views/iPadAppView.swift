@@ -12,41 +12,44 @@ struct iPadAppView: View {
     let tabs: [SideBarItem] = [.schedule, .tasks, .menus, .clubs, .sports, .events, .settings, .about]
     
     var body: some View {
-        ZStack {
-            iPadColorfulBackgroundView()
-            
-            SideBarViewBuilder {
+        NavigationStack {
+            ZStack {
+                iPadColorfulBackgroundView()
                 
-                ScheduleView()
-                    .sideBarItem(tab: SideBarItem.schedule, selection: selection)
-                
-                TasksView()
-                    .sideBarItem(tab: SideBarItem.tasks, selection: selection)
-                
-                MenusView()
-                    .sideBarItem(tab: SideBarItem.menus, selection: selection)
-                
-                //NavigationStack {
+                SideBarViewBuilder {
+                    
+                    ScheduleView()
+                        .sideBarItem(tab: SideBarItem.schedule, selection: selection)
+                    
+                    TasksView()
+                        .sideBarItem(tab: SideBarItem.tasks, selection: selection)
+                    
+                    MenusView()
+                        .sideBarItem(tab: SideBarItem.menus, selection: selection)
+                    
+                    //NavigationStack {
                     ClubsView()
-                //}
-                .sideBarItem(tab: SideBarItem.clubs, selection: selection)
-                
-                SportsView()
-                    .sideBarItem(tab: SideBarItem.sports, selection: selection)
-                
-                EventsView()
-                    .sideBarItem(tab: SideBarItem.events, selection: selection)
-                
-                SettingsView()
-                    .sideBarItem(tab: SideBarItem.settings, selection: selection)
-                
-                AboutView()
-                    .sideBarItem(tab: SideBarItem.about, selection: selection)
-                
-            } sideBar: {
-                SideBarView(tabs: tabs, selection: $selection, localSelection: selection)
+                    //}
+                        .sideBarItem(tab: SideBarItem.clubs, selection: selection)
+                    
+                    SportsView()
+                        .sideBarItem(tab: SideBarItem.sports, selection: selection)
+                    
+                    EventsView()
+                        .sideBarItem(tab: SideBarItem.events, selection: selection)
+                    
+                    SettingsView()
+                        .sideBarItem(tab: SideBarItem.settings, selection: selection)
+                    
+                    AboutView()
+                        .sideBarItem(tab: SideBarItem.about, selection: selection)
+                    
+                } sideBar: {
+                    SideBarView(tabs: tabs, selection: $selection, localSelection: selection)
+                }
             }
         }
+        .toolbar(.hidden)
         .preferredColorScheme(.dark)
     }
 }

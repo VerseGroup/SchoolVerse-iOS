@@ -13,6 +13,7 @@
 		1604B18428D8E51B00931C90 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18328D8E51B00931C90 /* AuthenticationView.swift */; };
 		1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18528D8E68C00931C90 /* SignUpView.swift */; };
 		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
+		16060D402A1FF27B009986B6 /* iPadNavButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */; };
 		16075FA82A158A5700273D37 /* ClubEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA72A158A5700273D37 /* ClubEventDetailView.swift */; };
 		16075FAA2A15B01E00273D37 /* CreateClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA92A15B01E00273D37 /* CreateClubView.swift */; };
 		16075FAC2A19CD1B00273D37 /* DayPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FAB2A19CD1B00273D37 /* DayPeriod.swift */; };
@@ -190,6 +191,7 @@
 		1604B18328D8E51B00931C90 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		1604B18528D8E68C00931C90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadNavButtonView.swift; sourceTree = "<group>"; };
 		16075FA72A158A5700273D37 /* ClubEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEventDetailView.swift; sourceTree = "<group>"; };
 		16075FA92A15B01E00273D37 /* CreateClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClubView.swift; sourceTree = "<group>"; };
 		16075FAB2A19CD1B00273D37 /* DayPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPeriod.swift; sourceTree = "<group>"; };
@@ -503,7 +505,6 @@
 				1618019A28D9191A006B5291 /* Popovers */,
 				165CA08E28F1F4C7007547FB /* DayScheduleTile.swift */,
 				165CA09028F1F5B7007547FB /* PeriodTitleAndHeader.swift */,
-				165CA09B28F1FF54007547FB /* NavButtonView.swift */,
 				165CA09D28F205A6007547FB /* CustomTextField.swift */,
 				164A894B28F2660300419637 /* CustomTextEditor.swift */,
 				16BE778A28F24D9C000248A9 /* LoadingView.swift */,
@@ -777,6 +778,7 @@
 			children = (
 				AFEA267E2A1ABE190032F5E0 /* SideBar */,
 				AFFDCF762A1BBBC30025A7C5 /* iPadColorfulBackgroundView.swift */,
+				16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -784,6 +786,7 @@
 		AFEA26752A1A714F0032F5E0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				165CA09B28F1FF54007547FB /* NavButtonView.swift */,
 				165CA08828F1F2FA007547FB /* ColorfulBackgroundView.swift */,
 				165CA08A28F1F350007547FB /* MoreInfoCard.swift */,
 				1618018F28D90B55006B5291 /* TabBar */,
@@ -1113,6 +1116,7 @@
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
 				AF299BF429B3ECC500FE3CDF /* NewFriendsView.swift in Sources */,
+				16060D402A1FF27B009986B6 /* iPadNavButtonView.swift in Sources */,
 				166C1CF628E923BA00F265FA /* EventsRepository.swift in Sources */,
 				164A895228F34B3800419637 /* ScheduleView.swift in Sources */,
 				1618018E28D90ADF006B5291 /* AppView.swift in Sources */,
