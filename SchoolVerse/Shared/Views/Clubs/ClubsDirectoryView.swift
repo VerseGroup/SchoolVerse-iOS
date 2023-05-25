@@ -10,6 +10,9 @@ import SwiftUI
 struct ClubsDirectoryView: View {
     @EnvironmentObject var vm: ClubsViewModel
     
+    @State var showDiscoverClubsView: Bool = false
+    @State var showCreateClubView: Bool = false
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             HeaderLabel(name: "My Clubs")
@@ -29,29 +32,60 @@ struct ClubsDirectoryView: View {
             Spacer()
                 .frame(height: 30)
             
-            NavigationLink(destination: {
-                DiscoverClubsView(vm: vm)
-            }, label: {
-                Text("Discover New Clubs")
-                    .largeButton()
-                    .padding(5)
-            })
-            
-            NavigationLink(destination: {
-                CreateClubView(vm: vm)
-            }, label: {
-                Text("Create New Club")
-                    .largeButton()
-                    .padding(5)
-            })
+            // ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                
+                Button {
+                    showDiscoverClubsView.toggle()
+                } label: {
+                    Text("Discover New Clubs")
+                        .largeButton()
+                        .padding(5)
+                }
+                
+                Button {
+                    showCreateClubView.toggle()
+                } label: {
+                    Text("Create New Club")
+                        .largeButton()
+                        .padding(5)
+                }
+                
+            }
             
             // if iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad){
+                NavigationLink(destination: {
+                    DiscoverClubsView(vm: vm)
+                }, label: {
+                    Text("Discover New Clubs")
+                        .largeButton()
+                        .padding(5)
+                })
+                
+                NavigationLink(destination: {
+                    CreateClubView(vm: vm)
+                }, label: {
+                    Text("Create New Club")
+                        .largeButton()
+                        .padding(5)
+                })
+                
                 Spacer()
                     .frame(height: 95)
             }
 
         }
-        .environmentObject(vm) //
+        .environmentObject(vm)
+        .sheet(isPresented: $showDiscoverClubsView) {
+            NavigationStack {
+                DiscoverClubsView(vm: vm)
+            }
+        }
+        .sheet(isPresented: $showCreateClubView) {
+            NavigationStack {
+                CreateClubView(vm: vm)
+            }
+        }
     }
 }

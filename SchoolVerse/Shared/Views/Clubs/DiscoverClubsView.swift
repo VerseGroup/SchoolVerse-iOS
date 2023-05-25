@@ -19,6 +19,11 @@ struct DiscoverClubsView: View {
                 ColorfulBackgroundView()
             }
             
+            // ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                iPadColorfulBackgroundView()
+            }
+            
             VStack {
                 Spacer()
                     .frame(height: 10)

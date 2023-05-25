@@ -25,8 +25,13 @@ struct JoinedSportsView: View {
     var body: some View {
         ZStack {
             // if iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad){
+            if !(UIDevice.current.userInterfaceIdiom == .pad) {
                 ColorfulBackgroundView()
+            }
+            
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                iPadColorfulBackgroundView()
             }
             
                 VStack {

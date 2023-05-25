@@ -65,7 +65,6 @@ struct SignInView: View {
                 .padding(.vertical)
                 
                 VStack {
-                    
                     Button {
                         Task {
                             await vm.signIn(creds: appCreds)

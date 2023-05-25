@@ -29,6 +29,10 @@ struct ClubsView: View {
             }
             
             VStack {
+                if (UIDevice.current.userInterfaceIdiom == .pad) {
+                    iPadNavButtons
+                }
+                
                 Spacer()
                     .frame(height: 15)
                 
@@ -117,19 +121,44 @@ struct ClubsView: View {
                     GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
-        .navigationTitle("Clubs")
-        .toolbar {
-            if selectedPage == .calendar {
-                ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button {
-                        showPicker.toggle()
-                    } label: {
-                        NavButtonView(systemName: "calendar")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Clubs")
+                .toolbar {
+                    if selectedPage == .calendar {
+                        ToolbarItem(placement: .navigationBarTrailing, content: {
+                            Button {
+                                showPicker.toggle()
+                            } label: {
+                                NavButtonView(systemName: "calendar")
+                            }
+                        })
                     }
-                })
-            }
+                }
         }
         .environmentObject(vm)
     }
 }
 
+extension ClubsView {
+    var iPadNavButtons: some View {
+        HStack {
+            Spacer()
+            
+            // placeholder navbutton
+            Spacer()
+                .frame(width: 35, height: 35)
+                .padding(5)
+                .padding(.top, 20)
+            
+            if selectedPage == .calendar {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    iPadNavButtonView(systemName: "calendar")
+                }
+                .padding(.trailing, 20)
+            }
+        }
+    }
+}

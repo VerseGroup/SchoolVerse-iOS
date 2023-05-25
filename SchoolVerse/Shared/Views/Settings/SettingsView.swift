@@ -14,6 +14,7 @@ struct SettingsView: View {
     var colorNames: [String] = ["Blue", "Cyan", "Pink", "Purple"]
     
     @State var showDelete: Bool = false
+    @State var showJoinedSportsView: Bool = false
     
     var body: some View {
         ZStack {
@@ -29,20 +30,37 @@ struct SettingsView: View {
                             Spacer()
                                 .frame(height: 5)
                             
-                            TextWithTitle(placeholder: "Email", text: user.email)
-                                .padding(.horizontal)
+                            Group {
+                                TextWithTitle(placeholder: "Email", text: user.email)
+                                    .padding(.horizontal)
+                                
+                                TextWithTitle(placeholder: "Name", text: user.displayName)
+                                    .padding(.horizontal)
+                            }
                             
-                            TextWithTitle(placeholder: "Name", text: user.displayName)
-                                .padding(.horizontal)
-                            
-                            NavigationLink(
-                                destination: JoinedSportsView(),
-                                label: {
-                                    NavigationLinkLabel(name: "My Sports")
-                                        .padding(.horizontal)
-                                    
+                            Group {
+                                // iphone
+                                if !(UIDevice.current.userInterfaceIdiom == .pad) {
+                                    NavigationLink(
+                                        destination: JoinedSportsView(),
+                                        label: {
+                                            NavigationLinkLabel(name: "My Sports")
+                                                .padding(.horizontal)
+                                            
+                                        }
+                                    )
                                 }
-                            )
+                                
+                                // ipad
+                                if UIDevice.current.userInterfaceIdiom == .pad {
+                                    Button {
+                                        showJoinedSportsView.toggle()
+                                    } label: {
+                                        NavigationLinkLabel(name: "My Sports")
+                                            .padding(.horizontal)
+                                    }
+                                }
+                            }
                             
                             colorPicker
                                 .padding(.horizontal)
@@ -74,16 +92,22 @@ struct SettingsView: View {
                             .largeButton()
                             
                             // if iphone
-                            if !(UIDevice.current.userInterfaceIdiom == .pad){
+                            if !(UIDevice.current.userInterfaceIdiom == .pad) {
                                 Spacer()
                                     .frame(height: 95)
                             }
+                            
                         }
                     } else {
                         LoadingView(text: "Getting User Data")
                     }
                 }
                 .padding(.horizontal)
+                .sheet(isPresented: $showJoinedSportsView, content: {
+                    NavigationStack {
+                        JoinedSportsView()
+                    }
+                })
                 .alert(isPresented: $showDelete) {
                     Alert(
                         title: Text("Are you sure you want to delete your account?"),
@@ -95,7 +119,10 @@ struct SettingsView: View {
             }
             }
         }
-        .navigationTitle("Settings")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Settings")
+        }
     }
 }
 
