@@ -18,74 +18,88 @@ struct RouterView: View {
     
     @State var approveAvailable: Bool = true
     
+    @State var showLaunchScreen: Bool = true
+    
     var body: some View {
-        // ipad
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            VStack(spacing: 10) {
-                if api.sameVersion {
-                    
-                    if authManager.isAuthenticated {
-                        VStack(spacing: 10) {
-                            if api.approved {
-                                if showLinking {
-                                    LinkingView()
-                                        .transition(.move(edge: .bottom))
+        ZStack {
+            // ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                VStack(spacing: 10) {
+                    if api.sameVersion {
+                        
+                        if authManager.isAuthenticated {
+                            VStack(spacing: 10) {
+                                if api.approved {
+                                    if showLinking {
+                                        LinkingView()
+                                            .transition(.move(edge: .bottom))
+                                    } else {
+                                        iPadAppView()
+                                            .transition(.move(edge: .bottom))
+                                    }
                                 } else {
-                                    iPadAppView()
-                                        .transition(.move(edge: .bottom))
+                                    approvalView
                                 }
-                            } else {
-                                approvalView
                             }
+                            .onAppear {
+                                api.approve()
+                            }
+                        } else {
+                            AuthenticationView()
                         }
-                        .onAppear {
-                            api.approve()
-                        }
+                        
                     } else {
-                        AuthenticationView()
+                        UpgradeView()
                     }
-                    
-                } else {
-                    UpgradeView()
+                }
+                .onAppear {
+                    api.version()
+                }
+                // iphone
+            } else {
+                VStack(spacing: 0) {
+                    if api.sameVersion {
+                        
+                        if authManager.isAuthenticated {
+                            VStack(spacing: 0) {
+                                if api.approved {
+                                    if showLinking {
+                                        LinkingView()
+                                            .transition(.move(edge: .bottom))
+                                    } else {
+                                        AppView()
+                                            .transition(.move(edge: .bottom))
+                                    }
+                                } else {
+                                    approvalView
+                                }
+                            }
+                            .onAppear {
+                                api.approve()
+                            }
+                        } else {
+                            AuthenticationView()
+                        }
+                        
+                    } else {
+                        UpgradeView()
+                    }
+                }
+                .onAppear {
+                    api.version()
                 }
             }
-            .onAppear {
-                api.version()
-            }
-        // iphone
-        } else {
-            VStack(spacing: 0) {
-                if api.sameVersion {
-                    
-                    if authManager.isAuthenticated {
-                        VStack(spacing: 0) {
-                            if api.approved {
-                                if showLinking {
-                                    LinkingView()
-                                        .transition(.move(edge: .bottom))
-                                } else {
-                                    AppView()
-                                        .transition(.move(edge: .bottom))
-                                }
-                            } else {
-                                approvalView
-                            }
-                        }
-                        .onAppear {
-                            api.approve()
-                        }
-                    } else {
-                        AuthenticationView()
-                    }
-                    
-                } else {
-                    UpgradeView()
-                }
-            }
-            .onAppear {
-                api.version()
+            
+            if showLaunchScreen {
+                LaunchScreen()
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                showLaunchScreen.toggle()
+            }
+        }
+        
     }
 }
 

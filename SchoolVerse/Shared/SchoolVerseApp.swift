@@ -21,12 +21,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
         FirebaseApp.configure(options: fileopts)
         
-        try! FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
-
-        do {
-            sleep(1)
-        }
-        
         return true
     }
 }
