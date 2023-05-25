@@ -40,7 +40,7 @@ struct GraphicalDatePicker: View {
             .ultraThinMaterial,
             in: RoundedRectangle(cornerRadius: 25, style: .continuous)
         )
-        .opacity(isPresented ? 1 : 0 )
+        .opacity(isPresented ? 1 : 0)
         .onChange(of: selectedDate) { _ in
             withAnimation {
                 isPresented = false

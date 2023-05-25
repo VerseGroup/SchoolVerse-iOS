@@ -25,6 +25,10 @@ struct SportsView: View {
             }
             
             VStack {
+                if (UIDevice.current.userInterfaceIdiom == .pad) {
+                    iPadNavButtons
+                }
+                
                 weekDateSelector
                 
                 Spacer()
@@ -74,24 +78,27 @@ struct SportsView: View {
                 GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
-        .navigationTitle("Sports")
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    NavButtonView(systemName: "calendar")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Sports")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                        Button {
+                            showPicker.toggle()
+                        } label: {
+                            NavButtonView(systemName: "calendar")
+                        }
+                        
+                        Menu {
+                            Picker(selection: $allSportsSort, label: Text("Sorting options")) {
+                                Text("All Sports").tag(true as Bool) // just to make sure
+                                Text("My Sports").tag(false as Bool) // just to make sure
+                            }
+                        } label: {
+                            NavButtonView(systemName: "line.3.horizontal.decrease")
+                        }
+                    })
                 }
-                
-                Menu {
-                    Picker(selection: $allSportsSort, label: Text("Sorting options")) {
-                        Text("All Sports").tag(true as Bool) // just to make sure
-                        Text("My Sports").tag(false as Bool) // just to make sure
-                    }
-                } label: {
-                    NavButtonView(systemName: "line.3.horizontal.decrease")
-                }
-            })
         }
         .environmentObject(vm)
     }
@@ -100,6 +107,31 @@ struct SportsView: View {
 struct SportsView_Previews: PreviewProvider {
     static var previews: some View {
         SportsView()
+    }
+}
+
+extension SportsView {
+    var iPadNavButtons: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                showPicker.toggle()
+            } label: {
+                iPadNavButtonView(systemName: "calendar")
+            }
+            
+            Menu {
+                Picker(selection: $allSportsSort, label: Text("Sorting options")) {
+                    Text("All Sports").tag(true as Bool) // just to make sure
+                    Text("My Sports").tag(false as Bool) // just to make sure
+                }
+            } label: {
+                iPadNavButtonView(systemName: "line.3.horizontal.decrease")
+            }
+            .padding(.trailing, 20)
+            
+        }
     }
 }
 

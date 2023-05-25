@@ -28,7 +28,7 @@ enum SideBarItem: Hashable {
         switch self {
         case .schedule: return "Schedule"
         case .tasks: return "Tasks"
-        case .menus: return "Menu"
+        case .menus: return "Menus"
         case .clubs: return "Clubs"
         case .sports: return "Sports"
         case .events: return "Events"

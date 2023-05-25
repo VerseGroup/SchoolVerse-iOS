@@ -24,6 +24,10 @@ struct EventsView: View {
             }
             
             VStack {
+                if (UIDevice.current.userInterfaceIdiom == .pad) {
+                    iPadNavButtons
+                }
+                
                 weekDateSelector
                 
                 Spacer()
@@ -85,15 +89,18 @@ struct EventsView: View {
                 GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
-        .navigationTitle("Events")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    NavButtonView(systemName: "calendar")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Events")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        Button {
+                            showPicker.toggle()
+                        } label: {
+                            NavButtonView(systemName: "calendar")
+                        }
+                    })
                 }
-            })
         }
     }
 }
@@ -101,6 +108,21 @@ struct EventsView: View {
 struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
         EventsView()
+    }
+}
+
+extension EventsView {
+    var iPadNavButtons: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                showPicker.toggle()
+            } label: {
+                iPadNavButtonView(systemName: "calendar")
+            }
+            .padding(.trailing, 20)
+        }
     }
 }
 

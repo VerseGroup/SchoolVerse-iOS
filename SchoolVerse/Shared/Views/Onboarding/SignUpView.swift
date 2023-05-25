@@ -74,48 +74,44 @@ struct SignUpView: View {
                                 isNotEmpty(text: name)
                             }
                         
-                        // ipad
-                        if(UIDevice.current.userInterfaceIdiom == .pad) {
-                            Picker("Grade level", selection: $details.gradeLevel) {
-                                ForEach(9..<13) { grade in
-                                    Text("Grade \(grade)")
-                                        .foregroundColor(.white)
-                                        .tag(grade)
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                        // iphone
-                        } else {
-                            HStack (spacing: 10) {
-                                ForEach (9..<13) { grade in
-                                    Text("Grade \(grade)")
-                                        .tag(grade)
-                                        .fontWeight(.semibold)
-                                        .font(.headline)
-                                        .frame(width: UIScreen.main.bounds.width / 5)
-                                        .background (
-                                            ZStack {
-                                                if grade == details.gradeLevel {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .fill(.clear)
-                                                        .padding(20)
-                                                        .taintedGlass()
-                                                        .matchedGeometryEffect(id: "selectedGrade", in: animation)
-                                                } //: if
-                                            } //: Zstack
-                                        ) //: background
-                                        .onTapGesture {
-                                            withAnimation {
-                                                details.gradeLevel = grade
-                                            }
+                        HStack (spacing: 10) {
+                            ForEach (9..<13) { grade in
+                                Text("Grade \(grade)")
+                                    .tag(grade)
+                                    .fontWeight(.semibold)
+                                    .font(.headline)
+                                    // iphone
+                                    .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+                                        view
+                                            .frame(width: UIScreen.main.bounds.width / 5)
+                                    }
+                                    // ipad
+                                    .if(UIDevice.current.userInterfaceIdiom == .pad) { view in
+                                        view
+                                            .frame(width: UIScreen.main.bounds.width / 5.25)
+                                    }
+                                    .background (
+                                        ZStack {
+                                            if grade == details.gradeLevel {
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .fill(.clear)
+                                                    .padding(20)
+                                                    .taintedGlass()
+                                                    .matchedGeometryEffect(id: "selectedGrade", in: animation)
+                                            } //: if
+                                        } //: Zstack
+                                    ) //: background
+                                    .onTapGesture {
+                                        withAnimation {
+                                            details.gradeLevel = grade
                                         }
-                                } //: ForEach
-                            } //: HStack
-                            .padding(.vertical, 15)
-                            .padding(.horizontal, 5)
-                            .cornerRadius(20)
-                            .heavyGlass()
-                        }
+                                    }
+                            } //: ForEach
+                        } //: HStack
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 5)
+                        .cornerRadius(20)
+                        .heavyGlass()
                         
                         LinkLabel(name: "TOS & Privacy Policy", link: URL(string: "https://schoolverse.app/privacypolicy")!)
                             .padding(8)

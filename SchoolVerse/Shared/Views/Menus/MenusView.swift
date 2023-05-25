@@ -31,6 +31,10 @@ struct MenusView: View {
             }
             
             VStack {
+                if (UIDevice.current.userInterfaceIdiom == .pad) {
+                    iPadNavButtons
+                }
+                
                 weekDateSelector
                 
                 VStack(spacing: 5) {
@@ -138,16 +142,18 @@ struct MenusView: View {
                 GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
-        
-        .navigationTitle("Menus")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    NavButtonView(systemName: "calendar")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Menus")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        Button {
+                            showPicker.toggle()
+                        } label: {
+                            NavButtonView(systemName: "calendar")
+                        }
+                    })
                 }
-            })
         }
     }
 }
@@ -155,6 +161,21 @@ struct MenusView: View {
 struct MenuListView_Previews: PreviewProvider {
     static var previews: some View {
         MenusView()
+    }
+}
+
+extension MenusView {
+    var iPadNavButtons: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                showPicker.toggle()
+            } label: {
+                iPadNavButtonView(systemName: "calendar")
+            }
+            .padding(.trailing, 20)
+        }
     }
 }
 

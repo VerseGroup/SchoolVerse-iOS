@@ -19,12 +19,16 @@ struct ScheduleView: View {
     var body: some View {
         ZStack {
             // if iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad){
+            if !(UIDevice.current.userInterfaceIdiom == .pad) {
                 ColorfulBackgroundView()
             }
             
             VStack {
                 if let _ = vm.schedule {
+                    if (UIDevice.current.userInterfaceIdiom == .pad) {
+                        iPadNavButtons
+                    }
+                    
                     weekDateSelector
                     
                     VStack(spacing: 0) {
@@ -102,15 +106,18 @@ struct ScheduleView: View {
                 GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
             }
         }
-        .navigationTitle("Schedule")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    NavButtonView(systemName: "calendar")
+        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
+            view
+                .navigationTitle("Schedule")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        Button {
+                            showPicker.toggle()
+                        } label: {
+                            NavButtonView(systemName: "calendar")
+                        }
+                    })
                 }
-            })
         }
     }
 }
@@ -118,6 +125,21 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView()
+    }
+}
+
+extension ScheduleView {
+    var iPadNavButtons: some View {
+        HStack {
+            Spacer()
+            
+            Button {
+                showPicker.toggle()
+            } label: {
+                iPadNavButtonView(systemName: "calendar")
+            }
+            .padding(.trailing, 20)
+        }
     }
 }
 
