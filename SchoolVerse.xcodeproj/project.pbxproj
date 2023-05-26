@@ -14,6 +14,7 @@
 		1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18528D8E68C00931C90 /* SignUpView.swift */; };
 		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
 		16060D402A1FF27B009986B6 /* iPadNavButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */; };
+		16060D452A203F6D009986B6 /* ClearBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D442A203F6D009986B6 /* ClearBackgroundView.swift */; };
 		16075FA82A158A5700273D37 /* ClubEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA72A158A5700273D37 /* ClubEventDetailView.swift */; };
 		16075FAA2A15B01E00273D37 /* CreateClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA92A15B01E00273D37 /* CreateClubView.swift */; };
 		16075FAC2A19CD1B00273D37 /* DayPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FAB2A19CD1B00273D37 /* DayPeriod.swift */; };
@@ -192,6 +193,7 @@
 		1604B18528D8E68C00931C90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadNavButtonView.swift; sourceTree = "<group>"; };
+		16060D442A203F6D009986B6 /* ClearBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundView.swift; sourceTree = "<group>"; };
 		16075FA72A158A5700273D37 /* ClubEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEventDetailView.swift; sourceTree = "<group>"; };
 		16075FA92A15B01E00273D37 /* CreateClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClubView.swift; sourceTree = "<group>"; };
 		16075FAB2A19CD1B00273D37 /* DayPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPeriod.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				AF5FD25D293A873D00B12401 /* EditSportsTile.swift */,
 				AF299BF529B3F41C00FE3CDF /* SearchBarView.swift */,
 				164C11E92A1C05460041B250 /* LaunchScreen.swift */,
+				16060D442A203F6D009986B6 /* ClearBackgroundView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				1618018A28D90926006B5291 /* XCRemoteSwiftPackageReference "Popovers" */,
 				1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				166C1D1128EA249200F265FA /* XCRemoteSwiftPackageReference "swift-collections" */,
+				16060D412A201C4B009986B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 1674C2CC28C00FC400D92969 /* Products */;
 			projectDirPath = "";
@@ -1155,6 +1159,7 @@
 				AF299C0E29BC179100FE3CDF /* ClubPageView.swift in Sources */,
 				164A896728F3CEB100419637 /* View+Placeholder.swift in Sources */,
 				1674C2CF28C00FC400D92969 /* SchoolVerseApp.swift in Sources */,
+				16060D452A203F6D009986B6 /* ClearBackgroundView.swift in Sources */,
 				16791C5328E2284A00FD03EF /* String+Base64.swift in Sources */,
 				166C1CF828E924F800F265FA /* Event.swift in Sources */,
 				AFEA26822A1ACF9F0032F5E0 /* SideBarView.swift in Sources */,
@@ -1864,6 +1869,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		16060D412A201C4B009986B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		1612195828E15B8E0063BC3A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
