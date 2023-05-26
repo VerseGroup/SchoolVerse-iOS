@@ -115,11 +115,6 @@ struct ClubsView: View {
             }) {
                 Text(vm.errorMessage ?? "")
             }
-            
-            // iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                    GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
-            }
         }
         .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
             view
@@ -135,6 +130,20 @@ struct ClubsView: View {
                         })
                     }
                 }
+        }
+        .sheet(isPresented: $showPicker) {
+            ZStack {
+                if(UIDevice.current.userInterfaceIdiom == .pad) {
+                    ClearBackgroundView()
+//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .onTapGesture {
+                            showPicker.toggle()
+                        }
+                }
+                
+                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
+            }
+            .presentationDetents([.medium])
         }
         .environmentObject(vm)
     }
