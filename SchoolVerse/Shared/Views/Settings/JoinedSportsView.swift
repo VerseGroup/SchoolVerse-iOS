@@ -25,55 +25,55 @@ struct JoinedSportsView: View {
     var body: some View {
         ZStack {
             // if iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad) {
+            if !(UIDevice.current.userInterfaceIdiom == .pad){
                 ColorfulBackgroundView()
             }
             
             // if ipad
             if UIDevice.current.userInterfaceIdiom == .pad {
-                iPadColorfulBackgroundView()
+                ClearBackgroundView()
             }
             
+            VStack {
+                Spacer()
+                    .frame(height: 10)
+                
                 VStack {
                     Spacer()
-                        .frame(height: 10)
+                        .frame(height: 20)
                     
-                    VStack {
-                        Spacer()
-                            .frame(height: 20)
-                        
-                        if !vm.subscribedSports.isEmpty {
-                            ScrollView(showsIndicators: false) {
-                                joinedList
-                                
-                                // if iphone
-                                if !(UIDevice.current.userInterfaceIdiom == .pad){
-                                    Spacer()
-                                        .frame(height: 115)
-                                }
-                            }
-                        } else {
-                            VStack {
+                    if !vm.subscribedSports.isEmpty {
+                        ScrollView(showsIndicators: false) {
+                            joinedList
+                            
+                            // if iphone
+                            if !(UIDevice.current.userInterfaceIdiom == .pad){
                                 Spacer()
-                                    .frame(height: 20)
-                                
-                                Text("No Joined Sports Yet!")
-                                    .multilineTextAlignment(.center)
-                                    .font(.system(size: 60))
-                                    .fontWeight(.bold)
-                                    .padding(.horizontal)
-                                
-                                Spacer()
+                                    .frame(height: 115)
                             }
-                            .frame(maxWidth: .infinity)
                         }
-                        
+                    } else {
+                        VStack {
+                            Spacer()
+                                .frame(height: 20)
+                            
+                            Text("No Joined Sports Yet!")
+                                .multilineTextAlignment(.center)
+                                .font(.system(size: 60))
+                                .fontWeight(.bold)
+                                .padding(.horizontal)
+                            
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .ignoresSafeArea()
-                    .heavyGlass()
-                    .frame(maxWidth: .infinity)
                     
                 }
+                .ignoresSafeArea()
+                .heavyGlass()
+                .frame(maxWidth: .infinity)
+                
+            }
         }
         .sheet(isPresented: $showSheet) {
             allList

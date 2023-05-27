@@ -15,6 +15,7 @@
 		1604B18828D8E69700931C90 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1604B18728D8E69700931C90 /* SignInView.swift */; };
 		16060D402A1FF27B009986B6 /* iPadNavButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */; };
 		16060D452A203F6D009986B6 /* ClearBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D442A203F6D009986B6 /* ClearBackgroundView.swift */; };
+		16060D472A2101E7009986B6 /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16060D462A2101E7009986B6 /* View+Hidden.swift */; };
 		16075FA82A158A5700273D37 /* ClubEventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA72A158A5700273D37 /* ClubEventDetailView.swift */; };
 		16075FAA2A15B01E00273D37 /* CreateClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FA92A15B01E00273D37 /* CreateClubView.swift */; };
 		16075FAC2A19CD1B00273D37 /* DayPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16075FAB2A19CD1B00273D37 /* DayPeriod.swift */; };
@@ -194,6 +195,7 @@
 		1604B18728D8E69700931C90 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		16060D3F2A1FF27B009986B6 /* iPadNavButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadNavButtonView.swift; sourceTree = "<group>"; };
 		16060D442A203F6D009986B6 /* ClearBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBackgroundView.swift; sourceTree = "<group>"; };
+		16060D462A2101E7009986B6 /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 		16075FA72A158A5700273D37 /* ClubEventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubEventDetailView.swift; sourceTree = "<group>"; };
 		16075FA92A15B01E00273D37 /* CreateClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClubView.swift; sourceTree = "<group>"; };
 		16075FAB2A19CD1B00273D37 /* DayPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPeriod.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				16B92EF22946813F00EBED71 /* String+Date.swift */,
 				1661E75629479DBA00E95C62 /* Date+Start.swift */,
 				AF299BF729B3F4EA00FE3CDF /* UIApplication.swift */,
+				16060D462A2101E7009986B6 /* View+Hidden.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 			files = (
 				AF299BF829B3F4EA00FE3CDF /* UIApplication.swift in Sources */,
 				AF299C0829B79DAF00FE3CDF /* Club.swift in Sources */,
+				16060D472A2101E7009986B6 /* View+Hidden.swift in Sources */,
 				AF299BF229B3DD2500FE3CDF /* FriendsView.swift in Sources */,
 				AFEA26862A1ADEF40032F5E0 /* SideBarViewBuilder.swift in Sources */,
 				AF299BFE29B67B3500FE3CDF /* PendingFriendsView.swift in Sources */,

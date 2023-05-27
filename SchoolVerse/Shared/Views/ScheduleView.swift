@@ -19,15 +19,17 @@ struct ScheduleView: View {
     var body: some View {
         ZStack {
             // if iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad) {
+            if !(UIDevice.current.userInterfaceIdiom == .pad){
                 ColorfulBackgroundView()
+            }
+            
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
             }
             
             VStack {
                 if let _ = vm.schedule {
-                    if (UIDevice.current.userInterfaceIdiom == .pad) {
-                        iPadNavButtons
-                    }
                     
                     weekDateSelector
                     
@@ -101,18 +103,15 @@ struct ScheduleView: View {
                 }
             }
         }
-        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
-            view
-                .navigationTitle("Schedule")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing, content: {
-                        Button {
-                            showPicker.toggle()
-                        } label: {
-                            NavButtonView(systemName: "calendar")
-                        }
-                    })
+        .navigationTitle("Schedule")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
                 }
+            })
         }
         .sheet(isPresented: $showPicker) {
             ZStack {
@@ -134,21 +133,6 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView()
-    }
-}
-
-extension ScheduleView {
-    var iPadNavButtons: some View {
-        HStack {
-            Spacer()
-            
-            Button {
-                showPicker.toggle()
-            } label: {
-                iPadNavButtonView(systemName: "calendar")
-            }
-            .padding(.trailing, 20)
-        }
     }
 }
 

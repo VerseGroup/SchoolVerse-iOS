@@ -13,14 +13,19 @@ struct SettingsView: View {
     var colors: [Color] = [Color.accent.blue, Color.accent.cyan, Color.accent.pink, Color.accent.purple]
     var colorNames: [String] = ["Blue", "Cyan", "Pink", "Purple"]
     
+    @State var hideView: Bool = false // hides view to prevent animation bug with clear background view
     @State var showDelete: Bool = false
-    @State var showJoinedSportsView: Bool = false
     
     var body: some View {
         ZStack {
             // if iphone
             if !(UIDevice.current.userInterfaceIdiom == .pad){
                 ColorfulBackgroundView()
+            }
+            
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
             }
             
             ScrollView {
@@ -38,29 +43,15 @@ struct SettingsView: View {
                                     .padding(.horizontal)
                             }
                             
-                            Group {
-                                // iphone
-                                if !(UIDevice.current.userInterfaceIdiom == .pad) {
-                                    NavigationLink(
-                                        destination: JoinedSportsView(),
-                                        label: {
-                                            NavigationLinkLabel(name: "My Sports")
-                                                .padding(.horizontal)
-                                            
-                                        }
-                                    )
-                                }
-                                
-                                // ipad
-                                if UIDevice.current.userInterfaceIdiom == .pad {
-                                    Button {
-                                        showJoinedSportsView.toggle()
-                                    } label: {
-                                        NavigationLinkLabel(name: "My Sports")
-                                            .padding(.horizontal)
-                                    }
-                                }
+                            NavigationLink {
+                                JoinedSportsView()
+                            } label: {
+                                NavigationLinkLabel(name: "My Sports")
+                                    .padding(.horizontal)
                             }
+                            .simultaneousGesture(TapGesture().onEnded{
+                                hideView = true // hides view when transitioning to new page
+                            })
                             
                             colorPicker
                                 .padding(.horizontal)
@@ -103,11 +94,6 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.horizontal)
-                .sheet(isPresented: $showJoinedSportsView, content: {
-                    NavigationStack {
-                        JoinedSportsView()
-                    }
-                })
                 .alert(isPresented: $showDelete) {
                     Alert(
                         title: Text("Are you sure you want to delete your account?"),
@@ -116,13 +102,17 @@ struct SettingsView: View {
                         },
                         secondaryButton: .cancel()
                     )
-            }
+                }
             }
         }
-        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
-            view
-                .navigationTitle("Settings")
-        }
+        .navigationTitle("Settings")
+        .isHidden(hideView)
+        .onChange(of: hideView, perform: { newValue in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                hideView = false
+            }
+        })
+        
     }
 }
 
