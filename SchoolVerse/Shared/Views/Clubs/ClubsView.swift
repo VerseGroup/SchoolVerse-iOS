@@ -18,6 +18,8 @@ struct ClubsView: View {
     @State var selectedPage: ClubPages = .directory
     @State var showPicker: Bool = false
     
+    @State var hideView: Bool = false // hides view to prevent animation bug with clear background view
+    
     @AppStorage("accent_color") var accentColor: Color = .accent.blue
     @Namespace var animation
     
@@ -28,11 +30,12 @@ struct ClubsView: View {
                 ColorfulBackgroundView()
             }
             
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
             VStack {
-                if (UIDevice.current.userInterfaceIdiom == .pad) {
-                    iPadNavButtons
-                }
-                
                 Spacer()
                     .frame(height: 15)
                 
@@ -105,7 +108,7 @@ struct ClubsView: View {
                     
                 switch selectedPage {
                 case .directory:
-                    ClubsDirectoryView()
+                    ClubsDirectoryView(hideView: $hideView)
                 case .calendar:
                     ClubsCalendarView()
                 }
@@ -116,20 +119,17 @@ struct ClubsView: View {
                 Text(vm.errorMessage ?? "")
             }
         }
-        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
-            view
-                .navigationTitle("Clubs")
-                .toolbar {
-                    if selectedPage == .calendar {
-                        ToolbarItem(placement: .navigationBarTrailing, content: {
-                            Button {
-                                showPicker.toggle()
-                            } label: {
-                                NavButtonView(systemName: "calendar")
-                            }
-                        })
+        .navigationTitle("Clubs")
+        .toolbar {
+            if selectedPage == .calendar {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button {
+                        showPicker.toggle()
+                    } label: {
+                        NavButtonView(systemName: "calendar")
                     }
-                }
+                })
+            }
         }
         .sheet(isPresented: $showPicker) {
             ZStack {
@@ -145,29 +145,12 @@ struct ClubsView: View {
             }
             .presentationDetents([.medium])
         }
-        .environmentObject(vm)
-    }
-}
-
-extension ClubsView {
-    var iPadNavButtons: some View {
-        HStack {
-            Spacer()
-            
-            // placeholder navbutton
-            Spacer()
-                .frame(width: 35, height: 35)
-                .padding(5)
-                .padding(.top, 20)
-            
-            if selectedPage == .calendar {
-                Button {
-                    showPicker.toggle()
-                } label: {
-                    iPadNavButtonView(systemName: "calendar")
-                }
-                .padding(.trailing, 20)
+        .isHidden(hideView)
+        .onChange(of: hideView, perform: { newValue in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                hideView = false
             }
-        }
+        })
+        .environmentObject(vm)
     }
 }

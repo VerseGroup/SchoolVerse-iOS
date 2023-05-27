@@ -25,12 +25,13 @@ struct TasksView: View {
                 ColorfulBackgroundView()
             }
             
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 0) {
-                    if (UIDevice.current.userInterfaceIdiom == .pad) {
-                        iPadNavButtons
-                    }
-                    
                     switch taskSort {
                     case .sortClass:
                         TasksByClassView()
@@ -58,38 +59,35 @@ struct TasksView: View {
                 Text(vm.errorMessage ?? "")
             }
         }
-        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
-            view
-                .navigationTitle("Tasks")
-                .toolbar {
-                    ToolbarItemGroup(placement: .navigationBarLeading) {
-                        Button {
-                            vm.getData()
-                        } label: {
-                            NavButtonView(systemName: "arrow.clockwise")
-                                .opacity(vm.isAvailable ? 1 : 0.25)
-                        }
-                        .disabled(!vm.isAvailable)
-                    }
-                    
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        Menu {
-                            Picker(selection: $taskSort, label: Text("Sorting options")) {
-                                Text("Sort by class").tag(TaskSort.sortClass as TaskSort) // just to make sure
-                                Text("Sort by urgency").tag(TaskSort.sortUrgency as TaskSort) // just to make sure
-                                Text("Sort by due date").tag(TaskSort.sortDate as TaskSort) // just to make sure
-                            }
-                        } label: {
-                            NavButtonView(systemName: "line.3.horizontal.decrease")
-                        }
-                        
-                        Button {
-                            showAddTaskView.toggle()
-                        } label: {
-                            NavButtonView(systemName: "plus")
-                        }
-                    }
+        .navigationTitle("Tasks")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button {
+                    vm.getData()
+                } label: {
+                    NavButtonView(systemName: "arrow.clockwise")
+                        .opacity(vm.isAvailable ? 1 : 0.25)
                 }
+                .disabled(!vm.isAvailable)
+            }
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Menu {
+                    Picker(selection: $taskSort, label: Text("Sorting options")) {
+                        Text("Sort by class").tag(TaskSort.sortClass as TaskSort) // just to make sure
+                        Text("Sort by urgency").tag(TaskSort.sortUrgency as TaskSort) // just to make sure
+                        Text("Sort by due date").tag(TaskSort.sortDate as TaskSort) // just to make sure
+                    }
+                } label: {
+                    NavButtonView(systemName: "line.3.horizontal.decrease")
+                }
+                
+                Button {
+                    showAddTaskView.toggle()
+                } label: {
+                    NavButtonView(systemName: "plus")
+                }
+            }
         }
         .sheet(isPresented: $showAddTaskView) {
             NavigationStack {
@@ -103,39 +101,5 @@ struct TasksView: View {
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
         TasksView()
-    }
-}
-
-extension TasksView {
-    var iPadNavButtons: some View {
-        HStack {
-            Button {
-                vm.getData()
-            } label: {
-                iPadNavButtonView(systemName: "arrow.clockwise")
-                    .opacity(vm.isAvailable ? 1 : 0.25)
-            }
-            .disabled(!vm.isAvailable)
-            
-            Spacer()
-            
-            Menu {
-                Picker(selection: $taskSort, label: Text("Sorting options")) {
-                    Text("Sort by class").tag(TaskSort.sortClass as TaskSort) // just to make sure
-                    Text("Sort by urgency").tag(TaskSort.sortUrgency as TaskSort) // just to make sure
-                    Text("Sort by due date").tag(TaskSort.sortDate as TaskSort) // just to make sure
-                }
-            } label: {
-                iPadNavButtonView(systemName: "line.3.horizontal.decrease")
-            }
-            
-            Button {
-                showAddTaskView.toggle()
-            } label: {
-                iPadNavButtonView(systemName: "plus")
-            }
-            .padding(.trailing, 5)
-            
-        }
     }
 }

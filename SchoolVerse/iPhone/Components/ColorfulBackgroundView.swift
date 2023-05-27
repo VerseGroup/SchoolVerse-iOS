@@ -47,6 +47,7 @@ struct ColorfulBackgroundView: View {
                 
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 

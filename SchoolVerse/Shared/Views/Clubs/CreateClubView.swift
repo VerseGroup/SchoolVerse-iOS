@@ -26,49 +26,62 @@ struct CreateClubView: View {
     
     var body: some View {
         ZStack {
-            ColorfulBackgroundView()
-            
-            VStack(spacing: 10) {
-                Spacer()
-                    .frame(height: 75)
-                
-                HeaderLabel(name: "Name")
-                    .padding(.leading, 5)
-                
-                CustomTextField(placeholder: "Enter a club name", text: $club.name)
-                    .focused($focusedField, equals: .name)
-                    .warningAccessory($club.name, valid: $validName, warning: "Invalid Name") { name in
-                        isNotEmpty(text: name)
-                    }
-                    .padding(.horizontal)
-
-                
-                HeaderLabel(name: "Description")
-                    .padding(.leading, 5)
-                
-                CustomTextEditor(text: $club.description)
-                    .focused($focusedField, equals: .description)
-                    .frame(height: 250)
-                    .warningAccessory($club.description, valid: $validDescription, warning: "Invalid Description") { description in
-                        isNotEmpty(text: description)
-                    }
-                    .padding()
-                
-                Button {
-                    vm.createClub(club)
-                    dismiss()
-                } label: {
-                    Text("Create Club")
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .padding(.horizontal)
-                        .glassCardFull()
-                        .opacity((club.name.isEmpty || club.description.isEmpty) ? 0.25 : 1)
-                }
-                .disabled(club.name.isEmpty || club.description.isEmpty)
-
-                Spacer()
+            // if iphone
+            if !(UIDevice.current.userInterfaceIdiom == .pad){
+                ColorfulBackgroundView()
             }
+            
+            // ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
+            ScrollView {
+                VStack(spacing: 10) {
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                            .frame(height: 75)
+                    }
+                    
+                    HeaderLabel(name: "Name")
+                        .padding(.leading, 5)
+                    
+                    CustomTextField(placeholder: "Enter a club name", text: $club.name)
+                        .focused($focusedField, equals: .name)
+                        .warningAccessory($club.name, valid: $validName, warning: "Invalid Name") { name in
+                            isNotEmpty(text: name)
+                        }
+                        .padding(.horizontal)
+                    
+                    
+                    HeaderLabel(name: "Description")
+                        .padding(.leading, 5)
+                    
+                    CustomTextEditor(text: $club.description)
+                        .focused($focusedField, equals: .description)
+                        .frame(height: 250)
+                        .warningAccessory($club.description, valid: $validDescription, warning: "Invalid Description") { description in
+                            isNotEmpty(text: description)
+                        }
+                        .padding()
+                    
+                    Button {
+                        vm.createClub(club)
+                        dismiss()
+                    } label: {
+                        Text("Create Club")
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .padding(.horizontal)
+                            .glassCardFull()
+                            .opacity((club.name.isEmpty || club.description.isEmpty) ? 0.25 : 1)
+                    }
+                    .disabled(club.name.isEmpty || club.description.isEmpty)
+                    
+                    Spacer()
+                }
+            }
+            
         }
         .navigationTitle("Create New Club")
         .navigationBarTitleDisplayMode(.inline)

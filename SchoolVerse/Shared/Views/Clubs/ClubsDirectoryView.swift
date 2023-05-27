@@ -10,8 +10,7 @@ import SwiftUI
 struct ClubsDirectoryView: View {
     @EnvironmentObject var vm: ClubsViewModel
     
-    @State var showDiscoverClubsView: Bool = false
-    @State var showCreateClubView: Bool = false
+    @Binding var hideView: Bool
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -23,6 +22,9 @@ struct ClubsDirectoryView: View {
                     one.name < two.name
                 })) { club in
                     ClubTileView(vm: ClubViewModel(club: club))
+                        .simultaneousGesture(TapGesture().onEnded{
+                            hideView = true // hides view when transitioning to new page
+                        })
                 }
             } else {
                 ParagraphLabel(name: "You have not joined any clubs yet. Click the \"Discover New Clubs\" button to look at more clubs that you may want to join.")
@@ -32,60 +34,31 @@ struct ClubsDirectoryView: View {
             Spacer()
                 .frame(height: 30)
             
-            // ipad
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                
-                Button {
-                    showDiscoverClubsView.toggle()
-                } label: {
-                    Text("Discover New Clubs")
-                        .largeButton()
-                        .padding(5)
-                }
-                
-                Button {
-                    showCreateClubView.toggle()
-                } label: {
-                    Text("Create New Club")
-                        .largeButton()
-                        .padding(5)
-                }
-                
-            }
+            // source: https://stackoverflow.com/questions/57666620/is-it-possible-for-a-navigationlink-to-perform-an-action-in-addition-to-navigati
+            NavigationLink(destination: {
+                DiscoverClubsView(vm: vm)
+            }, label: {
+                Text("Discover New Clubs")
+                    .largeButton()
+                    .padding(5)
+            }).simultaneousGesture(TapGesture().onEnded{
+                hideView = true // hides view when transitioning to new page
+            })
             
-            // if iphone
-            if !(UIDevice.current.userInterfaceIdiom == .pad){
-                NavigationLink(destination: {
-                    DiscoverClubsView(vm: vm)
-                }, label: {
-                    Text("Discover New Clubs")
-                        .largeButton()
-                        .padding(5)
-                })
-                
-                NavigationLink(destination: {
-                    CreateClubView(vm: vm)
-                }, label: {
-                    Text("Create New Club")
-                        .largeButton()
-                        .padding(5)
-                })
-                
-                Spacer()
-                    .frame(height: 95)
-            }
+            NavigationLink(destination: {
+                CreateClubView(vm: vm)
+            }, label: {
+                Text("Create New Club")
+                    .largeButton()
+                    .padding(5)
+            }).simultaneousGesture(TapGesture().onEnded{
+                hideView = true // hides view when transitioning to new page
+            })
+            
+            Spacer()
+                .frame(height: 95)
 
         }
         .environmentObject(vm)
-        .sheet(isPresented: $showDiscoverClubsView) {
-            NavigationStack {
-                DiscoverClubsView(vm: vm)
-            }
-        }
-        .sheet(isPresented: $showCreateClubView) {
-            NavigationStack {
-                CreateClubView(vm: vm)
-            }
-        }
     }
 }

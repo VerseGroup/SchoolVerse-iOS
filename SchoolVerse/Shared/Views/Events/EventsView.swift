@@ -23,11 +23,12 @@ struct EventsView: View {
                 ColorfulBackgroundView()
             }
             
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
             VStack {
-                if (UIDevice.current.userInterfaceIdiom == .pad) {
-                    iPadNavButtons
-                }
-                
                 weekDateSelector
                 
                 Spacer()
@@ -85,18 +86,15 @@ struct EventsView: View {
                 }
             }
         }
-        .if(!(UIDevice.current.userInterfaceIdiom == .pad)) { view in
-            view
-                .navigationTitle("Events")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing, content: {
-                        Button {
-                            showPicker.toggle()
-                        } label: {
-                            NavButtonView(systemName: "calendar")
-                        }
-                    })
+        .navigationTitle("Events")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button {
+                    showPicker.toggle()
+                } label: {
+                    NavButtonView(systemName: "calendar")
                 }
+            })
         }
         .sheet(isPresented: $showPicker) {
             ZStack {
@@ -118,21 +116,6 @@ struct EventsView: View {
 struct EventsView_Previews: PreviewProvider {
     static var previews: some View {
         EventsView()
-    }
-}
-
-extension EventsView {
-    var iPadNavButtons: some View {
-        HStack {
-            Spacer()
-            
-            Button {
-                showPicker.toggle()
-            } label: {
-                iPadNavButtonView(systemName: "calendar")
-            }
-            .padding(.trailing, 20)
-        }
     }
 }
 

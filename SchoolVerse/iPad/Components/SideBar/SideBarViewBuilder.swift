@@ -34,6 +34,7 @@ struct SideBarViewBuilder<Content:View, SideBar: View>: View {
             }
             .frame(maxWidth: .infinity)
         }
-//        .frame(maxHeight: .infinity)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        
     }
 }

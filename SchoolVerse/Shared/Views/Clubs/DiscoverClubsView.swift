@@ -12,6 +12,8 @@ struct DiscoverClubsView: View {
     
     @State var query: String = ""
     
+    @State var hideView: Bool = false
+    
     var body: some View {
         ZStack {
             // if iphone
@@ -21,7 +23,7 @@ struct DiscoverClubsView: View {
             
             // ipad
             if UIDevice.current.userInterfaceIdiom == .pad {
-                iPadColorfulBackgroundView()
+                ClearBackgroundView()
             }
             
             VStack {
@@ -41,9 +43,11 @@ struct DiscoverClubsView: View {
                         Spacer()
                             .frame(height: 20)
                         
-                        // turn into function
                         ForEach(vm.allClubs.filter(search)) { club in
                             DiscoverClubTileView(vm: ClubViewModel(club: club))
+                                .simultaneousGesture(TapGesture().onEnded{
+                                    hideView = true // hides view when transitioning to new page
+                                })
                         }
                         
                         // if iphone
@@ -55,9 +59,22 @@ struct DiscoverClubsView: View {
                     .frame(maxWidth: .infinity)
                     .heavyGlass()
                 }
+                
+                // if ipad
+                if (UIDevice.current.userInterfaceIdiom == .pad){
+                    Spacer()
+                        .frame(height: 16)
+                }
             }
         }
         .navigationTitle("Discover New Clubs")
+        .isHidden(hideView)
+        .onChange(of: hideView, perform: { newValue in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                hideView = false
+                print(hideView)
+            }
+        })
     }
 }
 

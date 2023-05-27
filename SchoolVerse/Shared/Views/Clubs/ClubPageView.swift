@@ -30,7 +30,30 @@ struct ClubPageView: View {
     
     var body: some View {
         ZStack {
-            ColorfulBackgroundView()
+            // if iphone
+            if !(UIDevice.current.userInterfaceIdiom == .pad){
+                ColorfulBackgroundView()
+            }
+            
+            // ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
+//            if UIDevice.current.userInterfaceIdiom == .pad {
+//                if showClearBackgroundView {
+//                    ClearBackgroundView()
+//                } else {
+//                    iPadColorfulBackgroundView()
+//                        .onAppear {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                                withAnimation(.easeIn(duration: 0.25)) {
+//                                    showClearBackgroundView.toggle()
+//                                }
+//                            }
+//                        }
+//                }
+//            }
             
             ScrollView(showsIndicators: false) {
                 VStack() {
@@ -140,9 +163,10 @@ extension ClubPageView {
             
             Rectangle()
                 .fill(.white)
-                .frame(width: UIScreen.main.bounds.width * 5/6, height: 2)
+                .frame(height: 2)
+                .frame(maxWidth: .infinity)
                 .padding(.vertical, 5)
-            
+                .padding(.horizontal)
         }
     }
     
