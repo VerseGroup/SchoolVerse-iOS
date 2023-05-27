@@ -44,9 +44,10 @@ struct iPadColorfulBackgroundView: View {
                     .padding(50)
                     .blur(radius: 120)
                     .offset(x: -size.width / 1.5, y: size.height / 2)
-                
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+
     }
 }
 

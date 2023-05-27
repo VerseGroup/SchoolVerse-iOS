@@ -17,6 +17,11 @@ struct AboutView: View {
                 ColorfulBackgroundView()
             }
             
+            // if ipad
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                ClearBackgroundView()
+            }
+            
             ScrollView(showsIndicators: false) {
                 VStack {
                     // if ipad
