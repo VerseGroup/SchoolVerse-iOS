@@ -25,4 +25,8 @@ extension Date {
     func fallsBetween(start: Date, end: Date) -> Bool {
         (start...end).contains(self)
     }
+    
+    func sameDay(as date: Date) -> Bool {
+        Calendar.current.isDate(self, equalTo: date, toGranularity: .day)
+    }
 }

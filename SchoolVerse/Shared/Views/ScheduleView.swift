@@ -31,7 +31,9 @@ struct ScheduleView: View {
             VStack {
                 if let _ = vm.schedule {
                     
-                    weekDateSelector
+                    WeeksTabView { week in
+                        WeekView(week: week)
+                    }
                     
                     VStack(spacing: 0) {
                         if let day = vm.selectedDayEvent {
@@ -123,10 +125,11 @@ struct ScheduleView: View {
                         }
                 }
                 
-                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
+                GraphicalDatePicker(selectedDate: $vm.weekStore.selectedDate, isPresented: $showPicker)
             }
             .presentationDetents([.medium])
         }
+        .environmentObject(vm.weekStore)
     }
 }
 
@@ -137,108 +140,95 @@ struct ScheduleView_Previews: PreviewProvider {
 }
 
 extension ScheduleView {
-    var weekDateSelector: some View {
-        HStack {
-            Spacer()
-            
-            ForEach(vm.selectedWeek, id: \.self) { day in
-                VStack(spacing: 10) {
-                    Text(day.dateNumberString())
-                        .fontWeight(.semibold)
-                    
-                    Text(day.weekDayString())
-                        .font(.system(size: 14))
-                        .fontWeight(.semibold)
-                    
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 8)
-                        .opacity(day.hasSame(.day, as: Date.now) ? 1 : 0)
-                }
-                .foregroundColor(Color.white)
-                .frame(width: 45, height: 95)
-                .background(
-                    ZStack{
-                        if day.hasSame(.day, as: vm.selectedDate) {
-                            Capsule()
-                                .fill(.clear)
-                                .taintedGlass()
-                                .matchedGeometryEffect(id: "currentday", in: animation)
-                        }
-                    }
-                )
-                .onTapGesture {
-                    withAnimation {
-                        vm.updateSelectedDayEvent(date: day)
-                    }
-                }
-                
-                Spacer()
-            } //: ForEach
-        } //: HStack
-    }
-    
-    var scrollingDateSelector: some View {
-        TabView {
-            ForEach(0..<3) {_ in
-                weekDateSelector
-            }
-        }
-        .frame(height: UIScreen.main.bounds.height / 8)
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-
-    }
+//    var weekDateSelector: some View {
+//        HStack {
+//            Spacer()
+//
+//            ForEach(vm.selectedWeek, id: \.self) { day in
+//                VStack(spacing: 10) {
+//                    Text(day.dateNumberString())
+//                        .fontWeight(.semibold)
+//
+//                    Text(day.weekDayString())
+//                        .font(.system(size: 14))
+//                        .fontWeight(.semibold)
+//
+//                    Circle()
+//                        .fill(.white)
+//                        .frame(width: 8)
+//                        .opacity(day.hasSame(.day, as: Date.now) ? 1 : 0)
+//                }
+//                .foregroundColor(Color.white)
+//                .frame(width: 45, height: 95)
+//                .background(
+//                    ZStack{
+//                        if day.hasSame(.day, as: vm.selectedDate) {
+//                            Capsule()
+//                                .fill(.clear)
+//                                .taintedGlass()
+//                                .matchedGeometryEffect(id: "currentday", in: animation)
+//                        }
+//                    }
+//                )
+//                .onTapGesture {
+//                    withAnimation {
+//                        vm.updateSelectedDayEvent(date: day)
+//                    }
+//                }
+//
+//                Spacer()
+//            } //: ForEach
+//        } //: HStack
+//    }
 }
 
-
-
-extension ScheduleView {
-    var dateSelector: some View {
-        HStack {
-            // go to previous day
-            Button {
-                withAnimation(.easeInOut) {
-                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
-                }
-            } label: {
-                Image(systemName: "chevron.left")
-                    .frame(width: 50, height: 50)
-            }
-            .foregroundColor(.white)
-            .bold()
-            .padding(5)
-            
-            Spacer()
-            
-            Button {
-                withAnimation {
-                    showPicker.toggle()
-                }
-            }  label: {
-                Text(vm.selectedDate.weekDateString())
-                    .fontWeight(.semibold)
-                    .font(.headline)
-                    .foregroundColor(Color.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .glassCardFull()
-            }
-            
-            Spacer()
-            
-            // go to next day
-            Button {
-                withAnimation {
-                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
-                }
-            } label: {
-                Image(systemName: "chevron.right")
-                    .frame(width: 50, height: 50)
-            }
-            .foregroundColor(.white)
-            .bold()
-            .padding(5)
-        }
-        .padding()
-    }
-}
+//extension ScheduleView {
+//    var dateSelector: some View {
+//        HStack {
+//            // go to previous day
+//            Button {
+//                withAnimation(.easeInOut) {
+//                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
+//                }
+//            } label: {
+//                Image(systemName: "chevron.left")
+//                    .frame(width: 50, height: 50)
+//            }
+//            .foregroundColor(.white)
+//            .bold()
+//            .padding(5)
+//            
+//            Spacer()
+//            
+//            Button {
+//                withAnimation {
+//                    showPicker.toggle()
+//                }
+//            }  label: {
+//                Text(vm.selectedDate.weekDateString())
+//                    .fontWeight(.semibold)
+//                    .font(.headline)
+//                    .foregroundColor(Color.white)
+//                    .padding()
+//                    .frame(maxWidth: .infinity)
+//                    .glassCardFull()
+//            }
+//            
+//            Spacer()
+//            
+//            // go to next day
+//            Button {
+//                withAnimation {
+//                    vm.updateSelectedDayEvent(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
+//                }
+//            } label: {
+//                Image(systemName: "chevron.right")
+//                    .frame(width: 50, height: 50)
+//            }
+//            .foregroundColor(.white)
+//            .bold()
+//            .padding(5)
+//        }
+//        .padding()
+//    }
+//}
