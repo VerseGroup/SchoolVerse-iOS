@@ -141,7 +141,7 @@ struct ClubsView: View {
                         }
                 }
                 
-                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
+                GraphicalDatePicker(selectedDate: $vm.weekStore.selectedDate, isPresented: $showPicker)
             }
             .presentationDetents([.medium])
         }
@@ -152,5 +152,6 @@ struct ClubsView: View {
             }
         })
         .environmentObject(vm)
+        .environmentObject(vm.weekStore)
     }
 }

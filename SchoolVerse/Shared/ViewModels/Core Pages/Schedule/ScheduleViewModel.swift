@@ -17,15 +17,15 @@ class ScheduleViewModel: ObservableObject {
     @Published var schedule: Schedule?
     
     @Published var selectedDayEvent: DayEvent?
-    @Published var selectedDate: Date = Date()
-    @Published var selectedWeek: [Date] = []
+    
+    @Published var weekStore: WeekStore = WeekStore()
     
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         addSubscribers()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.updateSelectedDayEvent(date: Date())
+            self.weekStore.selectToday()
         }
     }
     
@@ -53,7 +53,7 @@ class ScheduleViewModel: ObservableObject {
             .store(in: &cancellables)
         
         // sets selectedDayEvent to the selectedDate
-        $selectedDate
+        weekStore.$selectedDate
             .sink{ (date) in
                 self.selectedDayEvent = self.dayEvents.first(where: { dayEvent in
                     Calendar.current.isDate(dayEvent.date, equalTo: date, toGranularity: .day)
@@ -61,32 +61,9 @@ class ScheduleViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        $selectedDate
-            .sink{ (date) in
-                self.getSelectedWeek(date: date)
-            }
-            .store(in: &cancellables)
-        
     }
     
-    func updateSelectedDayEvent(date: Date) {
-        selectedDate = date
-    }
-    
-    func getSelectedWeek(date: Date) {
-        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: date)
-        
-        guard let firstWeekDay = week?.start else {
-            return
-        }
-        
-        selectedWeek = []
-        
-        (0..<7).forEach { day in
-            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
-                selectedWeek.append(weekday)
-            }
-        }
-    }
-    
+//    func updateSelectedDayEvent(date: Date) {
+//        weekStore.selectedDate = date
+//    }
 }

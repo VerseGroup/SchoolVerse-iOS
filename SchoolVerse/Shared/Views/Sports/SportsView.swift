@@ -31,14 +31,15 @@ struct SportsView: View {
             
             VStack {
                 
-                weekDateSelector
+                WeeksTabView { week in
+                    WeekView(week: week)
+                }
                 
                 Spacer()
                     .frame(height: 10)
                 
                 VStack(spacing: 20) {
                     if !vm.selectedAllSportsEvents.isEmpty {
-                        
                         if allSportsSort {
                             AllSportsView()
                         } else {
@@ -104,110 +105,17 @@ struct SportsView: View {
                         }
                 }
                 
-                GraphicalDatePicker(selectedDate: $vm.selectedDate, isPresented: $showPicker)
+                GraphicalDatePicker(selectedDate: $vm.weekStore.selectedDate, isPresented: $showPicker)
             }
             .presentationDetents([.medium])
         }
         .environmentObject(vm)
+        .environmentObject(vm.weekStore)
     }
 }
 
 struct SportsView_Previews: PreviewProvider {
     static var previews: some View {
         SportsView()
-    }
-}
-
-extension SportsView {
-    var weekDateSelector: some View {
-        HStack {
-            Spacer()
-            
-            ForEach(vm.selectedWeek, id: \.self) { day in
-                VStack(spacing: 10) {
-                    Text(day.dateNumberString())
-                        .fontWeight(.semibold)
-                    
-                    Text(day.weekDayString())
-                        .font(.system(size: 14))
-                        .fontWeight(.semibold)
-                    
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 8)
-                        .opacity(day.hasSame(.day, as: Date.now) ? 1 : 0)
-                }
-                .foregroundColor(Color.white)
-                .frame(width: 45, height: 95)
-                .background(
-                    ZStack{
-                        if day.hasSame(.day, as: vm.selectedDate) {
-                            Capsule()
-                                .fill(.clear)
-                                .taintedGlass()
-                                .matchedGeometryEffect(id: "currentday", in: animation)
-                        }
-                    }
-                )
-                .onTapGesture {
-                    withAnimation {
-                        vm.updateSelectedDay(date: day)
-                    }
-                }
-                
-                Spacer()
-            } //: ForEach
-        } //: HStack
-    }
-}
-
-extension SportsView {
-    var dateSelector: some View {
-        HStack {
-            // go to previous day
-            Button {
-                withAnimation(.easeInOut) {
-                    vm.updateSelectedDay(date: Calendar.current.date(byAdding: .day, value: -1, to: vm.selectedDate) ?? Date())
-                }
-            } label: {
-                Image(systemName: "chevron.left")
-                    .frame(width: 50, height: 50)
-            }
-            .foregroundColor(.white)
-            .bold()
-            .padding(5)
-            
-            Spacer()
-            
-            Button {
-                withAnimation {
-                    showPicker.toggle()
-                }
-            }  label: {
-                Text(vm.selectedDate.weekDateString())
-                    .fontWeight(.semibold)
-                    .font(.headline)
-                    .foregroundColor(Color.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .glassCardFull()
-            }
-            
-            Spacer()
-            
-            // go to next day
-            Button {
-                withAnimation {
-                    vm.updateSelectedDay(date: Calendar.current.date(byAdding: .day, value: 1, to: vm.selectedDate) ?? Date())
-                }
-            } label: {
-                Image(systemName: "chevron.right")
-                    .frame(width: 50, height: 50)
-            }
-            .foregroundColor(.white)
-            .bold()
-            .padding(5)
-        }
-        .padding()
     }
 }
