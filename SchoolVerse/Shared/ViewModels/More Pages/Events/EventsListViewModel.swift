@@ -19,13 +19,16 @@ class EventsListViewModel: ObservableObject {
     @Published var selectedDate: Date = Date()
     @Published var selectedWeek: [Date] = []
     
+    @Published var weekStore: WeekStore = WeekStore()
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         addSubscribers()
         // fixes bug where on first appear of the view, selected events isnt seen
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.updateSelectedDay(date: Date())
+            self.weekStore.selectToday()
+            self.repo.loadEvents(date: Date())
         }
     }
     
@@ -39,7 +42,7 @@ class EventsListViewModel: ObservableObject {
             .store(in: &cancellables)
         
         // update when events changes based on the selected day
-        $events.combineLatest($selectedDate)
+        $events.combineLatest(weekStore.$selectedDate)
             .sink { (events, date) in
                 self.selectedEvents = events.filter({ event in
                     event.day.calendarDistance(from: date, resultIn: .day) == 0
@@ -56,32 +59,12 @@ class EventsListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        $selectedDate
-            .sink{ (date) in
-                self.getSelectedWeek(date: date)
+        weekStore.$selectedDate
+            .sink { date in
+                self.repo.loadEvents(date: date)
             }
             .store(in: &cancellables)
         
     }
     
-    func updateSelectedDay(date: Date) {
-        selectedDate = date
-        repo.loadEvents(date: date)
-    }
-    
-    func getSelectedWeek(date: Date) {
-        let week = Calendar.current.dateInterval(of: .weekOfMonth, for: date)
-        
-        guard let firstWeekDay = week?.start else {
-            return
-        }
-        
-        selectedWeek = []
-        
-        (0..<7).forEach { day in
-            if let weekday = Calendar.current.date(byAdding: .day, value: day, to: firstWeekDay) {
-                selectedWeek.append(weekday)
-            }
-        }
-    }
 }

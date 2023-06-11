@@ -125,7 +125,11 @@
 		16A3AB4528F4C08E006799C9 /* GoogleService-Info-Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A3AB4428F4C08E006799C9 /* GoogleService-Info-Dev.plist */; };
 		16A3AB4728F4C255006799C9 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3AB4628F4C255006799C9 /* MealView.swift */; };
 		16A3AB4928F4CD08006799C9 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */; };
+		16B45B6F2A27E6BE0051140B /* WeeksTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B45B6E2A27E6BE0051140B /* WeeksTabView.swift */; };
+		16B45B712A27E7200051140B /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B45B702A27E7200051140B /* WeekView.swift */; };
 		16B92EF32946813F00EBED71 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B92EF22946813F00EBED71 /* String+Date.swift */; };
+		16BC48292A27E3F6001EDB1A /* WeekStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC48282A27E3F6001EDB1A /* WeekStore.swift */; };
+		16BC482B2A27E44E001EDB1A /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BC482A2A27E44E001EDB1A /* Week.swift */; };
 		16BE778B28F24D9C000248A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE778A28F24D9C000248A9 /* LoadingView.swift */; };
 		16BE778D28F258AD000248A9 /* FrostedGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE778C28F258AD000248A9 /* FrostedGlass.swift */; };
 		16CE393128E25F3C00D1F5D4 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */; };
@@ -299,7 +303,11 @@
 		16A3AB4428F4C08E006799C9 /* GoogleService-Info-Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Dev.plist"; sourceTree = "<group>"; };
 		16A3AB4628F4C255006799C9 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
+		16B45B6E2A27E6BE0051140B /* WeeksTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksTabView.swift; sourceTree = "<group>"; };
+		16B45B702A27E7200051140B /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		16B92EF22946813F00EBED71 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		16BC48282A27E3F6001EDB1A /* WeekStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStore.swift; sourceTree = "<group>"; };
+		16BC482A2A27E44E001EDB1A /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		16BE778A28F24D9C000248A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		16BE778C28F258AD000248A9 /* FrostedGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrostedGlass.swift; sourceTree = "<group>"; };
 		16CE393028E25F3C00D1F5D4 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -497,6 +505,7 @@
 				166C1CF728E924F800F265FA /* Event.swift */,
 				AF299C0729B79DAF00FE3CDF /* Club.swift */,
 				16075FAB2A19CD1B00273D37 /* DayPeriod.swift */,
+				16BC482A2A27E44E001EDB1A /* Week.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -504,6 +513,7 @@
 		1637164228C06AE200DF15D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				16BC48272A27E3DD001EDB1A /* Calendar */,
 				AF299C0F29BC38B500FE3CDF /* Clubs */,
 				165CA07928F1EDFA007547FB /* Labels */,
 				165CA06E28F1ED24007547FB /* Glassmorphism */,
@@ -515,7 +525,6 @@
 				16BE778A28F24D9C000248A9 /* LoadingView.swift */,
 				164A896228F3A41500419637 /* TextWithTitle.swift */,
 				16A3AB4828F4CD08006799C9 /* ComingSoonView.swift */,
-				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
 				AF5FD25D293A873D00B12401 /* EditSportsTile.swift */,
 				AF299BF529B3F41C00FE3CDF /* SearchBarView.swift */,
 				164C11E92A1C05460041B250 /* LaunchScreen.swift */,
@@ -610,6 +619,17 @@
 			path = SchoolVerseUITests;
 			sourceTree = "<group>";
 		};
+		16BC48272A27E3DD001EDB1A /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				AF61753E293062F000633CE3 /* GraphicalDatePicker.swift */,
+				16BC48282A27E3F6001EDB1A /* WeekStore.swift */,
+				16B45B6E2A27E6BE0051140B /* WeeksTabView.swift */,
+				16B45B702A27E7200051140B /* WeekView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		AF299C0F29BC38B500FE3CDF /* Clubs */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,8 +645,8 @@
 				1674C2CE28C00FC400D92969 /* SchoolVerseApp.swift */,
 				1604B17928D80EE600931C90 /* RouterView.swift */,
 				1637164228C06AE200DF15D4 /* Components */,
-				AFEA26782A1A71FC0032F5E0 /* Views */,
 				1637162228C054AF00DF15D4 /* Models */,
+				AFEA26782A1A71FC0032F5E0 /* Views */,
 				AFEA26662A1A6F240032F5E0 /* ViewModels */,
 				1637162128C0546B00DF15D4 /* Services */,
 				1637162028C0546300DF15D4 /* Extensions */,
@@ -1099,6 +1119,7 @@
 				AF299BF829B3F4EA00FE3CDF /* UIApplication.swift in Sources */,
 				AF299C0829B79DAF00FE3CDF /* Club.swift in Sources */,
 				16060D472A2101E7009986B6 /* View+Hidden.swift in Sources */,
+				16BC48292A27E3F6001EDB1A /* WeekStore.swift in Sources */,
 				AF299BF229B3DD2500FE3CDF /* FriendsView.swift in Sources */,
 				AFEA26862A1ADEF40032F5E0 /* SideBarViewBuilder.swift in Sources */,
 				AF299BFE29B67B3500FE3CDF /* PendingFriendsView.swift in Sources */,
@@ -1124,6 +1145,7 @@
 				1688F95C28C2AAAE0077B8F6 /* Day.swift in Sources */,
 				1688F95E28C2AB2A0077B8F6 /* Credentials.swift in Sources */,
 				AF299BF429B3ECC500FE3CDF /* NewFriendsView.swift in Sources */,
+				16B45B712A27E7200051140B /* WeekView.swift in Sources */,
 				16060D402A1FF27B009986B6 /* iPadNavButtonView.swift in Sources */,
 				166C1CF628E923BA00F265FA /* EventsRepository.swift in Sources */,
 				164A895228F34B3800419637 /* ScheduleView.swift in Sources */,
@@ -1187,6 +1209,7 @@
 				AF61753F293062F000633CE3 /* GraphicalDatePicker.swift in Sources */,
 				16CE393828E283DA00D1F5D4 /* LinkingViewModel.swift in Sources */,
 				1604B18628D8E68C00931C90 /* SignUpView.swift in Sources */,
+				16BC482B2A27E44E001EDB1A /* Week.swift in Sources */,
 				164C11E82A1BFB170041B250 /* ForgotPasswordView.swift in Sources */,
 				1637164128C057B300DF15D4 /* Menu.swift in Sources */,
 				1604B18028D8120300931C90 /* OnboardingView.swift in Sources */,
@@ -1200,6 +1223,7 @@
 				166C1D1B28EA7B2300F265FA /* TaskDetailView.swift in Sources */,
 				165CA08328F1EEA0007547FB /* TitleLabel.swift in Sources */,
 				165CA07228F1ED37007547FB /* GlassCard.swift in Sources */,
+				16B45B6F2A27E6BE0051140B /* WeeksTabView.swift in Sources */,
 				1698FD4328F65FB00057A453 /* UpgradeView.swift in Sources */,
 				166C1D0428E9286400F265FA /* SportsListViewModel.swift in Sources */,
 				16421DC728F7B0EE00FC4CAD /* Firestore+CollectionRef.swift in Sources */,
@@ -1359,7 +1383,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1493,7 +1517,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1690,7 +1714,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1730,7 +1754,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.versegroup.SchoolVerse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
